@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sicily — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Rethink+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #111111;
+      --olive:     #889A5C;
+      --blue:      #A5B8D7;
+      --white:     #ffffff;
+      --gutter:    64px;
+      --max:       1280px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── REVEAL ANIMATION ─────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── HEADER ────────────────────────────────────────────── */
+    .header-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      transition: transform 0.3s ease;
+    }
+
+    header {
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--gutter);
+      width: 100%;
+    }
+
+    header .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .snail-icon { display: block; flex-shrink: 0; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    nav a {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s ease;
+    }
+    nav a:hover { opacity: 0.6; }
+
+    /* ─── HERO ──────────────────────────────────────────────── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px var(--gutter);
+      min-height: calc(100vh - 96px - 110px);
+      position: relative;
+    }
+
+    .hero-text-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .hello {
+      font-family: 'Space Mono', monospace;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--blue);
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+      align-self: flex-start;
+      margin-left: 8px;
+    }
+
+    /* ─── SICILY SVG LOGOTYPE ───────────────────────────────── */
+    .logotype-wrap {
+      width: min(540px, 90vw);
+    }
+
+    #sicily-svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    #sicily-svg path {
+      fill: var(--olive);
+      fill-opacity: 0;
+      stroke: var(--olive);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ─── JUMP BUTTON ───────────────────────────────────────── */
+    .jump-btn {
+      position: absolute;
+      bottom: 56px;
+      left: var(--gutter);
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 28px 0 37px;
+      height: 45px;
+      background: rgba(255, 208, 209, 0.15);
+      border: 1px solid #FFD0D1;
+      border-radius: 31px;
+      font-family: 'Space Mono', monospace;
+      font-size: 19px;
+      font-weight: 400;
+      color: #ffffff;
+      letter-spacing: -0.095px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
+    }
+
+    .jump-btn .arrow-icon {
+      flex-shrink: 0;
+      fill: #FFD0D1;
+      transform: scaleY(-1);
+      transition: fill 0.25s ease-in-out;
+    }
+
+    .jump-btn:hover {
+      background: #FFD0D1;
+      color: #111111;
+    }
+
+    .jump-btn:hover .arrow-icon {
+      fill: #111111;
+    }
+
+    /* ─── SCROLLING BANNER ───────────────────────────────────── */
+    .banner-strip {
+      width: 100%;
+      overflow: hidden;
+      padding: 28px 0;
+    }
+
+    .banner-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 31px;
+      white-space: nowrap;
+      animation: banner-scroll 40s linear infinite;
+    }
+
+    .banner-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #889A5C;
+      flex-shrink: 0;
+    }
+
+    .banner-phrase {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.08px;
+      white-space: nowrap;
+    }
+
+    .banner-phrase.blue { color: #A5B8D7; }
+    .banner-phrase.pink { color: #FFD0D1; }
+
+    @keyframes banner-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── PROJECTS GRID ─────────────────────────────────────── */
+    .work {
+      padding: 48px var(--gutter) 80px;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      display: block;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #1a1a1a;
+      cursor: pointer;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.03);
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.68);
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+      pointer-events: none;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card-title {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 20px;
+      font-weight: 400;
+      color: #ffffff;
+      text-align: center;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+      pointer-events: none;
+    }
+
+    .card:hover .card-title {
+      opacity: 1;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      padding: 0 var(--gutter);
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-nav a {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s ease;
+    }
+    .footer-nav a:hover { opacity: 0.6; }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+    .footer-social a:hover { opacity: 1; }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      :root { --gutter: 24px; }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 40px var(--gutter);
+        min-height: calc(100vh - 96px - 80px);
+      }
+
+      .logotype-wrap {
+        width: min(420px, 88vw);
+      }
+
+      nav { gap: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      header { height: 72px; }
+      .footer-inner { height: 72px; }
+
+      nav a, .footer-nav a { font-size: 14px; }
+
+      .logotype-wrap {
+        width: 92vw;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══════════════════════════════════════════════ -->
+  <div class="header-wrap">
+    <header>
+      <div class="header-inner">
+
+        <!-- Snail icon (exact Figma paths) -->
+        <a href="index.html" aria-label="Home">
+          <svg class="snail-icon" width="53" height="49" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- body -->
+            <path transform="translate(7.14,13.42)" fill="#889A5C" d="M10.7315 1.54184C10.7315 1.54184 10.8037 2.2108 10.1741 2.2108C9.54445 2.2108 8.46887 1.3582 6.31114 2.43378C4.15341 3.50937 3.15653 3.77171 2.6712 8.48723C2.18588 13.2027 2.7827 22.4436 4.04192 24.5948C4.91581 27.1526 6.97355 30.7204 12.2465 31.6845C17.5195 32.6485 22.9762 33.652 30.0986 33.1339C37.2211 32.6157 42.9073 29.0152 42.9073 28.9037C42.9073 28.7922 42.4613 28.3462 40.7561 28.3856C39.0509 28.4249 36.3751 28.9037 36.0406 28.7922C35.7061 28.6807 36.5587 26.641 36.7489 26.5623C36.9391 26.4836 42.8023 26.3 44.3567 26.7131C45.911 27.1263 46.1012 28.3069 45.5831 29.0873C45.065 29.8678 42.2777 31.9796 36.8997 33.9471C31.5218 35.9146 20.5299 35.954 15.1847 34.8719C9.83958 33.7897 4.67809 31.3106 2.59906 27.1526C0.520031 22.9945 -0.0374367 15.977 0.00191399 13.57C0.0412647 11.1631 -0.0374353 6.88697 1.48412 4.13898C3.00568 1.39099 5.60283 0.203913 7.23588 0.0202764C8.86893 -0.16336 10.6856 0.945017 10.725 1.54184L10.7315 1.54184Z"/>
+            <!-- shell -->
+            <path transform="translate(16.94,12.24)" fill="#A5B8D7" d="M13.2959 9.09954C13.2959 9.09954 15.5717 8.90935 15.5717 10.6539C15.5717 12.3984 13.8009 13.0936 14.1223 13.9528C14.4437 14.8119 15.2241 15.2645 15.8406 15.1858C16.4571 15.1071 17.959 12.851 17.9852 10.8966C18.0115 8.94214 16.5883 7.70915 14.8765 7.25006C13.1648 6.79097 10.8824 7.78785 9.75438 8.93558C8.62633 10.0833 7.5573 12.1755 8.35743 14.3529C9.15756 16.5303 10.8234 17.5927 12.2138 18.183C13.6042 18.7733 16.0439 20.1112 15.5389 22.6034C15.0339 25.0956 12.2663 25.6071 10.2594 25.3907C8.2525 25.1743 4.8749 23.3773 3.26152 20.4325C1.6547 17.4812 1.7334 12.0705 4.36334 8.12889C6.99327 4.18727 12.0826 1.61636 16.7982 2.58045C21.5137 3.54454 25.029 6.86967 26.1767 10.9425C27.3245 15.0153 26.1243 22.3083 23.6583 24.9579C21.1923 27.6075 17.9196 28.8733 17.8934 29.2733C17.8672 29.6734 18.2673 30.3423 19.1264 30.3423C19.9856 30.3423 25.3176 28.3879 27.1146 23.8823C28.9116 19.3766 29.3904 16.1368 29.0428 12.0377C28.6952 7.9387 25.8554 3.45928 21.1661 1.50486C16.4768 -0.449553 12.24 -0.318385 9.10509 0.862135C5.97015 2.04265 2.74996 5.335 1.60223 8.60766C0.454505 11.8803 -0.475126 15.1858 0.264309 18.7142C1.44483 22.0918 3.56321 24.6103 6.10789 26.1909C8.65256 27.7714 14.2535 27.5025 16.2932 25.3842C18.3328 23.2658 17.6311 19.6783 16.4243 18.524C15.2176 17.3697 12.0564 16.3532 10.9808 14.5824C9.90522 12.8116 9.85276 11.2835 10.7381 10.2407C11.6235 9.19792 13.2828 9.08642 13.2828 9.08642L13.2959 9.09954Z"/>
+            <!-- antenna left -->
+            <path transform="translate(0,1.19)" fill="#889A5C" d="M3.82576 1.51591C3.82576 1.51591 2.55342 -0.123699 1.49751 0.00747042C0.441596 0.138639 -0.220807 1.46345 0.0677648 2.28325C0.356336 3.10306 1.17614 3.55559 1.94348 3.12929C2.71082 2.70299 2.97316 2.97189 3.71426 3.63429C4.45536 4.29669 8.81674 8.39572 9.63654 12.4161C9.63654 12.4161 9.97758 12.6784 10.3252 12.6784C10.6728 12.6784 10.8039 12.521 10.7187 11.7799C10.6334 11.0388 10.1612 9.00566 8.54784 6.54624C6.93446 4.08682 3.81264 1.52247 3.81264 1.52247L3.82576 1.51591Z"/>
+            <!-- antenna right -->
+            <path transform="translate(8.09,0)" fill="#889A5C" d="M1.26239 0.00655845C1.26239 0.00655845 0.127774 0.29513 0.0162801 1.1674C-0.0952135 2.03968 0.38355 2.57091 0.914784 2.67585C1.44602 2.78078 2.16089 3.83669 2.76427 4.95163C3.36764 6.06656 4.98758 12.1462 5.11875 12.4348C5.24992 12.7234 5.64998 12.7234 5.88609 12.5922C6.12219 12.461 5.78115 9.41793 5.49258 7.96195C5.20401 6.50598 3.40044 2.85948 3.08563 2.38072C2.77083 1.90195 2.69213 1.13461 2.44946 0.609935C2.2068 0.0852598 1.55096 0.0524676 1.26239 0L1.26239 0.00655845Z"/>
+            <!-- eye dot left -->
+            <path transform="translate(11.64,19.06)" fill="#889A5C" d="M1.58279 0.0965238C1.58279 0.0965238 0.867918 -0.18549 0.303892 0.214575C-0.260134 0.61464 0.0218782 1.83451 0.651489 2.06406C1.2811 2.2936 1.81233 1.9001 1.9435 1.53938C2.07467 1.17867 2.14681 0.542498 1.58935 0.0965238L1.58279 0.0965238Z"/>
+            <!-- eye dot right -->
+            <path transform="translate(15.04,18.17)" fill="#889A5C" d="M1.43566 0.0065586C1.43566 0.0065586 0.609297 -0.0852607 0.209232 0.452532C-0.190833 0.990324 0.00591902 1.99377 0.602738 2.2102C1.19956 2.42662 1.698 2.13149 1.82917 1.50844C1.96034 0.88539 2.01936 0.282013 1.43566 0L1.43566 0.0065586Z"/>
+          </svg>
+        </a>
+
+        <nav>
+          <a href="#about">About</a>
+          <a href="mailto:sicilyrose4@icloud.com">Contact</a>
+        </nav>
+
+      </div>
+    </header>
+  </div>
+
+  <!-- ═══ MAIN ══════════════════════════════════════════════════ -->
+  <main>
+
+    <!-- ─── HERO ─────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-text-group">
+
+        <p class="hello reveal">Hello, I'm</p>
+
+        <!-- Sicily logotype — exact Figma paths, animated on load -->
+        <div class="logotype-wrap">
+          <svg id="sicily-svg"
+               viewBox="0 0 583 468"
+               fill="none"
+               xmlns="http://www.w3.org/2000/svg"
+               aria-label="Sicily">
+
+            <!-- Path 1: S — includes 5.6° rotation from Figma relativeTransform -->
+            <path id="path-s"
+              transform="matrix(0.99520189,-0.09784275,0.09771170,0.99521476,0,25.4154)"
+              d="M93.0141 59.4283C93.0141 59.4283 88.5683 51.0328 94.9843 38.2372C101.4 25.4416 108.271 17.0461 98.4197 12.5954C88.5683 8.14481 68.8656 17.0461 66.8953 40.6648C65.1571 61.5021 62.4495 73.1848 78.7169 94.8817C94.9338 116.579 127.418 172.262 111.201 221.523C94.9843 270.783 66.1375 278.976 46.3337 279.28C26.5299 279.583 7.6355 267.951 1.92675 246.507C-3.78199 225.063 4.14962 210.598 13.2432 208.07C22.3368 205.541 26.7825 213.127 24.5597 223.192C22.3368 233.256 12.2833 240.539 17.6384 252.525C22.9935 264.512 45.677 271.744 62.9548 258.493C80.2325 245.242 100.909 222.227 98.6865 190.718C96.4636 159.21 91.1953 148.502 74.1702 127.058C57.145 105.614 45.6264 74.3986 48.7586 53.3087C51.8909 32.2187 65.4302 -1.51508 90.6396 0.0527611C115.849 1.6206 116.152 21.1933 114.586 36.6188C113.02 52.0443 104.987 71.8193 92.913 59.4283L93.0141 59.4283Z"/>
+
+            <!-- Path 2: icily + flourish tail — 0.5° rotation -->
+            <path id="path-icily"
+              transform="matrix(0.99996221,-0.00869112,0.00875657,0.99996161,110.9713,3.6446)"
+              d="M393.795 25.0622C393.418 31.8213 383.254 64.9056 372.395 79.4637C361.582 94.0691 338.348 128.329 287.168 134.332C287.168 134.332 289.923 57.629 292.898 42.6454C295.92 27.7091 270.518 34.7991 269.007 45.6705C267.497 56.4946 255.551 89.0613 243.228 88.3051C230.905 87.5488 248.847 57.2508 244.739 47.892C240.632 38.5332 225.287 36.6898 219.338 47.1357C213.341 57.629 215.561 73.6996 212.586 80.4588C209.612 87.1707 198.374 108.11 191.292 104.754C184.21 101.398 181.188 90.5266 180.48 84.9491C180.48 84.9491 204.371 56.8727 206.968 34.0429C209.612 11.2604 204.748 5.25744 193.181 0.767106C181.566 -3.72323 166.269 11.9693 164.38 35.5554C162.539 59.0942 165.891 85.28 166.269 88.6832C166.646 92.0392 159.517 112.222 154.701 111.466C149.838 110.757 145.73 107.354 147.572 96.1514C149.46 84.9492 155.032 73.6997 149.838 70.3437C144.597 66.9878 133.36 65.0972 129.252 68.8312C125.145 72.5653 128.544 96.5295 122.926 105.888C117.307 115.2 108.714 126.827 98.988 123.85C89.309 120.825 82.935 108.866 87.0427 102.863C91.1504 96.9076 97.5243 108.488 102.765 108.11C107.959 107.732 114.333 101.776 110.225 92.7954C106.117 83.8147 101.632 77.8118 89.6867 79.3244C77.6943 80.7896 69.4789 87.927 69.8566 100.642C70.2343 113.356 68.0153 132.452 61.2636 135.808C54.5591 139.164 45.2107 134.296 44.833 121.959C44.4552 109.622 48.1852 100.689 48.5629 97.4748C48.5629 97.4748 50.0266 88.5887 44.9746 84.7601C39.9226 80.9315 32.5099 85.7527 26.9858 90.5266C21.4618 95.3478 12.5855 103.241 4.18127 107.117C-4.17569 110.946 2.05661 124.37 5.17277 126.307C8.28893 128.245 12.5854 127.253 15.9377 123.188C19.2899 119.123 20.9896 115.011 22.4533 116.24C23.8697 117.421 23.0908 139.324 33.4542 144.316C43.8642 149.262 52.3224 150.941 59.4329 148.328C66.4969 145.715 74.2476 136.612 76.1362 128.245C76.1362 128.245 87.7472 146.076 102.573 140.309C117.445 134.59 125.05 116.476 127.458 116.476C129.866 116.476 143.039 127.962 154.087 126.307C165.135 124.606 169.196 101.587 171.132 102.296C173.02 103.005 174.484 118.13 188.129 116.24C201.821 114.302 213.058 101.114 218.818 89.345C218.818 89.345 226.986 106.597 238.979 104.47C250.971 102.296 265.136 78.9936 267.26 79.7498C269.432 80.4588 270.021 119.345 266.905 137.827C266.905 137.827 256.27 142.189 224.792 149.635C192.262 152.613 139.734 175.465 115.844 201.982C91.9058 228.545 69.4789 257 70.2343 300.769C70.9898 344.491 86.2873 383.391 132.274 393.128C178.214 402.865 211.075 372.945 233.88 343.404C256.684 313.815 275.381 249.863 279.489 210.962C283.597 172.062 283.974 151.879 283.974 151.879C283.974 151.879 331.425 141.386 352.341 123.093C373.257 104.754 405.363 75.2122 416.978 35.9336C428.545 -3.34509 394.173 18.3503 393.795 25.0622ZM179.3 66.1842C179.63 50.7753 183.88 33.1448 187.185 24.0223C190.584 14.569 195.306 15.3725 195.306 15.3725C200.31 17.2159 197.147 30.5924 193.464 42.1727C190.49 51.5315 183.077 62.592 180.339 66.5151C180.008 66.9405 179.3 66.7042 179.3 66.1842ZM247.43 281.201C233.36 335.699 174.475 403.956 121.831 370.539C69.1393 337.168 77.0591 262.063 126.209 214.607C175.36 167.151 263.247 156.984 263.247 156.984C263.247 156.984 261.453 226.702 247.43 281.201Z"/>
+
+            <!-- Path 3: i-dot 1 -->
+            <path id="path-dot1"
+              transform="matrix(0.99996221,-0.00869112,0.00875657,0.99996161,147.7705,48.4771)"
+              d="M16.549 14.5109C22.1675 9.68971 18.6736 0.189067 11.261 0C10.4583 0 9.5612 0 8.61691 0.141794C1.25145 0.992595 -2.19518 10.3515 1.48755 14.2273C5.17028 18.1032 11.2137 19.0012 16.4545 14.6527C16.5018 14.6527 16.549 14.5582 16.5962 14.5109L16.549 14.5109Z"/>
+
+            <!-- Path 4: i-dot 2 -->
+            <path id="path-dot2"
+              transform="matrix(0.99996221,-0.00869112,0.00875657,0.99996161,242.8121,33.7071)"
+              d="M9.10546 0.0938174C6.36702 -0.331583 3.53414 0.708293 1.7872 2.83529C0.606839 4.2533 -0.29024 6.23845 0.0874764 8.83811C0.937338 14.8883 7.21692 16.8734 11.7967 16.8734C16.3765 16.8734 20.2481 14.9355 20.012 10.1616C19.8231 6.09664 15.8099 1.18093 9.10546 0.141058L9.10546 0.0938174Z"/>
+
+          </svg>
+        </div>
+
+      </div>
+
+      <!-- Jump to Work button -->
+      <a href="#work" class="jump-btn">
+        JUMP TO WORK
+        <svg class="arrow-icon" width="14" height="18" viewBox="0 0 13.54 17.5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6.23871 0.21934C6.37933 0.0788896 6.56996 0 6.76871 0C6.96746 0 7.15808 0.0788896 7.29871 0.21934L13.2987 6.21934C13.3724 6.288 13.4315 6.3708 13.4725 6.4628C13.5135 6.5548 13.5355 6.65412 13.5373 6.75482C13.5391 6.85552 13.5206 6.95555 13.4828 7.04894C13.4451 7.14233 13.389 7.22716 13.3177 7.29838C13.2465 7.3696 13.1617 7.42574 13.0683 7.46346C12.9749 7.50118 12.8749 7.51971 12.7742 7.51793C12.6735 7.51616 12.5742 7.49411 12.4822 7.45312C12.3902 7.41213 12.3074 7.35303 12.2387 7.27934L7.51871 2.55934L7.51871 16.7493C7.51871 16.9483 7.43969 17.139 7.29904 17.2797C7.15839 17.4203 6.96762 17.4993 6.76871 17.4993C6.5698 17.4993 6.37903 17.4203 6.23838 17.2797C6.09773 17.139 6.01871 16.9483 6.01871 16.7493L6.01871 2.55934L1.29871 7.27934C1.23005 7.35303 1.14725 7.41213 1.05525 7.45312C0.963247 7.49411 0.863934 7.51616 0.763231 7.51793C0.662528 7.51971 0.562499 7.50118 0.46911 7.46346C0.375722 7.42574 0.290888 7.3696 0.21967 7.29838C0.148451 7.22716 0.0923064 7.14233 0.0545854 7.04894C0.0168643 6.95555 -0.00166006 6.85552 0.000116722 6.75482C0.00189351 6.65412 0.023935 6.5548 0.064927 6.4628C0.105919 6.3708 0.165021 6.288 0.238708 6.21934L6.23871 0.21934Z"/>
+        </svg>
+      </a>
+
+    </section>
+
+    <!-- ─── SCROLLING BANNER ─────────────────────────────────────── -->
+    <div class="banner-strip" aria-hidden="true">
+      <div class="banner-track">
+        <!-- Set 1 -->
+        <span class="banner-dot"></span>
+        <span class="banner-phrase blue">UI/UX Designer</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase pink">Problem Solver</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase blue">Creative Thinker</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase pink">Human Centered</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase blue">Brand Builder</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase pink">Visual Curator</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase blue">Pixel Artist</span>
+        <!-- Set 2 — colors inverted so Pixel Artist(blue)→UI/UX Designer(pink) stays alternating -->
+        <span class="banner-dot"></span>
+        <span class="banner-phrase pink">UI/UX Designer</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase blue">Problem Solver</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase pink">Creative Thinker</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase blue">Human Centered</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase pink">Brand Builder</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase blue">Visual Curator</span>
+        <span class="banner-dot"></span>
+        <span class="banner-phrase pink">Pixel Artist</span>
+      </div>
+    </div>
+
+    <!-- ─── WORK ──────────────────────────────────────────────── -->
+    <section class="work" id="work" style="scroll-margin-top: 96px;">
+      <div class="grid">
+        <a href="luna.html" class="card reveal"><img src="images/card1.png" alt="Luna Headphones Launch" loading="lazy" /><span class="card-title">Luna Headphones Launch</span></a>
+        <a href="#" class="card reveal"><img src="images/card2.png" alt="Drone Dashboard" loading="lazy" /><span class="card-title">Drone Dashboard</span></a>
+        <a href="#" class="card reveal"><img src="images/card3.png" alt="Fizz Pop-up" loading="lazy" /><span class="card-title">Fizz Pop-up</span></a>
+        <a href="#" class="card reveal"><img src="images/card4.png" alt="Bull Stock Investing App" loading="lazy" /><span class="card-title">Bull Stock Investing App</span></a>
+        <a href="#" class="card reveal"><img src="images/card5.png" alt="Rebound" loading="lazy" /><span class="card-title">Rebound</span></a>
+        <a href="#" class="card reveal"><img src="images/card6.png" alt="Depop Redesign" loading="lazy" /><span class="card-title">Depop Redesign</span></a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+  <footer id="about">
+    <div class="footer-inner">
+
+      <div class="footer-left reveal">
+        <!-- Snail icon (same as header) -->
+        <a href="index.html" aria-label="Home">
+          <svg class="snail-icon" width="44" height="41" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path transform="translate(7.14,13.42)" fill="#889A5C" d="M10.7315 1.54184C10.7315 1.54184 10.8037 2.2108 10.1741 2.2108C9.54445 2.2108 8.46887 1.3582 6.31114 2.43378C4.15341 3.50937 3.15653 3.77171 2.6712 8.48723C2.18588 13.2027 2.7827 22.4436 4.04192 24.5948C4.91581 27.1526 6.97355 30.7204 12.2465 31.6845C17.5195 32.6485 22.9762 33.652 30.0986 33.1339C37.2211 32.6157 42.9073 29.0152 42.9073 28.9037C42.9073 28.7922 42.4613 28.3462 40.7561 28.3856C39.0509 28.4249 36.3751 28.9037 36.0406 28.7922C35.7061 28.6807 36.5587 26.641 36.7489 26.5623C36.9391 26.4836 42.8023 26.3 44.3567 26.7131C45.911 27.1263 46.1012 28.3069 45.5831 29.0873C45.065 29.8678 42.2777 31.9796 36.8997 33.9471C31.5218 35.9146 20.5299 35.954 15.1847 34.8719C9.83958 33.7897 4.67809 31.3106 2.59906 27.1526C0.520031 22.9945 -0.0374367 15.977 0.00191399 13.57C0.0412647 11.1631 -0.0374353 6.88697 1.48412 4.13898C3.00568 1.39099 5.60283 0.203913 7.23588 0.0202764C8.86893 -0.16336 10.6856 0.945017 10.725 1.54184L10.7315 1.54184Z"/>
+            <path transform="translate(16.94,12.24)" fill="#A5B8D7" d="M13.2959 9.09954C13.2959 9.09954 15.5717 8.90935 15.5717 10.6539C15.5717 12.3984 13.8009 13.0936 14.1223 13.9528C14.4437 14.8119 15.2241 15.2645 15.8406 15.1858C16.4571 15.1071 17.959 12.851 17.9852 10.8966C18.0115 8.94214 16.5883 7.70915 14.8765 7.25006C13.1648 6.79097 10.8824 7.78785 9.75438 8.93558C8.62633 10.0833 7.5573 12.1755 8.35743 14.3529C9.15756 16.5303 10.8234 17.5927 12.2138 18.183C13.6042 18.7733 16.0439 20.1112 15.5389 22.6034C15.0339 25.0956 12.2663 25.6071 10.2594 25.3907C8.2525 25.1743 4.8749 23.3773 3.26152 20.4325C1.6547 17.4812 1.7334 12.0705 4.36334 8.12889C6.99327 4.18727 12.0826 1.61636 16.7982 2.58045C21.5137 3.54454 25.029 6.86967 26.1767 10.9425C27.3245 15.0153 26.1243 22.3083 23.6583 24.9579C21.1923 27.6075 17.9196 28.8733 17.8934 29.2733C17.8672 29.6734 18.2673 30.3423 19.1264 30.3423C19.9856 30.3423 25.3176 28.3879 27.1146 23.8823C28.9116 19.3766 29.3904 16.1368 29.0428 12.0377C28.6952 7.9387 25.8554 3.45928 21.1661 1.50486C16.4768 -0.449553 12.24 -0.318385 9.10509 0.862135C5.97015 2.04265 2.74996 5.335 1.60223 8.60766C0.454505 11.8803 -0.475126 15.1858 0.264309 18.7142C1.44483 22.0918 3.56321 24.6103 6.10789 26.1909C8.65256 27.7714 14.2535 27.5025 16.2932 25.3842C18.3328 23.2658 17.6311 19.6783 16.4243 18.524C15.2176 17.3697 12.0564 16.3532 10.9808 14.5824C9.90522 12.8116 9.85276 11.2835 10.7381 10.2407C11.6235 9.19792 13.2828 9.08642 13.2828 9.08642L13.2959 9.09954Z"/>
+            <path transform="translate(0,1.19)" fill="#889A5C" d="M3.82576 1.51591C3.82576 1.51591 2.55342 -0.123699 1.49751 0.00747042C0.441596 0.138639 -0.220807 1.46345 0.0677648 2.28325C0.356336 3.10306 1.17614 3.55559 1.94348 3.12929C2.71082 2.70299 2.97316 2.97189 3.71426 3.63429C4.45536 4.29669 8.81674 8.39572 9.63654 12.4161C9.63654 12.4161 9.97758 12.6784 10.3252 12.6784C10.6728 12.6784 10.8039 12.521 10.7187 11.7799C10.6334 11.0388 10.1612 9.00566 8.54784 6.54624C6.93446 4.08682 3.81264 1.52247 3.81264 1.52247L3.82576 1.51591Z"/>
+            <path transform="translate(8.09,0)" fill="#889A5C" d="M1.26239 0.00655845C1.26239 0.00655845 0.127774 0.29513 0.0162801 1.1674C-0.0952135 2.03968 0.38355 2.57091 0.914784 2.67585C1.44602 2.78078 2.16089 3.83669 2.76427 4.95163C3.36764 6.06656 4.98758 12.1462 5.11875 12.4348C5.24992 12.7234 5.64998 12.7234 5.88609 12.5922C6.12219 12.461 5.78115 9.41793 5.49258 7.96195C5.20401 6.50598 3.40044 2.85948 3.08563 2.38072C2.77083 1.90195 2.69213 1.13461 2.44946 0.609935C2.2068 0.0852598 1.55096 0.0524676 1.26239 0L1.26239 0.00655845Z"/>
+            <path transform="translate(11.64,19.06)" fill="#889A5C" d="M1.58279 0.0965238C1.58279 0.0965238 0.867918 -0.18549 0.303892 0.214575C-0.260134 0.61464 0.0218782 1.83451 0.651489 2.06406C1.2811 2.2936 1.81233 1.9001 1.9435 1.53938C2.07467 1.17867 2.14681 0.542498 1.58935 0.0965238L1.58279 0.0965238Z"/>
+            <path transform="translate(15.04,18.17)" fill="#889A5C" d="M1.43566 0.0065586C1.43566 0.0065586 0.609297 -0.0852607 0.209232 0.452532C-0.190833 0.990324 0.00591902 1.99377 0.602738 2.2102C1.19956 2.42662 1.698 2.13149 1.82917 1.50844C1.96034 0.88539 2.01936 0.282013 1.43566 0L1.43566 0.0065586Z"/>
+          </svg>
+        </a>
+
+        <nav class="footer-nav" id="contact">
+          <a href="#about">About</a>
+          <a href="mailto:sicilyrose4@icloud.com">Contact</a>
+        </nav>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="footer-social reveal" style="transition-delay:120ms">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#ffffff" d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.337 3.305C6.477 3.305 7.401 4.23 7.401 5.368C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ════════════════════════════════════════════════ -->
+  <script>
+    /* ── Sicily logotype stroke-dashoffset animation ───────────── */
+    (function() {
+      const paths = [
+        { el: document.getElementById('path-s'),     delay: 0,    dur: 620  },
+        { el: document.getElementById('path-icily'), delay: 380,  dur: 920  },
+        { el: document.getElementById('path-dot1'),  delay: 820,  dur: 220  },
+        { el: document.getElementById('path-dot2'),  delay: 980,  dur: 220  },
+      ];
+
+      /* Measure path lengths after layout */
+      requestAnimationFrame(() => {
+        paths.forEach(({ el, delay, dur }) => {
+          const len = el.getTotalLength();
+
+          el.style.strokeDasharray  = len;
+          el.style.strokeDashoffset = len;
+          el.style.fillOpacity      = '0';
+          el.style.transition       = 'none';
+
+          /* Trigger stroke draw */
+          setTimeout(() => {
+            el.style.transition = `stroke-dashoffset ${dur}ms cubic-bezier(0.4, 0, 0.2, 1)`;
+            el.style.strokeDashoffset = '0';
+
+            /* After stroke completes, fade fill in */
+            setTimeout(() => {
+              el.style.transition  = 'fill-opacity 320ms ease';
+              el.style.fillOpacity = '1';
+              /* Once fill is solid, remove stroke to keep crisp */
+              setTimeout(() => {
+                el.style.stroke = 'none';
+              }, 340);
+            }, dur);
+          }, delay);
+        });
+      });
+    })();
+
+    /* ── Hide/show header on scroll ────────────────────────────── */
+    (function() {
+      const wrap = document.querySelector('.header-wrap');
+      let lastY = 0;
+      window.addEventListener('scroll', function() {
+        const y = window.scrollY;
+        if (y === 0) {
+          wrap.style.transform = 'translateY(0)';
+        } else if (y > lastY) {
+          wrap.style.transform = 'translateY(-100%)';
+        } else {
+          wrap.style.transform = 'translateY(0)';
+        }
+        lastY = y;
+      }, { passive: true });
+    })();
+
+    /* ── Intersection Observer scroll reveals ───────────────────── */
+    (function() {
+      const reveals = document.querySelectorAll('.reveal');
+
+      /* Stagger cards within the grid */
+      document.querySelectorAll('.grid .card').forEach((card, i) => {
+        card.style.transitionDelay = (i * 90) + 'ms';
+      });
+
+      /* Stagger footer children */
+      document.querySelectorAll('.footer-inner .reveal').forEach((el, i) => {
+        el.style.transitionDelay = (i * 100) + 'ms';
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      reveals.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

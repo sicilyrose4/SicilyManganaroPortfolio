@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luna Headphones Launch — Sicily</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Rethink+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #111111;
+      --olive:  #889A5C;
+      --blue:   #A5B8D7;
+      --white:  #ffffff;
+      --luna:   #6098FF;
+      --gutter: 64px;
+      --max:    1280px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── REVEAL ───────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── HEADER ────────────────────────────────────────────────── */
+    .header-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      transition: transform 0.3s ease;
+    }
+
+    header {
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--gutter);
+      width: 100%;
+    }
+
+    .snail-icon { display: block; flex-shrink: 0; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    nav a {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s ease;
+    }
+    nav a:hover { opacity: 0.6; }
+
+    /* ─── PROJECT INTRO ─────────────────────────────────────────── */
+    .project-intro {
+      padding: 80px var(--gutter) 56px;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .project-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--luna);
+      margin-bottom: 16px;
+    }
+
+    .project-title {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+
+    .project-desc {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    /* ─── CASE STUDY CONTENT ────────────────────────────────────── */
+    .case-study {
+      width: 100%;
+      /* kill any inline-block gap from children */
+      font-size: 0;
+      line-height: 0;
+    }
+
+    .case-study img,
+    .case-study video {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      padding: 0 var(--gutter);
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-nav a {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s ease;
+    }
+    .footer-nav a:hover { opacity: 0.6; }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+    .footer-social a:hover { opacity: 1; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      :root { --gutter: 24px; }
+      nav { gap: 20px; }
+      .project-intro { padding: 48px var(--gutter) 40px; }
+      .project-title { font-size: clamp(20px, 5vw, 28px); }
+    }
+
+    @media (max-width: 480px) {
+      header { height: 72px; }
+      .footer-inner { height: 72px; }
+      nav a, .footer-nav a { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ══════════════════════════════════════════════════ -->
+  <div class="header-wrap">
+    <header>
+
+      <a href="index.html" aria-label="Home">
+        <svg class="snail-icon" width="53" height="49" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path transform="translate(7.14,13.42)" fill="#889A5C" d="M10.7315 1.54184C10.7315 1.54184 10.8037 2.2108 10.1741 2.2108C9.54445 2.2108 8.46887 1.3582 6.31114 2.43378C4.15341 3.50937 3.15653 3.77171 2.6712 8.48723C2.18588 13.2027 2.7827 22.4436 4.04192 24.5948C4.91581 27.1526 6.97355 30.7204 12.2465 31.6845C17.5195 32.6485 22.9762 33.652 30.0986 33.1339C37.2211 32.6157 42.9073 29.0152 42.9073 28.9037C42.9073 28.7922 42.4613 28.3462 40.7561 28.3856C39.0509 28.4249 36.3751 28.9037 36.0406 28.7922C35.7061 28.6807 36.5587 26.641 36.7489 26.5623C36.9391 26.4836 42.8023 26.3 44.3567 26.7131C45.911 27.1263 46.1012 28.3069 45.5831 29.0873C45.065 29.8678 42.2777 31.9796 36.8997 33.9471C31.5218 35.9146 20.5299 35.954 15.1847 34.8719C9.83958 33.7897 4.67809 31.3106 2.59906 27.1526C0.520031 22.9945 -0.0374367 15.977 0.00191399 13.57C0.0412647 11.1631 -0.0374353 6.88697 1.48412 4.13898C3.00568 1.39099 5.60283 0.203913 7.23588 0.0202764C8.86893 -0.16336 10.6856 0.945017 10.725 1.54184L10.7315 1.54184Z"/>
+          <path transform="translate(16.94,12.24)" fill="#A5B8D7" d="M13.2959 9.09954C13.2959 9.09954 15.5717 8.90935 15.5717 10.6539C15.5717 12.3984 13.8009 13.0936 14.1223 13.9528C14.4437 14.8119 15.2241 15.2645 15.8406 15.1858C16.4571 15.1071 17.959 12.851 17.9852 10.8966C18.0115 8.94214 16.5883 7.70915 14.8765 7.25006C13.1648 6.79097 10.8824 7.78785 9.75438 8.93558C8.62633 10.0833 7.5573 12.1755 8.35743 14.3529C9.15756 16.5303 10.8234 17.5927 12.2138 18.183C13.6042 18.7733 16.0439 20.1112 15.5389 22.6034C15.0339 25.0956 12.2663 25.6071 10.2594 25.3907C8.2525 25.1743 4.8749 23.3773 3.26152 20.4325C1.6547 17.4812 1.7334 12.0705 4.36334 8.12889C6.99327 4.18727 12.0826 1.61636 16.7982 2.58045C21.5137 3.54454 25.029 6.86967 26.1767 10.9425C27.3245 15.0153 26.1243 22.3083 23.6583 24.9579C21.1923 27.6075 17.9196 28.8733 17.8934 29.2733C17.8672 29.6734 18.2673 30.3423 19.1264 30.3423C19.9856 30.3423 25.3176 28.3879 27.1146 23.8823C28.9116 19.3766 29.3904 16.1368 29.0428 12.0377C28.6952 7.9387 25.8554 3.45928 21.1661 1.50486C16.4768 -0.449553 12.24 -0.318385 9.10509 0.862135C5.97015 2.04265 2.74996 5.335 1.60223 8.60766C0.454505 11.8803 -0.475126 15.1858 0.264309 18.7142C1.44483 22.0918 3.56321 24.6103 6.10789 26.1909C8.65256 27.7714 14.2535 27.5025 16.2932 25.3842C18.3328 23.2658 17.6311 19.6783 16.4243 18.524C15.2176 17.3697 12.0564 16.3532 10.9808 14.5824C9.90522 12.8116 9.85276 11.2835 10.7381 10.2407C11.6235 9.19792 13.2828 9.08642 13.2828 9.08642L13.2959 9.09954Z"/>
+          <path transform="translate(0,1.19)" fill="#889A5C" d="M3.82576 1.51591C3.82576 1.51591 2.55342 -0.123699 1.49751 0.00747042C0.441596 0.138639 -0.220807 1.46345 0.0677648 2.28325C0.356336 3.10306 1.17614 3.55559 1.94348 3.12929C2.71082 2.70299 2.97316 2.97189 3.71426 3.63429C4.45536 4.29669 8.81674 8.39572 9.63654 12.4161C9.63654 12.4161 9.97758 12.6784 10.3252 12.6784C10.6728 12.6784 10.8039 12.521 10.7187 11.7799C10.6334 11.0388 10.1612 9.00566 8.54784 6.54624C6.93446 4.08682 3.81264 1.52247 3.81264 1.52247L3.82576 1.51591Z"/>
+          <path transform="translate(8.09,0)" fill="#889A5C" d="M1.26239 0.00655845C1.26239 0.00655845 0.127774 0.29513 0.0162801 1.1674C-0.0952135 2.03968 0.38355 2.57091 0.914784 2.67585C1.44602 2.78078 2.16089 3.83669 2.76427 4.95163C3.36764 6.06656 4.98758 12.1462 5.11875 12.4348C5.24992 12.7234 5.64998 12.7234 5.88609 12.5922C6.12219 12.461 5.78115 9.41793 5.49258 7.96195C5.20401 6.50598 3.40044 2.85948 3.08563 2.38072C2.77083 1.90195 2.69213 1.13461 2.44946 0.609935C2.2068 0.0852598 1.55096 0.0524676 1.26239 0L1.26239 0.00655845Z"/>
+          <path transform="translate(11.64,19.06)" fill="#889A5C" d="M1.58279 0.0965238C1.58279 0.0965238 0.867918 -0.18549 0.303892 0.214575C-0.260134 0.61464 0.0218782 1.83451 0.651489 2.06406C1.2811 2.2936 1.81233 1.9001 1.9435 1.53938C2.07467 1.17867 2.14681 0.542498 1.58935 0.0965238L1.58279 0.0965238Z"/>
+          <path transform="translate(15.04,18.17)" fill="#889A5C" d="M1.43566 0.0065586C1.43566 0.0065586 0.609297 -0.0852607 0.209232 0.452532C-0.190833 0.990324 0.00591902 1.99377 0.602738 2.2102C1.19956 2.42662 1.698 2.13149 1.82917 1.50844C1.96034 0.88539 2.01936 0.282013 1.43566 0L1.43566 0.0065586Z"/>
+        </svg>
+      </a>
+
+      <nav>
+        <a href="index.html#about">About</a>
+        <a href="mailto:sicilyrose4@icloud.com">Contact</a>
+      </nav>
+
+    </header>
+  </div>
+
+  <!-- ═══ MAIN ════════════════════════════════════════════════════ -->
+  <main>
+
+    <!-- ─── PROJECT INTRO ───────────────────────────────────────── -->
+    <div class="project-intro">
+      <p class="project-label reveal">Case Study</p>
+      <h1 class="project-title reveal" style="transition-delay:80ms">Luna Headphones Launch</h1>
+      <p class="project-desc reveal" style="transition-delay:160ms">The launch ecosystem of the Luna Phase earbuds creates a sleep-centered wellness experience through the combination of thoughtful app, website, product, and branding design.</p>
+    </div>
+
+    <!-- ─── CASE STUDY ───────────────────────────────────────────── -->
+    <div class="case-study reveal" style="transition-delay:240ms">
+
+      <!-- ① REPLACE Behance 1 1 → Header video -->
+      <video autoplay loop muted playsinline poster="images/luna_sec_intro.png">
+        <source src="videos/Header.mov">
+      </video>
+
+      <!-- ② REPLACE Frame 627 → Part 2 video -->
+      <video autoplay loop muted playsinline poster="images/luna_poster_part2.png">
+        <source src="videos/Part%202.mov">
+      </video>
+
+      <!-- ③ Keeper sections: Frame 629 → Frame 64 → Frame 632 → Behance 6 1 → Behance 8 1 -->
+      <img src="images/luna_sec_a.png" alt="" />
+      <img src="images/luna_sec_b.png" alt="" />
+      <img src="images/luna_sec_c.png" alt="" />
+      <img src="images/luna_sec_b6.png" alt="" />
+      <img src="images/luna_sec_b8.png" alt="" />
+
+      <!-- ④ REPLACE Behance 9 1 → Mobile Walkthrough video -->
+      <video autoplay loop muted playsinline poster="images/luna_poster_mw.png">
+        <source src="videos/Mobile%20Walkthrough.mov">
+      </video>
+
+      <!-- ⑤ REPLACE Behance 10 1 → Mobile Walkthrough 2 video -->
+      <video autoplay loop muted playsinline poster="images/luna_poster_mw2.png">
+        <source src="videos/Mobile%20Walkthrough%202.mov">
+      </video>
+
+      <!-- ⑥ Behance 11 1 (restored) -->
+      <img src="images/luna_poster_header.png" alt="" />
+
+      <!-- ⑦ REPLACE Group 22 → Desktop Video (top) + Mobile Video (bottom), zero gap -->
+      <video autoplay loop muted playsinline>
+        <source src="videos/Desktop%20Video.mov">
+      </video>
+      <video autoplay loop muted playsinline>
+        <source src="videos/Mobile%20Video.mov">
+      </video>
+
+      <!-- ⑧ Bottom section (Frame 92) -->
+      <img src="images/luna_sec_bottom.png" alt="" />
+
+    </div>
+
+  </main>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+  <footer id="about">
+    <div class="footer-inner">
+
+      <div class="footer-left reveal">
+        <a href="index.html" aria-label="Home">
+          <svg class="snail-icon" width="44" height="41" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path transform="translate(7.14,13.42)" fill="#889A5C" d="M10.7315 1.54184C10.7315 1.54184 10.8037 2.2108 10.1741 2.2108C9.54445 2.2108 8.46887 1.3582 6.31114 2.43378C4.15341 3.50937 3.15653 3.77171 2.6712 8.48723C2.18588 13.2027 2.7827 22.4436 4.04192 24.5948C4.91581 27.1526 6.97355 30.7204 12.2465 31.6845C17.5195 32.6485 22.9762 33.652 30.0986 33.1339C37.2211 32.6157 42.9073 29.0152 42.9073 28.9037C42.9073 28.7922 42.4613 28.3462 40.7561 28.3856C39.0509 28.4249 36.3751 28.9037 36.0406 28.7922C35.7061 28.6807 36.5587 26.641 36.7489 26.5623C36.9391 26.4836 42.8023 26.3 44.3567 26.7131C45.911 27.1263 46.1012 28.3069 45.5831 29.0873C45.065 29.8678 42.2777 31.9796 36.8997 33.9471C31.5218 35.9146 20.5299 35.954 15.1847 34.8719C9.83958 33.7897 4.67809 31.3106 2.59906 27.1526C0.520031 22.9945 -0.0374367 15.977 0.00191399 13.57C0.0412647 11.1631 -0.0374353 6.88697 1.48412 4.13898C3.00568 1.39099 5.60283 0.203913 7.23588 0.0202764C8.86893 -0.16336 10.6856 0.945017 10.725 1.54184L10.7315 1.54184Z"/>
+            <path transform="translate(16.94,12.24)" fill="#A5B8D7" d="M13.2959 9.09954C13.2959 9.09954 15.5717 8.90935 15.5717 10.6539C15.5717 12.3984 13.8009 13.0936 14.1223 13.9528C14.4437 14.8119 15.2241 15.2645 15.8406 15.1858C16.4571 15.1071 17.959 12.851 17.9852 10.8966C18.0115 8.94214 16.5883 7.70915 14.8765 7.25006C13.1648 6.79097 10.8824 7.78785 9.75438 8.93558C8.62633 10.0833 7.5573 12.1755 8.35743 14.3529C9.15756 16.5303 10.8234 17.5927 12.2138 18.183C13.6042 18.7733 16.0439 20.1112 15.5389 22.6034C15.0339 25.0956 12.2663 25.6071 10.2594 25.3907C8.2525 25.1743 4.8749 23.3773 3.26152 20.4325C1.6547 17.4812 1.7334 12.0705 4.36334 8.12889C6.99327 4.18727 12.0826 1.61636 16.7982 2.58045C21.5137 3.54454 25.029 6.86967 26.1767 10.9425C27.3245 15.0153 26.1243 22.3083 23.6583 24.9579C21.1923 27.6075 17.9196 28.8733 17.8934 29.2733C17.8672 29.6734 18.2673 30.3423 19.1264 30.3423C19.9856 30.3423 25.3176 28.3879 27.1146 23.8823C28.9116 19.3766 29.3904 16.1368 29.0428 12.0377C28.6952 7.9387 25.8554 3.45928 21.1661 1.50486C16.4768 -0.449553 12.24 -0.318385 9.10509 0.862135C5.97015 2.04265 2.74996 5.335 1.60223 8.60766C0.454505 11.8803 -0.475126 15.1858 0.264309 18.7142C1.44483 22.0918 3.56321 24.6103 6.10789 26.1909C8.65256 27.7714 14.2535 27.5025 16.2932 25.3842C18.3328 23.2658 17.6311 19.6783 16.4243 18.524C15.2176 17.3697 12.0564 16.3532 10.9808 14.5824C9.90522 12.8116 9.85276 11.2835 10.7381 10.2407C11.6235 9.19792 13.2828 9.08642 13.2828 9.08642L13.2959 9.09954Z"/>
+            <path transform="translate(0,1.19)" fill="#889A5C" d="M3.82576 1.51591C3.82576 1.51591 2.55342 -0.123699 1.49751 0.00747042C0.441596 0.138639 -0.220807 1.46345 0.0677648 2.28325C0.356336 3.10306 1.17614 3.55559 1.94348 3.12929C2.71082 2.70299 2.97316 2.97189 3.71426 3.63429C4.45536 4.29669 8.81674 8.39572 9.63654 12.4161C9.63654 12.4161 9.97758 12.6784 10.3252 12.6784C10.6728 12.6784 10.8039 12.521 10.7187 11.7799C10.6334 11.0388 10.1612 9.00566 8.54784 6.54624C6.93446 4.08682 3.81264 1.52247 3.81264 1.52247L3.82576 1.51591Z"/>
+            <path transform="translate(8.09,0)" fill="#889A5C" d="M1.26239 0.00655845C1.26239 0.00655845 0.127774 0.29513 0.0162801 1.1674C-0.0952135 2.03968 0.38355 2.57091 0.914784 2.67585C1.44602 2.78078 2.16089 3.83669 2.76427 4.95163C3.36764 6.06656 4.98758 12.1462 5.11875 12.4348C5.24992 12.7234 5.64998 12.7234 5.88609 12.5922C6.12219 12.461 5.78115 9.41793 5.49258 7.96195C5.20401 6.50598 3.40044 2.85948 3.08563 2.38072C2.77083 1.90195 2.69213 1.13461 2.44946 0.609935C2.2068 0.0852598 1.55096 0.0524676 1.26239 0L1.26239 0.00655845Z"/>
+            <path transform="translate(11.64,19.06)" fill="#889A5C" d="M1.58279 0.0965238C1.58279 0.0965238 0.867918 -0.18549 0.303892 0.214575C-0.260134 0.61464 0.0218782 1.83451 0.651489 2.06406C1.2811 2.2936 1.81233 1.9001 1.9435 1.53938C2.07467 1.17867 2.14681 0.542498 1.58935 0.0965238L1.58279 0.0965238Z"/>
+            <path transform="translate(15.04,18.17)" fill="#889A5C" d="M1.43566 0.0065586C1.43566 0.0065586 0.609297 -0.0852607 0.209232 0.452532C-0.190833 0.990324 0.00591902 1.99377 0.602738 2.2102C1.19956 2.42662 1.698 2.13149 1.82917 1.50844C1.96034 0.88539 2.01936 0.282013 1.43566 0L1.43566 0.0065586Z"/>
+          </svg>
+        </a>
+
+        <nav class="footer-nav" id="contact">
+          <a href="index.html#about">About</a>
+          <a href="mailto:sicilyrose4@icloud.com">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer-social reveal" style="transition-delay:120ms">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#ffffff" d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.337 3.305C6.477 3.305 7.401 4.23 7.401 5.368C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ══════════════════════════════════════════════════ -->
+  <script>
+    /* ── Hide/show header on scroll ─────────────────────────────── */
+    (function() {
+      const wrap = document.querySelector('.header-wrap');
+      let lastY = 0;
+      window.addEventListener('scroll', function() {
+        const y = window.scrollY;
+        if (y === 0) {
+          wrap.style.transform = 'translateY(0)';
+        } else if (y > lastY) {
+          wrap.style.transform = 'translateY(-100%)';
+        } else {
+          wrap.style.transform = 'translateY(0)';
+        }
+        lastY = y;
+      }, { passive: true });
+    })();
+
+    /* ── Intersection Observer scroll reveals ───────────────────── */
+    (function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+  </script>
+
+</body>
+</html>
