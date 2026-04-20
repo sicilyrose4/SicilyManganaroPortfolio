@@ -181,6 +181,22 @@
     }
     .footer-social a:hover { opacity: 1; }
 
+    /* ─── SKETCHES SECTION ───────────────────────────────────────── */
+    .sketches-wrap {
+      padding: 0 var(--gutter);
+    }
+    .sketches-wrap picture,
+    .sketches-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    @media (max-width: 768px) {
+      .sketches-wrap {
+        padding: 56px 0;
+      }
+    }
+
     /* ─── RESPONSIVE ─────────────────────────────────────────────── */
     @media (max-width: 768px) {
       :root { --gutter: 24px; }
@@ -253,10 +269,12 @@
         <source media="(max-width: 768px)" srcset="images/luna_m_backstory.png">
         <img src="images/luna_sec_b.png" alt="" />
       </picture>
-      <picture>
-        <source media="(max-width: 768px)" srcset="images/luna_m_products.png">
-        <img src="images/luna_sec_c.png" alt="" />
-      </picture>
+      <div class="sketches-wrap">
+        <picture>
+          <source media="(max-width: 768px)" srcset="images/luna_m_products.png">
+          <img src="images/luna_sec_c.png" alt="" />
+        </picture>
+      </div>
       <img src="images/luna_sec_b6.png" alt="" />
       <img src="images/luna_sec_b8.png" alt="" />
 
