@@ -178,15 +178,25 @@
     /* ─── RESPONSIVE ─────────────────────────────────────────────── */
     @media (max-width: 768px) {
       :root { --gutter: 24px; }
+      body { overflow-x: hidden; }
       nav { gap: 20px; }
-      .project-intro { padding: 48px var(--gutter) 40px; }
-      .project-title { font-size: clamp(20px, 5vw, 28px); }
+      .project-intro { padding: 40px var(--gutter) 32px; }
+      .project-title { font-size: clamp(18px, 5vw, 26px); max-width: 100%; }
+      .project-desc { font-size: 15px; max-width: 100%; }
+      .project-label { font-size: 11px; margin-bottom: 12px; }
+      .snail-icon { width: 40px; height: auto; }
     }
 
     @media (max-width: 480px) {
-      header { height: 72px; }
-      .footer-inner { height: 72px; }
-      nav a, .footer-nav a { font-size: 14px; }
+      :root { --gutter: 20px; }
+      header { height: 64px; }
+      .footer-inner { height: 64px; }
+      nav { gap: 16px; }
+      nav a, .footer-nav a { font-size: 13px; }
+      .footer-nav { gap: 16px; }
+      .project-intro { padding: 32px var(--gutter) 24px; }
+      .project-title { font-size: clamp(17px, 5.5vw, 22px); }
+      .project-desc { font-size: 14px; line-height: 1.6; }
     }
   </style>
 </head>
