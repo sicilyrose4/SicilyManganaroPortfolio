@@ -122,7 +122,8 @@
     }
 
     .case-study img,
-    .case-study video {
+    .case-study video,
+    .case-study picture {
       display: block;
       width: 100%;
       height: auto;
@@ -130,6 +131,11 @@
       padding: 0;
       border: none;
       border-radius: 0;
+    }
+    .case-study picture img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     /* ─── FOOTER ────────────────────────────────────────────────── */
@@ -178,25 +184,15 @@
     /* ─── RESPONSIVE ─────────────────────────────────────────────── */
     @media (max-width: 768px) {
       :root { --gutter: 24px; }
-      body { overflow-x: hidden; }
       nav { gap: 20px; }
-      .project-intro { padding: 40px var(--gutter) 32px; }
-      .project-title { font-size: clamp(18px, 5vw, 26px); max-width: 100%; }
-      .project-desc { font-size: 15px; max-width: 100%; }
-      .project-label { font-size: 11px; margin-bottom: 12px; }
-      .snail-icon { width: 40px; height: auto; }
+      .project-intro { padding: 48px var(--gutter) 40px; }
+      .project-title { font-size: clamp(20px, 5vw, 28px); }
     }
 
     @media (max-width: 480px) {
-      :root { --gutter: 20px; }
-      header { height: 64px; }
-      .footer-inner { height: 64px; }
-      nav { gap: 16px; }
-      nav a, .footer-nav a { font-size: 13px; }
-      .footer-nav { gap: 16px; }
-      .project-intro { padding: 32px var(--gutter) 24px; }
-      .project-title { font-size: clamp(17px, 5.5vw, 22px); }
-      .project-desc { font-size: 14px; line-height: 1.6; }
+      header { height: 72px; }
+      .footer-inner { height: 72px; }
+      nav a, .footer-nav a { font-size: 14px; }
     }
   </style>
 </head>
@@ -249,11 +245,26 @@
       </video>
 
       <!-- ③ Keeper sections: Frame 629 → Frame 64 → Frame 632 → Behance 6 1 → Behance 8 1 -->
-      <img src="images/luna_sec_a.png" alt="" />
-      <img src="images/luna_sec_b.png" alt="" />
-      <img src="images/luna_sec_c.png" alt="" />
-      <img src="images/luna_sec_b6.png" alt="" />
-      <img src="images/luna_sec_b8.png" alt="" />
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/luna_m_problem.png">
+        <img src="images/luna_sec_a.png" alt="" />
+      </picture>
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/luna_m_backstory.png">
+        <img src="images/luna_sec_b.png" alt="" />
+      </picture>
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/luna_m_products.png">
+        <img src="images/luna_sec_c.png" alt="" />
+      </picture>
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/luna_m_b6.png">
+        <img src="images/luna_sec_b6.png" alt="" />
+      </picture>
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/luna_m_b8.png">
+        <img src="images/luna_sec_b8.png" alt="" />
+      </picture>
 
       <!-- ④ REPLACE Behance 9 1 → Mobile Walkthrough video -->
       <video autoplay loop muted playsinline poster="images/luna_poster_mw.png">
