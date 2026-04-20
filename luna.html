@@ -185,16 +185,20 @@
     .sketches-wrap {
       padding: 0 var(--gutter);
     }
-    .sketches-wrap picture,
     .sketches-wrap img {
       display: block;
       width: 100%;
       height: auto;
+      border-radius: 8px;
     }
+    .sketches-mobile { display: none; }
+
     @media (max-width: 768px) {
       .sketches-wrap {
         padding: 56px 0;
       }
+      .sketches-desktop { display: none; }
+      .sketches-mobile { display: block; }
     }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────────── */
@@ -270,10 +274,8 @@
         <img src="images/luna_sec_b.png" alt="" />
       </picture>
       <div class="sketches-wrap">
-        <picture>
-          <source media="(max-width: 768px)" srcset="images/luna_m_products.png">
-          <img src="images/luna_sec_c.png" alt="" />
-        </picture>
+        <img class="sketches-desktop" src="images/luna_sec_c.png" alt="" />
+        <img class="sketches-mobile" src="images/luna_m_products.png" alt="" />
       </div>
       <img src="images/luna_sec_b6.png" alt="" />
       <img src="images/luna_sec_b8.png" alt="" />
