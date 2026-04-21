@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Rethink+Sans:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='9' fill='%23FFD0D1' fill-opacity='0.6' stroke='%23FFD0D1' stroke-width='1'/%3E%3C/svg%3E") 10 10, auto !important; }
 
     :root {
       --bg:        #111111;
@@ -79,9 +79,9 @@
       color: var(--white);
       text-decoration: none;
       letter-spacing: 0.01em;
-      transition: opacity 0.2s ease;
+      transition: color 0.2s ease;
     }
-    nav a:hover { opacity: 0.6; }
+    nav a:hover { color: #FFD0D1; }
 
     /* ─── HERO ──────────────────────────────────────────────── */
     .hero {
@@ -312,9 +312,34 @@
       color: var(--white);
       text-decoration: none;
       letter-spacing: 0.01em;
-      transition: opacity 0.2s ease;
+      transition: color 0.2s ease;
     }
-    .footer-nav a:hover { opacity: 0.6; }
+    .footer-nav a:hover { color: #FFD0D1; }
+
+    /* ─── SEE MORE ──────────────────────────────────────────── */
+    .see-more-wrap {
+      text-align: center;
+      padding: 32px 0 0;
+    }
+    .see-more {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--blue);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .see-more:hover { color: #ffffff; }
+
+    /* ─── FEATURED WORK LABEL ───────────────────────────────── */
+    .work-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: -0.095px;
+      margin-bottom: 20px;
+    }
 
     .footer-social a {
       display: flex;
@@ -384,6 +409,7 @@
         <nav>
           <a href="#about">About</a>
           <a href="mailto:sicilyrose4@icloud.com">Contact</a>
+          <a href="work.html">Work</a>
         </nav>
 
       </div>
@@ -480,13 +506,17 @@
 
     <!-- ─── WORK ──────────────────────────────────────────────── -->
     <section class="work" id="work" style="scroll-margin-top: 96px;">
+      <p class="work-label">FEATURED WORK</p>
       <div class="grid">
         <a href="luna.html" class="card reveal"><img src="images/card1.png" alt="Luna Headphones Launch" loading="lazy" /><span class="card-title">Luna Headphones Launch</span></a>
-        <a href="#" class="card reveal"><img src="images/card2.png" alt="Drone Dashboard" loading="lazy" /><span class="card-title">Drone Dashboard</span></a>
-        <a href="#" class="card reveal"><img src="images/card3.png" alt="Fizz Pop-up" loading="lazy" /><span class="card-title">Fizz Pop-up</span></a>
-        <a href="#" class="card reveal"><img src="images/card4.png" alt="Bull Stock Investing App" loading="lazy" /><span class="card-title">Bull Stock Investing App</span></a>
+        <a href="wip.html" class="card reveal"><img src="images/card2.png" alt="Drone Dashboard" loading="lazy" /><span class="card-title">Drone Dashboard</span></a>
+        <a href="wip.html" class="card reveal"><img src="images/card3.png" alt="Fizz Pop-up" loading="lazy" /><span class="card-title">Fizz Pop-up</span></a>
+        <a href="wip.html" class="card reveal"><img src="images/card4.png" alt="Bull Stock Investing App" loading="lazy" /><span class="card-title">Bull Stock Investing App</span></a>
         <a href="rebound.html" class="card reveal"><img src="images/card5.png" alt="Rebound" loading="lazy" /><span class="card-title">Rebound</span></a>
-        <a href="#" class="card reveal"><img src="images/card6.png" alt="Depop Redesign" loading="lazy" /><span class="card-title">Depop Redesign</span></a>
+        <a href="wip.html" class="card reveal"><img src="images/card6.png" alt="Depop Redesign" loading="lazy" /><span class="card-title">Depop Redesign</span></a>
+      </div>
+      <div class="see-more-wrap">
+        <a href="work.html" class="see-more">See more</a>
       </div>
     </section>
 
@@ -512,6 +542,7 @@
         <nav class="footer-nav" id="contact">
           <a href="#about">About</a>
           <a href="mailto:sicilyrose4@icloud.com">Contact</a>
+          <a href="work.html">Work</a>
         </nav>
       </div>
 

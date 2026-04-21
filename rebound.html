@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Rethink+Sans:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='9' fill='%23FFD0D1' fill-opacity='0.6' stroke='%23FFD0D1' stroke-width='1'/%3E%3C/svg%3E") 10 10, auto !important; }
 
     :root {
       --bg:      #111111;
@@ -73,9 +73,9 @@
       color: var(--white);
       text-decoration: none;
       letter-spacing: 0.01em;
-      transition: opacity 0.2s ease;
+      transition: color 0.2s ease;
     }
-    nav a:hover { opacity: 0.6; }
+    nav a:hover { color: #FFD0D1; }
 
     /* ─── PROJECT INTRO ─────────────────────────────────────────── */
     .project-intro {
@@ -118,7 +118,12 @@
       width: 100%;
       font-size: 0;
       line-height: 0;
+    }
+
+    .hero-wrap {
       position: relative;
+      font-size: 0;
+      line-height: 0;
     }
 
     .case-study img {
@@ -131,11 +136,181 @@
       border-radius: 0;
     }
 
+    /* ─── RESEARCH SECTION ───────────────────────────────────────── */
+    .research-section { background: #000; }
+
+    .section-heading {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 32px;
+    }
+
+    /* Insights */
+    .insights-wrap { padding: 72px 80px 56px; }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .insight-card {
+      background: rgba(156,132,251,0.20);
+      border-radius: 12px;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .insight-icon { margin-bottom: 18px; }
+    .insight-icon svg { display: block; }
+
+    .insight-title {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+
+    .insight-body {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+    }
+
+    /* Competitive Analysis */
+    .comp-wrap { padding: 48px 80px 80px; }
+
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .comp-col {
+      background: #17161b;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .comp-logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .comp-logo-wrap img {
+      width: 100px;
+      height: 100px;
+      border-radius: 18px;
+      object-fit: cover;
+    }
+
+    .comp-screens {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .comp-screens img {
+      flex: 1;
+      min-width: 0;
+      border-radius: 6px;
+      object-fit: cover;
+      height: auto;
+    }
+    .comp-screens.single img { width: 100%; }
+
+    .comp-sub-heading {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin: 20px 0 10px;
+    }
+    .comp-sub-heading:first-of-type { margin-top: 0; }
+
+    .comp-list {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      list-style: none;
+    }
+
+    .comp-text {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .insights-wrap  { padding: 48px 24px 40px; }
+      .comp-wrap      { padding: 32px 24px 56px; }
+      .insights-grid  { grid-template-columns: repeat(2, 1fr); }
+      .comp-grid      { grid-template-columns: 1fr; }
+    }
+
+    /* ─── PROBLEM STATEMENT SECTION ──────────────────────────────── */
+    .problem-wrap {
+      background: #000;
+      width: 100%;
+      aspect-ratio: 1280 / 716;
+      display: flex;
+      align-items: center;
+      padding: 0 9.84%;
+      gap: 9%;
+      box-sizing: border-box;
+    }
+
+    .problem-text { flex: 1; }
+
+    .problem-label {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: clamp(18px, 2.5vw, 32px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .problem-hmw {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: clamp(13px, 1.6vw, 21px);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .case-study .problem-img {
+      flex-shrink: 0;
+      width: 25.5%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .problem-wrap {
+        aspect-ratio: auto;
+        flex-direction: column-reverse;
+        padding: 48px 24px;
+        gap: 28px;
+      }
+      .case-study .problem-img { width: 72%; max-width: 326px; }
+    }
+
     /* ─── DASHED LINE OVERLAY ────────────────────────────────────── */
     .rebound-line-wrap {
       position: absolute;
       left: 67.05%;
-      top: 2.36%;
+      top: 49.9%;
       width: 22.29%;
       pointer-events: none;
       overflow: visible;
@@ -179,9 +354,9 @@
       color: var(--white);
       text-decoration: none;
       letter-spacing: 0.01em;
-      transition: opacity 0.2s ease;
+      transition: color 0.2s ease;
     }
-    .footer-nav a:hover { opacity: 0.6; }
+    .footer-nav a:hover { color: #FFD0D1; }
 
     .footer-social a {
       display: flex;
@@ -226,6 +401,7 @@
       <nav>
         <a href="index.html#about">About</a>
         <a href="mailto:sicilyrose4@icloud.com">Contact</a>
+        <a href="work.html">Work</a>
       </nav>
 
     </header>
@@ -244,11 +420,10 @@
     <!-- ─── CASE STUDY ───────────────────────────────────────────── -->
     <div class="case-study">
 
-      <!-- Full Rebound case study frame image -->
-      <img src="images/rebound_full.png" alt="Rebound Physical Therapy case study" />
-
-      <!-- Animated dashed-line SVG overlay on hero portion -->
-      <div class="rebound-line-wrap">
+      <!-- Hero (2× export) with dashed-line SVG overlay -->
+      <div class="hero-wrap">
+        <img src="images/rebound_hero_2x.png" alt="" />
+        <div class="rebound-line-wrap">
         <svg viewBox="0 0 428 96" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="dash-reveal">
@@ -259,7 +434,136 @@
             <path d="M206.473 95.2671C199.455 95.0639 192.64 94.7592 185.928 94.2514L186.538 86.6341C193.047 87.1419 199.76 87.4466 206.677 87.6498L206.473 95.2671ZM226.917 95.2671L226.714 87.6498H227.832C234.342 87.4466 240.648 87.0404 246.751 86.5326L247.463 94.1499C241.157 94.6577 234.749 95.0639 228.138 95.2671H226.917ZM165.484 92.017C158.466 91.1029 151.753 89.8842 145.243 88.6654L146.769 81.1497C153.177 82.3684 159.788 83.4856 166.602 84.3997L165.585 91.9155L165.484 92.017ZM267.906 91.5092L266.686 83.9934C273.297 82.9778 280.01 81.6575 286.418 80.134L288.147 87.5482C281.536 89.0717 274.721 90.392 267.906 91.5092ZM125.206 84.095C118.595 82.3684 111.882 80.3372 105.474 78.2043L107.915 70.9933C114.221 73.1261 120.629 74.9543 127.139 76.6808L125.206 84.095ZM308.082 82.1653L305.845 74.8527C312.252 72.8214 318.66 70.587 324.763 68.1495L327.611 75.2589C321.305 77.798 314.795 80.134 308.184 82.1653H308.082ZM86.1491 71.0948C79.7414 68.4542 73.4353 65.6104 67.3326 62.665L70.6891 55.8602C76.5883 58.8056 82.7927 61.5478 88.997 64.0869L86.1491 71.0948ZM346.326 66.9307L342.969 60.1259C348.97 57.1805 354.869 54.0321 360.565 50.5789L364.43 57.1805C358.531 60.6337 352.428 63.9853 346.224 66.9307H346.326ZM49.1264 52.9149C43.1254 49.3601 37.2262 45.7038 31.7338 41.8444L36.1074 35.5474C41.498 39.3053 47.1938 42.86 52.9914 46.3132L49.1264 52.9149ZM381.823 46.0085L377.449 39.8131C382.84 36.0552 388.231 31.8911 393.418 27.727L398.3 33.6177C393.011 37.985 387.417 42.1491 381.823 46.1101V46.0085ZM15.2566 29.352C5.18726 21.0238 0.203422 15.2346 0 15.0315L5.79752 10.0548C5.79752 10.0548 10.6797 15.6409 20.2405 23.5629L15.3583 29.4536L15.2566 29.352ZM413.658 19.805L408.369 14.3205C414.065 8.93763 418.744 3.961 422.405 0L427.999 5.17977C424.745 8.63294 419.761 14.0158 413.557 19.9065L413.658 19.805Z" fill="white"/>
           </g>
         </svg>
+        </div><!-- /.rebound-line-wrap -->
+      </div><!-- /.hero-wrap -->
+
+      <!-- Problem Statement section (HTML for sharp text) -->
+      <div class="problem-wrap">
+        <div class="problem-text">
+          <p class="problem-label">Problem Statement</p>
+          <p class="problem-hmw">How might we help high school athletes in rehab from a sports related injury stay motivated, track meaningful progress, and maintain consistent, engaging exercise routines?</p>
+        </div>
+        <img class="problem-img" src="images/rebound_problem_photo.png" alt="" />
       </div>
+
+      <!-- Slide 16:9 - 6 (2× export) -->
+      <img src="images/rebound_slide6_2x.png" alt="" />
+
+      <!-- Research section: HTML text + crisp images -->
+      <div class="research-section">
+
+        <!-- ── Insights from Secondary Research ── -->
+        <div class="insights-wrap">
+          <h2 class="section-heading">Insights from Secondary Research</h2>
+          <div class="insights-grid">
+
+            <div class="insight-card">
+              <div class="insight-icon">
+                <svg width="48" height="48" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.332 55.1425V43.6425C15.332 39.3722 16.8206 35.7484 19.7979 32.7712C22.7725 29.7965 26.395 28.3092 30.6654 28.3092H71.7779C73.14 28.3092 74.2951 28.7692 75.2432 29.6892C76.1913 30.6143 76.6654 31.7515 76.6654 33.1008C76.6654 34.2457 76.3293 35.2437 75.6572 36.0947C74.9825 36.9482 74.1124 37.5322 73.0467 37.8465L62.068 40.802V55.2882C62.068 56.3794 61.8253 57.3671 61.3397 58.2513C60.8541 59.1356 60.2012 59.8639 59.3809 60.4363C58.5478 61.0037 57.6367 61.3512 56.6477 61.479C55.6587 61.6068 54.6365 61.4586 53.581 61.0343L38.6694 55.1425H15.332ZM58.2347 43.6425H35.1964C34.3581 43.6425 33.6681 43.9172 33.1264 44.4667C32.582 45.0187 32.3022 45.6754 32.2869 46.437C32.2715 46.9992 32.4185 47.5487 32.7277 48.0853C33.0369 48.622 33.5289 49.0245 34.2035 49.2928L54.9917 57.5C55.7788 57.7964 56.5161 57.7108 57.2035 57.2432C57.891 56.7755 58.236 56.1238 58.2385 55.2882L58.2347 43.6425ZM19.1654 51.3092H31.4167C30.5529 50.7776 29.8425 50.0953 29.2854 49.2622C28.7308 48.4291 28.4535 47.5257 28.4535 46.552C28.4535 44.7069 29.1167 43.1224 30.443 41.7987C31.7668 40.4698 33.3513 39.8053 35.1964 39.8053H50.3764L72.0654 34.155C72.3848 34.0272 72.6084 33.8675 72.7362 33.6758C72.864 33.4842 72.8959 33.2606 72.832 33.005C72.7681 32.7494 72.6557 32.5424 72.4947 32.384C72.3337 32.2256 72.0948 32.1463 71.7779 32.1463H30.6654C27.4709 32.1463 24.7556 33.2644 22.5195 35.5005C20.2834 37.7366 19.1654 40.4506 19.1654 43.6425V51.3092ZM38.332 23C35.1708 23 32.4632 21.8743 30.2092 19.6228C27.9552 17.3714 26.8295 14.6638 26.832 11.5C26.8346 8.33622 27.9603 5.62861 30.2092 3.37717C32.4581 1.12572 35.1657 0 38.332 0C41.4984 0 44.206 1.12572 46.4549 3.37717C48.7038 5.62861 49.8295 8.33622 49.832 11.5C49.8346 14.6638 48.7089 17.3714 46.4549 19.6228C44.2009 21.8743 41.4933 23 38.332 23ZM38.332 19.1667C40.4404 19.1667 42.2459 18.4166 43.7485 16.9165C45.2512 15.4164 46.0013 13.6109 45.9987 11.5C45.9961 9.38911 45.2461 7.58489 43.7485 6.08733C42.251 4.58978 40.4455 3.83844 38.332 3.83333C36.2186 3.82822 34.4144 4.57955 32.9194 6.08733C31.4244 7.59511 30.673 9.39933 30.6654 11.5C30.6577 13.6007 31.409 15.4062 32.9194 16.9165C34.4297 18.4268 36.2339 19.1769 38.332 19.1667Z" fill="#9E86FE"/></svg>
+              </div>
+              <div class="insight-title">Physical Challenges</div>
+              <div class="insight-body">Pain, fatigue, stiffness, and limited mobility are common, but growth-plate and overuse injuries are the biggest concerns. Psychological and social barriers often impact rehab adherence more than physical ones.</div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-icon">
+                <svg width="48" height="48" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27.3622 62.1244C27.3625 58.398 28.8441 54.8241 31.479 52.1891C34.1143 49.5543 37.6878 48.0723 41.4143 48.0723H42.8935C44.1348 48.0723 45.3336 47.6263 46.2736 46.8156C47.2134 46.0051 47.8332 44.8854 48.0157 43.6579V43.6521C48.0521 43.4093 48.0706 43.1565 48.0706 42.8952C48.0706 41.7022 47.6578 40.5462 46.9034 39.622C46.1487 38.6974 45.0971 38.0608 43.9278 37.8221C42.7278 37.5766 41.9523 36.4049 42.1972 35.2047C42.4423 34.004 43.6169 33.2291 44.8176 33.4742C46.9885 33.9176 48.94 35.0975 50.3413 36.8138C51.5786 38.3295 52.3169 40.1828 52.4734 42.121C53.2571 42.1833 54.0483 42.1565 54.828 42.0256C56.1757 41.7993 57.4606 41.2879 58.5952 40.5262C59.73 39.7644 60.6892 38.7673 61.4091 37.6054C62.1287 36.4438 62.5929 35.1412 62.7698 33.7862C62.9466 32.4315 62.8319 31.0545 62.4347 29.7473C62.0372 28.4396 61.3656 27.2301 60.4644 26.2025C59.5634 25.1751 58.4529 24.3521 57.2085 23.7873C55.9637 23.2226 54.6117 22.9278 53.2448 22.9264C52.9304 22.9265 52.6224 22.9443 52.3203 22.9726C52.048 24.6441 51.4784 26.258 50.6274 27.7337C50.0151 28.7951 48.6582 29.1606 47.5968 28.5484C46.5358 27.9361 46.1731 26.5791 46.785 25.5178C47.5764 24.1456 48.0152 22.5972 48.0648 21.0139L48.0706 20.6845C48.0692 18.3173 47.1929 16.0336 45.612 14.2709C44.0269 12.5038 41.8448 11.3846 39.4845 11.1306C37.1235 10.8769 34.7502 11.5053 32.8253 12.8958C31.4155 13.9143 30.3218 15.2908 29.6387 16.8653C32.2213 18.0787 34.3918 20.0565 35.8357 22.5595C36.4478 23.6209 36.0852 24.9778 35.0239 25.5901C33.9624 26.2023 32.6056 25.8368 31.9933 24.7754C30.7421 22.6065 28.6937 21.0115 26.2846 20.3292H26.2817C24.6294 19.8601 22.8818 19.842 21.2202 20.2772C19.5581 20.7127 18.0421 21.5855 16.8318 22.8051C15.6218 24.0244 14.7615 25.5459 14.3386 27.2108C13.9687 28.6678 13.9463 30.1891 14.2692 31.6512L14.4281 32.2752V32.2781C14.6457 33.025 14.9492 33.7276 15.3324 34.3871C15.9469 35.446 15.5873 36.8018 14.5293 37.4177C13.4698 38.0333 12.1115 37.674 11.4958 36.6145C11.3567 36.3752 11.2217 36.1336 11.0971 35.8865C10.3481 36.3894 9.70118 37.0413 9.20482 37.8134C8.3394 39.1598 7.98729 40.7735 8.2139 42.3579C8.44055 43.9417 9.2309 45.3904 10.4384 46.44C11.6455 47.4888 13.1903 48.0652 14.7893 48.0694C16.1661 48.0701 17.5101 47.6477 18.6345 46.8531C19.7591 46.0584 20.6109 44.9331 21.07 43.6348C21.4789 42.4804 22.7463 41.8744 23.9012 42.2827C25.0561 42.6911 25.6609 43.959 25.2532 45.114C24.4883 47.2774 23.0709 49.1514 21.1971 50.476C19.3231 51.8003 17.0839 52.5107 14.7893 52.5098H14.7835C12.1171 52.5042 9.54205 51.5399 7.5292 49.7913C5.51596 48.042 4.20023 45.6249 3.82261 42.9848C3.44517 40.3448 4.03018 37.656 5.47223 35.4127C6.53643 33.7575 8.01504 32.4284 9.74507 31.5414C9.49058 29.7386 9.58571 27.8959 10.0369 26.1188C10.6549 23.6853 11.9142 21.4613 13.6828 19.6792C15.4514 17.8971 17.6648 16.6207 20.0935 15.9841C21.8124 15.5337 23.5946 15.4224 25.3457 15.6346C26.3196 13.1092 28.009 10.9021 30.2281 9.29897C33.0413 7.26707 36.5079 6.34832 39.9583 6.71909C43.4084 7.09012 46.6 8.72367 48.9171 11.3068C50.7408 13.3402 51.9171 15.8499 52.3348 18.5178C52.637 18.4987 52.9415 18.4889 53.2477 18.4889H53.2506C55.2477 18.4911 57.2213 18.9206 59.0401 19.7456C60.8594 20.571 62.484 21.774 63.8012 23.276C65.1184 24.7779 66.0977 26.5447 66.6787 28.456C67.2596 30.3673 67.4283 32.3802 67.1698 34.3611C66.9112 36.342 66.2314 38.2445 65.1793 39.9426C64.1272 41.6407 62.7267 43.0963 61.0682 44.2097C59.4097 45.3231 57.5318 46.0688 55.5618 46.3996C54.312 46.6093 53.0427 46.6478 51.7887 46.518C51.2191 47.917 50.3343 49.1778 49.1742 50.1784C47.4285 51.6841 45.1988 52.5098 42.8935 52.5098H41.4143C38.8647 52.5098 36.4195 53.524 34.6165 55.3266C32.8137 57.1294 31.8001 59.5749 31.7997 62.1244C31.7997 63.3497 30.8063 64.3431 29.581 64.3432C28.3556 64.3432 27.3622 63.3498 27.3622 62.1244Z" fill="#9E86FE"/><path d="M23.6759 29.0987C23.9441 27.903 25.1295 27.152 26.3252 27.4202C27.5208 27.6884 28.2718 28.8737 28.0037 30.0694C27.7964 30.9936 28.2941 32.4231 29.8035 33.2733H29.8006C31.3093 34.1207 32.7923 33.8036 33.4754 33.1462C34.3582 32.2963 35.763 32.3212 36.6129 33.204C37.4626 34.0867 37.4348 35.4916 36.5522 36.3414C34.3639 38.4482 30.9895 38.7431 28.1828 37.4277L27.6281 37.1417C24.7242 35.5068 22.9662 32.2627 23.6759 29.0987Z" fill="#9E86FE"/></svg>
+              </div>
+              <div class="insight-title">Psychological Challenges</div>
+              <div class="insight-body">Athletes often bridge poor communication between coaches and providers. Injury can lead to exclusion, identity loss, and isolation. Repetitive rehab and negative comparisons decrease motivation.</div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-icon">
+                <svg width="48" height="48" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M61.5333 9.46732H9.46651C8.21115 9.46732 7.00721 9.96601 6.11953 10.8537C5.23186 11.7414 4.73317 12.9453 4.73317 14.2007V42.6007C4.73317 43.8561 5.23186 45.06 6.11953 45.9477C7.00721 46.8354 8.21115 47.3341 9.46651 47.3341H14.1999V59.1674C14.1999 59.7951 14.4492 60.3971 14.893 60.8409C15.3369 61.2848 15.9388 61.5341 16.5665 61.5341C17.1942 61.5341 17.7962 61.2848 18.24 60.8409C18.6839 60.3971 18.9332 59.7951 18.9332 59.1674V56.8008H52.0666V59.1674C52.0666 59.7951 52.316 60.3971 52.7598 60.8409C53.2036 61.2848 53.8056 61.5341 54.4333 61.5341C55.061 61.5341 55.6629 61.2848 56.1068 60.8409C56.5506 60.3971 56.8 59.7951 56.8 59.1674V47.3341H61.5333C62.7887 47.3341 63.9926 46.8354 64.8803 45.9477C65.7679 45.06 66.2666 43.8561 66.2666 42.6007V14.2007C66.2666 12.9453 65.7679 11.7414 64.8803 10.8537C63.9926 9.96601 62.7887 9.46732 61.5333 9.46732ZM61.5333 14.2007V23.6674L52.0666 14.2007H61.5333ZM44.9666 14.2007L61.5333 30.7674V42.6007L33.1332 14.2007H44.9666ZM26.0332 42.6007L9.46651 26.034V14.2007L37.8666 42.6007H26.0332ZM9.46651 42.6007V33.134L18.9332 42.6007H9.46651ZM52.0666 52.0674H18.9332V47.3341H52.0666V52.0674ZM51.0868 42.6007H44.9666L16.5665 14.2007H26.0332L54.4333 42.6007H51.0868Z" fill="#9E86FE"/></svg>
+              </div>
+              <div class="insight-title">Practical Barriers</div>
+              <div class="insight-body">School, therapy, and activities create tight time constraints. Limited access to specialized care makes rehab harder. Communication gaps between coaches, providers, and athletes add stress and uncertainty.</div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-icon">
+                <svg width="48" height="48" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.7848 62.4568C36.0165 63.0009 34.9876 63.0009 34.2193 62.4568L35.502 60.6454L36.7848 62.4568ZM59.9084 25.284C59.9083 20.6464 58.4928 17.5392 56.4704 15.5856C54.4288 13.6141 51.5146 12.5724 48.075 12.5724C43.5178 12.5724 39.4895 15.3573 37.5099 19.5551C37.1435 20.3315 36.3606 20.8263 35.502 20.8263C34.6435 20.8263 33.8606 20.3315 33.4942 19.5551C31.5146 15.3573 27.4862 12.5724 22.9291 12.5724C16.5197 12.5724 11.0959 18.136 11.0957 25.284C11.0957 28.8356 12.5392 32.6992 14.9294 36.6147C17.3061 40.5076 20.5115 44.2781 23.7727 47.5987C27.0258 50.9111 30.2879 53.7265 32.7402 55.7168C33.8583 56.6243 34.8061 57.3567 35.502 57.8835C36.198 57.3567 37.1457 56.6243 38.2639 55.7168C40.7162 53.7265 43.9783 50.9111 47.2314 47.5987C50.4925 44.2781 53.698 40.5076 56.0746 36.6147C58.4649 32.6992 59.9084 28.8356 59.9084 25.284ZM64.3459 25.284C64.3459 29.9828 62.4607 34.6646 59.8592 38.9259C57.2437 43.2101 53.7928 47.2503 50.3977 50.7072C46.995 54.172 43.6003 57.102 41.0605 59.1634C39.789 60.1953 38.7277 61.0136 37.9808 61.5757C37.6073 61.8568 37.3119 62.0744 37.1083 62.2228C37.0065 62.297 36.9259 62.3541 36.8714 62.3933C36.8456 62.4118 36.8253 62.4263 36.8108 62.4366C36.8036 62.4417 36.7976 62.4481 36.7934 62.4511L36.7877 62.4539C36.7871 62.4543 36.7845 62.456 35.502 60.6454C34.3325 62.2965 34.2289 62.4415 34.2193 62.4539L34.2107 62.4511C34.2065 62.4481 34.2005 62.4417 34.1933 62.4366C34.1788 62.4263 34.1585 62.4118 34.1327 62.3933C34.0782 62.3541 33.9976 62.297 33.8958 62.2228C33.6922 62.0744 33.3968 61.8568 33.0233 61.5757C32.2764 61.0136 31.2151 60.1953 29.9436 59.1634C27.4038 57.102 24.0091 54.172 20.6063 50.7072C17.2113 47.2503 13.7604 43.2101 11.1449 38.9259C8.54337 34.6646 6.65823 29.9828 6.65823 25.284C6.65842 15.9426 13.8193 8.13489 22.9291 8.13489C28.0352 8.13489 32.5376 10.6097 35.502 14.4127C38.4665 10.6097 42.9689 8.13489 48.075 8.13489C52.3951 8.13489 56.5085 9.45327 59.553 12.3933C62.6155 15.3512 64.3458 19.7082 64.3459 25.284Z" fill="#9E86FE"/></svg>
+              </div>
+              <div class="insight-title">Support Factors</div>
+              <div class="insight-body">Emotional support and positive feedback boost motivation. Individualized, specific rehab plans keep athletes engaged. Peer support reduces isolation and anxiety. Mental-health resources, goal tracking, and progress visualization improve adherence.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Competitive Analysis ── -->
+        <div class="comp-wrap">
+          <h2 class="section-heading">Competitive Analysis</h2>
+          <div class="comp-grid">
+
+            <div class="comp-col">
+              <div class="comp-logo-wrap">
+                <img src="images/logo_comp1.png" alt="Competitor app 1" />
+              </div>
+              <div class="comp-screens">
+                <img src="images/screens_comp1a.png" alt="" />
+                <img src="images/screens_comp1b.png" alt="" />
+              </div>
+              <p class="comp-sub-heading">Features</p>
+              <ul class="comp-list">
+                <li>Onboarding questionnaire personalizes experience</li>
+                <li>Phases shown as "achievements" — encourages completion</li>
+                <li>Different programs for specific injuries</li>
+              </ul>
+              <p class="comp-sub-heading">Areas to Improve</p>
+              <p class="comp-text">Simplify onboarding with clearer steps and personalized injury inputs. Strengthen progress tracking with clearer visuals and motivational milestones. Boost emotional support through positive copy.</p>
+            </div>
+
+            <div class="comp-col">
+              <div class="comp-logo-wrap">
+                <img src="images/logo_comp2.png" alt="Competitor app 2" />
+              </div>
+              <div class="comp-screens single">
+                <img src="images/screens_comp2.png" alt="" />
+              </div>
+              <p class="comp-sub-heading">Features</p>
+              <ul class="comp-list">
+                <li>Advanced recommendation algorithm</li>
+                <li>Progress tracking / streaks / analytics</li>
+                <li>Personal favorites / library / saved exercises</li>
+                <li>Convenience &amp; habit building</li>
+              </ul>
+              <p class="comp-sub-heading">Areas to Improve</p>
+              <p class="comp-text">Assessment &amp; recommendation may still be generic vs individual in-person evaluation. Wish Discover had a community tab. Reliance on user self-motivation and correct execution.</p>
+            </div>
+
+            <div class="comp-col">
+              <div class="comp-logo-wrap">
+                <img src="images/logo_comp3.png" alt="Competitor app 3" />
+              </div>
+              <div class="comp-screens">
+                <img src="images/screens_comp3a.png" alt="" />
+                <img src="images/screens_comp3b.png" alt="" />
+              </div>
+              <p class="comp-sub-heading">Features</p>
+              <ul class="comp-list">
+                <li>Personalized programs and workouts</li>
+                <li>In-depth onboarding specifying injury and pain</li>
+                <li>Very in-depth physical programs, detailed descriptions</li>
+              </ul>
+              <p class="comp-sub-heading">Areas to Improve</p>
+              <p class="comp-text">Not very focused on mental health, scheduling, or connection to mind. Motivation not shown other than workout reminders. Improve visual hierarchy.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- User Persona (2× export) -->
+      <img src="images/rebound_persona_2x.png" alt="" />
+
+      <!-- Middle sections: journey, sketches, wireframes, app overview (crop from full frame) -->
+      <img src="images/rebound_middle_p3.png" alt="" />
+
+      <!-- Final screens (2× export) -->
+      <img src="images/rebound_final_2x.png" alt="" />
 
     </div>
 
@@ -284,6 +588,7 @@
         <nav class="footer-nav" id="contact">
           <a href="index.html#about">About</a>
           <a href="mailto:sicilyrose4@icloud.com">Contact</a>
+          <a href="work.html">Work</a>
         </nav>
       </div>
 

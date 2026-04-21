@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luna Headphones Launch — Sicily</title>
+  <title>Work in Progress — Sicily</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Rethink+Sans:wght@400;500&display=swap" rel="stylesheet" />
@@ -14,10 +14,10 @@
       --bg:     #111111;
       --olive:  #889A5C;
       --blue:   #A5B8D7;
+      --pink:   #FFD0D1;
+      --cream:  #FFF7CA;
       --white:  #ffffff;
-      --luna:   #6098FF;
       --gutter: 64px;
-      --max:    1280px;
     }
 
     html { scroll-behavior: smooth; }
@@ -27,20 +27,12 @@
       color: var(--white);
       font-family: 'Space Mono', monospace;
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ─── REVEAL ───────────────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ─── HEADER ────────────────────────────────────────────────── */
+    /* ─── HEADER ─────────────────────────────────────────────── */
     .header-wrap {
       position: sticky;
       top: 0;
@@ -75,70 +67,82 @@
       letter-spacing: 0.01em;
       transition: color 0.2s ease;
     }
-    nav a:hover { color: #FFD0D1; }
+    nav a:hover { color: var(--pink); }
 
-    /* ─── PROJECT INTRO ─────────────────────────────────────────── */
-    .project-intro {
-      padding: 80px var(--gutter) 56px;
-      max-width: var(--max);
-      margin: 0 auto;
+    /* ─── MAIN ───────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 48px var(--gutter);
     }
 
-    .project-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--luna);
-      margin-bottom: 16px;
+    /* ─── BACK BUTTON ────────────────────────────────────────── */
+    .back-btn {
+      position: absolute;
+      top: 48px;
+      left: var(--gutter);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255, 208, 209, 0.15);
+      border: 1px solid var(--pink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.25s ease-in-out;
     }
 
-    .project-title {
+    .back-btn svg {
+      flex-shrink: 0;
+      transition: fill 0.25s ease-in-out;
+    }
+
+    .back-btn:hover {
+      background: var(--pink);
+    }
+
+    .back-btn:hover svg path {
+      fill: #111111;
+    }
+
+    /* ─── WIP CONTENT ────────────────────────────────────────── */
+    .wip-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      text-align: center;
+    }
+
+    .sm-monogram {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .wip-heading {
       font-family: 'Space Mono', monospace;
-      font-size: clamp(22px, 3vw, 36px);
+      font-size: clamp(28px, 3vw, 41px);
       font-weight: 400;
       color: var(--white);
       line-height: 1.15;
-      margin-bottom: 24px;
-      max-width: 720px;
+      letter-spacing: -0.02em;
     }
 
-    .project-desc {
+    .wip-sub {
       font-family: 'Rethink Sans', sans-serif;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 400;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.7;
-      max-width: 640px;
+      color: var(--cream);
+      line-height: 1.6;
+      max-width: 420px;
     }
 
-    /* ─── CASE STUDY CONTENT ────────────────────────────────────── */
-    .case-study {
-      width: 100%;
-      /* kill any inline-block gap from children */
-      font-size: 0;
-      line-height: 0;
-    }
-
-    .case-study img,
-    .case-study video,
-    .case-study picture {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0;
-      padding: 0;
-      border: none;
-      border-radius: 0;
-    }
-    .case-study picture img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    /* ─── FOOTER ────────────────────────────────────────────────── */
+    /* ─── FOOTER ─────────────────────────────────────────────── */
     footer {
       border-top: 1px solid rgba(255,255,255,0.06);
     }
@@ -171,7 +175,7 @@
       letter-spacing: 0.01em;
       transition: color 0.2s ease;
     }
-    .footer-nav a:hover { color: #FFD0D1; }
+    .footer-nav a:hover { color: var(--pink); }
 
     .footer-social a {
       display: flex;
@@ -181,28 +185,10 @@
     }
     .footer-social a:hover { opacity: 1; }
 
-    /* ─── SKETCHES SECTION ───────────────────────────────────────── */
-    .sketches-wrap {
-      padding: 0 var(--gutter);
-    }
-    .sketches-wrap img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-    .sketches-wrap .sketches-mobile { display: none; }
-    @media (max-width: 600px) {
-      .sketches-wrap .sketches-desktop { display: none; }
-      .sketches-wrap .sketches-mobile { display: block; }
-    }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 768px) {
       :root { --gutter: 24px; }
       nav { gap: 20px; }
-      .project-intro { padding: 48px var(--gutter) 40px; }
-      .project-title { font-size: clamp(20px, 5vw, 28px); }
     }
 
     @media (max-width: 480px) {
@@ -214,7 +200,7 @@
 </head>
 <body>
 
-  <!-- ═══ HEADER ══════════════════════════════════════════════════ -->
+  <!-- ═══ HEADER ══════════════════════════════════════════════ -->
   <div class="header-wrap">
     <header>
 
@@ -238,78 +224,41 @@
     </header>
   </div>
 
-  <!-- ═══ MAIN ════════════════════════════════════════════════════ -->
+  <!-- ═══ MAIN ════════════════════════════════════════════════ -->
   <main>
 
-    <!-- ─── PROJECT INTRO ───────────────────────────────────────── -->
-    <div class="project-intro">
-      <p class="project-label reveal">Case Study</p>
-      <h1 class="project-title reveal" style="transition-delay:80ms">Luna Headphones Launch</h1>
-      <p class="project-desc reveal" style="transition-delay:160ms">The launch ecosystem of the Luna Phase earbuds creates a sleep-centered wellness experience through the combination of thoughtful app, website, product, and branding design.</p>
-    </div>
+    <!-- Back button -->
+    <button class="back-btn" onclick="history.back()" aria-label="Go back">
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.96967 6.46967C0.676777 6.76256 0.676777 7.23744 0.96967 7.53033L5.74264 12.3033C6.03553 12.5962 6.51041 12.5962 6.8033 12.3033C7.09619 12.0104 7.09619 11.5355 6.8033 11.2426L2.56066 7L6.8033 2.75736C7.09619 2.46447 7.09619 1.98959 6.8033 1.6967C6.51041 1.40381 6.03553 1.40381 5.74264 1.6967L0.96967 6.46967ZM17.5 6.25L1.5 6.25V7.75L17.5 7.75V6.25Z" fill="#FFD0D1"/>
+      </svg>
+    </button>
 
-    <!-- ─── CASE STUDY ───────────────────────────────────────────── -->
-    <div class="case-study">
+    <!-- Centered content -->
+    <div class="wip-content">
 
-      <!-- ① REPLACE Behance 1 1 → Header video -->
-      <video autoplay loop muted playsinline poster="images/luna_sec_intro.png">
-        <source src="Videos/Header.mp4" type="video/mp4">
-      </video>
-
-      <!-- ② REPLACE Frame 627 → Part 2 video -->
-      <video autoplay loop muted playsinline poster="images/luna_poster_part2.png">
-        <source src="Videos/Part%202.mp4" type="video/mp4">
-      </video>
-
-      <!-- ③ Keeper sections: Frame 629 → Frame 64 → Frame 632 → Behance 6 1 → Behance 8 1 -->
-      <picture>
-        <source media="(max-width: 768px)" srcset="images/luna_m_problem.png">
-        <img src="images/luna_sec_a.png" alt="" />
-      </picture>
-      <picture>
-        <source media="(max-width: 768px)" srcset="images/luna_m_backstory.png">
-        <img src="images/luna_sec_b.png" alt="" />
-      </picture>
-      <img src="images/luna_sec_c.png" alt="" />
-      <img src="images/luna_sec_b6.png" alt="" />
-      <img src="images/luna_sec_b8.png" alt="" />
-
-      <!-- ④ REPLACE Behance 9 1 → Mobile Walkthrough video -->
-      <video autoplay loop muted playsinline poster="images/luna_poster_mw.png">
-        <source src="Videos/Mobile%20Walkthrough.mp4" type="video/mp4">
-      </video>
-
-      <!-- ⑤ REPLACE Behance 10 1 → Mobile Walkthrough 2 video -->
-      <video autoplay loop muted playsinline poster="images/luna_poster_mw2.png">
-        <source src="Videos/Mobile%20Walkthrough%202.mp4" type="video/mp4">
-      </video>
-
-      <!-- ⑥ Behance 11 1 (restored) -->
-      <img src="images/luna_poster_header.png" alt="" />
-
-      <!-- ⑦ REPLACE Group 22 → Desktop Video (top) + Mobile Video (bottom), zero gap -->
-      <video autoplay loop muted playsinline>
-        <source src="Videos/Desktop%20Video.mp4" type="video/mp4">
-      </video>
-      <video autoplay loop muted playsinline>
-        <source src="Videos/Mobile%20Video.mp4" type="video/mp4">
-      </video>
-
-      <!-- ⑧ Bottom section (Frame 92) -->
-      <div class="sketches-wrap">
-        <img class="sketches-desktop" src="images/luna_sec_bottom.png" alt="" />
-        <img class="sketches-mobile" src="images/luna_m_bottom.png" alt="" />
+      <!-- SM monogram -->
+      <div class="sm-monogram" aria-hidden="true">
+        <svg width="35" height="76" viewBox="0 0 35 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.4012 0.461542C21.4012 0.461542 10.697 4.18452 10.3508 15.4768C10.0816 24.089 14.8761 30.1444 21.0038 35.7401C27.1314 41.3358 31.9131 57.6294 24.9906 63.9203C18.0681 70.2113 13.8121 69.0787 11.0175 67.2957C6.86396 64.6492 5.79082 57.6417 8.63017 53.1567C9.7742 51.3497 14.3448 47.7406 18.9155 45.5779C20.8629 44.6564 22.2662 42.2838 20.3372 41.3246C18.4655 40.3938 8.69714 42.0534 4.04369 48.9275C-0.609751 55.8015 -4.50436 71.428 11.866 75.5098C28.2364 79.5916 38.7074 57.1696 33.7719 45.754C28.8364 34.3384 21.7986 28.0586 19.0039 22.1153C16.2093 16.172 17.4015 6.86461 22.337 4.42001C27.2725 1.9754 29.6569 5.69838 28.4647 8.96159C27.2725 12.2248 23.2728 17.3495 27.9262 18.5045C32.5797 19.6595 32.8489 18.6166 33.5155 13.8508C34.1821 9.08494 35.1179 6.28149 31.1183 2.43517C27.1186 -1.41116 21.4012 0.450328 21.4012 0.450328V0.461542Z" fill="#FFF7CA"/>
+        </svg>
+        <svg width="65" height="71" viewBox="0 0 65 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.027654 30.4484C0.027654 30.4484 0.0276524 33.0154 1.4518 33.5512C2.87595 34.0869 6.38794 32.4909 8.80761 29.1203C11.2273 25.7497 14.1862 20.6044 14.1862 20.6044C14.1862 20.6044 13.8544 46.6765 11.2273 56.9557C8.60021 67.2349 8.91822 70.081 13.8682 70.8734C18.8181 71.6658 19.7998 68.6524 19.5786 64.2215C19.3574 59.7906 19.9104 29.8234 21.9983 22.5465C24.0861 15.2695 27.7087 7.55728 30.7921 8.27158C33.8754 8.98588 32.7693 16.1624 32.2162 20.7719C31.6632 25.3813 26.3952 49.5895 31.3313 51.3641C36.2674 53.1387 38.7977 52.1565 38.7977 50.3038C38.7977 48.451 38.3553 34.7007 39.019 29.1984C39.6826 23.696 41.6599 10.2248 45.9323 9.68903C50.2048 9.1533 50.3292 16.9548 49.3337 26.9774C48.5738 34.627 47.2502 50.0201 48.7623 57.828C49.435 61.3013 52.4505 64.3449 55.9849 64.1897C58.111 64.0964 60.2778 63.1754 61.9575 61.9112C65.027 59.6009 65.8013 55.3485 64.1559 54.1989C62.5105 53.0494 60.5333 56.5093 57.5606 55.3485C54.5878 54.1878 54.491 47.1899 55.0303 36.9106C55.5695 26.6314 58.6529 10.9279 56.4544 6.94343C54.256 2.95897 49.9697 2.6911 46.4577 3.30495C42.9457 3.91881 38.5488 7.64657 37.9958 9.51045C37.9958 9.51045 38.7701 4.90097 34.152 3.48353C29.5338 2.06609 26.4643 3.84068 24.7083 6.31841C22.9523 8.79615 19.551 14.5664 19.551 14.5664C19.551 14.5664 21.1963 1.9768 18.4586 0.559358C15.721 -0.858084 10.9922 0.648646 10.8816 2.51253C10.771 4.37641 12.0845 10.7605 9.99671 15.7271C7.90888 20.6937 0.331841 27.7809 0 30.4484H0.027654Z" fill="#FFF7CA"/>
+        </svg>
       </div>
+
+      <h1 class="wip-heading">Work in progress<span class="dots" aria-hidden="true"></span></h1>
+      <p class="wip-sub">This site is in the works. This page is coming soon!</p>
 
     </div>
 
   </main>
 
-  <!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+  <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
   <footer id="about">
     <div class="footer-inner">
 
-      <div class="footer-left reveal">
+      <div class="footer-left">
         <a href="index.html" aria-label="Home">
           <svg class="snail-icon" width="44" height="41" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path transform="translate(7.14,13.42)" fill="#889A5C" d="M10.7315 1.54184C10.7315 1.54184 10.8037 2.2108 10.1741 2.2108C9.54445 2.2108 8.46887 1.3582 6.31114 2.43378C4.15341 3.50937 3.15653 3.77171 2.6712 8.48723C2.18588 13.2027 2.7827 22.4436 4.04192 24.5948C4.91581 27.1526 6.97355 30.7204 12.2465 31.6845C17.5195 32.6485 22.9762 33.652 30.0986 33.1339C37.2211 32.6157 42.9073 29.0152 42.9073 28.9037C42.9073 28.7922 42.4613 28.3462 40.7561 28.3856C39.0509 28.4249 36.3751 28.9037 36.0406 28.7922C35.7061 28.6807 36.5587 26.641 36.7489 26.5623C36.9391 26.4836 42.8023 26.3 44.3567 26.7131C45.911 27.1263 46.1012 28.3069 45.5831 29.0873C45.065 29.8678 42.2777 31.9796 36.8997 33.9471C31.5218 35.9146 20.5299 35.954 15.1847 34.8719C9.83958 33.7897 4.67809 31.3106 2.59906 27.1526C0.520031 22.9945 -0.0374367 15.977 0.00191399 13.57C0.0412647 11.1631 -0.0374353 6.88697 1.48412 4.13898C3.00568 1.39099 5.60283 0.203913 7.23588 0.0202764C8.86893 -0.16336 10.6856 0.945017 10.725 1.54184L10.7315 1.54184Z"/>
@@ -328,7 +277,7 @@
         </nav>
       </div>
 
-      <div class="footer-social reveal" style="transition-delay:120ms">
+      <div class="footer-social">
         <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill="#ffffff" d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.337 3.305C6.477 3.305 7.401 4.23 7.401 5.368C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z"/>
@@ -339,9 +288,20 @@
     </div>
   </footer>
 
-  <!-- ═══ SCRIPTS ══════════════════════════════════════════════════ -->
+  <!-- ═══ SCRIPTS ══════════════════════════════════════════════ -->
   <script>
-    /* ── Hide/show header on scroll ─────────────────────────────── */
+    /* ── Animated typing dots ───────────────────────────────── */
+    (function() {
+      const dotsEl = document.querySelector('.dots');
+      const frames = ['', '.', '..', '...'];
+      let i = 0;
+      setInterval(function() {
+        i = (i + 1) % frames.length;
+        dotsEl.textContent = frames[i];
+      }, 480);
+    })();
+
+    /* ── Hide/show header on scroll ─────────────────────────── */
     (function() {
       const wrap = document.querySelector('.header-wrap');
       let lastY = 0;
@@ -356,20 +316,6 @@
         }
         lastY = y;
       }, { passive: true });
-    })();
-
-    /* ── Intersection Observer scroll reveals ───────────────────── */
-    (function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     })();
   </script>
 
