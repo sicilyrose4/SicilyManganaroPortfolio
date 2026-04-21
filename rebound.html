@@ -306,23 +306,6 @@
       .case-study .problem-img { width: 72%; max-width: 326px; }
     }
 
-    /* ─── DASHED LINE OVERLAY ────────────────────────────────────── */
-    .rebound-line-wrap {
-      position: absolute;
-      left: 67.05%;
-      top: 49.9%;
-      width: 22.29%;
-      pointer-events: none;
-      overflow: visible;
-    }
-
-    .rebound-line-wrap svg {
-      width: 100%;
-      height: auto;
-      display: block;
-      overflow: visible;
-    }
-
     /* ─── FOOTER ────────────────────────────────────────────────── */
     footer {
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -420,22 +403,8 @@
     <!-- ─── CASE STUDY ───────────────────────────────────────────── -->
     <div class="case-study">
 
-      <!-- Hero (2× export) with dashed-line SVG overlay -->
-      <div class="hero-wrap">
-        <img src="images/rebound_hero_2x.png" alt="" />
-        <div class="rebound-line-wrap">
-        <svg viewBox="0 0 428 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="dash-reveal">
-              <rect id="dash-reveal-rect" x="-10" y="-10" width="0" height="120"/>
-            </clipPath>
-          </defs>
-          <g clip-path="url(#dash-reveal)">
-            <path d="M206.473 95.2671C199.455 95.0639 192.64 94.7592 185.928 94.2514L186.538 86.6341C193.047 87.1419 199.76 87.4466 206.677 87.6498L206.473 95.2671ZM226.917 95.2671L226.714 87.6498H227.832C234.342 87.4466 240.648 87.0404 246.751 86.5326L247.463 94.1499C241.157 94.6577 234.749 95.0639 228.138 95.2671H226.917ZM165.484 92.017C158.466 91.1029 151.753 89.8842 145.243 88.6654L146.769 81.1497C153.177 82.3684 159.788 83.4856 166.602 84.3997L165.585 91.9155L165.484 92.017ZM267.906 91.5092L266.686 83.9934C273.297 82.9778 280.01 81.6575 286.418 80.134L288.147 87.5482C281.536 89.0717 274.721 90.392 267.906 91.5092ZM125.206 84.095C118.595 82.3684 111.882 80.3372 105.474 78.2043L107.915 70.9933C114.221 73.1261 120.629 74.9543 127.139 76.6808L125.206 84.095ZM308.082 82.1653L305.845 74.8527C312.252 72.8214 318.66 70.587 324.763 68.1495L327.611 75.2589C321.305 77.798 314.795 80.134 308.184 82.1653H308.082ZM86.1491 71.0948C79.7414 68.4542 73.4353 65.6104 67.3326 62.665L70.6891 55.8602C76.5883 58.8056 82.7927 61.5478 88.997 64.0869L86.1491 71.0948ZM346.326 66.9307L342.969 60.1259C348.97 57.1805 354.869 54.0321 360.565 50.5789L364.43 57.1805C358.531 60.6337 352.428 63.9853 346.224 66.9307H346.326ZM49.1264 52.9149C43.1254 49.3601 37.2262 45.7038 31.7338 41.8444L36.1074 35.5474C41.498 39.3053 47.1938 42.86 52.9914 46.3132L49.1264 52.9149ZM381.823 46.0085L377.449 39.8131C382.84 36.0552 388.231 31.8911 393.418 27.727L398.3 33.6177C393.011 37.985 387.417 42.1491 381.823 46.1101V46.0085ZM15.2566 29.352C5.18726 21.0238 0.203422 15.2346 0 15.0315L5.79752 10.0548C5.79752 10.0548 10.6797 15.6409 20.2405 23.5629L15.3583 29.4536L15.2566 29.352ZM413.658 19.805L408.369 14.3205C414.065 8.93763 418.744 3.961 422.405 0L427.999 5.17977C424.745 8.63294 419.761 14.0158 413.557 19.9065L413.658 19.805Z" fill="white"/>
-          </g>
-        </svg>
-        </div><!-- /.rebound-line-wrap -->
-      </div><!-- /.hero-wrap -->
+      <!-- Hero (2× export) -->
+      <img src="images/rebound_hero_2x.png" alt="" />
 
       <!-- Problem Statement section (HTML for sharp text) -->
       <div class="problem-wrap">
@@ -605,6 +574,20 @@
 
   <!-- ═══ SCRIPTS ══════════════════════════════════════════════════ -->
   <script>
+/* ── Intersection Observer scroll reveals ───────────────────── */
+    (function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+
     /* ── Hide/show header on scroll ─────────────────────────────── */
     (function() {
       const wrap = document.querySelector('.header-wrap');
@@ -620,53 +603,6 @@
         }
         lastY = y;
       }, { passive: true });
-    })();
-
-    /* ── Intersection Observer scroll reveals ───────────────────── */
-    (function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    })();
-
-    /* ── Dashed-line loop animation ─────────────────────────────── */
-    (function() {
-      const rect = document.getElementById('dash-reveal-rect');
-      if (!rect) return;
-
-      const totalWidth = 448; /* viewBox width + padding */
-      const drawDuration = 1800;  /* ms to sweep across */
-      const holdDuration = 400;   /* ms to hold fully revealed */
-      const totalCycle = drawDuration + holdDuration;
-
-      let startTime = null;
-
-      function animate(ts) {
-        if (!startTime) startTime = ts;
-        const elapsed = (ts - startTime) % totalCycle;
-
-        let w;
-        if (elapsed < drawDuration) {
-          /* easeInOut cubic */
-          const t = elapsed / drawDuration;
-          const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-          w = ease * totalWidth;
-        } else {
-          w = totalWidth;
-        }
-
-        rect.setAttribute('width', w.toFixed(1));
-        requestAnimationFrame(animate);
-      }
-
-      requestAnimationFrame(animate);
     })();
   </script>
 
