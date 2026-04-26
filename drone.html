@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work — Sicily</title>
+  <title>Drop Drone Delivery Dashboard — Sicily</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Rethink+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Mono&family=Rethink+Sans:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='9' fill='%23FFD0D1' fill-opacity='0.6' stroke='%23FFD0D1' stroke-width='1'/%3E%3C/svg%3E") 10 10, auto !important; }
 
@@ -15,8 +15,8 @@
       --bg:     #111111;
       --olive:  #889A5C;
       --blue:   #A5B8D7;
-      --pink:   #FFD0D1;
       --white:  #ffffff;
+      --drone:  #eaffae;
       --gutter: 64px;
       --max:    1280px;
     }
@@ -28,9 +28,6 @@
       color: var(--white);
       font-family: 'Space Mono', monospace;
       -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
     /* ─── REVEAL ─────────────────────────────────────────────── */
@@ -56,6 +53,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 var(--gutter);
+      width: 100%;
     }
 
     .snail-icon { display: block; flex-shrink: 0; }
@@ -75,145 +73,119 @@
       letter-spacing: 0.01em;
       transition: color 0.2s ease;
     }
-    nav a:hover { color: var(--pink); }
+    nav a:hover { color: #FFD0D1; }
 
-    /* ─── MAIN ───────────────────────────────────────────────── */
-    main {
-      flex: 1;
-      padding: 64px var(--gutter) 80px;
+    /* ─── PROJECT INTRO ──────────────────────────────────────── */
+    .project-intro {
+      padding: 80px var(--gutter) 56px;
       max-width: var(--max);
-      width: 100%;
       margin: 0 auto;
     }
 
-    .my-work-heading {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 400;
-      color: var(--white);
-      letter-spacing: -0.5px;
-      margin-bottom: 40px;
-    }
-
-    /* ─── TAB NAVIGATION ─────────────────────────────────────── */
-    .work-tabs {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 48px;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 9px 22px;
-      border-radius: 31px;
-      border: 1px solid var(--pink);
-      background: rgba(255, 208, 209, 0.15);
+    .project-label {
       font-family: 'Space Mono', monospace;
       font-size: 13px;
       font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--drone);
+      margin-bottom: 16px;
+    }
+
+    .project-title {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 400;
       color: var(--white);
-      letter-spacing: 0.04em;
-      cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
-      white-space: nowrap;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 720px;
     }
 
-    .tab-btn.active {
-      background: var(--pink);
-      color: #111111;
+    .project-desc {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 640px;
     }
 
-    .tab-btn:not(.active):hover {
-      background: rgba(255, 208, 209, 0.28);
+    /* ─── CASE STUDY ─────────────────────────────────────────── */
+    .case-study {
+      width: 100%;
+      font-size: 0;
+      line-height: 0;
     }
 
-    /* ─── GRID ───────────────────────────────────────────────── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .card {
+    .case-study img {
       display: block;
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 16 / 9;
-      background: #1a1a1a;
-      cursor: pointer;
-      text-decoration: none;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
     }
 
-    .card img {
+    /* ─── DESKTOP / MOBILE SWITCHING ─────────────────────────── */
+    .drone-desktop { display: block; }
+    .drone-mobile  { display: none; }
+
+    /* Mobile: crop the full-frame image to hide the grey box at bottom */
+    /* drone_m_full.png is 375×7803; we show first 7251px (before Try it out) */
+    .drone-mobile {
+      overflow: hidden;
+      aspect-ratio: 375 / 7251;
+      line-height: 0;
+      font-size: 0;
+    }
+    .drone-mobile img {
+      width: 100%;
+      height: auto;
+      display: block;
+      vertical-align: top;
+    }
+
+    /* ─── TRY IT OUT SECTION ─────────────────────────────────── */
+    .try-it-out {
+      background: #1b1b1b;
+      padding: 72px var(--gutter) 88px;
+      font-size: initial;
+      line-height: initial;
+    }
+
+    .try-it-label {
+      font-family: 'Inter', 'Rethink Sans', sans-serif;
+      font-size: clamp(28px, 3.1vw, 40px);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+
+    /* Responsive iframe wrapper (16:9 padding trick) */
+    .embed-outer {
+      max-width: 800px;
+    }
+
+    .embed-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: calc(450 / 800 * 100%);
+      height: 0;
+    }
+
+    .embed-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      border: 1px solid rgba(0,0,0,0.1);
       display: block;
-      transition: transform 0.4s ease;
     }
-    .card:hover img { transform: scale(1.03); }
-
-    .card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.68);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      pointer-events: none;
-    }
-    .card:hover::after { opacity: 1; }
-
-    .card-title {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Space Mono', monospace;
-      font-size: 20px;
-      font-weight: 400;
-      color: #ffffff;
-      text-align: center;
-      padding: 16px;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      pointer-events: none;
-    }
-    .card:hover .card-title { opacity: 1; }
-
-    /* WIP placeholder cards */
-    .card-wip {
-      aspect-ratio: 16 / 9;
-      background: #2a2a2d;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: default;
-    }
-
-    .card-wip-text {
-      font-family: 'Rethink Sans', sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--blue);
-    }
-
-    /* Tab panels */
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
 
     /* ─── FOOTER ─────────────────────────────────────────────── */
     footer {
       border-top: 1px solid rgba(255,255,255,0.06);
-      margin-top: auto;
     }
 
     .footer-inner {
@@ -244,7 +216,7 @@
       letter-spacing: 0.01em;
       transition: color 0.2s ease;
     }
-    .footer-nav a:hover { color: var(--pink); }
+    .footer-nav a:hover { color: #FFD0D1; }
 
     .footer-social a {
       display: flex;
@@ -258,10 +230,14 @@
     @media (max-width: 768px) {
       :root { --gutter: 24px; }
       nav { gap: 20px; }
-      main { padding: 48px var(--gutter) 64px; }
-      .grid { grid-template-columns: 1fr; }
-      .work-tabs { gap: 8px; }
-      .tab-btn { font-size: 11px; padding: 8px 16px; }
+      .project-intro { padding: 48px var(--gutter) 40px; }
+      .project-title { font-size: clamp(20px, 5vw, 28px); }
+
+      .drone-desktop { display: none; }
+      .drone-mobile  { display: block; }
+
+      .try-it-out { padding: 48px var(--gutter) 64px; }
+      .try-it-label { margin-bottom: 24px; }
     }
 
     @media (max-width: 480px) {
@@ -273,9 +249,10 @@
 </head>
 <body>
 
-  <!-- ═══ HEADER ═══════════════════════════════════════════════ -->
+  <!-- ═══ HEADER ══════════════════════════════════════════════ -->
   <div class="header-wrap">
     <header>
+
       <a href="index.html" aria-label="Home">
         <svg class="snail-icon" width="53" height="49" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path transform="translate(7.14,13.42)" fill="#889A5C" d="M10.7315 1.54184C10.7315 1.54184 10.8037 2.2108 10.1741 2.2108C9.54445 2.2108 8.46887 1.3582 6.31114 2.43378C4.15341 3.50937 3.15653 3.77171 2.6712 8.48723C2.18588 13.2027 2.7827 22.4436 4.04192 24.5948C4.91581 27.1526 6.97355 30.7204 12.2465 31.6845C17.5195 32.6485 22.9762 33.652 30.0986 33.1339C37.2211 32.6157 42.9073 29.0152 42.9073 28.9037C42.9073 28.7922 42.4613 28.3462 40.7561 28.3856C39.0509 28.4249 36.3751 28.9037 36.0406 28.7922C35.7061 28.6807 36.5587 26.641 36.7489 26.5623C36.9391 26.4836 42.8023 26.3 44.3567 26.7131C45.911 27.1263 46.1012 28.3069 45.5831 29.0873C45.065 29.8678 42.2777 31.9796 36.8997 33.9471C31.5218 35.9146 20.5299 35.954 15.1847 34.8719C9.83958 33.7897 4.67809 31.3106 2.59906 27.1526C0.520031 22.9945 -0.0374367 15.977 0.00191399 13.57C0.0412647 11.1631 -0.0374353 6.88697 1.48412 4.13898C3.00568 1.39099 5.60283 0.203913 7.23588 0.0202764C8.86893 -0.16336 10.6856 0.945017 10.725 1.54184L10.7315 1.54184Z"/>
@@ -286,82 +263,66 @@
           <path transform="translate(15.04,18.17)" fill="#889A5C" d="M1.43566 0.0065586C1.43566 0.0065586 0.609297 -0.0852607 0.209232 0.452532C-0.190833 0.990324 0.00591902 1.99377 0.602738 2.2102C1.19956 2.42662 1.698 2.13149 1.82917 1.50844C1.96034 0.88539 2.01936 0.282013 1.43566 0L1.43566 0.0065586Z"/>
         </svg>
       </a>
+
       <nav>
         <a href="index.html#about">About</a>
         <a href="mailto:sicilyrose4@icloud.com">Contact</a>
         <a href="work.html">Work</a>
       </nav>
+
     </header>
   </div>
 
-  <!-- ═══ MAIN ═══════════════════════════════════════════════════ -->
+  <!-- ═══ MAIN ════════════════════════════════════════════════ -->
   <main>
-    <h1 class="my-work-heading reveal">MY WORK</h1>
 
-    <div class="work-tabs reveal" style="transition-delay: 80ms;">
-      <button class="tab-btn active" data-tab="uiux">UI/UX CASE STUDIES</button>
-      <button class="tab-btn" data-tab="graphic">GRAPHIC DESIGN &amp; BRANDING</button>
-      <button class="tab-btn" data-tab="illustration">ILLUSTRATION</button>
+    <!-- ─── PROJECT INTRO ─────────────────────────────────── -->
+    <div class="project-intro">
+      <p class="project-label reveal">Case Study</p>
+      <h1 class="project-title reveal" style="transition-delay:80ms">Drop Drone Delivery Dashboard</h1>
+      <p class="project-desc reveal" style="transition-delay:160ms">The Drop Drone Delivery dashboard is designed for an operations manager to monitor the entire fleet of drones. It allows the admin to track location of the drones, monitor deliveries, watch drone battery/maintenance, and more.</p>
     </div>
 
-    <!-- UI/UX CASE STUDIES -->
-    <div class="tab-panel active" id="panel-uiux">
-      <div class="grid">
-        <a href="luna.html" class="card reveal">
-          <img src="images/card1.png" alt="Luna Headphones Launch" loading="lazy" />
-          <span class="card-title">Luna Headphones Launch</span>
-        </a>
-        <a href="drone.html" class="card reveal" style="transition-delay:90ms">
-          <img src="images/card2.png" alt="Drone Dashboard" loading="lazy" />
-          <span class="card-title">Drone Dashboard</span>
-        </a>
-        <a href="wip.html" class="card reveal" style="transition-delay:180ms">
-          <img src="images/card3.png" alt="Fizz Pop-up" loading="lazy" />
-          <span class="card-title">Fizz Pop-up</span>
-        </a>
-        <a href="wip.html" class="card reveal" style="transition-delay:270ms">
-          <img src="images/card4.png" alt="Bull Stock Investing App" loading="lazy" />
-          <span class="card-title">Bull Stock Investing App</span>
-        </a>
-        <a href="rebound.html" class="card reveal" style="transition-delay:360ms">
-          <img src="images/card5.png" alt="Rebound" loading="lazy" />
-          <span class="card-title">Rebound</span>
-        </a>
-        <a href="wip.html" class="card reveal" style="transition-delay:450ms">
-          <img src="images/card6.png" alt="Depop Redesign" loading="lazy" />
-          <span class="card-title">Depop Redesign</span>
-        </a>
+    <!-- ─── CASE STUDY ─────────────────────────────────────── -->
+    <div class="case-study">
+
+      <!-- Desktop sections (hidden on mobile) -->
+      <div class="drone-desktop">
+        <img src="images/drone_d_01.png" alt="" />
+        <img src="images/drone_d_02.png" alt="" />
+        <img src="images/drone_d_03.png" alt="" />
+        <img src="images/drone_d_04.png" alt="" />
+        <img src="images/drone_d_05.png" alt="" />
+        <img src="images/drone_d_06.png" alt="" />
+        <img src="images/drone_d_07.png" alt="" />
+        <img src="images/drone_d_08.png" alt="" />
+        <img src="images/drone_d_09.png" alt="" />
+        <img src="images/drone_d_10.png" alt="" />
       </div>
+
+      <!-- Mobile full frame (hidden on desktop, cropped before grey box) -->
+      <div class="drone-mobile">
+        <img src="images/drone_m_full.png" alt="" />
+      </div>
+
+      <!-- Try it out — shown on both -->
+      <div class="try-it-out">
+        <p class="try-it-label">Try it out</p>
+        <div class="embed-outer">
+          <div class="embed-wrap">
+            <iframe src="https://embed.figma.com/proto/FGfq0yYdRz6LcbtTftORCq/Drop---Drone-Delivery?page-id=486%3A2888&node-id=486-9251&viewport=7350%2C-1063%2C0.38&scaling=scale-down&content-scaling=fixed&starting-point-node-id=486%3A9251&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- GRAPHIC DESIGN & BRANDING -->
-    <div class="tab-panel" id="panel-graphic">
-      <div class="grid">
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-      </div>
-    </div>
-
-    <!-- ILLUSTRATION -->
-    <div class="tab-panel" id="panel-illustration">
-      <div class="grid">
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-        <div class="card-wip"><span class="card-wip-text">Work in Progress...</span></div>
-      </div>
-    </div>
   </main>
 
-  <!-- ═══ FOOTER ═══════════════════════════════════════════════ -->
+  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
   <footer id="about">
     <div class="footer-inner">
+
       <div class="footer-left reveal">
         <a href="index.html" aria-label="Home">
           <svg class="snail-icon" width="44" height="41" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -373,12 +334,14 @@
             <path transform="translate(15.04,18.17)" fill="#889A5C" d="M1.43566 0.0065586C1.43566 0.0065586 0.609297 -0.0852607 0.209232 0.452532C-0.190833 0.990324 0.00591902 1.99377 0.602738 2.2102C1.19956 2.42662 1.698 2.13149 1.82917 1.50844C1.96034 0.88539 2.01936 0.282013 1.43566 0L1.43566 0.0065586Z"/>
           </svg>
         </a>
-        <nav class="footer-nav">
+
+        <nav class="footer-nav" id="contact">
           <a href="index.html#about">About</a>
           <a href="mailto:sicilyrose4@icloud.com">Contact</a>
           <a href="work.html">Work</a>
         </nav>
       </div>
+
       <div class="footer-social reveal" style="transition-delay:120ms">
         <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -386,47 +349,40 @@
           </svg>
         </a>
       </div>
+
     </div>
   </footer>
 
+  <!-- ═══ SCRIPTS ══════════════════════════════════════════════ -->
   <script>
-    /* ── Header hide/show on scroll ──────────────────────────── */
+    /* ── Hide/show header on scroll ─────────────────────────── */
     (function() {
       const wrap = document.querySelector('.header-wrap');
       let lastY = 0;
       window.addEventListener('scroll', function() {
         const y = window.scrollY;
-        wrap.style.transform = y > lastY && y > 0 ? 'translateY(-100%)' : 'translateY(0)';
+        if (y === 0) {
+          wrap.style.transform = 'translateY(0)';
+        } else if (y > lastY) {
+          wrap.style.transform = 'translateY(-100%)';
+        } else {
+          wrap.style.transform = 'translateY(0)';
+        }
         lastY = y;
       }, { passive: true });
     })();
 
-    /* ── Scroll reveals ──────────────────────────────────────── */
+    /* ── Intersection Observer scroll reveals ───────────────── */
     (function() {
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-      }, { threshold: 0.08 });
-      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    })();
-
-    /* ── Tab switching ───────────────────────────────────────── */
-    (function() {
-      const tabMap = { uiux: 'panel-uiux', graphic: 'panel-graphic', illustration: 'panel-illustration' };
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-          document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-          this.classList.add('active');
-          const panel = document.getElementById(tabMap[this.dataset.tab]);
-          if (panel) {
-            panel.classList.add('active');
-            panel.querySelectorAll('.reveal').forEach(el => {
-              el.classList.remove('visible');
-              setTimeout(() => el.classList.add('visible'), 50);
-            });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
           }
         });
-      });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     })();
   </script>
 
