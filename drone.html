@@ -124,6 +124,9 @@
       height: auto;
       margin: 0;
       padding: 0;
+      /* prevent browsers from softening downscaled images */
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
     }
 
     /* ─── DESKTOP / MOBILE SWITCHING ─────────────────────────── */
@@ -289,18 +292,19 @@
       <!-- Desktop sections (hidden on mobile) -->
       <div class="drone-desktop">
         <img src="images/drone_d_01.png" alt="" />
-        <img src="images/drone_d_02.png" alt="" />
-        <img src="images/drone_d_03.png" alt="" />
-        <img src="images/drone_d_04.png" alt="" />
-        <img src="images/drone_d_05.png" alt="" />
-        <img src="images/drone_d_06.png" alt="" />
-        <img src="images/drone_d_07.png" alt="" />
-        <img src="images/drone_d_08.png" alt="" />
-        <img src="images/drone_d_09.png" alt="" />
-        <img src="images/drone_d_10.png" alt="" />
+        <img src="images/drone_d_02.png" alt="" loading="lazy" />
+        <img src="images/drone_d_03.png" alt="" loading="lazy" />
+        <img src="images/drone_d_04.png" alt="" loading="lazy" />
+        <img src="images/drone_d_05.png" alt="" loading="lazy" />
+        <img src="images/drone_d_06.png" alt="" loading="lazy" />
+        <img src="images/drone_d_07.png" alt="" loading="lazy" />
+        <img src="images/drone_d_08.png" alt="" loading="lazy" />
+        <img src="images/drone_d_09.png" alt="" loading="lazy" />
+        <img src="images/drone_d_10.png" alt="" loading="lazy" />
       </div>
 
       <!-- Mobile full frame (hidden on desktop, cropped before grey box) -->
+      <!-- drone_m_full.png exported at 2× (750×15606px) for retina sharpness -->
       <div class="drone-mobile">
         <img src="images/drone_m_full.png" alt="" />
       </div>
