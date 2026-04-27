@@ -166,13 +166,13 @@
 
     /* Responsive iframe wrapper (16:9 padding trick) */
     .embed-outer {
-      max-width: 800px;
+      width: 100%;
     }
 
     .embed-wrap {
       position: relative;
       width: 100%;
-      padding-bottom: calc(450 / 800 * 100%);
+      padding-bottom: 56.25%; /* 450/800 = 9/16 */
       height: 0;
     }
 
