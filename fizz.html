@@ -168,14 +168,14 @@
       background: var(--fizz-bg);
       padding: 40px var(--gutter) 56px;
       display: flex;
-      gap: 32px;
+      flex-direction: column;
+      gap: 48px;
       font-size: initial;
       line-height: initial;
     }
 
     .fizz-embed-col {
-      flex: 1;
-      min-width: 0;
+      width: 100%;
     }
 
     .embed-label {
@@ -254,7 +254,7 @@
       .fizz-desktop { display: none; }
       .fizz-mobile  { display: block; }
 
-      .fizz-embeds-row { flex-direction: column; padding: 32px var(--gutter) 40px; gap: 40px; }
+      .fizz-embeds-row { padding: 32px var(--gutter) 40px; gap: 32px; }
       .embed-label { margin-bottom: 16px; }
     }
 
