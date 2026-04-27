@@ -410,6 +410,25 @@
 
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     })();
+
+    /* ── Force video autoplay on mobile (iOS Safari workaround) ─── */
+    (function() {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const v = entry.target;
+          if (entry.isIntersecting) {
+            v.play().catch(function(){});
+          } else {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.25 });
+
+      document.querySelectorAll('.case-study video').forEach(v => {
+        v.muted = true;
+        videoObserver.observe(v);
+      });
+    })();
   </script>
 
 </body>
