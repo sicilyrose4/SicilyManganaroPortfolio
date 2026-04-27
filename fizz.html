@@ -164,19 +164,26 @@
     .fizz-mobile  { display: none; }
 
     /* ─── EMBED SECTIONS ─────────────────────────────────────── */
-    .fizz-embed {
+    .fizz-embeds-row {
       background: var(--fizz-bg);
       padding: 40px var(--gutter) 56px;
+      display: flex;
+      gap: 32px;
       font-size: initial;
       line-height: initial;
     }
 
+    .fizz-embed-col {
+      flex: 1;
+      min-width: 0;
+    }
+
     .embed-label {
       font-family: 'Space Mono', monospace;
-      font-size: clamp(20px, 2.5vw, 32px);
+      font-size: clamp(16px, 1.8vw, 26px);
       font-weight: 400;
       color: #111111;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .embed-wrap {
@@ -247,7 +254,7 @@
       .fizz-desktop { display: none; }
       .fizz-mobile  { display: block; }
 
-      .fizz-embed { padding: 32px var(--gutter) 40px; }
+      .fizz-embeds-row { flex-direction: column; padding: 32px var(--gutter) 40px; gap: 40px; }
       .embed-label { margin-bottom: 16px; }
     }
 
@@ -304,25 +311,25 @@
           <img src="images/fizz_d_full.png" alt="" />
         </div>
 
-        <!-- Embed 1: Fizz web prototype -->
-        <div class="fizz-embed">
-          <p class="embed-label">Try it out</p>
-          <div class="embed-wrap">
-            <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=286-1140&viewport=-39%2C218%2C0.05&scaling=scale-down&content-scaling=fixed&page-id=286%3A781&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <!-- Both embeds side by side -->
+        <div class="fizz-embeds-row">
+          <div class="fizz-embed-col">
+            <p class="embed-label">Try it out</p>
+            <div class="embed-wrap">
+              <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=286-1140&viewport=-39%2C218%2C0.05&scaling=scale-down&content-scaling=fixed&page-id=286%3A781&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+            </div>
+          </div>
+          <div class="fizz-embed-col">
+            <p class="embed-label">Mobile Version</p>
+            <div class="embed-wrap">
+              <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=343-1088&viewport=144%2C104%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=353%3A1584&page-id=343%3A1084&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+            </div>
           </div>
         </div>
 
         <!-- Slide 16:9-3: rows 1858–2579 -->
         <div class="fizz-section fizz-d-slide">
           <img src="images/fizz_d_full.png" alt="" loading="lazy" />
-        </div>
-
-        <!-- Embed 2: Fizz mobile prototype -->
-        <div class="fizz-embed">
-          <p class="embed-label">Mobile Version</p>
-          <div class="embed-wrap">
-            <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=343-1088&viewport=144%2C104%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=353%3A1584&page-id=343%3A1084&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
-          </div>
         </div>
 
         <!-- Bottom: rows 4955–8665 (Screenshot + Scrollable Site) -->
@@ -338,25 +345,25 @@
           <img src="images/fizz_m_full.png" alt="" />
         </div>
 
-        <!-- Embed 1: Fizz web prototype -->
-        <div class="fizz-embed">
-          <p class="embed-label">Try it out</p>
-          <div class="embed-wrap">
-            <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=286-1140&viewport=-39%2C218%2C0.05&scaling=scale-down&content-scaling=fixed&page-id=286%3A781&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <!-- Both embeds stacked -->
+        <div class="fizz-embeds-row">
+          <div class="fizz-embed-col">
+            <p class="embed-label">Try it out</p>
+            <div class="embed-wrap">
+              <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=286-1140&viewport=-39%2C218%2C0.05&scaling=scale-down&content-scaling=fixed&page-id=286%3A781&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+            </div>
+          </div>
+          <div class="fizz-embed-col">
+            <p class="embed-label">Mobile Version</p>
+            <div class="embed-wrap">
+              <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=343-1088&viewport=144%2C104%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=353%3A1584&page-id=343%3A1084&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+            </div>
           </div>
         </div>
 
         <!-- Slide 16:9-3: rows 1118–1523 -->
         <div class="fizz-section fizz-m-slide">
           <img src="images/fizz_m_full.png" alt="" loading="lazy" />
-        </div>
-
-        <!-- Embed 2: Fizz mobile prototype -->
-        <div class="fizz-embed">
-          <p class="embed-label">Mobile Version</p>
-          <div class="embed-wrap">
-            <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=343-1088&viewport=144%2C104%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=353%3A1584&page-id=343%3A1084&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
-          </div>
         </div>
 
         <!-- Bottom: rows 2483–3980 -->
