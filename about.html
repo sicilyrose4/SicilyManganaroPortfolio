@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luna Headphones Launch — Sicily</title>
+  <title>About — Sicily Manganaro</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,10 +13,8 @@
 
     :root {
       --bg:     #111111;
-      --olive:  #889A5C;
-      --blue:   #A5B8D7;
       --white:  #ffffff;
-      --luna:   #6098FF;
+      --pink:   #FFD0D1;
       --gutter: 64px;
       --max:    1280px;
     }
@@ -28,20 +26,22 @@
       color: var(--white);
       font-family: 'Space Mono', monospace;
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ─── REVEAL ───────────────────────────────────────────────── */
+    main { flex: 1; }
+
+    /* ─── REVEAL ─────────────────────────────────────────────── */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── HEADER ────────────────────────────────────────────────── */
+    /* ─── HEADER ─────────────────────────────────────────────── */
     .header-wrap {
       position: sticky;
       top: 0;
@@ -76,70 +76,74 @@
       letter-spacing: 0.01em;
       transition: color 0.2s ease;
     }
-    nav a:hover { color: #FFD0D1; }
+    nav a:hover { color: var(--pink); }
 
-    /* ─── PROJECT INTRO ─────────────────────────────────────────── */
-    .project-intro {
-      padding: 80px var(--gutter) 56px;
+    /* ─── ABOUT CONTENT ──────────────────────────────────────── */
+    .about-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 80px;
+      padding: 96px var(--gutter) 100px;
       max-width: var(--max);
       margin: 0 auto;
+      width: 100%;
     }
 
-    .project-label {
+    /* ─── PHOTO COLUMN ───────────────────────────────────────── */
+    .about-photo-col {
+      flex: 0 0 42%;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-ellipse {
+      position: absolute;
+      width: 90%;
+      left: 5%;
+      top: 20%;
+      z-index: 0;
+      pointer-events: none;
+      display: block;
+    }
+
+    .about-photo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ─── TEXT COLUMN ────────────────────────────────────────── */
+    .about-text-col {
+      flex: 1;
+      padding-top: 4px;
+    }
+
+    .about-label {
       font-family: 'Space Mono', monospace;
-      font-size: 13px;
+      font-size: clamp(24px, 3.2vw, 41px);
       font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--luna);
-      margin-bottom: 16px;
+      color: var(--pink);
+      letter-spacing: 0.05em;
+      margin-bottom: 36px;
     }
 
-    .project-title {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(22px, 3vw, 36px);
+    .about-bio {
+      font-family: 'Rethink Sans', sans-serif;
+      font-size: 18px;
       font-weight: 400;
       color: var(--white);
-      line-height: 1.15;
-      margin-bottom: 24px;
-      max-width: 720px;
+      line-height: 1.8;
     }
 
-    .project-desc {
-      font-family: 'Rethink Sans', sans-serif;
-      font-size: 17px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.7;
-      max-width: 640px;
+    .about-bio p + p {
+      margin-top: 20px;
     }
 
-    /* ─── CASE STUDY CONTENT ────────────────────────────────────── */
-    .case-study {
-      width: 100%;
-      /* kill any inline-block gap from children */
-      font-size: 0;
-      line-height: 0;
-    }
-
-    .case-study img,
-    .case-study video,
-    .case-study picture {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0;
-      padding: 0;
-      border: none;
-      border-radius: 0;
-    }
-    .case-study picture img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    /* ─── FOOTER ────────────────────────────────────────────────── */
+    /* ─── FOOTER ─────────────────────────────────────────────── */
     footer {
       border-top: 1px solid rgba(255,255,255,0.06);
     }
@@ -172,7 +176,7 @@
       letter-spacing: 0.01em;
       transition: color 0.2s ease;
     }
-    .footer-nav a:hover { color: #FFD0D1; }
+    .footer-nav a:hover { color: var(--pink); }
 
     .footer-social a {
       display: flex;
@@ -182,64 +186,50 @@
     }
     .footer-social a:hover { opacity: 1; }
 
-    /* ─── FIGMA EMBEDS ──────────────────────────────────────────── */
-    .luna-embed {
-      background: #1b1b1b;
-      padding: 72px var(--gutter) 72px;
-      font-size: initial;
-      line-height: initial;
-    }
-    .luna-embed .embed-wrap {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      height: 0;
-    }
-    .luna-embed .embed-wrap iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 1px solid rgba(0,0,0,0.1);
-      display: block;
-    }
-    @media (max-width: 768px) {
-      .luna-embed { padding: 40px var(--gutter) 40px; }
-    }
-
-    /* ─── SKETCHES SECTION ───────────────────────────────────────── */
-    .sketches-wrap {
-      padding: 0 var(--gutter);
-    }
-    .sketches-wrap img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-    .sketches-wrap .sketches-mobile { display: none; }
-    @media (max-width: 600px) {
-      .sketches-wrap .sketches-desktop { display: none; }
-      .sketches-wrap .sketches-mobile { display: block; }
-    }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 768px) {
       :root { --gutter: 24px; }
       nav { gap: 20px; }
-      .project-intro { padding: 48px var(--gutter) 40px; }
-      .project-title { font-size: clamp(20px, 5vw, 28px); }
+
+      .about-wrap {
+        flex-direction: column;
+        align-items: center;
+        padding: 48px var(--gutter) 64px;
+        gap: 36px;
+      }
+
+      .about-photo-col {
+        flex: none;
+        width: 65%;
+      }
+
+      .about-text-col {
+        width: 100%;
+        padding-top: 0;
+      }
+
+      .about-label {
+        font-size: clamp(22px, 6vw, 28px);
+        margin-bottom: 20px;
+      }
+
+      .about-bio {
+        font-size: 15px;
+      }
     }
 
     @media (max-width: 480px) {
       header { height: 72px; }
       .footer-inner { height: 72px; }
       nav a, .footer-nav a { font-size: 14px; }
+
+      .about-photo-col { width: 80%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ═══ HEADER ══════════════════════════════════════════════════ -->
+  <!-- ═══ HEADER ══════════════════════════════════════════════ -->
   <div class="header-wrap">
     <header>
 
@@ -263,89 +253,38 @@
     </header>
   </div>
 
-  <!-- ═══ MAIN ════════════════════════════════════════════════════ -->
+  <!-- ═══ MAIN ════════════════════════════════════════════════ -->
   <main>
+    <div class="about-wrap">
 
-    <!-- ─── PROJECT INTRO ───────────────────────────────────────── -->
-    <div class="project-intro">
-      <p class="project-label reveal">Case Study</p>
-      <h1 class="project-title reveal" style="transition-delay:80ms">Luna Headphones Launch</h1>
-      <p class="project-desc reveal" style="transition-delay:160ms">The launch ecosystem of the Luna Phase earbuds creates a sleep-centered wellness experience through the combination of thoughtful app, website, product, and branding design.</p>
-    </div>
-
-    <!-- ─── CASE STUDY ───────────────────────────────────────────── -->
-    <div class="case-study">
-
-      <!-- ① REPLACE Behance 1 1 → Header video -->
-      <video autoplay loop muted playsinline poster="images/luna_sec_intro.png">
-        <source src="Videos/Header.mp4" type="video/mp4">
-      </video>
-
-      <!-- ② REPLACE Frame 627 → Part 2 video -->
-      <video autoplay loop muted playsinline poster="images/luna_poster_part2.png">
-        <source src="Videos/Part%202.mp4" type="video/mp4">
-      </video>
-
-      <!-- ③ Keeper sections: Frame 629 → Frame 64 → Frame 632 → Behance 6 1 → Behance 8 1 -->
-      <picture>
-        <source media="(max-width: 768px)" srcset="images/luna_m_problem.png">
-        <img src="images/luna_sec_a.png" alt="" />
-      </picture>
-      <picture>
-        <source media="(max-width: 768px)" srcset="images/luna_m_backstory.png">
-        <img src="images/luna_sec_b.png" alt="" />
-      </picture>
-      <img src="images/luna_sec_c.png" alt="" />
-      <img src="images/luna_sec_b6.png" alt="" />
-      <img src="images/luna_sec_b8.png" alt="" />
-
-      <!-- ④ REPLACE Behance 9 1 → Mobile Walkthrough video -->
-      <video autoplay loop muted playsinline poster="images/luna_poster_mw.png">
-        <source src="Videos/Mobile%20Walkthrough.mp4" type="video/mp4">
-      </video>
-
-      <!-- ⑤ REPLACE Behance 10 1 → Mobile Walkthrough 2 video -->
-      <video autoplay loop muted playsinline poster="images/luna_poster_mw2.png">
-        <source src="Videos/Mobile%20Walkthrough%202.mp4" type="video/mp4">
-      </video>
-
-      <!-- Luna app embed -->
-      <div class="luna-embed">
-        <div class="embed-wrap">
-          <iframe src="https://embed.figma.com/proto/pxtcjKug4Q7UXlPwgZLITc/Headphones-Launch---Sicily-Manganaro?page-id=621%3A861&node-id=736-2532&p=f&viewport=172%2C137%2C0.32&scaling=scale-down&content-scaling=fixed&starting-point-node-id=736%3A2532&show-proto-sidebar=1&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+      <!-- Photo column -->
+      <div class="about-photo-col reveal">
+        <div class="about-photo-wrap">
+          <picture>
+            <source media="(max-width: 768px)" srcset="images/about_ellipse_m.png">
+            <img class="about-ellipse" src="images/about_ellipse_d.png" alt="" />
+          </picture>
+          <picture>
+            <source media="(max-width: 768px)" srcset="images/about_headshot_m.png">
+            <img class="about-photo" src="images/about_headshot_d.png" alt="Sicily Manganaro" />
+          </picture>
         </div>
       </div>
 
-      <!-- ⑥ Behance 11 1 (restored) -->
-      <img src="images/luna_poster_header.png" alt="" />
-
-      <!-- Luna site embed -->
-      <div class="luna-embed">
-        <div class="embed-wrap">
-          <iframe src="https://embed.figma.com/proto/pxtcjKug4Q7UXlPwgZLITc/Headphones-Launch---Sicily-Manganaro?page-id=621%3A860&node-id=973-2364&viewport=354%2C129%2C0.08&scaling=scale-down&content-scaling=fixed&starting-point-node-id=973%3A2364&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+      <!-- Text column -->
+      <div class="about-text-col">
+        <p class="about-label reveal">ABOUT ME</p>
+        <div class="about-bio reveal" style="transition-delay:100ms">
+          <p>Hi, I'm Sicily Manganaro!</p>
+          <p>I am an Interaction Design student at the University of Kansas. I've always known I wanted a creative career, and UI/UX has given me a way to apply those skills in a meaningful way. I originally started in the Visual Communication Design major, which gave me skills in branding, typography, and visual storytelling. Transitioning into UI/UX allowed me to expand those skills with user-centered thinking, making me a well rounded designer. I am super excited about the idea of learning new tools, working with new people, and making cool things as I continue my design career!</p>
         </div>
       </div>
 
-      <!-- ⑦ REPLACE Group 22 → Desktop Video (top) + Mobile Video (bottom), zero gap -->
-      <video autoplay loop muted playsinline>
-        <source src="Videos/Desktop%20Video.mp4" type="video/mp4">
-      </video>
-      <video autoplay loop muted playsinline>
-        <source src="Videos/Mobile%20Video.mp4" type="video/mp4">
-      </video>
-
-      <!-- ⑧ Bottom section (Frame 92) -->
-      <div class="sketches-wrap">
-        <img class="sketches-desktop" src="images/luna_sec_bottom.png" alt="" />
-        <img class="sketches-mobile" src="images/luna_m_bottom.png" alt="" />
-      </div>
-
     </div>
-
   </main>
 
-  <!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
-  <footer id="about">
+  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+  <footer>
     <div class="footer-inner">
 
       <div class="footer-left reveal">
@@ -360,7 +299,7 @@
           </svg>
         </a>
 
-        <nav class="footer-nav" id="contact">
+        <nav class="footer-nav">
           <a href="about.html">About</a>
           <a href="mailto:sicilyrose4@icloud.com">Contact</a>
           <a href="work.html">Work</a>
@@ -378,9 +317,9 @@
     </div>
   </footer>
 
-  <!-- ═══ SCRIPTS ══════════════════════════════════════════════════ -->
+  <!-- ═══ SCRIPTS ══════════════════════════════════════════════ -->
   <script>
-    /* ── Hide/show header on scroll ─────────────────────────────── */
+    /* ── Hide/show header on scroll ─────────────────────────── */
     (function() {
       const wrap = document.querySelector('.header-wrap');
       let lastY = 0;
@@ -397,7 +336,7 @@
       }, { passive: true });
     })();
 
-    /* ── Intersection Observer scroll reveals ───────────────────── */
+    /* ── Intersection Observer scroll reveals ───────────────── */
     (function() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -407,27 +346,7 @@
           }
         });
       }, { threshold: 0.08 });
-
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    })();
-
-    /* ── Force video autoplay on mobile (iOS Safari workaround) ─── */
-    (function() {
-      const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const v = entry.target;
-          if (entry.isIntersecting) {
-            v.play().catch(function(){});
-          } else {
-            v.pause();
-          }
-        });
-      }, { threshold: 0.25 });
-
-      document.querySelectorAll('.case-study video').forEach(v => {
-        v.muted = true;
-        videoObserver.observe(v);
-      });
     })();
   </script>
 
