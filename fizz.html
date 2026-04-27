@@ -135,25 +135,25 @@
       image-rendering: high-quality;
     }
 
-    /* Desktop crop math (image 1283×9660, design-space coords) */
+    /* Desktop crop math (image 1283×9066, design-space coords) */
     /* Top: rows 0–2984 */
     .fizz-d-top { aspect-ratio: 1283 / 2984; }
 
-    /* Mid gap: rows 3685–3834 (pure cream bg, no image slice needed) */
+    /* Mid gap: rows 3685–3834 (pure cream bg) */
     .fizz-d-gap {
       background: var(--fizz-bg);
       padding-top: 11.62%; /* 149/1283 */
     }
 
-    /* Bottom: rows 4760–9660 */
-    .fizz-d-bot { aspect-ratio: 1283 / 4900; }
+    /* Bottom: rows 4760–9066 */
+    .fizz-d-bot { aspect-ratio: 1283 / 4306; }
     .fizz-d-bot img { margin-top: -371.16%; } /* -(4760/1283)*100 */
 
     /* Mobile crop math (design-space 395×3980, file at 2× = 790×7960) */
     /* Top: rows 0–1688 */
     .fizz-m-top { aspect-ratio: 395 / 1688; }
 
-    /* Mid gap: rows 1918–2124 (pure cream bg) */
+    /* Mid gap: rows 1918–2124 (pure cream bg, collapsed on mobile) */
     .fizz-m-gap {
       background: var(--fizz-bg);
       padding-top: 52.15%; /* 206/395 */
@@ -170,9 +170,17 @@
     /* ─── EMBED SECTIONS ─────────────────────────────────────── */
     .fizz-embed {
       background: var(--fizz-bg);
-      padding: 56px var(--gutter);
+      padding: 40px var(--gutter) 56px;
       font-size: initial;
       line-height: initial;
+    }
+
+    .embed-label {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(20px, 2.5vw, 32px);
+      font-weight: 400;
+      color: #111111;
+      margin-bottom: 24px;
     }
 
     .embed-wrap {
@@ -243,7 +251,9 @@
       .fizz-desktop { display: none; }
       .fizz-mobile  { display: block; }
 
-      .fizz-embed { padding: 40px var(--gutter); }
+      .fizz-embed { padding: 32px var(--gutter) 40px; }
+      .fizz-m-gap { padding-top: 0; }
+      .embed-label { margin-bottom: 16px; }
     }
 
     @media (max-width: 480px) {
@@ -301,6 +311,7 @@
 
         <!-- Embed 1: Fizz web prototype -->
         <div class="fizz-embed">
+          <p class="embed-label">Try it out</p>
           <div class="embed-wrap">
             <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=286-1140&viewport=-39%2C218%2C0.05&scaling=scale-down&content-scaling=fixed&page-id=286%3A781&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
           </div>
@@ -311,6 +322,7 @@
 
         <!-- Embed 2: Fizz mobile prototype -->
         <div class="fizz-embed">
+          <p class="embed-label">Mobile Version</p>
           <div class="embed-wrap">
             <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=343-1088&viewport=144%2C104%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=353%3A1584&page-id=343%3A1084&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
           </div>
@@ -331,16 +343,18 @@
 
         <!-- Embed 1: Fizz web prototype -->
         <div class="fizz-embed">
+          <p class="embed-label">Try it out</p>
           <div class="embed-wrap">
             <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=286-1140&viewport=-39%2C218%2C0.05&scaling=scale-down&content-scaling=fixed&page-id=286%3A781&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
           </div>
         </div>
 
-        <!-- Gap between embeds: rows 1918–2124 (cream background) -->
+        <!-- Gap between embeds (collapsed on mobile via CSS) -->
         <div class="fizz-m-gap"></div>
 
         <!-- Embed 2: Fizz mobile prototype -->
         <div class="fizz-embed">
+          <p class="embed-label">Mobile Version</p>
           <div class="embed-wrap">
             <iframe src="https://embed.figma.com/proto/J7PMzATfeynLtjUu96H0OZ/Fizz---Sicily-Manganaro--Copy-?node-id=343-1088&viewport=144%2C104%2C0.11&scaling=scale-down&content-scaling=fixed&starting-point-node-id=353%3A1584&page-id=343%3A1084&embed-host=share" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
           </div>
