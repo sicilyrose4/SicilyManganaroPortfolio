@@ -135,33 +135,29 @@
       image-rendering: high-quality;
     }
 
-    /* Desktop crop math (image 1283×9066, design-space coords) */
-    /* Top: rows 0–2984 */
-    .fizz-d-top { aspect-ratio: 1283 / 2984; }
+    /* Desktop crop math (image 1283×8665) */
+    /* Top: rows 0–1858 */
+    .fizz-d-top { aspect-ratio: 1283 / 1858; }
 
-    /* Mid gap: rows 3685–3834 (pure cream bg) */
-    .fizz-d-gap {
-      background: var(--fizz-bg);
-      padding-top: 11.62%; /* 149/1283 */
-    }
+    /* Slide 16:9-3: rows 1858–2579 */
+    .fizz-d-slide { aspect-ratio: 1283 / 721; }
+    .fizz-d-slide img { margin-top: -144.82%; } /* -(1858/1283)*100 */
 
-    /* Bottom: rows 4760–9066 */
-    .fizz-d-bot { aspect-ratio: 1283 / 4306; }
-    .fizz-d-bot img { margin-top: -371.16%; } /* -(4760/1283)*100 */
+    /* Bottom: rows 4955–8665 */
+    .fizz-d-bot { aspect-ratio: 1283 / 3710; }
+    .fizz-d-bot img { margin-top: -386.20%; } /* -(4955/1283)*100 */
 
     /* Mobile crop math (design-space 395×3980, file at 2× = 790×7960) */
-    /* Top: rows 0–1688 */
-    .fizz-m-top { aspect-ratio: 395 / 1688; }
+    /* Top: rows 0–1118 */
+    .fizz-m-top { aspect-ratio: 395 / 1118; }
 
-    /* Mid gap: rows 1918–2124 (pure cream bg, collapsed on mobile) */
-    .fizz-m-gap {
-      background: var(--fizz-bg);
-      padding-top: 52.15%; /* 206/395 */
-    }
+    /* Slide 16:9-3: rows 1118–1523 */
+    .fizz-m-slide { aspect-ratio: 395 / 405; }
+    .fizz-m-slide img { margin-top: -283.04%; } /* -(1118/395)*100 */
 
-    /* Bottom: rows 2428–3980 */
-    .fizz-m-bot { aspect-ratio: 395 / 1552; }
-    .fizz-m-bot img { margin-top: -614.94%; } /* -(2428/395)*100 */
+    /* Bottom: rows 2483–3980 */
+    .fizz-m-bot { aspect-ratio: 395 / 1497; }
+    .fizz-m-bot img { margin-top: -628.61%; } /* -(2483/395)*100 */
 
     /* ─── DESKTOP / MOBILE SWITCHING ─────────────────────────── */
     .fizz-desktop { display: block; }
@@ -252,7 +248,6 @@
       .fizz-mobile  { display: block; }
 
       .fizz-embed { padding: 32px var(--gutter) 40px; }
-      .fizz-m-gap { padding-top: 0; }
       .embed-label { margin-bottom: 16px; }
     }
 
@@ -304,7 +299,7 @@
 
       <!-- DESKTOP -->
       <div class="fizz-desktop">
-        <!-- Top: rows 0–2984 of 9660 -->
+        <!-- Top: rows 0–1858 -->
         <div class="fizz-section fizz-d-top">
           <img src="images/fizz_d_full.png" alt="" />
         </div>
@@ -317,8 +312,10 @@
           </div>
         </div>
 
-        <!-- Gap between embeds: rows 3685–3834 (cream background) -->
-        <div class="fizz-d-gap"></div>
+        <!-- Slide 16:9-3: rows 1858–2579 -->
+        <div class="fizz-section fizz-d-slide">
+          <img src="images/fizz_d_full.png" alt="" loading="lazy" />
+        </div>
 
         <!-- Embed 2: Fizz mobile prototype -->
         <div class="fizz-embed">
@@ -328,7 +325,7 @@
           </div>
         </div>
 
-        <!-- Bottom: rows 4760–9660 (Scrollable Site + screenshots) -->
+        <!-- Bottom: rows 4955–8665 (Screenshot + Scrollable Site) -->
         <div class="fizz-section fizz-d-bot">
           <img src="images/fizz_d_full.png" alt="" loading="lazy" />
         </div>
@@ -336,7 +333,7 @@
 
       <!-- MOBILE -->
       <div class="fizz-mobile">
-        <!-- Top: rows 0–1688 of 3980 -->
+        <!-- Top: rows 0–1118 -->
         <div class="fizz-section fizz-m-top">
           <img src="images/fizz_m_full.png" alt="" />
         </div>
@@ -349,8 +346,10 @@
           </div>
         </div>
 
-        <!-- Gap between embeds (collapsed on mobile via CSS) -->
-        <div class="fizz-m-gap"></div>
+        <!-- Slide 16:9-3: rows 1118–1523 -->
+        <div class="fizz-section fizz-m-slide">
+          <img src="images/fizz_m_full.png" alt="" loading="lazy" />
+        </div>
 
         <!-- Embed 2: Fizz mobile prototype -->
         <div class="fizz-embed">
@@ -360,7 +359,7 @@
           </div>
         </div>
 
-        <!-- Bottom: rows 2428–3980 -->
+        <!-- Bottom: rows 2483–3980 -->
         <div class="fizz-section fizz-m-bot">
           <img src="images/fizz_m_full.png" alt="" loading="lazy" />
         </div>
