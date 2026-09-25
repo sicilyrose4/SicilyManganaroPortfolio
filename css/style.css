@@ -1,0 +1,7 @@
+/* Design tokens — fill in from Figma variables/styles */
+:root {
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img, video { display: block; max-width: 100%; height: auto; }
