@@ -5,12 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sicily Manganaro</title>
   <meta name="description" content="Sicily Manganaro — UI/UX and design portfolio">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,600&display=swap">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
+  <!-- Figma 165:1687 -->
+  <header class="site-header container">
+    <div class="site-header__left">
+      <a class="site-header__logo" href="index.html" aria-label="Sicily Manganaro — home">
+        <img src="assets/images/logo.svg" width="41.9418" height="38.7929" alt="">
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <!-- Placeholder links until these pages exist -->
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+        <a href="index.html" aria-current="page">Work</a>
+      </nav>
+    </div>
+    <!-- Placeholder until the resume PDF is added -->
+    <a class="pill-button" href="#">
+      Resume
+      <img class="pill-button__arrow" src="assets/images/arrow-up-right.svg" width="22.0003" height="17.5643" alt="">
+    </a>
+  </header>
+
   <main>
-    <!-- Built from Figma designs — placeholder until the home page frame is ready. -->
+    <!-- Figma 165:1686 hero -->
+    <section class="hero container">
+      <div class="hero__text">
+        <h1 class="hero__title">Hi, I’m Sicily.</h1>
+        <p class="hero__intro">I’ve found my passion in creating digital experiences that feel intuitive &amp; engaging, and look forward to sharing it with you!</p>
+        <a class="hero__cta" href="#work">
+          <img src="assets/images/arrow-down-circle.svg" width="34" height="34" alt="">
+          <span>TAKE A L<span class="k-64">O</span><span class="k-48">O</span>K</span>
+        </a>
+      </div>
+
+      <!-- Figma 190:1828. --x/--y/--w are the piece's px position/width inside the 531×643 group. -->
+      <div class="hero__art">
+        <img class="hero__desk" src="assets/images/hero/desk.png" width="1062" height="979" alt="Illustration of Sicily sitting at her desk with a laptop, surrounded by stars and design tools">
+        <span class="doodle" style="--x:279.29; --y:26.38; --w:95.49"><img src="assets/images/hero/stars-1.png" width="191" height="145" alt=""></span>
+        <span class="doodle doodle--stars-2" style="--x:102.63; --y:12.45; --w:125.16"><img src="assets/images/hero/stars-2.png" width="250" height="176" alt=""></span>
+        <span class="doodle doodle--flip" style="--x:284.16; --y:117.93; --w:107.08"><img src="assets/images/hero/bubble-1.png" width="214" height="44" alt=""></span>
+        <span class="doodle" style="--x:130.95; --y:137.40; --w:26.65"><img src="assets/images/hero/bubble-2.png" width="53" height="45" alt=""></span>
+        <span class="doodle" style="--x:346.97; --y:221.54; --w:32.22"><img src="assets/images/hero/cursor.png" width="64" height="80" alt=""></span>
+        <span class="doodle" style="--x:379.19; --y:168.23; --w:18.77"><img src="assets/images/hero/star-3.png" width="38" height="40" alt=""></span>
+        <span class="doodle" style="--x:294.36; --y:133.69; --w:44.50"><img src="assets/images/hero/stars-4.png" width="89" height="138" alt=""></span>
+        <span class="doodle" style="--x:47.28; --y:137.40; --w:46.36"><img src="assets/images/hero/line-height.png" width="93" height="95" alt=""></span>
+        <span class="doodle" style="--x:231.78; --y:57.21; --w:39.63"><img src="assets/images/hero/pen-tool.png" width="79" height="76" alt=""></span>
+        <span class="doodle" style="--x:113.80; --y:199.52; --w:17.15"><img src="assets/images/hero/stars-7.png" width="34" height="44" alt=""></span>
+        <span class="doodle" style="--x:344.65; --y:122.34; --w:30.13"><img src="assets/images/hero/stars-5.png" width="60" height="60" alt=""></span>
+        <span class="doodle" style="--x:126.32; --y:62.54; --w:36.16"><img src="assets/images/hero/color-picker.png" width="72" height="96" alt=""></span>
+        <span class="doodle" style="--x:64.67; --y:237.99; --w:57.71"><img src="assets/images/hero/stars-6.png" width="115" height="94" alt=""></span>
+      </div>
+    </section>
+
+    <section id="work">
+      <!-- Work section — waiting on Figma -->
+    </section>
   </main>
 </body>
 </html>
