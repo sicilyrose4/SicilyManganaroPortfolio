@@ -129,6 +129,9 @@ a { color: inherit; text-decoration: none; }
   top: calc(153.63 / var(--art-h) * 100%);
   width: 100%;
 }
+/* Eyes-closed frame, shown briefly by js/main.js */
+.hero__desk--blink { visibility: hidden; }
+.hero__art.is-blinking .hero__desk--blink { visibility: visible; }
 .doodle {
   position: absolute;
   left: calc(var(--x) / var(--art-w) * 100%);
