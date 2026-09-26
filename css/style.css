@@ -136,6 +136,7 @@ a { color: inherit; text-decoration: none; }
   width: calc(var(--w) / var(--art-w) * 100%);
 }
 .doodle img { width: 100%; }
+.doodle--stars-1 img { transform: rotate(-12deg); }
 .doodle--stars-2 img { transform: rotate(12.45deg); }
 .doodle--flip img { transform: scaleX(-1); }
 
