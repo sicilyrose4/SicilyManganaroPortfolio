@@ -129,8 +129,10 @@ a { color: inherit; text-decoration: none; }
   top: calc(153.63 / var(--art-h) * 100%);
   width: 100%;
 }
-/* Eyes-closed frame, shown briefly by js/main.js */
-.hero__desk--blink { visibility: hidden; }
+/* Eyes-closed frame swaps in for the open-eyes frame while js/main.js blinks.
+   Both PNGs are transparent, so the open one must hide or its eyes show through. */
+.hero__desk--blink,
+.hero__art.is-blinking .hero__desk:not(.hero__desk--blink) { visibility: hidden; }
 .hero__art.is-blinking .hero__desk--blink { visibility: visible; }
 .doodle {
   position: absolute;
