@@ -1,7 +1,47 @@
 // Site-wide scripts
 
+// Hero title: wrap each letter in a span for the load-in wave (see .char in style.css).
+// Words stay unbreakable; screen readers get the plain text via aria-label.
+// Separate inline-blocks lose the font's kerning, so each letter's x is measured in the
+// unsplit text first and the split letters get margins to land back on those spots.
+const title = document.querySelector('.hero__title');
+if (title) {
+  document.fonts.ready.then(() => {
+    const text = title.textContent;
+    const textNode = title.firstChild;
+    const origin = title.getBoundingClientRect().left;
+    const range = document.createRange();
+    const targetX = [];
+    for (let i = 0; i < text.length; i++) {
+      range.setStart(textNode, i);
+      range.setEnd(textNode, i + 1);
+      targetX.push(range.getBoundingClientRect().left - origin);
+    }
+
+    let ci = 0;
+    title.setAttribute('aria-label', text);
+    title.innerHTML = text.split(' ').map((word) =>
+      '<span class="word" aria-hidden="true">' +
+      [...word].map((ch) => `<span class="char" style="--ci:${ci++}">${ch}</span>`).join('') +
+      '</span>'
+    ).join(' ');
+
+    // Walk the letters left to right, nudging each one's right margin so the next lands on its target.
+    const chars = title.querySelectorAll('.char');
+    const letterIndex = [...text].flatMap((ch, i) => (ch === ' ' ? [] : [i]));
+    chars.forEach((char, n) => {
+      const next = chars[n + 1];
+      if (!next) return;
+      const drift = targetX[letterIndex[n + 1]] - (next.getBoundingClientRect().left - origin);
+      char.style.marginRight = `${drift}px`;
+    });
+    title.classList.add('is-split');
+  });
+}
+
 // Hero doodles: bob while hovered, then finish the current bob before stopping.
-document.querySelectorAll('.doodle').forEach((doodle) => {
+document.querySelectorAll('.doodle').forEach((doodle, i) => {
+  doodle.style.setProperty('--i', i); // entrance stagger order
   let hovered = false;
   doodle.addEventListener('mouseenter', () => {
     hovered = true;
