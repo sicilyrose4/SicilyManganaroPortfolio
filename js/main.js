@@ -39,21 +39,52 @@ if (title) {
   });
 }
 
-// Hero doodles: bob while hovered, then finish the current bob before stopping.
-document.querySelectorAll('.doodle').forEach((doodle, i) => {
+// Hero doodles: when idle, one random doodle at a time does a single bob. Hovering pauses
+// that and bobs the hovered doodle until the cursor leaves (finishing its current bob).
+// .is-ambient (1 cycle) and .is-bobbing (looping) share the same keyframes, so switching
+// between them mid-bob continues smoothly instead of restarting.
+const doodles = [...document.querySelectorAll('.doodle')];
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const AMBIENT_GAP_MS = 200; // pause between one doodle's bob and the next
+let hoveredDoodle = null;
+let ambientTimer = null;
+let lastAmbient = null;
+
+const scheduleAmbient = (delay) => {
+  clearTimeout(ambientTimer);
+  if (reduceMotion) return;
+  ambientTimer = setTimeout(() => {
+    if (hoveredDoodle || doodles.some((d) => d.classList.contains('is-bobbing'))) return;
+    const choices = doodles.filter((d) => d !== lastAmbient);
+    lastAmbient = choices[Math.floor(Math.random() * choices.length)];
+    lastAmbient.classList.add('is-ambient');
+  }, delay);
+};
+
+doodles.forEach((doodle, i) => {
   doodle.style.setProperty('--i', i); // entrance stagger order
-  let hovered = false;
   doodle.addEventListener('mouseenter', () => {
-    hovered = true;
+    hoveredDoodle = doodle;
+    clearTimeout(ambientTimer);
     doodle.classList.add('is-bobbing');
+    doodle.classList.remove('is-ambient');
   });
   doodle.addEventListener('mouseleave', () => {
-    hovered = false;
+    if (hoveredDoodle === doodle) hoveredDoodle = null;
   });
   doodle.addEventListener('animationiteration', () => {
-    if (!hovered) doodle.classList.remove('is-bobbing');
+    if (hoveredDoodle !== doodle) {
+      doodle.classList.remove('is-bobbing');
+      if (!hoveredDoodle) scheduleAmbient(AMBIENT_GAP_MS);
+    }
+  });
+  doodle.addEventListener('animationend', (e) => {
+    if (e.animationName !== 'bob') return;
+    doodle.classList.remove('is-ambient');
+    if (!hoveredDoodle) scheduleAmbient(AMBIENT_GAP_MS);
   });
 });
+scheduleAmbient(2600); // after the page-load entrance finishes
 
 // Hero illustration: blink every ~1.5–4s (occasionally a double blink).
 const art = document.querySelector('.hero__art');

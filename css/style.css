@@ -151,15 +151,16 @@ a { color: inherit; text-decoration: none; }
 .doodle--stars-2 img { transform: rotate(12.45deg); }
 .doodle--bubble-1 img { transform: rotate(12deg) scaleX(-1); } /* Figma flip, then rotate */
 
-/* Hover bob — js/main.js adds .is-bobbing on hover and removes it at the end
-   of the current cycle after the cursor leaves, so pieces settle instead of snapping. */
+/* Bob — js/main.js adds .is-ambient (one bob, random doodle at a time) when idle and
+   .is-bobbing (loops) on hover, removing it at the end of a cycle after the cursor leaves. */
+.doodle.is-ambient { animation: bob 1.2s ease-in-out; }
 .doodle.is-bobbing { animation: bob 1.2s ease-in-out infinite; }
 @keyframes bob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .doodle.is-bobbing { animation: none; }
+  .doodle.is-ambient, .doodle.is-bobbing { animation: none; }
 }
 
 /* ---------- Page-load entrance ---------- */
