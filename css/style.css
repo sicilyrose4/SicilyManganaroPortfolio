@@ -92,19 +92,19 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero__intro {
-  width: 467px;
+  width: 400px;
   max-width: 100%;
   margin: 61px 0 0; /* paragraph top 440 − heading line box end 379 */
-  font-size: 18px;
-  line-height: 29px;
-  letter-spacing: -0.36px;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: -0.32px;
 }
 
 .hero__cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-top: 67px; /* CTA top 594 − paragraph text end 527 */
+  margin-top: 70px; /* CTA top 594 − paragraph text end 524 */
   font-size: 18px;
   font-weight: 500;
   line-height: 29px;
@@ -171,6 +171,6 @@ a { color: inherit; text-decoration: none; }
   .pill-button { gap: 8px; padding: 5px 12px; }
   .pill-button__arrow { width: 16px; height: auto; margin: 0; }
   .hero__title { font-size: 52px; line-height: 1; }
-  .hero__intro { margin-top: 32px; font-size: 16px; line-height: 26px; }
+  .hero__intro { margin-top: 32px; }
   .hero__cta { margin-top: 40px; }
 }
