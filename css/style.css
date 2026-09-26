@@ -1,7 +1,7 @@
 /* Design tokens — from Figma "Portfolio Site" */
 :root {
   --ink: #252e40;
-  --bg: #ffffff;
+  --bg: #fcfcfc;
 
   --font-sans: "DM Sans", sans-serif;
   --font-mono: "DM Mono", monospace;
@@ -45,17 +45,17 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.45;
   letter-spacing: -0.08px;
 }
-.site-nav a[aria-current="page"] { font-weight: 500; }
 
 .pill-button {
   display: inline-flex;
   align-items: center;
   gap: 11px;
   padding: 8px 26px;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--ink);
   border-radius: 32px;
-  font-size: 16px;
-  line-height: normal;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 .pill-button:hover,
@@ -63,11 +63,11 @@ a { color: inherit; text-decoration: none; }
   background: var(--ink);
   color: var(--bg);
 }
-/* SVG is 22×17.56 around a 20×14 layout box (Figma insets: -18.32% / -5% / -7.14%) */
+/* SVG is 11×11 around a 10×10 layout box (Figma inset: -5%) */
 .pill-button__arrow {
-  width: 22px;
-  height: 17.56px;
-  margin: -2.56px -1px -1px;
+  width: 11px;
+  height: 11px;
+  margin: -0.5px;
 }
 
 /* ---------- Hero (Figma 165:1686) ---------- */
@@ -76,7 +76,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   align-items: flex-start;
   padding-top: 73px;    /* art group top 169 − header 96 */
-  padding-bottom: 212px; /* art bottom 812 → frame bottom 1024 */
+  padding-bottom: 149px; /* art bottom 812 → work section top 961 */
 }
 
 .hero__text { padding-top: 170px; width: 501px; } /* heading top 339 − 169 */
@@ -94,9 +94,9 @@ a { color: inherit; text-decoration: none; }
 .hero__intro {
   width: 400px;
   max-width: 100%;
-  margin: 61px 0 0; /* paragraph top 440 − heading line box end 379 */
+  margin: 52px 0 0;
   font-size: 16px;
-  line-height: 28px;
+  line-height: 26px;
   letter-spacing: -0.32px;
 }
 
@@ -104,12 +104,18 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-top: 70px; /* CTA top 594 − paragraph text end 524 */
+  margin-top: 269px; /* CTA top 778 − paragraph text end 509 */
   font-size: 18px;
-  font-weight: 500;
   line-height: 29px;
 }
-.hero__cta img { width: 34px; height: 34px; }
+.hero__cta-icon { flex: none; width: 36px; height: 36px; }
+/* Same fill hover as the Resume pill: circle fills, arrow turns white */
+.hero__cta-icon rect { fill: transparent; transition: fill 0.2s ease; }
+.hero__cta-icon path { transition: fill 0.2s ease; }
+.hero__cta:hover .hero__cta-icon rect,
+.hero__cta:focus-visible .hero__cta-icon rect { fill: var(--ink); }
+.hero__cta:hover .hero__cta-icon path,
+.hero__cta:focus-visible .hero__cta-icon path { fill: var(--bg); }
 .k-64 { letter-spacing: 0.64px; }
 .k-48 { letter-spacing: 0.48px; }
 
@@ -212,15 +218,15 @@ a { color: inherit; text-decoration: none; }
     padding-bottom: 96px;
   }
   .hero__text { padding-top: 0; width: auto; }
+  .hero__cta { margin-top: 48px; }
   .hero__art { align-self: center; }
 }
 @media (max-width: 560px) {
   .site-header { gap: 12px; }
   .site-header__left, .site-nav { gap: 14px; }
   .site-header__logo img { width: 32px; height: auto; }
-  .site-nav a, .pill-button { font-size: 14px; }
+  .site-nav a { font-size: 14px; }
   .pill-button { gap: 8px; padding: 5px 12px; }
-  .pill-button__arrow { width: 16px; height: auto; margin: 0; }
   .hero__title { font-size: 52px; line-height: 1; }
   .hero__intro { margin-top: 32px; }
   .hero__cta { margin-top: 40px; }
