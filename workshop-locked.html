@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workshop Comms Planner — Password required — Sicily Manganaro</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,500;9..40,600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    // Arriving from a dark page (e.g. Luna's BACK TO WORK): start dark and fade to light first.
+    try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- Figma 300:8893 -->
+  <main class="lock-page container">
+    <a class="back-link" data-reveal href="index.html#work">
+      <!-- Inline copy of assets/images/arrow-back-circle.svg (Figma rotates it 90°) so it can fill on hover -->
+      <svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg>
+      BACK TO WORK
+    </a>
+
+    <!-- data-password-gate: the project this unlocks; data-next: where to go once unlocked -->
+    <section class="lock" data-password-gate="workshop" data-next="workshop.html">
+      <img class="lock__art" data-reveal src="assets/images/lock/password-protected.png" width="300" height="426" alt="Hand-drawn padlock">
+      <h1 class="lock__title" data-reveal>This project is password protected.</h1>
+      <form class="lock__form" data-reveal novalidate>
+        <div class="lock__field">
+          <label class="visually-hidden" for="project-password">Password</label>
+          <input class="lock__input" id="project-password" name="password" type="password" placeholder="Enter password" autocomplete="off" autofocus>
+          <p class="lock__error" role="alert" aria-live="assertive"></p>
+        </div>
+        <button class="outline-button lock__submit" type="submit">ENTER</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

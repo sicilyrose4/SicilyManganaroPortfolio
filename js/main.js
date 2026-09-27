@@ -171,3 +171,36 @@ if (revealBlocks.length) {
   }, { threshold: 0.2 }); // start once a fifth of the block is on screen (the footer can always reach this)
   revealBlocks.forEach((el) => observer.observe(el));
 }
+
+// Password gate (workshop-locked.html). A light gate for a static site: it keeps casual visitors
+// out, but anything published can still be found by someone determined. The answer is stored
+// base64-encoded so it isn't sitting in plain text. Unlocks last until the tab is closed.
+const PROJECT_PASSWORDS = { workshop: 'ZGVzaWdu' };
+const gate = document.querySelector('[data-password-gate]');
+if (gate) {
+  const project = gate.dataset.passwordGate;
+  const next = gate.dataset.next;
+  const form = gate.querySelector('.lock__form');
+  const field = gate.querySelector('.lock__field');
+  const input = gate.querySelector('.lock__input');
+  const error = gate.querySelector('.lock__error');
+  const unlockKey = `unlocked:${project}`;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let ok = false;
+    try { ok = btoa(input.value.trim()) === PROJECT_PASSWORDS[project]; } catch (err) {}
+    if (ok) {
+      try { sessionStorage.setItem(unlockKey, '1'); } catch (err) {}
+      location.href = next;
+      return;
+    }
+    error.textContent = 'That password isn’t right.';
+    field.classList.remove('is-wrong');
+    void field.offsetWidth; // restart the shake on repeated misses
+    field.classList.add('is-wrong');
+    input.value = '';
+    input.focus();
+  });
+  input.addEventListener('input', () => { error.textContent = ''; });
+}
