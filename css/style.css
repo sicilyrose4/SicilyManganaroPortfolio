@@ -188,7 +188,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 87px;             /* card tops 532 apart, cards 445 tall */
-  padding-bottom: 238px; /* SEE MORE bottom 2592 → frame bottom 2830 */
+  padding-bottom: 186px; /* SEE MORE bottom 2592 → footer divider 2778 */
 }
 .project-card {
   display: flex;
@@ -373,7 +373,7 @@ a { color: inherit; text-decoration: none; }
 /* Full-bleed gradient bands run past the column; clip them at the window edge */
 html:has(> .page-dark), .page-dark { overflow-x: clip; }
 
-.case { padding: 98px 0 445px; } /* back link top 98; content end 6784 → frame bottom 7230 */
+.case { padding: 98px 0 186px; } /* back link top 98; same gap to the footer as the home page */
 
 .back-link {
   display: flex;
@@ -408,14 +408,16 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
 
 /* Content column: 1 Figma px = --px, so compositions scale with the column */
 .case__body {
-  margin-top: 72px; /* hero top 447 − intro end 375 */
+  margin-top: 95px; /* Frame 636 top 470 − intro end 375 */
   container-type: inline-size;
+  overflow: clip; /* Figma "clip content": bands and the hero stop at the column edges */
   font-family: "Montserrat", sans-serif;
   color: #fff;
 }
 .case__body > * { --px: calc(100cqw / 1022); }
 .case__media { display: block; width: 100%; height: auto; }
-.case__hero { aspect-ratio: 1022 / 628.86; object-fit: cover; }
+/* Hero sits 23px above Frame 636, so its top 23px is clipped */
+.case__hero { aspect-ratio: 1022 / 605.86; object-fit: cover; object-position: center bottom; }
 .case__collage {
   width: calc(955.24 * var(--px));
   aspect-ratio: 955.24 / 419.6;
@@ -516,12 +518,7 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
   transform: rotate(25.43deg);
 }
 
-/* Behance 6–11: stacked edge to edge at Figma's slightly-under-column widths */
-.case__stack--b6  { width: calc(1017.23 * var(--px)); aspect-ratio: 1017.23 / 444.84; object-fit: cover; }
-.case__stack--b8  { width: calc(1019.82 * var(--px)); }
-.case__stack--b9  { width: calc(1017.23 * var(--px)); aspect-ratio: 1017.23 / 510.36; }
-.case__stack--b10 { width: calc(1017.23 * var(--px)); aspect-ratio: 1017.23 / 480.38; }
-.case__stack--b11 { width: calc(1016.95 * var(--px)); }
+/* Behance 6–11 stack edge to edge at the full column width (Figma had them 2–5px short) */
 
 /* Group 22 */
 .luna-site {
@@ -552,7 +549,7 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
 .luna-sketches__item--software img { top: calc(26.92 * var(--px)); width: calc(296.21 * var(--px)); }
 
 @media (max-width: 900px) {
-  .case { padding-top: 48px; padding-bottom: 120px; }
+  .case { padding-top: 48px; padding-bottom: 96px; }
   .case__intro { margin-top: 48px; }
   .case__body { margin-top: 48px; }
 }
@@ -560,7 +557,6 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
    (no mobile Figma frame yet) */
 @media (max-width: 700px) {
   .luna-problem { height: auto; padding: 40px 0; gap: 32px; }
-  .luna-problem::before { inset: 0 calc(-1 * var(--gutter)); }
   .luna-problem__row { flex-direction: column; gap: 12px; }
   .luna-problem__row h2 { width: auto; }
   .luna-problem__row h2 img,
@@ -582,4 +578,32 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
   .luna-sketches__item,
   .luna-sketches__item img { position: static; width: 100% !important; }
   .luna-sketches__item figcaption { margin-bottom: 12px; font-size: 13px; }
+}
+
+/* ---------- Footer (Figma 283:6531) ---------- */
+.site-footer {
+  /* divider runs x 104 → 1336 in the 1440 frame: 105px wider than the column each side */
+  width: min(1232px, 100% - 2 * var(--gutter));
+  margin-inline: auto;
+  border-top: 1.5px solid #d9d9d9;
+}
+.site-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 94.5px; /* 96 incl. the rule */
+}
+.site-footer__left { display: flex; align-items: center; gap: 32px; }
+.site-footer__logo { flex: none; }
+.site-footer__logo img { width: 41.94px; height: 38.79px; }
+.site-footer__nav { display: flex; gap: 32px; }
+.site-footer__nav a { font-size: 14px; line-height: 1.45; letter-spacing: -0.07px; }
+.site-footer__social img { width: 24px; height: 24px; }
+/* Dark pages: Figma's copy keeps the light-page navy (#252e40), which disappears on #111 */
+.page-dark .site-footer__nav a { color: #bbc0cc; }
+
+@media (max-width: 560px) {
+  .site-footer__left, .site-footer__nav { gap: 16px; }
+  .site-footer__logo img { width: 32px; height: auto; }
+  .site-footer__nav a { font-size: 13px; }
 }

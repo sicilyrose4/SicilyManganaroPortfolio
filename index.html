@@ -70,7 +70,7 @@
     <!-- Figma 228:2360 -->
     <section id="work" class="work container" aria-label="Selected work">
       <!-- Not clickable until the Workshop page exists -->
-      <article class="project-card project-card--workshop">
+      <article data-reveal class="project-card project-card--workshop">
         <div class="project-card__head">
           <p class="project-card__label">INTERNSHIP PROJECT</p>
           <h2 class="project-card__title">Workshop Comms Planner</h2>
@@ -83,7 +83,7 @@
         </div>
       </article>
 
-      <a class="project-card project-card--luna" href="luna.html">
+      <a data-reveal class="project-card project-card--luna" href="luna.html">
         <div class="project-card__head">
           <p class="project-card__label">APP, WEBSITE, &amp; PRODUCT DESIGN</p>
           <h2 class="project-card__title">Luna Phase Headphones Launch</h2>
@@ -99,7 +99,7 @@
       </a>
 
       <!-- Not clickable until the Drop page exists -->
-      <article class="project-card project-card--drop">
+      <article data-reveal class="project-card project-card--drop">
         <div class="project-card__head">
           <p class="project-card__label">DASHBOARD DESIGN</p>
           <h2 class="project-card__title">Drop Drone Delivery</h2>
@@ -113,8 +113,27 @@
       </article>
 
       <!-- Placeholder until more projects are added -->
-      <a class="outline-button work__more" href="#">SEE MORE</a>
+      <a data-reveal class="outline-button work__more" href="#">SEE MORE</a>
     </section>
   </main>
+  <!-- Figma 283:6531 (+ divider 283:6529) -->
+  <footer class="site-footer" data-reveal>
+    <div class="site-footer__inner container">
+      <div class="site-footer__left">
+        <a class="site-footer__logo" href="index.html" aria-label="Sicily Manganaro — home">
+          <img src="assets/images/footer-logo.svg" width="41.9416" height="38.7929" alt="">
+        </a>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <!-- Placeholder links until these pages exist -->
+          <a href="#">Contact</a>
+          <a href="#">About</a>
+          <a href="index.html#work">Work</a>
+        </nav>
+      </div>
+      <a class="site-footer__social" href="https://www.linkedin.com/in/sicily-manganaro-1b5a67296" target="_blank" rel="noopener" aria-label="Sicily Manganaro on LinkedIn">
+        <img src="assets/images/linkedin.svg" width="24" height="24" alt="">
+      </a>
+    </div>
+  </footer>
 </body>
 </html>
