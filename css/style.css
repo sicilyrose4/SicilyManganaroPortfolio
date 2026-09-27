@@ -1,6 +1,7 @@
 /* Design tokens — from Figma "Portfolio Site" */
 :root {
   --ink: #252e40;
+  --accent: #4e74c0; /* outline strokes, labels, logo */
   --bg: #fcfcfc;
 
   --font-sans: "DM Sans", sans-serif;
@@ -55,7 +56,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 11px;
   padding: 8px 26px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--accent);
   border-radius: 32px;
   font-size: 14px;
   line-height: 18px;
@@ -64,7 +65,7 @@ a { color: inherit; text-decoration: none; }
 }
 .pill-button:hover,
 .pill-button:focus-visible {
-  background: var(--ink);
+  background: var(--accent);
   color: var(--bg);
 }
 /* SVG is 11×11 around a 10×10 layout box (Figma inset: -5%) */
@@ -118,7 +119,7 @@ a { color: inherit; text-decoration: none; }
 .hero__cta-icon rect { fill: transparent; transition: fill 0.2s ease; }
 .hero__cta-icon path { transition: fill 0.2s ease; }
 .hero__cta:hover .hero__cta-icon rect,
-.hero__cta:focus-visible .hero__cta-icon rect { fill: var(--ink); }
+.hero__cta:focus-visible .hero__cta-icon rect { fill: var(--accent); }
 .hero__cta:hover .hero__cta-icon path,
 .hero__cta:focus-visible .hero__cta-icon path { fill: var(--bg); }
 .k-64 { letter-spacing: 0.64px; }
@@ -211,7 +212,7 @@ a { color: inherit; text-decoration: none; }
 }
 .project-card__label {
   margin: 0;
-  color: #4e74c0;
+  color: var(--accent);
   font-size: 13px;
   line-height: 40px;
   letter-spacing: 0.26px;
