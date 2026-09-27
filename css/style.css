@@ -58,6 +58,7 @@ a { color: inherit; text-decoration: none; }
   padding: 8px 26px;
   border: 1.5px solid var(--accent);
   border-radius: 32px;
+  color: var(--accent);
   font-size: 14px;
   line-height: 18px;
   text-transform: uppercase;
@@ -111,6 +112,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 12px;
   margin-top: 175px; /* CTA top 706 − paragraph text end 531 */
+  color: var(--accent);
   font-size: 18px;
   line-height: 29px;
 }
@@ -177,16 +179,16 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   padding: 8px 24px;
-  border: 1.5px solid #000;
+  border: 1.5px solid var(--accent);
   border-radius: 32px;
-  color: #000;
+  color: var(--accent);
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.7px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 .outline-button:hover,
-.outline-button:focus-visible { background: #000; color: #fff; }
+.outline-button:focus-visible { background: var(--accent); color: var(--bg); }
 
 /* ---------- Work cards (Figma 228:2360) ---------- */
 .work {
