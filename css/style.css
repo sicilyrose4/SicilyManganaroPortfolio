@@ -315,22 +315,23 @@ a { color: inherit; text-decoration: none; }
   .hero__desk {
     animation: fade-up 700ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
   }
-  .site-header { animation-delay: 0ms; }
-  .hero__desk  { animation-delay: 350ms; }
-  .hero__intro { animation-delay: 650ms; }
-  .hero__cta   { animation-delay: 850ms; }
+  /* --enter-offset holds the entrance while a dark → light background fade plays */
+  .site-header { animation-delay: var(--enter-offset, 0ms); }
+  .hero__desk  { animation-delay: calc(var(--enter-offset, 0ms) + 350ms); }
+  .hero__intro { animation-delay: calc(var(--enter-offset, 0ms) + 650ms); }
+  .hero__cta   { animation-delay: calc(var(--enter-offset, 0ms) + 850ms); }
 
   /* Doodles fade in one by one after the desk (--i set per doodle in js/main.js).
      Animating the img keeps the wrapper free for the hover bob. */
   .doodle img {
     animation: fade-in 500ms ease-out both;
-    animation-delay: calc(800ms + var(--i, 0) * 70ms);
+    animation-delay: calc(var(--enter-offset, 0ms) + 800ms + var(--i, 0) * 70ms);
   }
 
   /* Letter wave: rise from below, overshoot slightly, settle (--ci = letter index) */
   .hero__title .char {
     animation: letter-wave 700ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
-    animation-delay: calc(150ms + var(--ci) * 45ms);
+    animation-delay: calc(var(--enter-offset, 0ms) + 150ms + var(--ci) * 45ms);
   }
 }
 @keyframes fade-up {
@@ -398,6 +399,15 @@ a { color: inherit; text-decoration: none; }
    the content fades in (js/main.js holds the first reveal until this finishes) */
 @media (prefers-reduced-motion: no-preference) {
   .page-dark { animation: bg-to-dark 700ms ease-in-out both; }
+}
+/* Arriving on a light page from a dark one: the reverse fade, then the entrance runs */
+@media (prefers-reduced-motion: no-preference) {
+  html.from-dark { --enter-offset: 700ms; }
+  html.from-dark body { animation: bg-to-light 700ms ease-in-out both; }
+}
+@keyframes bg-to-light {
+  from { background-color: #111; }
+  to   { background-color: #fcfcfc; }
 }
 @keyframes bg-to-dark {
   from { background-color: #fcfcfc; }

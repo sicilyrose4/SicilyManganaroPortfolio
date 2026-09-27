@@ -1,5 +1,20 @@
 // Site-wide scripts
 
+// Arriving from a dark page adds html.from-dark (inline script in <head>): the background fades
+// dark → light for this long before anything else enters.
+const enterOffset = document.documentElement.classList.contains('from-dark') &&
+  !window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 700 : 0;
+
+// Leaving a dark page through one of our own links: tell the next (light) page to start dark.
+if (document.body.classList.contains('page-dark')) {
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link || link.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    if (link.origin !== location.origin && location.protocol !== 'file:') return;
+    try { sessionStorage.setItem('arrive-from-dark', '1'); } catch (err) {}
+  });
+}
+
 // Fetch DM Mono Medium up front so the first hover-bold doesn't wait on a download.
 if (document.fonts) document.fonts.load('500 14px "DM Mono"');
 
@@ -87,7 +102,7 @@ doodles.forEach((doodle, i) => {
     if (!hoveredDoodle) scheduleAmbient(AMBIENT_GAP_MS);
   });
 });
-scheduleAmbient(2600); // after the page-load entrance finishes
+scheduleAmbient(2600 + enterOffset); // after the page-load entrance finishes
 
 // TAKE A LOOK fades out as the first project scrolls into view: fully visible until the Workshop
 // card's image area starts entering from the bottom, gone once that area is fully on screen.
@@ -140,7 +155,7 @@ if (revealBlocks.length) {
   // Dark pages fade their background in from the light one first (style.css, 700ms);
   // the first batch waits for that so the content doesn't appear over a changing color.
   const reduceMotionReveal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const firstBatchDelay = document.body.classList.contains('page-dark') && !reduceMotionReveal ? 700 : 0;
+  const firstBatchDelay = (document.body.classList.contains('page-dark') && !reduceMotionReveal ? 700 : 0) + enterOffset;
   const observer = new IntersectionObserver((entries) => {
     const now = performance.now();
     if (now - batchStart > 100) { batchStart = now; batchIndex = 0; }
