@@ -88,11 +88,11 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding-top: 75px;     /* art group top 171 − header 96 */
-  padding-bottom: 194px; /* art bottom 767 → work section top 961 */
+  padding-top: 43px;     /* art group top 139 − header 96 */
+  padding-bottom: 219px; /* art bottom 742 → work section top 961 */
 }
 
-.hero__text { padding-top: 168px; width: 501px; } /* heading top 339 − 171 */
+.hero__text { padding-top: 200px; width: 501px; } /* heading top 339 − 139 */
 
 .hero__title {
   margin: 0;
@@ -135,14 +135,13 @@ a { color: inherit; text-decoration: none; }
 .k-48 { letter-spacing: 0.48px; }
 
 /* Illustration: all pieces share the original 531×643 group space (percentages), so the
-   group can render at Figma's current 492px width without moving anything relative. */
+   group can render at Figma's current 498px width without moving anything relative. */
 .hero__art {
   --art-w: 531;
   --art-h: 642.91;
   position: relative;
   flex: none;
-  width: 492px;
-  margin-right: 19px; /* group right edge 1212 vs content edge 1231 */
+  width: 498px; /* Figma 200:1866: 733 → 1231, flush with the content edge */
   max-width: 100%;
   aspect-ratio: 531 / 642.91;
 }
