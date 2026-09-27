@@ -370,6 +370,15 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Case study pages (Figma 283:6042 — Luna) ---------- */
 .page-dark { --bg: #111; background: var(--bg); }
+/* Arriving from the light pages: start on the home background and fade to dark before
+   the content fades in (js/main.js holds the first reveal until this finishes) */
+@media (prefers-reduced-motion: no-preference) {
+  .page-dark { animation: bg-to-dark 700ms ease-in-out both; }
+}
+@keyframes bg-to-dark {
+  from { background-color: #fcfcfc; }
+  to   { background-color: #111; }
+}
 /* Full-bleed gradient bands run past the column; clip them at the window edge */
 html:has(> .page-dark), .page-dark { overflow-x: clip; }
 

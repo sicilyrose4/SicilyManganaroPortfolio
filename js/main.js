@@ -109,14 +109,20 @@ const revealBlocks = document.querySelectorAll('[data-reveal]');
 if (revealBlocks.length) {
   let batchStart = performance.now();
   let batchIndex = 0;
+  // Dark pages fade their background in from the light one first (style.css, 700ms);
+  // the first batch waits for that so the content doesn't appear over a changing color.
+  const reduceMotionReveal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let firstBatchDelay = document.body.classList.contains('page-dark') && !reduceMotionReveal ? 700 : 0;
   const observer = new IntersectionObserver((entries) => {
     const now = performance.now();
     if (now - batchStart > 100) { batchStart = now; batchIndex = 0; }
-    entries.filter((e) => e.isIntersecting).forEach((e) => {
-      e.target.style.setProperty('--reveal-delay', `${batchIndex++ * 120}ms`);
+    const visible = entries.filter((e) => e.isIntersecting);
+    visible.forEach((e) => {
+      e.target.style.setProperty('--reveal-delay', `${firstBatchDelay + batchIndex++ * 120}ms`);
       e.target.classList.add('is-revealed');
       observer.unobserve(e.target);
     });
+    if (visible.length) firstBatchDelay = 0;
   }, { rootMargin: '0px 0px -8% 0px' });
   revealBlocks.forEach((el) => observer.observe(el));
 }
