@@ -52,6 +52,11 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.07px;
 }
 
+/* Text links bolden on hover (DM Mono is monospaced, so nothing shifts) */
+.site-nav a:hover, .site-nav a:focus-visible,
+.site-footer__nav a:hover, .site-footer__nav a:focus-visible,
+.hero__cta:hover, .hero__cta:focus-visible { font-weight: 500; }
+
 .pill-button {
   display: inline-flex;
   align-items: center;

@@ -1,5 +1,8 @@
 // Site-wide scripts
 
+// Fetch DM Mono Medium up front so the first hover-bold doesn't wait on a download.
+if (document.fonts) document.fonts.load('500 14px "DM Mono"');
+
 // Hero title: wrap each letter in a span for the load-in wave (see .char in style.css).
 // Words stay unbreakable; screen readers get the plain text via aria-label.
 // Separate inline-blocks lose the font's kerning, so each letter's x is measured in the
