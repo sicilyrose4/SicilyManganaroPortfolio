@@ -12,6 +12,10 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+/* In-page links (TAKE A LOOK → #work) glide instead of jumping */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 img, video { display: block; max-width: 100%; height: auto; }
 
 body {
@@ -185,6 +189,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Work cards (Figma 228:2360) ---------- */
 .work {
+  scroll-margin-top: 48px; /* breathing room above the first card when TAKE A LOOK lands */
   display: flex;
   flex-direction: column;
   gap: 87px;             /* card tops 532 apart, cards 445 tall */
