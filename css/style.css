@@ -748,6 +748,11 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
   background: transparent;
   cursor: pointer;
 }
+/* ENTER stays an outline while the field is empty, and takes the filled hover look once typed in */
+.lock__form:has(.lock__input:not(:placeholder-shown)) .lock__submit {
+  background: var(--accent);
+  color: var(--bg);
+}
 .lock__error {
   position: absolute;
   left: 31px;
