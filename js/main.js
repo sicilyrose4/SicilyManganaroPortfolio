@@ -129,7 +129,7 @@ if (revealBlocks.length) {
       e.target.classList.add('is-revealed');
       observer.unobserve(e.target);
     });
-    if (visible.length) initialBatch = false;
+    initialBatch = false; // the observer's first report is the page-load state, even if nothing was visible yet
   }, { threshold: 0.2 }); // start once a fifth of the block is on screen (the footer can always reach this)
   revealBlocks.forEach((el) => observer.observe(el));
 }
