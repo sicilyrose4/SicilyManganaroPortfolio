@@ -7,7 +7,7 @@
   <meta name="description" content="Sicily Manganaro — UI/UX and design portfolio">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,500;9..40,600&display=swap">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
   <script>document.documentElement.classList.add('js')</script>
@@ -39,7 +39,7 @@
     <section class="hero container">
       <div class="hero__text">
         <h1 class="hero__title">Hi, I’m Sicily.</h1>
-        <p class="hero__intro">I’ve found my passion in creating digital experiences that feel intuitive &amp; engaging, and look forward to sharing it with you!</p>
+        <p class="hero__intro">I am a UI/UX &amp; Product Designer, passionate about creating digital experiences that feel intuitive and engaging. I combine interaction and brand design to create work that is memorable in the right ways.</p>
         <a class="hero__cta" href="#work">
           <!-- Inline copy of assets/images/arrow-down-circle.svg so it can fill on hover -->
           <svg class="hero__cta-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="35" height="35" rx="17.5" stroke="var(--ink)"/><path d="M18.5 12C18.5 11.7239 18.2761 11.5 18 11.5C17.7239 11.5 17.5 11.7239 17.5 12L18 12L18.5 12ZM17.6464 26.3536C17.8417 26.5488 18.1583 26.5488 18.3536 26.3536L21.5355 23.1716C21.7308 22.9763 21.7308 22.6597 21.5355 22.4645C21.3403 22.2692 21.0237 22.2692 20.8284 22.4645L18 25.2929L15.1716 22.4645C14.9763 22.2692 14.6597 22.2692 14.4645 22.4645C14.2692 22.6597 14.2692 22.9763 14.4645 23.1716L17.6464 26.3536ZM18 12L17.5 12L17.5 26L18 26L18.5 26L18.5 12L18 12Z" fill="currentColor"/></svg>
@@ -47,7 +47,7 @@
         </a>
       </div>
 
-      <!-- Figma 190:1828. --x/--y/--w are the piece's px position/width inside the 531×643 group. -->
+      <!-- Figma 200:1866. --x/--y/--w are px in the original 531×643 group space; the group now renders at 492 wide. -->
       <div class="hero__art">
         <img class="hero__desk" src="assets/images/hero/desk.png" width="1062" height="979" alt="Illustration of Sicily sitting at her desk with a laptop, surrounded by stars and design tools">
         <img class="hero__desk hero__desk--blink" src="assets/images/hero/desk-blink.png" width="1062" height="979" alt="" aria-hidden="true">
@@ -67,8 +67,53 @@
       </div>
     </section>
 
-    <section id="work">
-      <!-- Work section — waiting on Figma -->
+    <!-- Figma 228:2360 -->
+    <section id="work" class="work container" aria-label="Selected work">
+      <!-- Not clickable until the Workshop page exists -->
+      <article class="project-card project-card--workshop">
+        <div class="project-card__head">
+          <p class="project-card__label">INTERNSHIP PROJECT</p>
+          <h2 class="project-card__title">Workshop Comms Planner</h2>
+        </div>
+        <div class="project-card__media">
+          <img class="project-card__logo" src="assets/images/work/workshop-logo.svg" width="160" height="116" alt="Workshop">
+          <div class="project-card__screen">
+            <img src="assets/images/work/workshop-screen.png" width="1138" height="562" alt="Workshop's calendar with the Cici AI planning assistant open">
+          </div>
+        </div>
+      </article>
+
+      <a class="project-card project-card--luna" href="luna.html">
+        <div class="project-card__head">
+          <p class="project-card__label">APP, WEBSITE, &amp; PRODUCT DESIGN</p>
+          <h2 class="project-card__title">Luna Phase Headphones Launch</h2>
+        </div>
+        <div class="project-card__media">
+          <div class="project-card__screen">
+            <img src="assets/images/work/luna-phone-1.png" width="303" height="560" alt="Luna app device screen showing connected earbuds">
+            <img src="assets/images/work/luna-phone-2.png" width="304" height="560" alt="Luna app sleep stats screen with an 86% sleep score">
+            <img src="assets/images/work/luna-phone-3.png" width="303" height="560" alt="Luna app tonight's plan screen">
+          </div>
+          <img class="project-card__logo" src="assets/images/work/luna-logo.svg" width="198" height="81" alt="Luna">
+        </div>
+      </a>
+
+      <!-- Not clickable until the Drop page exists -->
+      <article class="project-card project-card--drop">
+        <div class="project-card__head">
+          <p class="project-card__label">DASHBOARD DESIGN</p>
+          <h2 class="project-card__title">Drop Drone Delivery</h2>
+        </div>
+        <div class="project-card__media">
+          <div class="project-card__screen">
+            <img src="assets/images/work/drop-screen.png" width="1177" height="558" alt="Drop admin dashboard with a delivery map and drone status table">
+          </div>
+          <img class="project-card__logo" src="assets/images/work/drop-logo.svg" width="233" height="100" alt="Drop">
+        </div>
+      </article>
+
+      <!-- Placeholder until more projects are added -->
+      <a class="outline-button work__more" href="#">SEE MORE</a>
     </section>
   </main>
 </body>

@@ -102,3 +102,21 @@ if (art) {
   };
   scheduleBlink();
 }
+
+// Page fade-in for every page: [data-reveal] blocks fade up (see style.css). Blocks on screen
+// at load are staggered in order; later ones animate as they scroll into view.
+const revealBlocks = document.querySelectorAll('[data-reveal]');
+if (revealBlocks.length) {
+  let batchStart = performance.now();
+  let batchIndex = 0;
+  const observer = new IntersectionObserver((entries) => {
+    const now = performance.now();
+    if (now - batchStart > 100) { batchStart = now; batchIndex = 0; }
+    entries.filter((e) => e.isIntersecting).forEach((e) => {
+      e.target.style.setProperty('--reveal-delay', `${batchIndex++ * 120}ms`);
+      e.target.classList.add('is-revealed');
+      observer.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  revealBlocks.forEach((el) => observer.observe(el));
+}

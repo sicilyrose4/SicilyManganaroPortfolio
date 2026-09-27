@@ -75,11 +75,11 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding-top: 73px;    /* art group top 169 − header 96 */
-  padding-bottom: 149px; /* art bottom 812 → work section top 961 */
+  padding-top: 75px;     /* art group top 171 − header 96 */
+  padding-bottom: 194px; /* art bottom 767 → work section top 961 */
 }
 
-.hero__text { padding-top: 170px; width: 501px; } /* heading top 339 − 169 */
+.hero__text { padding-top: 168px; width: 501px; } /* heading top 339 − 171 */
 
 .hero__title {
   margin: 0;
@@ -95,16 +95,17 @@ a { color: inherit; text-decoration: none; }
   width: 400px;
   max-width: 100%;
   margin: 52px 0 0;
-  font-size: 16px;
-  line-height: 26px;
-  letter-spacing: -0.32px;
+  font-size: 13px;
+  line-height: 25px;
+  letter-spacing: -0.26px;
 }
 
 .hero__cta {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 12px;
-  margin-top: 197px; /* CTA top 706 − paragraph text end 509 */
+  margin-top: 175px; /* CTA top 706 − paragraph text end 531 */
   font-size: 18px;
   line-height: 29px;
 }
@@ -119,13 +120,15 @@ a { color: inherit; text-decoration: none; }
 .k-64 { letter-spacing: 0.64px; }
 .k-48 { letter-spacing: 0.48px; }
 
-/* Illustration: all pieces share the Figma group's 531×643 coordinate space */
+/* Illustration: all pieces share the original 531×643 group space (percentages), so the
+   group can render at Figma's current 492px width without moving anything relative. */
 .hero__art {
   --art-w: 531;
   --art-h: 642.91;
   position: relative;
   flex: none;
-  width: 531px;
+  width: 492px;
+  margin-right: 19px; /* group right edge 1212 vs content edge 1231 */
   max-width: 100%;
   aspect-ratio: 531 / 642.91;
 }
@@ -161,6 +164,126 @@ a { color: inherit; text-decoration: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .doodle.is-ambient, .doodle.is-bobbing { animation: none; }
+}
+
+/* ---------- Outline buttons (Resume, TAKE A LOOK, SEE MORE share one hover) ---------- */
+.outline-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 24px;
+  border: 1px solid #000;
+  border-radius: 32px;
+  color: #000;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.7px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.outline-button:hover,
+.outline-button:focus-visible { background: #000; color: #fff; }
+
+/* ---------- Work cards (Figma 228:2360) ---------- */
+.work {
+  display: flex;
+  flex-direction: column;
+  gap: 87px;             /* card tops 532 apart, cards 445 tall */
+  padding-bottom: 238px; /* SEE MORE bottom 2592 → frame bottom 2830 */
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  container-type: inline-size;
+  /* 1 Figma px inside the 1023-wide card, so the art scales with the column */
+  --px: calc(100cqw / 1023);
+}
+.project-card__head {
+  width: 501px;
+  max-width: 100%;
+  padding-top: 14.5px; /* text 16px below the 1.5px rule */
+  border-top: 1.5px solid #d9d9d9;
+}
+.project-card__label {
+  margin: 0;
+  color: #4e74c0;
+  font-size: 13px;
+  line-height: 40px;
+  letter-spacing: 0.26px;
+}
+.project-card__title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 40px;
+  letter-spacing: -0.48px;
+  font-variation-settings: "opsz" 14;
+}
+.project-card__media {
+  position: relative;
+  aspect-ratio: 1023 / 328;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.project-card__media > * { position: absolute; }
+.project-card__logo { height: auto; }
+
+/* Hover pulse: the screens grow a little and hold while the card is hovered */
+.project-card__screen {
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.project-card:hover .project-card__screen,
+.project-card:focus-visible .project-card__screen { transform: scale(1.04); }
+
+/* Positions are Figma px within each 1023×328 card. Screen PNGs are cropped at the
+   card's bottom edge, so their rounded corners + shadows are added here. */
+.project-card--workshop .project-card__media { background: linear-gradient(#f7f8ff, #f6ebff); }
+.project-card--workshop .project-card__logo {
+  left: calc(105.5 * var(--px)); top: calc(95 * var(--px)); width: calc(160 * var(--px));
+}
+.project-card--workshop .project-card__screen {
+  left: calc(388.5 * var(--px)); top: calc(47 * var(--px)); width: calc(569.25 * var(--px));
+  border-radius: calc(8 * var(--px)) calc(8 * var(--px)) 0 0;
+  overflow: hidden;
+  box-shadow: 0 3px 18px rgba(0, 0, 0, 0.25);
+}
+.project-card--workshop .project-card__screen img { width: 100%; }
+
+.project-card--luna .project-card__media { background: linear-gradient(#17294a 14.423%, #111); }
+.project-card--luna .project-card__screen {
+  left: calc(76.5 * var(--px)); top: calc(48 * var(--px)); width: calc(514.87 * var(--px));
+  height: calc(280 * var(--px));
+}
+.project-card--luna .project-card__screen img {
+  position: absolute;
+  top: 0;
+  border-radius: calc(14.1 * var(--px)) calc(14.1 * var(--px)) 0 0;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+}
+.project-card--luna .project-card__screen img:nth-child(1) { left: 0; width: calc(151.34 * var(--px)); }
+.project-card--luna .project-card__screen img:nth-child(2) { left: calc(181.36 * var(--px)); width: calc(151.94 * var(--px)); }
+.project-card--luna .project-card__screen img:nth-child(3) { left: calc(363.32 * var(--px)); width: calc(151.55 * var(--px)); }
+.project-card--luna .project-card__logo {
+  left: calc(715.5 * var(--px)); top: calc(119 * var(--px)); width: calc(198 * var(--px));
+}
+
+.project-card--drop .project-card__media { background: linear-gradient(#686868, #000); }
+.project-card--drop .project-card__screen {
+  left: calc(388.5 * var(--px)); top: calc(49 * var(--px)); width: calc(588.36 * var(--px));
+  border-radius: calc(12.37 * var(--px)) calc(12.37 * var(--px)) 0 0;
+  overflow: hidden;
+  box-shadow: 0 -6px 17.5px rgba(0, 0, 0, 0.25);
+}
+.project-card--drop .project-card__screen img { width: 100%; }
+.project-card--drop .project-card__logo {
+  left: calc(69.59 * var(--px)); top: calc(111 * var(--px)); width: calc(233 * var(--px));
+}
+
+.work__more { align-self: center; width: 166px; margin-top: -1px; } /* cards end 2470, button at 2556 → 86 */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__screen { transition: none; }
 }
 
 /* ---------- Page-load entrance ---------- */
@@ -219,6 +342,7 @@ a { color: inherit; text-decoration: none; }
     padding-bottom: 96px;
   }
   .hero__text { padding-top: 0; width: auto; }
+  .work { gap: 64px; padding-bottom: 120px; }
   .hero__cta { margin-top: 48px; }
   .hero__art { align-self: center; }
 }
@@ -231,4 +355,231 @@ a { color: inherit; text-decoration: none; }
   .hero__title { font-size: 52px; line-height: 1; }
   .hero__intro { margin-top: 32px; }
   .hero__cta { margin-top: 40px; }
+}
+
+/* ---------- Fade-in for every page ([data-reveal], driven by js/main.js) ----------
+   Blocks already on screen fade up in sequence on load; the rest fade up as they
+   scroll into view. Same motion as the home page entrance. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal]:not(.is-revealed) { opacity: 0; }
+  .js [data-reveal].is-revealed {
+    animation: fade-up 700ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+/* ---------- Case study pages (Figma 283:6042 — Luna) ---------- */
+.page-dark { --bg: #111; background: var(--bg); }
+/* Full-bleed gradient bands run past the column; clip them at the window edge */
+html:has(> .page-dark), .page-dark { overflow-x: clip; }
+
+.case { padding: 98px 0 445px; } /* back link top 98; content end 6784 → frame bottom 7230 */
+
+.back-link {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 17px;
+  color: #94a9d3;
+  font-size: 14px;
+  line-height: 29px;
+}
+.back-link__icon { flex: none; width: 36px; height: 36px; transform: rotate(90deg); }
+/* Same fill hover as the other outline buttons */
+.back-link__icon rect { fill: transparent; transition: fill 0.2s ease; }
+.back-link__icon path { transition: fill 0.2s ease; }
+.back-link:hover .back-link__icon rect,
+.back-link:focus-visible .back-link__icon rect { fill: #94a9d3; }
+.back-link:hover .back-link__icon path,
+.back-link:focus-visible .back-link__icon path { fill: var(--bg); }
+
+.case__intro { width: 469px; max-width: 100%; margin-top: 91px; } /* title top 225 */
+.case__title {
+  margin: 0;
+  color: #dee3ef;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 40px;
+  letter-spacing: -0.56px;
+  font-variation-settings: "opsz" 14;
+}
+.case__summary { margin: 35px 0 0; color: #bbc0cc; font-size: 13px; line-height: 25px; }
+
+/* Content column: 1 Figma px = --px, so compositions scale with the column */
+.case__body {
+  margin-top: 72px; /* hero top 447 − intro end 375 */
+  container-type: inline-size;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+.case__body > * { --px: calc(100cqw / 1022); }
+.case__media { display: block; width: 100%; height: auto; }
+.case__hero { aspect-ratio: 1022 / 628.86; object-fit: cover; }
+.case__collage {
+  width: calc(955.24 * var(--px));
+  aspect-ratio: 955.24 / 419.6;
+  object-fit: cover; /* the video carries extra dark margin above/below the collage */
+  margin: calc(35.47 * var(--px)) 0 0 calc(33.38 * var(--px));
+}
+
+/* Frame 629 — gradient band runs 143px past the column on both sides */
+.luna-problem {
+  position: relative;
+  margin-top: calc(48.49 * var(--px));
+  padding: calc(66.76 * var(--px)) calc(74.7 * var(--px)) 0 calc(97.75 * var(--px));
+  height: calc(271.79 * var(--px));
+  display: flex;
+  flex-direction: column;
+  gap: calc(66.76 * var(--px));
+}
+.luna-problem::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(-143.05 * var(--px));
+  z-index: -1;
+  background: linear-gradient(#172846, #111);
+}
+.luna-problem__row { display: flex; align-items: flex-start; gap: calc(23.84 * var(--px)); }
+.luna-problem__row h2 { flex: none; width: calc(226.5 * var(--px)); margin: 0; }
+.luna-problem__row h2 img { width: auto; height: calc(32.315 * var(--px)); }
+.luna-problem__row + .luna-problem__row h2 img { height: calc(27.882 * var(--px)); }
+.luna-problem__row p {
+  width: calc(596.03 * var(--px));
+  margin: 0;
+  font-size: calc(12.715 * var(--px));
+  line-height: calc(19.073 * var(--px));
+}
+.luna-problem__row p.luna-problem__solution { width: calc(526.1 * var(--px)); }
+
+/* Frame 64 */
+.luna-pillars {
+  margin-top: calc(23.86 * var(--px));
+  height: calc(310.84 * var(--px));
+  padding: calc(25.33 * var(--px)) 0 0 calc(86.26 * var(--px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc((86.26 + 851.25) * var(--px));
+  gap: calc(43.8 * var(--px));
+}
+.luna-pillars__star { width: calc(30.609 * var(--px)); }
+.luna-pillars__row { display: flex; align-items: center; gap: calc(102.91 * var(--px)); width: 100%; }
+.luna-pillars__col { display: flex; flex-direction: column; gap: calc(28.5 * var(--px)); width: calc(207.4 * var(--px)); }
+.luna-pillars__col--center { align-items: center; width: calc(230.62 * var(--px)); }
+.luna-pillars__col--tall { gap: calc(14.25 * var(--px)); }
+.luna-pillars__col--tall h2 { height: calc(40.11 * var(--px)); }
+.luna-pillars h2 {
+  margin: 0;
+  width: 100%;
+  color: #6098ff;
+  font-weight: 600;
+  font-size: calc(21.11 * var(--px));
+  line-height: normal;
+}
+.luna-pillars p {
+  width: calc(207.4 * var(--px));
+  height: calc(74.94 * var(--px));
+  margin: 0;
+  font-size: calc(10.555 * var(--px));
+  line-height: calc(16.888 * var(--px));
+}
+
+/* Frame 632 — product renders on a gradient band (positions from Figma, rotation centred) */
+.luna-products { position: relative; height: calc(494.77 * var(--px)); }
+.luna-products > * { position: absolute; }
+.luna-products__band {
+  top: calc(54.72 * var(--px));
+  left: calc(-131.13 * var(--px));
+  width: calc(1284.26 * var(--px));
+  height: calc(437.89 * var(--px));
+  z-index: -1;
+  background: linear-gradient(#182946, #111);
+}
+.luna-products__case {
+  left: calc(59.88 * var(--px)); top: calc(124.06 * var(--px)); width: calc(357.34 * var(--px));
+  transform: rotate(-14.65deg);
+}
+.luna-products__side {
+  left: calc(429.87 * var(--px)); top: calc(11.51 * var(--px)); width: calc(80.79 * var(--px));
+  transform: rotate(-37.02deg);
+}
+.luna-products__front {
+  left: calc(571.96 * var(--px)); top: calc(161.78 * var(--px));
+  width: calc(169.66 * var(--px)); height: calc(172.13 * var(--px));
+  overflow: hidden;
+  transform: rotate(4.81deg);
+}
+.luna-products__front img { position: absolute; top: 4.01%; left: 0; width: 100%; height: 174.08%; max-width: none; }
+.luna-products__back {
+  left: calc(806.32 * var(--px)); top: calc(106.91 * var(--px)); width: calc(124.06 * var(--px));
+  transform: rotate(25.43deg);
+}
+
+/* Behance 6–11: stacked edge to edge at Figma's slightly-under-column widths */
+.case__stack--b6  { width: calc(1017.23 * var(--px)); aspect-ratio: 1017.23 / 444.84; object-fit: cover; }
+.case__stack--b8  { width: calc(1019.82 * var(--px)); }
+.case__stack--b9  { width: calc(1017.23 * var(--px)); aspect-ratio: 1017.23 / 510.36; }
+.case__stack--b10 { width: calc(1017.23 * var(--px)); aspect-ratio: 1017.23 / 480.38; }
+.case__stack--b11 { width: calc(1016.95 * var(--px)); }
+
+/* Group 22 */
+.luna-site {
+  width: calc(899.74 * var(--px));
+  margin: calc(154.97 * var(--px)) 0 0 calc(61.13 * var(--px));
+}
+
+/* Frame 92 */
+.luna-sketches {
+  position: relative;
+  width: calc(900.41 * var(--px));
+  height: calc(301.18 * var(--px));
+  /* 172.45 below Figma's 1076.4-tall Group 22; the two videos stack to 1017.5 */
+  margin: calc(231.35 * var(--px)) 0 0 calc(60.8 * var(--px));
+}
+.luna-sketches__item { position: absolute; top: 0; margin: 0; }
+.luna-sketches__item figcaption {
+  font-size: calc(10.012 * var(--px));
+  line-height: normal;
+  text-align: center;
+}
+.luna-sketches__item img { position: absolute; left: 0; }
+.luna-sketches__item--branding { left: 0; width: calc(200.88 * var(--px)); }
+.luna-sketches__item--branding img { top: calc(27.46 * var(--px)); width: calc(200.88 * var(--px)); }
+.luna-sketches__item--product { left: calc(244.05 * var(--px)); width: calc(311.42 * var(--px)); }
+.luna-sketches__item--product img { top: calc(27.46 * var(--px)); width: calc(311.42 * var(--px)); }
+.luna-sketches__item--software { left: calc(598.65 * var(--px)); width: calc(301.76 * var(--px)); }
+.luna-sketches__item--software img { top: calc(26.92 * var(--px)); width: calc(296.21 * var(--px)); }
+
+@media (max-width: 900px) {
+  .case { padding-top: 48px; padding-bottom: 120px; }
+  .case__intro { margin-top: 48px; }
+  .case__body { margin-top: 48px; }
+}
+/* Phones: the scaled compositions stay, but text sections stack at readable sizes
+   (no mobile Figma frame yet) */
+@media (max-width: 700px) {
+  .luna-problem { height: auto; padding: 40px 0; gap: 32px; }
+  .luna-problem::before { inset: 0 calc(-1 * var(--gutter)); }
+  .luna-problem__row { flex-direction: column; gap: 12px; }
+  .luna-problem__row h2 { width: auto; }
+  .luna-problem__row h2 img,
+  .luna-problem__row + .luna-problem__row h2 img { height: 26px; }
+  .luna-problem__row p,
+  .luna-problem__row p.luna-problem__solution { width: auto; font-size: 14px; line-height: 22px; }
+
+  .luna-pillars { width: auto; height: auto; padding: 40px 0; gap: 32px; }
+  .luna-pillars__star { width: 24px; }
+  .luna-pillars__row { flex-direction: column; gap: 32px; }
+  .luna-pillars__col,
+  .luna-pillars__col--center,
+  .luna-pillars__col--tall { width: 100%; max-width: 320px; align-items: center; text-align: center; gap: 12px; }
+  .luna-pillars__col--tall h2 { height: auto; }
+  .luna-pillars h2 { font-size: 20px; }
+  .luna-pillars p { width: auto; height: auto; font-size: 14px; line-height: 22px; }
+
+  .luna-sketches { width: auto; height: auto; margin: 64px 0 0; display: grid; gap: 32px; }
+  .luna-sketches__item,
+  .luna-sketches__item img { position: static; width: 100% !important; }
+  .luna-sketches__item figcaption { margin-bottom: 12px; font-size: 13px; }
 }
