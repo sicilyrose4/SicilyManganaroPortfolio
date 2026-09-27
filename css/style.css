@@ -2,6 +2,7 @@
 :root {
   --ink: #252e40;
   --accent: #4e74c0; /* outline strokes, labels, logo */
+  --error: #c93b3b;  /* form errors (not in Figma yet) */
   --bg: #fcfcfc;
 
   --font-sans: "DM Sans", sans-serif;
@@ -758,7 +759,7 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
   left: 31px;
   top: calc(100% + 10px);
   margin: 0;
-  color: var(--ink);
+  color: var(--error);
   font-size: 13px;
   line-height: 18px;
 }
