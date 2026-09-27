@@ -107,25 +107,29 @@ if (art) {
 }
 
 // Page fade-in for every page: [data-reveal] blocks fade up (see style.css). Blocks on screen
-// at load are staggered in order; later ones animate as they scroll into view.
+// at load get the full entrance, staggered in order; blocks reached by scrolling get a
+// quicker, subtler fade the moment they enter the viewport.
 const revealBlocks = document.querySelectorAll('[data-reveal]');
 if (revealBlocks.length) {
   let batchStart = performance.now();
   let batchIndex = 0;
+  let initialBatch = true;
   // Dark pages fade their background in from the light one first (style.css, 700ms);
   // the first batch waits for that so the content doesn't appear over a changing color.
   const reduceMotionReveal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let firstBatchDelay = document.body.classList.contains('page-dark') && !reduceMotionReveal ? 700 : 0;
+  const firstBatchDelay = document.body.classList.contains('page-dark') && !reduceMotionReveal ? 700 : 0;
   const observer = new IntersectionObserver((entries) => {
     const now = performance.now();
     if (now - batchStart > 100) { batchStart = now; batchIndex = 0; }
     const visible = entries.filter((e) => e.isIntersecting);
     visible.forEach((e) => {
-      e.target.style.setProperty('--reveal-delay', `${firstBatchDelay + batchIndex++ * 120}ms`);
+      const delay = initialBatch ? firstBatchDelay + batchIndex++ * 120 : batchIndex++ * 60;
+      e.target.style.setProperty('--reveal-delay', `${delay}ms`);
+      if (!initialBatch) e.target.classList.add('is-scroll-revealed');
       e.target.classList.add('is-revealed');
       observer.unobserve(e.target);
     });
-    if (visible.length) firstBatchDelay = 0;
-  }, { rootMargin: '0px 0px -8% 0px' });
+    if (visible.length) initialBatch = false;
+  });
   revealBlocks.forEach((el) => observer.observe(el));
 }
