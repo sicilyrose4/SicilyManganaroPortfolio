@@ -114,7 +114,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 18px;
   line-height: 29px;
 }
-.hero__cta-icon { flex: none; width: 37px; height: 36px; }
+.hero__cta-icon { flex: none; width: 36px; height: 36px; }
 /* Same fill hover as the Resume pill: circle fills, arrow turns white */
 .hero__cta-icon rect { fill: transparent; transition: fill 0.2s ease; }
 .hero__cta-icon path { transition: fill 0.2s ease; }
@@ -177,7 +177,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   padding: 8px 24px;
-  border: 1px solid #000;
+  border: 1.5px solid #000;
   border-radius: 32px;
   color: #000;
   font-size: 14px;
