@@ -6,7 +6,7 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - Plain HTML / CSS / JS, no build step. Hosted on GitHub Pages.
 - One `.html` file per page at the root; shared styles in `css/style.css`, scripts in `js/main.js`.
 - Assets in `assets/images`, `assets/videos`, `assets/fonts`.
-- Preview: `.claude/launch.json` → `python3 -m http.server 8080`.
+- Preview: `python3 serve.py` → http://localhost:8080 (GitHub-Pages-like: missing pages get `404.html`, no caching). Opening files directly (`file://`) can't show the custom 404.
 
 ## Rules
 - Match the Figma frames closely (spacing, type, color). Pull tokens into `:root` in `style.css`.
