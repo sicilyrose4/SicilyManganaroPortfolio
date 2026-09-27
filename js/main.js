@@ -89,6 +89,29 @@ doodles.forEach((doodle, i) => {
 });
 scheduleAmbient(2600); // after the page-load entrance finishes
 
+// TAKE A LOOK fades out as the first project scrolls into view: fully visible until the Workshop
+// card's image area starts entering from the bottom, gone once that area is fully on screen.
+// The fade drives the children (the link itself runs the page-load entrance animation).
+const cta = document.querySelector('.hero__cta');
+const firstMedia = document.querySelector('.project-card__media');
+if (cta && firstMedia) {
+  const updateCtaFade = () => {
+    // Fade runs over the scroll distance between "media starts entering" and "media fully in view",
+    // measured from the top of the page, so on tall screens it always starts fully visible.
+    const r = firstMedia.getBoundingClientRect();
+    const topInDoc = r.top + scrollY;
+    const start = Math.max(0, topInDoc - innerHeight);
+    const end = topInDoc + r.height - innerHeight;
+    const progress = end <= 0 ? 0 : Math.min(1, Math.max(0, (scrollY - start) / (end - start)));
+    const fade = 1 - progress;
+    cta.style.setProperty('--scroll-fade', fade.toFixed(3));
+    cta.style.pointerEvents = fade < 0.05 ? 'none' : '';
+  };
+  addEventListener('scroll', updateCtaFade, { passive: true });
+  addEventListener('resize', updateCtaFade);
+  updateCtaFade();
+}
+
 // Hero illustration: blink every ~1.5–4s (occasionally a double blink).
 const art = document.querySelector('.hero__art');
 if (art) {
