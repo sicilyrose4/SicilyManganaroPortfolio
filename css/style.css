@@ -55,7 +55,8 @@ a { color: inherit; text-decoration: none; }
 /* Text links bolden on hover (DM Mono is monospaced, so nothing shifts) */
 .site-nav a:hover, .site-nav a:focus-visible,
 .site-footer__nav a:hover, .site-footer__nav a:focus-visible,
-.hero__cta:hover, .hero__cta:focus-visible { font-weight: 500; }
+.hero__cta:hover, .hero__cta:focus-visible,
+.back-link:hover, .back-link:focus-visible { font-weight: 500; }
 
 .pill-button {
   display: inline-flex;
@@ -380,14 +381,14 @@ a { color: inherit; text-decoration: none; }
     animation: fade-up 700ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
     animation-delay: var(--reveal-delay, 0ms);
   }
-  /* Blocks revealed by scrolling: quicker and subtler so nobody waits on them */
+  /* Blocks revealed by scrolling: a clear rise, still quick so nobody waits on them */
   .js [data-reveal].is-revealed.is-scroll-revealed {
-    animation: fade-up-subtle 450ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+    animation: fade-up-scroll 600ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
     animation-delay: var(--reveal-delay, 0ms);
   }
 }
-@keyframes fade-up-subtle {
-  from { opacity: 0; transform: translateY(8px); }
+@keyframes fade-up-scroll {
+  from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: none; }
 }
 

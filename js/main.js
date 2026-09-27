@@ -107,8 +107,8 @@ if (art) {
 }
 
 // Page fade-in for every page: [data-reveal] blocks fade up (see style.css). Blocks on screen
-// at load get the full entrance, staggered in order; blocks reached by scrolling get a
-// quicker, subtler fade the moment they enter the viewport.
+// at load get the full entrance, staggered in order; blocks reached by scrolling rise in
+// once a fifth of them is on screen, so the motion is actually seen.
 const revealBlocks = document.querySelectorAll('[data-reveal]');
 if (revealBlocks.length) {
   let batchStart = performance.now();
@@ -123,13 +123,13 @@ if (revealBlocks.length) {
     if (now - batchStart > 100) { batchStart = now; batchIndex = 0; }
     const visible = entries.filter((e) => e.isIntersecting);
     visible.forEach((e) => {
-      const delay = initialBatch ? firstBatchDelay + batchIndex++ * 120 : batchIndex++ * 60;
+      const delay = initialBatch ? firstBatchDelay + batchIndex++ * 120 : batchIndex++ * 80;
       e.target.style.setProperty('--reveal-delay', `${delay}ms`);
       if (!initialBatch) e.target.classList.add('is-scroll-revealed');
       e.target.classList.add('is-revealed');
       observer.unobserve(e.target);
     });
     if (visible.length) initialBatch = false;
-  });
+  }, { threshold: 0.2 }); // start once a fifth of the block is on screen (the footer can always reach this)
   revealBlocks.forEach((el) => observer.observe(el));
 }
