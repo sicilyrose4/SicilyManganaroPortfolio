@@ -5,26 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found — Sicily Manganaro</title>
   <meta name="robots" content="noindex">
+  <!-- GitHub Pages serves this file for any missing URL at any depth, so links resolve from the
+       site root. Opened straight from disk (file://) that root would be the hard drive, so use
+       this file's own folder instead. Must run before the stylesheet below. -->
+  <script>document.write('<base href="' + (location.protocol === 'file:' ? './' : '/') + '">')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,500;9..40,600&display=swap">
-  <!-- Root-relative paths: GitHub Pages serves this file for any missing URL, at any depth -->
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/main.js" defer></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
   <!-- Figma 200:1842 -->
   <header class="site-header container">
     <div class="site-header__left">
-      <a class="site-header__logo" href="/" aria-label="Sicily Manganaro — home">
-        <img src="/assets/images/footer-logo.svg" width="41.9416" height="38.7929" alt="">
+      <a class="site-header__logo" href="index.html" aria-label="Sicily Manganaro — home">
+        <img src="assets/images/footer-logo.svg" width="41.9416" height="38.7929" alt="">
       </a>
       <nav class="site-nav" aria-label="Main">
         <!-- Placeholder links until these pages exist -->
         <a href="#">Contact</a>
         <a href="#">About</a>
-        <a href="/#work">Work</a>
+        <a href="index.html#work">Work</a>
       </nav>
     </div>
     <!-- Placeholder until the resume PDF is added -->
@@ -37,9 +40,9 @@
 
   <!-- Figma 205:2229 -->
   <main class="not-found container">
-    <img class="not-found__art" data-reveal src="/assets/images/404/page-not-found.png" width="1026" height="1067" alt="Hand-drawn paint palette and brush with the words Error 404">
+    <img class="not-found__art" data-reveal src="assets/images/404/page-not-found.png" width="946" height="936" alt="Hand-drawn paint palette and brush with the words Error 404">
     <h1 class="not-found__title" data-reveal>Oops! The page you are looking for doesn’t exist.</h1>
-    <a class="outline-button not-found__home" data-reveal href="/">GO TO HOME</a>
+    <a class="outline-button not-found__home" data-reveal href="index.html">GO TO HOME</a>
   </main>
 </body>
 </html>

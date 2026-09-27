@@ -644,21 +644,22 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
 }
 
 /* ---------- 404 (Figma 205:2229) ---------- */
+/* Art box matches the drawing as Figma's frame renders it: ink 515→964 × 150→594, plus 12px padding */
 .not-found {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 75px 0 237px; /* art top 171 − header 96; button bottom 787 → frame bottom 1024 */
+  padding: 42px 0 237px; /* art top 138 − header 96; button bottom 787 → frame bottom 1024 */
   text-align: center;
 }
 .not-found__art {
-  width: 512.6px;
+  width: 473px;
   max-width: 100%;
-  margin-left: 34px; /* art sits 17px right of centre in Figma (x 481 in the 1440 frame) */
-  /* Figma's own 2x render: its 85% opacity and #fbfbfb backdrop are baked in */
+  margin-left: 39px; /* drawing centre sits 19.5px right of the page centre */
+  /* cut from Figma's 2x frame render (its 85% opacity is baked in), background made transparent */
 }
 .not-found__title {
-  margin: -30.7px 0 0; /* text top 674 overlaps the art's transparent bottom (ends 704.7) */
+  margin: 68px 0 0; /* title top 674 − art bottom 606 */
   color: var(--ink);
   font-family: var(--font-sans);
   font-weight: 600;
