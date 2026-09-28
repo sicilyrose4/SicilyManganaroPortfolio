@@ -412,7 +412,7 @@ a { color: inherit; text-decoration: none; }
 }
 @keyframes bg-to-dark {
   from { background-color: #fcfcfc; }
-  to   { background-color: #111; }
+  to   { background-color: var(--bg); } /* each dark page's own background */
 }
 /* Full-bleed gradient bands run past the column; clip them at the window edge */
 html:has(> .page-dark), .page-dark { overflow-x: clip; }
@@ -778,4 +778,40 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
   .lock__form { flex-direction: column; align-items: stretch; margin-top: 48px; gap: 40px; }
   .lock__field { flex: none; } /* the 397px basis would otherwise become a height when stacked */
   .lock__submit { width: 100%; }
+}
+
+/* ---------- Drop case study (Figma 283:7344) ---------- */
+.page-drop { --bg: #1c1c1c; }
+.drop-intro .case__summary { color: #dee3ef; } /* Drop's summary uses the title colour */
+.drop-try {
+  position: relative;
+  /* "Try it out" sits 80px below the last board; embed box ends 60.7px above the frame bottom */
+  padding: calc(80.11 * var(--px)) 0 calc(60.67 * var(--px));
+}
+.drop-try__title {
+  margin: 0 0 0 calc(55.89 * var(--px));
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: max(24px, calc(31.937 * var(--px)));
+  line-height: normal;
+  letter-spacing: -0.02em;
+}
+.drop-try__embed {
+  width: calc(816 * var(--px));
+  aspect-ratio: 816 / 485.45;
+  /* embed top 5684.08 − title top 5537.16, less the title's own ~39px line */
+  margin: calc(107.93 * var(--px)) 0 0 calc(103 * var(--px));
+  background: #383838; /* Figma's placeholder colour shows while the embed loads */
+}
+.drop-try__embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 700px) {
+  .drop-try { padding: 48px 0 0; }
+  .drop-try__title { margin-left: 0; }
+  .drop-try__embed { width: 100%; margin: 24px 0 0; aspect-ratio: 4 / 3; }
 }

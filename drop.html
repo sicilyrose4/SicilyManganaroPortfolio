@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drop Drone Delivery Dashboard — Sicily Manganaro</title>
+  <meta name="description" content="A dashboard for the operations manager of a fleet of delivery drones: quick insights plus in-depth information.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,500;9..40,600&family=Inter:wght@600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="page-dark page-drop">
+  <!-- Figma 283:7344 -->
+  <main class="case container">
+    <a class="back-link" data-reveal href="index.html#work">
+      <!-- Inline copy of assets/images/arrow-back-circle.svg (Figma rotates it 90°) so it can fill on hover -->
+      <svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg>
+      BACK TO WORK
+    </a>
+
+    <header class="case__intro drop-intro">
+      <h1 class="case__title" data-reveal>Drop Drone Delivery Dashboard</h1>
+      <p class="case__summary" data-reveal>A dashboard designed to be used by the operation manager of a fleet of delivery drones. Created to provide quick insights along with in-depth information.</p>
+    </header>
+
+    <!-- Frame "Drop Drone" (clip content). Boards are Figma exports at 2x, stacked edge to edge. -->
+    <div class="case__body">
+      <img data-reveal class="case__media" src="assets/images/drop/01-title.jpg" width="2044" height="1150" alt="The Drop logo, a drop-shaped mark beside the word drop, with the tagline Direct Flight, Direct Delivery. Sicily Manganaro, IXD 404, Dashboard Design.">
+      <img data-reveal class="case__media" src="assets/images/drop/02-cover.jpg" width="2044" height="1150" alt="The Drop dashboard shown on a stack of laptop screens.">
+      <img data-reveal class="case__media" src="assets/images/drop/03-concept.jpg" width="2044" height="948" alt="Concept. This dashboard accompanies a self-automated drone delivery app. The user focused app would be a drone-powered delivery platform that allows customers to place orders and track their packages as drones transport them. The dashboard is the admin side of the app, designed for an operations manager to monitor the entire fleet of drones: tracking drone locations, monitoring deliveries, and watching battery and maintenance. Shown beside a drone carrying a Drop package.">
+      <img data-reveal class="case__media" src="assets/images/drop/04-user.jpg" width="2044" height="1150" alt="The User. Persona: a drone fleet operations manager who keeps deliveries on schedule, tracks drone health, and responds quickly to delays or malfunctions. Their questions: How efficient is the fleet overall? Which deliveries are on time or delayed? Where is every drone right now and what is it carrying? Is drone performance changing over time? Are any drones low on battery or having technical issues? Quotes: I can't see the big picture of the current drone activity fast enough. It takes too long to find info on a specific drone. I wish I could quickly compare performance over time.">
+      <img data-reveal class="case__media" src="assets/images/drop/05-goal.jpg" width="2044" height="769" alt="Project Goal: create a clean, real-time dashboard that shows the most critical information quickly, with drill-down options for deeper insights.">
+      <img data-reveal class="case__media" src="assets/images/drop/06-lowfi.jpg" width="2044" height="1150" alt="Low fidelity designs: two wireframe dashboards annotated with main KPIs, interactive maps, all fleet numbers, delivery stats, a drone information table, and drone-specific battery information.">
+      <img data-reveal class="case__media" src="assets/images/drop/07-wireframes.jpg" width="2044" height="1150" alt="Wireframe to screens: rather than one page with a lot of information, the dashboard was divided into two, each built around a main visualization. It first showed only overall drone stats, then added the option to look at individual drone information.">
+      <img data-reveal class="case__media" src="assets/images/drop/08-home-screen.jpg" width="2044" height="1150" alt="Home Screen: provides critical metrics at a glance, gives easy access to drone location and other details, and shows drone status distribution clearly. Callouts point to the interactive map, main KPIs, drone info table, status bar chart and secondary KPIs.">
+      <img data-reveal class="case__media" src="assets/images/drop/09-drone-screen.jpg" width="2044" height="1150" alt="Drone Screen: shows specific flight and delivery information, highlights time-sensitive details, and shows performance and drone health in a scannable format. Callouts point to the quick view map, currently carrying table, key delivery information, performance-over-time line charts, and battery and maintenance details.">
+      <img data-reveal class="case__media" src="assets/images/drop/10-delivery-screen.jpg" width="2044" height="1150" alt="Delivery Screen: shows delivery and efficiency metrics, compares deliveries completed by each drone, and visualizes demand for deliveries over time. Callouts point to delivery KPIs, deliveries over time, profit, and a comparison of deliveries by drone.">
+
+      <!-- "Try it out": the placeholder rectangle is replaced by the live Figma embed -->
+      <section data-reveal class="drop-try" aria-labelledby="drop-try-title">
+        <h2 class="drop-try__title" id="drop-try-title">Try it out</h2>
+        <div class="drop-try__embed">
+          <iframe title="Interactive Drop dashboard prototype (Figma)" loading="lazy" src="https://embed.figma.com/design/MMF58JIeVYs8L0I16zReIs/Drop---Drone-Delivery--Copy-?node-id=486-9251&amp;embed-host=share" allowfullscreen></iframe>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Figma 283:6531 (+ divider 283:6529) -->
+  <footer class="site-footer" data-reveal>
+    <div class="site-footer__inner container">
+      <div class="site-footer__left">
+        <a class="site-footer__logo" href="index.html" aria-label="Sicily Manganaro — home">
+          <img src="assets/images/footer-logo.svg" width="41.9416" height="38.7929" alt="">
+        </a>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <!-- Placeholder links until these pages exist -->
+          <a href="#">Contact</a>
+          <a href="#">About</a>
+          <a href="index.html#work">Work</a>
+        </nav>
+      </div>
+      <a class="site-footer__social" href="https://www.linkedin.com/in/sicily-manganaro-1b5a67296" target="_blank" rel="noopener" aria-label="Sicily Manganaro on LinkedIn">
+        <img src="assets/images/linkedin-on-dark.svg" width="24" height="24" alt="">
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
