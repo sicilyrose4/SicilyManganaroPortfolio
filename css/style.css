@@ -46,7 +46,7 @@ a { color: inherit; text-decoration: none; }
 }
 .site-header__left { display: flex; align-items: center; gap: 32px; }
 .site-header__logo { flex: none; }
-.site-header__logo img { width: 41.94px; height: 38.79px; }
+.site-header__logo img { width: 35px; height: 26.81px; } /* SM monogram (Figma 395:13564) */
 
 .site-nav { display: flex; gap: 32px; }
 .site-nav a {
@@ -390,7 +390,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 560px) {
   .site-header { gap: 12px; }
   .site-header__left, .site-nav { gap: 14px; }
-  .site-header__logo img { width: 32px; height: auto; }
+  .site-header__logo img { width: 30px; height: auto; }
   .site-nav a { font-size: 13px; }
   .pill-button { gap: 8px; padding: 5px 12px; }
   .hero__title { font-size: 52px; line-height: 1; }
@@ -665,7 +665,7 @@ a { color: inherit; text-decoration: none; }
 }
 .site-footer__left { display: flex; align-items: center; gap: 32px; }
 .site-footer__logo { flex: none; }
-.site-footer__logo img { width: 41.94px; height: 38.79px; }
+.site-footer__logo img { width: 35px; height: 26.81px; }
 .site-footer__nav { display: flex; gap: 32px; }
 .site-footer__nav a { color: var(--ink); font-size: 14px; line-height: 1.45; letter-spacing: -0.07px; }
 .site-footer__social img { width: 24px; height: 24px; }
@@ -676,7 +676,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 560px) {
   .site-footer__left, .site-footer__nav { gap: 16px; }
-  .site-footer__logo img { width: 32px; height: auto; }
+  .site-footer__logo img { width: 30px; height: auto; }
   .site-footer__nav a { font-size: 13px; }
 }
 
