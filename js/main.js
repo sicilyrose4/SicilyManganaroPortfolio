@@ -205,12 +205,25 @@ if (gate) {
   input.addEventListener('input', () => { error.textContent = ''; });
 }
 
-// Footer car (home page): when the car is fully on screen it drives left along the divider until
-// its front bumper reaches the start of the line (~6s), switching frames every 40px travelled, then parks
-// on frame 2 (no motion lines). Once it's scrolled completely out of view it resets to the start,
-// so it drives again every time it comes back into view.
+// Footer car (home page): when the car is fully on screen it drives left until its front bumper is
+// 56px past the LinkedIn icon (~6s), switching frames every 40px travelled, then parks on frame 2.
+// On narrow screens the car sits under the footer row instead, and drives to the left edge.
+// Once it's scrolled completely out of view it resets to the start, so it drives again every time
+// it comes back into view.
 const car = document.querySelector('.footer-car');
 if (car) {
+  const footer = car.closest('.site-footer');
+  const social = footer.querySelector('.site-footer__social');
+  const STOP_GAP = 56; // Figma: parked bumper → LinkedIn icon
+  // How far to drive, measured from the car's resting spot (offsetLeft ignores the transform).
+  const travelDistance = () => {
+    const f = footer.getBoundingClientRect();
+    const s = social.getBoundingClientRect();
+    const carTop = car.offsetTop, carBottom = carTop + car.offsetHeight;
+    const besideRow = s.bottom - f.top > carTop && s.top - f.top < carBottom;
+    const stopAt = besideRow ? s.right - f.left + STOP_GAP : 0;
+    return Math.max(0, car.offsetLeft - stopAt);
+  };
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const DURATION = 6000;
   // Pull away at speed (so the car moves as soon as the wheels start turning), then ease into
@@ -223,7 +236,7 @@ if (car) {
   const park = () => {
     stopTimers();
     state = 'parked';
-    car.style.transform = `translateX(${-car.offsetLeft}px)`; // offsetLeft = distance from the line's start
+    car.style.transform = `translateX(${-travelDistance()}px)`;
     car.classList.add('show-frame-2');
   };
   const reset = () => {
@@ -235,7 +248,7 @@ if (car) {
   const FLIP_EVERY = 40; // px travelled per frame switch, so the wheels turn in step with the speed
   const drive = () => {
     state = 'driving';
-    const distance = car.offsetLeft;
+    const distance = travelDistance();
     const begin = performance.now();
     const step = (now) => {
       const t = Math.min(1, (now - begin) / DURATION);
@@ -261,6 +274,6 @@ if (car) {
       }
     }, { threshold: [0, 0.99] }).observe(car);
   }
-  // keep it parked at the line's start if the window is resized after the drive
-  addEventListener('resize', () => { if (state === 'parked') car.style.transform = `translateX(${-car.offsetLeft}px)`; });
+  // keep it parked in the right spot if the window is resized after the drive
+  addEventListener('resize', () => { if (state === 'parked') car.style.transform = `translateX(${-travelDistance()}px)`; });
 }
