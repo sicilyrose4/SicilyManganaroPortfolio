@@ -206,18 +206,20 @@ if (gate) {
 }
 
 // Footer car (home page): when the car is fully on screen it drives left along the divider until
-// its front bumper reaches the start of the line (~6s), flipping between its two frames, then parks
+// its front bumper reaches the start of the line (~6s), switching frames every 40px travelled, then parks
 // on frame 2 (no motion lines). Once it's scrolled completely out of view it resets to the start,
 // so it drives again every time it comes back into view.
 const car = document.querySelector('.footer-car');
 if (car) {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const DURATION = 6000;
-  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); // ease-in-out
+  // Pull away at speed (so the car moves as soon as the wheels start turning), then ease into
+  // the parking spot. An ease-in start left the frames flipping while the car barely moved.
+  const ease = (t) => 1 - Math.pow(1 - t, 2.2);
   let state = 'waiting'; // waiting | driving | parked
-  let raf = 0, flip = 0, startTimer = 0;
+  let raf = 0, startTimer = 0;
 
-  const stopTimers = () => { cancelAnimationFrame(raf); clearInterval(flip); clearTimeout(startTimer); };
+  const stopTimers = () => { cancelAnimationFrame(raf); clearTimeout(startTimer); };
   const park = () => {
     stopTimers();
     state = 'parked';
@@ -230,18 +232,16 @@ if (car) {
     car.style.transform = '';
     car.classList.remove('show-frame-2');
   };
+  const FLIP_EVERY = 40; // px travelled per frame switch, so the wheels turn in step with the speed
   const drive = () => {
     state = 'driving';
     const distance = car.offsetLeft;
-    let frame = 1;
-    flip = setInterval(() => {
-      frame = frame === 1 ? 2 : 1;
-      car.classList.toggle('show-frame-2', frame === 2);
-    }, 140);
     const begin = performance.now();
     const step = (now) => {
       const t = Math.min(1, (now - begin) / DURATION);
-      car.style.transform = `translateX(${-distance * ease(t)}px)`;
+      const travelled = distance * ease(t);
+      car.style.transform = `translateX(${-travelled}px)`;
+      car.classList.toggle('show-frame-2', Math.floor(travelled / FLIP_EVERY) % 2 === 1);
       if (t < 1) raf = requestAnimationFrame(step);
       else park();
     };
