@@ -649,12 +649,13 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
 /* ---------- Footer (Figma 283:6531) ---------- */
 .site-footer {
   position: relative;
-  /* divider runs x 104 → 1336 in the 1440 frame: 105px wider than the column each side */
-  width: min(1232px, 100% - 2 * var(--gutter));
+  /* divider spans the content column (x 209 → 1231), so both sides line up with the page */
+  width: min(var(--content-width), 100% - 2 * var(--gutter));
   margin-inline: auto;
   border-top: 1.5px solid #d9d9d9;
 }
 .site-footer__inner {
+  width: 100%; /* the footer is already column-width; don't inset again */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -839,11 +840,11 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
 }
 
 /* ---------- Footer car (home page, Figma 393:13538) ---------- */
-/* Sits on the divider 44px from its right end; js/main.js drives it to the left end once,
-   flipping between the two frames so it looks like it's moving. */
+/* Starts with its body at the divider's right end (the motion lines overhang ~9px, as in Figma);
+   js/main.js drives it to the left end, flipping between the two frames. */
 .footer-car {
   position: absolute;
-  right: 44px;
+  right: -9px;
   bottom: calc(100% - 0.75px); /* tyres rest on the 1.5px rule */
   width: min(256px, 45%);
   aspect-ratio: 512 / 228;
