@@ -207,9 +207,9 @@ if (gate) {
 
 // Footer car (home page): when the car is fully on screen it drives left until its front bumper is
 // 56px past the LinkedIn icon (~6s), switching frames every 40px travelled, then parks on frame 2.
+// It loops while in view: parked for 1s, fades out, fades back in at the start and drives again.
 // On narrow screens the car sits under the footer row instead, and drives to the left edge.
-// Once it's scrolled completely out of view it resets to the start, so it drives again every time
-// it comes back into view.
+// Once it's scrolled completely out of view it resets to the start and waits to be fully seen again.
 const car = document.querySelector('.footer-car');
 if (car) {
   const footer = car.closest('.site-footer');
@@ -229,7 +229,9 @@ if (car) {
   // Pull away at speed (so the car moves as soon as the wheels start turning), then ease into
   // the parking spot. An ease-in start left the frames flipping while the car barely moved.
   const ease = (t) => 1 - Math.pow(1 - t, 2.2);
-  let state = 'waiting'; // waiting | driving | parked
+  const PARKED_MS = 1000; // pause at the stop before the next loop
+  const FADE_MS = 400;    // matches .footer-car.is-faded in style.css
+  let state = 'waiting'; // waiting | driving | parked (loop pause and fade count as parked)
   let raf = 0, startTimer = 0;
 
   const stopTimers = () => { cancelAnimationFrame(raf); clearTimeout(startTimer); };
@@ -243,7 +245,18 @@ if (car) {
     stopTimers();
     state = 'waiting';
     car.style.transform = '';
-    car.classList.remove('show-frame-2');
+    car.classList.remove('show-frame-2', 'is-faded');
+  };
+  // After parking: wait, fade out, jump back to the start while invisible, fade in, drive again.
+  const loopAgain = () => {
+    startTimer = setTimeout(() => {
+      car.classList.add('is-faded');
+      startTimer = setTimeout(() => {
+        car.style.transform = '';
+        car.classList.remove('show-frame-2', 'is-faded');
+        startTimer = setTimeout(drive, FADE_MS);
+      }, FADE_MS);
+    }, PARKED_MS);
   };
   const FLIP_EVERY = 40; // px travelled per frame switch, so the wheels turn in step with the speed
   const drive = () => {
@@ -256,7 +269,7 @@ if (car) {
       car.style.transform = `translateX(${-travelled}px)`;
       car.classList.toggle('show-frame-2', Math.floor(travelled / FLIP_EVERY) % 2 === 1);
       if (t < 1) raf = requestAnimationFrame(step);
-      else park();
+      else { park(); loopAgain(); }
     };
     raf = requestAnimationFrame(step);
   };

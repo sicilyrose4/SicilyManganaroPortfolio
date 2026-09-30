@@ -870,6 +870,8 @@ a { color: inherit; text-decoration: none; }
     margin: 56px calc(0.25 * min(220px, 55%)) 0 0; /* flag rises 33% above and overhangs 25% right */
   }
 }
+.footer-car { transition: opacity 0.4s ease; } /* the loop's fade out/in (js/main.js FADE_MS) */
+.footer-car.is-faded { opacity: 0; }
 .footer-car__frame { position: absolute; inset: 0; width: 100%; height: 100%; }
 /* flag: Figma's 99×50 at +219, −35 from the car's 256×114 box, plus ~2.5px margin so the
    waving edge isn't clipped. In % so it scales with the car. */
