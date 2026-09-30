@@ -70,7 +70,7 @@ let lastAmbient = null;
 
 const scheduleAmbient = (delay) => {
   clearTimeout(ambientTimer);
-  if (reduceMotion) return;
+  if (reduceMotion || !doodles.length) return; // pages without the hero have no doodles
   ambientTimer = setTimeout(() => {
     if (hoveredDoodle || doodles.some((d) => d.classList.contains('is-bobbing'))) return;
     const choices = doodles.filter((d) => d !== lastAmbient);
@@ -205,88 +205,144 @@ if (gate) {
   input.addEventListener('input', () => { error.textContent = ''; });
 }
 
-// Footer car (home page): when the car is fully on screen it drives left until its front bumper is
-// 56px past the LinkedIn icon (~6s), switching frames every 40px travelled, then parks on frame 2.
-// It loops while in view: parked for 1s, fades out, fades back in at the start and drives again.
-// On narrow screens the car sits under the footer row instead, and drives to the left edge.
-// Once it's scrolled completely out of view it resets to the start and waits to be fully seen again.
-const car = document.querySelector('.footer-car');
-if (car) {
-  const footer = car.closest('.site-footer');
-  const social = footer.querySelector('.site-footer__social');
-  const STOP_GAP = 56; // Figma: parked bumper → LinkedIn icon
-  // How far to drive, measured from the car's resting spot (offsetLeft ignores the transform).
-  const travelDistance = () => {
-    const f = footer.getBoundingClientRect();
-    const s = social.getBoundingClientRect();
-    const carTop = car.offsetTop, carBottom = carTop + car.offsetHeight;
-    const besideRow = s.bottom - f.top > carTop && s.top - f.top < carBottom;
-    const stopAt = besideRow ? s.right - f.left + STOP_GAP : 0;
-    return Math.max(0, car.offsetLeft - stopAt);
-  };
+// Footer car (home page): the car rides the footer's road (the SVG path), wheels on the line and
+// tilted to the slope. When it's fully on screen it drives left, up the hill toward the email; about
+// 15px from the text it stops, rolls back down to where it started, and goes again. It switches
+// frames every 40px travelled either way. Once scrolled completely out of view it resets.
+const road = document.querySelector('.footer-road');
+if (road) {
+  const car = road.querySelector('.footer-car');
+  const path = road.querySelector('path');
+  const svg = road.querySelector('svg');
+  const email = document.querySelector('.site-footer__email');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const DURATION = 6000;
-  // Pull away at speed (so the car moves as soon as the wheels start turning), then ease into
-  // the parking spot. An ease-in start left the frames flipping while the car barely moved.
-  const ease = (t) => 1 - Math.pow(1 - t, 2.2);
-  const PARKED_MS = 1000; // pause at the stop before the next loop
-  const FADE_MS = 400;    // matches .footer-car.is-faded in style.css
-  let state = 'waiting'; // waiting | driving | parked (loop pause and fade count as parked)
-  let raf = 0, startTimer = 0;
 
-  const stopTimers = () => { cancelAnimationFrame(raf); clearTimeout(startTimer); };
-  const park = () => {
-    stopTimers();
-    state = 'parked';
-    car.style.transform = `translateX(${-travelDistance()}px)`;
-    car.classList.add('show-frame-2');
+  // Figma frame: 1440 wide, footer from y 3019, 284 tall. The car starts with its rear wheel at x 1080.
+  const FIGMA_W = 1440, FIGMA_TOP = 3019, FIGMA_H = 284, START_REAR_X = 1080;
+  const REAR = [0.7925, 0.99], FRONT = [0.1196, 0.99]; // wheel contact points, as fractions of the car box
+  // Top and front edge of the car drawing (fractions of the box), for measuring the gap to the text
+  const OUTLINE = [[0, 0.689], [0.029, 0.579], [0.041, 0.496], [0.078, 0.408], [0.158, 0.395],
+    [0.238, 0.386], [0.318, 0.364], [0.354, 0.246], [0.385, 0.162], [0.439, 0.127], [0.479, 0.035],
+    [0.52, 0.009], [0.6, 0.07]];
+  const TEXT_GAP = 15;     // stop this far from the email
+  const EDGE_GAP = 16;     // ...or from the window's left edge (the gutter), whichever comes first
+  const MAX_TILT = (20 * Math.PI) / 180; // ...or once the slope gets this steep (small screens squeeze the hill)
+  const FLIP_EVERY = 40;   // px travelled per frame switch, so the wheels turn in step with the speed
+  const UP_MS = 5000, DOWN_MS = 3000, REST_MS = 500;
+  const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - 2 * (1 - t) * (1 - t));
+
+  // The road as a polyline in the road box's px, with running length.
+  let pts = [], lens = [], carW = 0, carH = 0, startLen = 0, stopLen = 0;
+  const measure = () => {
+    const kx = road.clientWidth / FIGMA_W, ky = svg.clientHeight / FIGMA_H;
+    const total = path.getTotalLength();
+    pts = []; lens = [];
+    for (let i = 0, run = 0; i <= 1000; i++) {
+      const p = path.getPointAtLength((total * i) / 1000);
+      const q = [p.x * kx, (p.y - FIGMA_TOP) * ky];
+      if (i) run += Math.hypot(q[0] - pts[i - 1][0], q[1] - pts[i - 1][1]);
+      pts.push(q); lens.push(run);
+    }
+    carW = car.offsetWidth; carH = car.offsetHeight;
+    const startX = START_REAR_X * kx;
+    startLen = lens[pts.findIndex((q) => q[0] >= startX)];
+    stopLen = findStop();
   };
-  const reset = () => {
-    stopTimers();
-    state = 'waiting';
-    car.style.transform = '';
-    car.classList.remove('show-frame-2', 'is-faded');
+  const pointAt = (len) => {
+    let i = lens.findIndex((l) => l >= len);
+    if (i <= 0) return pts[Math.max(i, 0)];
+    const t = (len - lens[i - 1]) / (lens[i] - lens[i - 1] || 1);
+    return [pts[i - 1][0] + t * (pts[i][0] - pts[i - 1][0]), pts[i - 1][1] + t * (pts[i][1] - pts[i - 1][1])];
   };
-  // After parking: wait, fade out, jump back to the start while invisible, fade in, drive again.
-  const loopAgain = () => {
-    startTimer = setTimeout(() => {
-      car.classList.add('is-faded');
-      startTimer = setTimeout(() => {
-        car.style.transform = '';
-        car.classList.remove('show-frame-2', 'is-faded');
-        startTimer = setTimeout(drive, FADE_MS);
-      }, FADE_MS);
-    }, PARKED_MS);
+  // Rear wheel at `len` along the road; the front wheel is one wheelbase further on (to the left).
+  const pose = (len) => {
+    const rear = pointAt(len);
+    const base = (REAR[0] - FRONT[0]) * carW;
+    let fl = len - base, front = pointAt(fl);
+    for (let k = 0; k < 4; k++) { // walk until the straight-line gap equals the wheelbase
+      fl += Math.hypot(rear[0] - front[0], rear[1] - front[1]) - base;
+      front = pointAt(fl);
+    }
+    const angle = Math.atan2(rear[1] - front[1], rear[0] - front[0]);
+    return { rear, angle };
   };
-  const FLIP_EVERY = 40; // px travelled per frame switch, so the wheels turn in step with the speed
-  const drive = () => {
-    state = 'driving';
-    const distance = travelDistance();
+  const place = (len) => {
+    const { rear, angle } = pose(len);
+    const lift = 1; // half the road's 2px stroke: tyres sit on top of the line
+    car.style.transform = `translate(${rear[0]}px, ${rear[1] - lift}px) rotate(${angle}rad) ` +
+      `translate(${-REAR[0] * carW}px, ${-REAR[1] * carH}px)`;
+  };
+  // Gap between the car's outline and the email (and the window's left edge), for the car at `len`.
+  const gaps = (len) => {
+    const { rear, angle } = pose(len);
+    const r = road.getBoundingClientRect(), e = email.getBoundingClientRect();
+    const box = [e.left - r.left, e.top - r.top, e.right - r.left, e.bottom - r.top];
+    const cos = Math.cos(angle), sin = Math.sin(angle);
+    let min = Infinity, left = Infinity;
+    OUTLINE.forEach(([fx, fy]) => {
+      const lx = (fx - REAR[0]) * carW, ly = (fy - REAR[1]) * carH;
+      const x = rear[0] + lx * cos - ly * sin, y = rear[1] - 1 + lx * sin + ly * cos;
+      const dx = Math.max(box[0] - x, 0, x - box[2]), dy = Math.max(box[1] - y, 0, y - box[3]);
+      min = Math.min(min, Math.hypot(dx, dy));
+      left = Math.min(left, x + r.left);
+    });
+    return { text: min, edge: left };
+  };
+  // Drive left in small steps until the car is TEXT_GAP from the email, EDGE_GAP from the window's
+  // edge, tilted MAX_TILT, or out of road.
+  const findStop = () => {
+    const minLen = (REAR[0] - FRONT[0]) * carW + 20;
+    let len = startLen;
+    const clear = (l) => {
+      const g = gaps(l);
+      return g.text > TEXT_GAP && g.edge >= EDGE_GAP && pose(l).angle <= MAX_TILT;
+    };
+    while (len - 2 > minLen && clear(len - 2)) len -= 2;
+    return len;
+  };
+
+  let raf = 0, timer = 0, running = false;
+  const setFrame = (travelled) => car.classList.toggle('show-frame-2', Math.floor(travelled / FLIP_EVERY) % 2 === 1);
+  const stop = () => { cancelAnimationFrame(raf); clearTimeout(timer); running = false; };
+  const reset = () => { stop(); measure(); place(startLen); car.classList.remove('show-frame-2'); };
+  // One leg of the trip: from `from` to `to` along the road over `ms`, then `then()`.
+  const leg = (from, to, ms, travelledBefore, then) => {
     const begin = performance.now();
     const step = (now) => {
-      const t = Math.min(1, (now - begin) / DURATION);
-      const travelled = distance * ease(t);
-      car.style.transform = `translateX(${-travelled}px)`;
-      car.classList.toggle('show-frame-2', Math.floor(travelled / FLIP_EVERY) % 2 === 1);
+      const t = Math.min(1, (now - begin) / ms);
+      const len = from + (to - from) * easeInOut(t);
+      place(len);
+      setFrame(travelledBefore + Math.abs(len - from));
       if (t < 1) raf = requestAnimationFrame(step);
-      else { park(); loopAgain(); }
+      else then(travelledBefore + Math.abs(to - from));
     };
     raf = requestAnimationFrame(step);
   };
+  const cycle = () => {
+    measure();
+    leg(startLen, stopLen, UP_MS, 0, (travelled) => {
+      leg(stopLen, startLen, DOWN_MS, travelled, () => { timer = setTimeout(cycle, REST_MS); });
+    });
+  };
 
-  if (reduce) {
-    park();
-  } else {
+  const init = () => {
+    reset();
+    if (reduce) return;
     new IntersectionObserver((entries) => {
       const ratio = entries[entries.length - 1].intersectionRatio;
-      if (ratio >= 0.99 && state === 'waiting') {
-        clearTimeout(startTimer);
-        startTimer = setTimeout(drive, 350); // let the footer's fade-in land first
+      if (ratio >= 0.99 && !running) {
+        running = true;
+        timer = setTimeout(cycle, 350); // let the footer's fade-in land first
       } else if (ratio === 0) {
         reset(); // fully out of view: back to the start for next time
       }
     }, { threshold: [0, 0.99] }).observe(car);
-  }
-  // keep it parked in the right spot if the window is resized after the drive
-  addEventListener('resize', () => { if (state === 'parked') car.style.transform = `translateX(${-travelDistance()}px)`; });
+  };
+  // the email's width (web font) decides where the car stops, so wait for fonts
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(init);
+  addEventListener('resize', () => {
+    const wasRunning = running;
+    reset();
+    if (wasRunning && !reduce) { running = true; timer = setTimeout(cycle, 350); }
+  });
 }

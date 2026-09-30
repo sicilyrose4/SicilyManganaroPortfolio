@@ -209,7 +209,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 87px;             /* card tops 532 apart, cards 445 tall */
-  padding-bottom: 255px; /* SEE MORE bottom 2685 → footer row 2940 (the car and flag sit in between) */
+  padding-bottom: 334px; /* SEE MORE bottom 2685 → "Let’s stay in touch!" 3019 */
 }
 .project-card {
   display: flex;
@@ -841,37 +841,53 @@ a { color: inherit; text-decoration: none; }
   .drop-try__embed { width: 100%; margin: 24px 0 0; aspect-ratio: 4 / 3; }
 }
 
-/* ---------- Home footer with the car (Figma 395:13582 + 395:13575) ---------- */
-/* No divider: the row (logo, nav, LinkedIn) at y 2940, the page ending 60px below it. */
-.site-footer--car { border-top: 0; padding-bottom: 60.19px; }
-.site-footer--car .site-footer__inner { height: auto; }
-
-/* Starts parked at the bottom right (Figma x 889, tyres on the page's bottom edge); js/main.js drives
-   it left until its front bumper is 56px past the LinkedIn icon, flipping between the two frames.
-   The 278px box holds Figma's 268.55px car (the PNGs have ~18/512 empty on the right). */
-.footer-car {
+/* ---------- Home footer with the road (Figma 395:13582, 395:13608/13610, 395:13615) ---------- */
+/* Contact lines at y 3019, the nav row at 3213, the page ending at 3303. The road is drawn across
+   the whole window (Figma's frame width) and passes between them; the car rides on it. */
+.site-footer--road { border-top: 0; padding-bottom: 63.19px; }
+.site-footer--road .site-footer__inner { height: auto; margin-top: 125px; } /* email bottom 3088 → row 3213 */
+.site-footer__contact,
+.site-footer--road .site-footer__inner { position: relative; z-index: 1; }
+.site-footer__contact { display: flex; flex-direction: column; gap: 3px; color: var(--ink); font-family: var(--font-sans); }
+.site-footer__contact p { margin: 0; font-variation-settings: "opsz" 14; font-size: 16px; line-height: 26px; letter-spacing: -0.32px; }
+.site-footer__email {
+  align-self: flex-start;
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: -0.56px;
+  font-variation-settings: "opsz" 14; /* Figma's optical size; the auto size at 28px sets it wider */
+}
+.footer-road {
   position: absolute;
-  right: 63.7px;
+  top: 0;
   bottom: 0;
-  width: min(278px, 45%);
-  aspect-ratio: 512 / 228;
+  right: calc(50% - 50vw); /* flush with the window's right edge */
+  width: max(100vw, 600px); /* narrower windows see the valley end of the road instead of a squashed hill */
   pointer-events: none;
 }
-/* Too narrow for the car beside the row: it goes under the row, starting at the right
-   (leaving room for the flag) and driving to the left edge. */
-@media (max-width: 760px) {
-  .site-footer--car { display: flex; flex-direction: column; padding-bottom: 24px; }
-  .site-footer--car .footer-car {
-    position: relative;
-    order: 1;
-    right: auto;
-    align-self: flex-end;
-    width: min(220px, 55%);
-    margin: 56px calc(0.25 * min(220px, 55%)) 0 0; /* flag rises 33% above and overhangs 25% right */
-  }
+/* 284px tall = the footer's height in Figma (3019 → 3303); stretched sideways to the window */
+.footer-road__line { position: absolute; top: 0; left: 0; width: 100%; height: 284px; overflow: hidden; }
+
+/* 334.4px box holds Figma's 323px car (the PNGs have ~18/512 empty on the right); scales with the
+   window like the road. js/main.js places it on the road (wheels on the line, tilted to the slope);
+   without JS it sits where Figma has it. */
+.footer-car {
+  position: absolute;
+  left: calc(815 / 1440 * 100%);
+  top: 96.79px;
+  width: clamp(160px, 334.4 / 1440 * 100vw, 334.4px);
+  aspect-ratio: 512 / 228;
+  transform-origin: 0 0;
 }
-.footer-car { transition: opacity 0.4s ease; } /* the loop's fade out/in (js/main.js FADE_MS) */
-.footer-car.is-faded { opacity: 0; }
+.js .footer-car { left: 0; top: 0; }
+@media (max-width: 760px) {
+  .site-footer__email { font-size: 22px; line-height: 32px; letter-spacing: -0.44px; }
+  /* no room for the nav row inside the valley: it moves under the road */
+  .site-footer--road { padding-bottom: 24px; }
+  .site-footer--road .site-footer__inner { margin-top: 221px; }
+}
 .footer-car__frame { position: absolute; inset: 0; width: 100%; height: 100%; }
 /* flag: Figma's 99×50 at +219, −35 from the car's 256×114 box, plus ~2.5px margin so the
    waving edge isn't clipped. In % so it scales with the car. */

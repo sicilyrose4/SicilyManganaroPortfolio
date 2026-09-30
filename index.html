@@ -121,15 +121,25 @@
       <a data-reveal class="outline-button work__more" href="#">SEE MORE</a>
     </section>
   </main>
-  <!-- Figma 395:13582 (no divider; LinkedIn sits after the nav) -->
-  <footer class="site-footer site-footer--car" data-reveal>
-    <!-- Figma 395:13575: drives left once the footer is in view, stopping 56px past LinkedIn (js/main.js) -->
-    <div class="footer-car" aria-hidden="true">
-      <img class="footer-car__frame" src="assets/images/footer/car-1.png" width="512" height="228" alt="">
-      <img class="footer-car__frame footer-car__frame--2" src="assets/images/footer/car-2.png" width="512" height="228" alt="">
-      <!-- Figma 395:13572: "THE END" flag riding on the back; waves in step with the car's frames -->
-      <img class="footer-car__flag" src="assets/images/footer/flag-1.png" width="208" height="109" alt="">
-      <img class="footer-car__flag footer-car__frame--2" src="assets/images/footer/flag-2.png" width="208" height="109" alt="">
+  <!-- Figma 395:13582 + 395:13608/13610: contact line, then the road with the car, then the nav row -->
+  <footer class="site-footer site-footer--road" data-reveal>
+    <div class="site-footer__contact">
+      <p>Let’s stay in touch!</p>
+      <a class="site-footer__email" href="mailto:sicilymanganaro@gmail.com">sicilymanganaro@gmail.com</a>
+    </div>
+    <!-- Figma 395:13615 (Vector 77): the road spans the whole window. Only its top edge is drawn. -->
+    <div class="footer-road" aria-hidden="true">
+      <svg class="footer-road__line" viewBox="0 3019 1440 284" preserveAspectRatio="none">
+        <path d="M-70.48 3126.01 L0.92 3142.01 C142.73 3130.84 442.81 3116.52 615.57 3200.5 C804.81 3292.5 1080.43 3294 1441.93 3200.5" fill="none" stroke="#d9d9d9" stroke-width="2" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <!-- Figma 395:13575: climbs the hill toward the email, then rolls back down and starts over (js/main.js) -->
+      <div class="footer-car">
+        <img class="footer-car__frame" src="assets/images/footer/car-1.png" width="512" height="228" alt="">
+        <img class="footer-car__frame footer-car__frame--2" src="assets/images/footer/car-2.png" width="512" height="228" alt="">
+        <!-- Figma 395:13572: "THE END" flag riding on the back; waves in step with the car's frames -->
+        <img class="footer-car__flag" src="assets/images/footer/flag-1.png" width="208" height="109" alt="">
+        <img class="footer-car__flag footer-car__frame--2" src="assets/images/footer/flag-2.png" width="208" height="109" alt="">
+      </div>
     </div>
     <div class="site-footer__inner container">
       <div class="site-footer__left">
