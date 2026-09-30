@@ -206,7 +206,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 87px;             /* card tops 532 apart, cards 445 tall */
-  padding-bottom: 186px; /* SEE MORE bottom 2592 → footer divider 2778 */
+  padding-bottom: 286px; /* SEE MORE bottom 2685 → footer divider 2971 (room for the car) */
 }
 .project-card {
   display: flex;
@@ -317,7 +317,7 @@ a { color: inherit; text-decoration: none; }
   left: calc(69.59 * var(--px)); top: calc(111 * var(--px)); width: calc(233 * var(--px));
 }
 
-.work__more { align-self: center; width: 166px; margin-top: -1px; } /* cards end 2470, button at 2556 → 86 */
+.work__more { align-self: center; width: 166px; margin-top: -29px; } /* 58px below the last card */
 
 @media (prefers-reduced-motion: reduce) {
   .project-card__screen { transition: none; }
@@ -648,6 +648,7 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
 
 /* ---------- Footer (Figma 283:6531) ---------- */
 .site-footer {
+  position: relative;
   /* divider runs x 104 → 1336 in the 1440 frame: 105px wider than the column each side */
   width: min(1232px, 100% - 2 * var(--gutter));
   margin-inline: auto;
@@ -836,3 +837,19 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
   .drop-try__title { margin-left: 0; }
   .drop-try__embed { width: 100%; margin: 24px 0 0; aspect-ratio: 4 / 3; }
 }
+
+/* ---------- Footer car (home page, Figma 393:13538) ---------- */
+/* Sits on the divider 44px from its right end; js/main.js drives it to the left end once,
+   flipping between the two frames so it looks like it's moving. */
+.footer-car {
+  position: absolute;
+  right: 44px;
+  bottom: calc(100% - 0.75px); /* tyres rest on the 1.5px rule */
+  width: min(256px, 45%);
+  aspect-ratio: 512 / 228;
+  pointer-events: none;
+}
+.footer-car__frame { position: absolute; inset: 0; width: 100%; height: 100%; }
+.footer-car__frame--2,
+.footer-car.show-frame-2 .footer-car__frame:not(.footer-car__frame--2) { visibility: hidden; }
+.footer-car.show-frame-2 .footer-car__frame--2 { visibility: visible; }

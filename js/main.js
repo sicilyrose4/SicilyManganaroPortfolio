@@ -204,3 +204,53 @@ if (gate) {
   });
   input.addEventListener('input', () => { error.textContent = ''; });
 }
+
+// Footer car (home page): once the car is fully on screen it drives left along the divider until
+// its front bumper reaches the start of the line (~4s), flipping between its two frames while it
+// moves, then parks on frame 2 (no motion lines). Runs once per page load.
+const car = document.querySelector('.footer-car');
+if (car) {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let parked = false;
+  const park = () => {
+    parked = true;
+    car.style.transform = `translateX(${-car.offsetLeft}px)`; // offsetLeft = distance from the line's start
+    car.classList.add('show-frame-2');
+  };
+  if (reduce) {
+    park();
+  } else {
+    const DURATION = 4000;
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); // ease-in-out
+    const drive = () => {
+      const distance = car.offsetLeft; // from its spot to the start of the line
+      let frame = 1;
+      const flip = setInterval(() => {
+        frame = frame === 1 ? 2 : 1;
+        car.classList.toggle('show-frame-2', frame === 2);
+      }, 140);
+      const start = performance.now();
+      const step = (now) => {
+        const t = Math.min(1, (now - start) / DURATION);
+        car.style.transform = `translateX(${-distance * ease(t)}px)`;
+        if (t < 1) { requestAnimationFrame(step); return; }
+        clearInterval(flip);
+        park();
+      };
+      requestAnimationFrame(step);
+    };
+    const watch = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        watch.disconnect();
+        setTimeout(drive, 350); // let the footer's fade-in land first
+      }
+    }, { threshold: 1 });
+    watch.observe(car);
+  }
+  // keep it parked at the line's start if the window is resized after the drive
+  addEventListener('resize', () => {
+    if (!parked) return;
+    car.style.transition = 'none';
+    car.style.transform = `translateX(${-car.offsetLeft}px)`;
+  });
+}
