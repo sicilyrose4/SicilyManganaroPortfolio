@@ -14,6 +14,9 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+/* Things that start past the window edge (Luna's gradient bands, the footer car's flag on phones)
+   are clipped there instead of causing sideways scrolling */
+html, body { overflow-x: clip; }
 /* In-page links (TAKE A LOOK → #work) glide instead of jumping */
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
@@ -435,8 +438,7 @@ a { color: inherit; text-decoration: none; }
   from { background-color: #fcfcfc; }
   to   { background-color: var(--bg); } /* each dark page's own background */
 }
-/* Full-bleed gradient bands run past the column; clip them at the window edge */
-html:has(> .page-dark), .page-dark { overflow-x: clip; }
+
 
 .case { padding: 98px 0 349.5px; } /* back link top 98; content end 6784.5 → footer divider 7134 */
 
@@ -851,6 +853,16 @@ html:has(> .page-dark), .page-dark { overflow-x: clip; }
   pointer-events: none;
 }
 .footer-car__frame { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* flag: Figma's 99×50 at +219, −35 from the car's 256×114 box, plus ~2.5px margin so the
+   waving edge isn't clipped. In % so it scales with the car. */
+.footer-car__flag {
+  position: absolute;
+  left: calc(216.55 / 256 * 100%);
+  top: calc(-37.45 / 114 * 100%);
+  width: calc(103.92 / 256 * 100%);
+  height: auto;
+}
 .footer-car__frame--2,
-.footer-car.show-frame-2 .footer-car__frame:not(.footer-car__frame--2) { visibility: hidden; }
+.footer-car.show-frame-2 .footer-car__frame:not(.footer-car__frame--2),
+.footer-car.show-frame-2 .footer-car__flag:not(.footer-car__frame--2) { visibility: hidden; }
 .footer-car.show-frame-2 .footer-car__frame--2 { visibility: visible; }
