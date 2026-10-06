@@ -109,13 +109,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero__intro {
-  width: 430px; /* 4 lines; 400 (Figma) wraps the longer intro to 5, 412 is the minimum */
+  width: 400px; /* Figma's text box */
   max-width: 100%;
   margin: 52px 0 0;
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 14px;  /* fits the intro in 4 lines at 400px */
   line-height: 26px;
-  letter-spacing: -0.32px;
+  letter-spacing: -0.28px;
   font-variation-settings: "opsz" 14;
 }
 
