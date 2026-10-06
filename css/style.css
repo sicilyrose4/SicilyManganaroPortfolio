@@ -669,6 +669,11 @@ a { color: inherit; text-decoration: none; }
 .site-footer__nav { display: flex; gap: 32px; }
 .site-footer__nav a { color: var(--ink); font-size: 14px; line-height: 1.45; letter-spacing: -0.07px; }
 .site-footer__social img { width: 24px; height: 24px; }
+.site-footer__social svg { display: block; width: 24px; height: 24px; }
+/* Home footer: inline icon, navy → accent blue on hover */
+.site-footer__social { color: var(--ink); transition: color 0.2s ease; }
+.site-footer__social:hover,
+.site-footer__social:focus-visible { color: var(--accent); }
 /* Dark pages (Figma 283:8564): softer 1px divider, light nav */
 .page-dark .site-footer { border-top: 1px solid #3f4147; }
 .page-dark .site-footer__inner { height: 95px; }
