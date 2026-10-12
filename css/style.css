@@ -209,7 +209,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 87px;             /* card tops 532 apart, cards 445 tall */
-  padding-bottom: 334px; /* SEE MORE bottom 2685 → "Let’s stay in touch!" 3019 */
+  padding-bottom: 334px; /* Figma: SEE MORE bottom 2685 → "Let’s stay in touch!" 3019. While SEE MORE is hidden this is the gap under the last card. */
 }
 .project-card {
   display: flex;
