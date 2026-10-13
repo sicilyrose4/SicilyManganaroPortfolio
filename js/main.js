@@ -15,6 +15,37 @@ if (document.body.classList.contains('page-dark')) {
   });
 }
 
+// Back link on project pages: "BACK TO HOME" if the visitor came in from the home page, otherwise
+// "BACK TO WORK" (the Work page, which is also the default for direct visits). The referrer says
+// where they came from; the home and Work pages also note it on click, as a fallback.
+const ENTERED_KEY = 'entered-from';
+if (document.querySelector('.hero, .work-grid')) {
+  const here = document.querySelector('.work-grid') ? 'work' : 'home';
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a[href]')) { try { sessionStorage.setItem(ENTERED_KEY, here); } catch (err) {} }
+  });
+}
+const backLink = document.querySelector('.back-link');
+if (backLink) {
+  let from = null;
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin === location.origin) {
+      if (/\/work\.html$/.test(ref.pathname)) from = 'work';
+      else if (/\/(index\.html)?$/.test(ref.pathname)) from = 'home';
+    }
+  } catch (err) {}
+  try {
+    if (from) sessionStorage.setItem(ENTERED_KEY, from);
+    else from = sessionStorage.getItem(ENTERED_KEY);
+  } catch (err) {}
+  if (from === 'home') {
+    backLink.href = 'index.html#work';
+    const label = [...backLink.childNodes].reverse().find((n) => n.nodeType === 3 && n.textContent.trim());
+    if (label) label.textContent = label.textContent.replace('BACK TO WORK', 'BACK TO HOME');
+  }
+}
+
 // Fetch DM Mono Medium up front so the first hover-bold doesn't wait on a download.
 if (document.fonts) document.fonts.load('500 14px "DM Mono"');
 
