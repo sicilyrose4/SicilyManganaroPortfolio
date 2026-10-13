@@ -687,7 +687,7 @@ a { color: inherit; text-decoration: none; }
 .site-footer__nav a { color: var(--ink); font-size: 14px; line-height: 1.45; letter-spacing: -0.07px; }
 .site-footer__social img { width: 24px; height: 24px; }
 .site-footer__social svg { display: block; width: 24px; height: 24px; }
-/* Home footer: inline icon, navy → accent blue on hover */
+/* Inline icon on every page: its square turns accent blue on hover (--li-mark is the "in" colour) */
 .site-footer__social { color: var(--ink); transition: color 0.2s ease; }
 .site-footer__social:hover,
 .site-footer__social:focus-visible { color: var(--accent); }
@@ -695,6 +695,9 @@ a { color: inherit; text-decoration: none; }
 .page-dark .site-footer { border-top: 1px solid #3f4147; }
 .page-dark .site-footer__inner { height: 95px; }
 .page-dark .site-footer__nav a { color: #bbc0cc; }
+.page-dark .site-footer__social { color: #bbc0cc; --li-mark: var(--bg); } /* as assets/images/linkedin-on-dark.svg */
+.page-dark .site-footer__social:hover,
+.page-dark .site-footer__social:focus-visible { color: var(--accent); }
 
 @media (max-width: 560px) {
   .site-footer__left, .site-footer__nav { gap: 16px; }
@@ -1053,7 +1056,14 @@ a { color: inherit; text-decoration: none; }
 .bd .bd-system__board { width: 100%; margin-top: 115px; } /* full column at 12957 */
 .bd-start__grid { margin-top: 52px; }
 
-.page-bonedry .site-footer__social { color: var(--ink); }
+/* Footer sits on the design system band's fill, with the dark pages' footer colours */
+.bd-footer-band { background: #12111d; }
+.page-bonedry .site-footer { border-top: 1px solid #3f4147; }
+.page-bonedry .site-footer__inner { height: 95px; }
+.page-bonedry .site-footer__nav a { color: #bbc0cc; }
+.page-bonedry .site-footer__social { color: #bbc0cc; --li-mark: #12111d; }
+.page-bonedry .site-footer__social:hover,
+.page-bonedry .site-footer__social:focus-visible { color: var(--accent); }
 
 @media (max-width: 900px) {
   .bd-big { font-size: 26px; line-height: 36px; }
