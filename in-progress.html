@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>In progress — Sicily Manganaro</title>
+  <meta name="description" content="This project page is still in progress.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    // Arriving from a dark page (e.g. Luna's BACK TO WORK): start dark and fade to light first.
+    try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- Figma 483:7596: where project tiles lead until their case study exists -->
+  <main class="wip container">
+    <a class="back-link" data-reveal href="work.html">
+      <svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg>
+      BACK TO WORK
+    </a>
+
+    <!-- The same doodles as the home hero; js/main.js bobs them the same way -->
+    <div class="wip__art" aria-hidden="true">
+      <span class="doodle" style="--x:121.13; --y:-2.34; --w:95.5"><img src="assets/images/hero/stars-1.png" width="191" height="145" alt=""></span>
+      <span class="doodle" style="--x:48.4; --y:-0.65; --w:19"><img src="assets/images/hero/star-3.png" width="38" height="40" alt=""></span>
+      <span class="doodle" style="--x:122.94; --y:42.72; --w:39.5"><img src="assets/images/hero/pen-tool.png" width="79" height="76" alt=""></span>
+      <span class="doodle" style="--x:-0.46; --y:57.33; --w:17"><img src="assets/images/hero/stars-7.png" width="34" height="44" alt=""></span>
+      <span class="doodle doodle--stars-6-tilt" style="--x:48.2; --y:31.07; --w:57.5"><img src="assets/images/hero/stars-6.png" width="115" height="94" alt=""></span>
+    </div>
+
+    <!-- The three dots type themselves in on a loop (see .wip__dots in style.css) -->
+    <h1 class="wip__title" data-reveal aria-label="This page is still in progress...">This page is still in progress<span class="wip__dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></h1>
+    <p class="wip__text" data-reveal>This site is in the works. This project is coming soon!</p>
+  </main>
+</body>
+</html>
