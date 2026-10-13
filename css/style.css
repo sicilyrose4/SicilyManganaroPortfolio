@@ -1116,8 +1116,9 @@ a { color: inherit; text-decoration: none; }
 .work-tile { display: block; aspect-ratio: 501 / 276; border-radius: 12px; overflow: hidden; }
 .work-tile { position: relative; }
 .work-tile img { width: 100%; height: 100%; object-fit: cover; }
-/* Hover (Figma 503:5783/5784): accent-blue wash at 85% with the project title centered */
-.work-tile::after { content: ""; position: absolute; inset: 0; background: rgba(78, 116, 192, 0.85); opacity: 0; transition: opacity 0.2s ease; }
+/* Hover (Figma 503:5783/5784): an 85% wash with the project title centered. Each tile sets its own
+   color with --tint (r, g, b) in work.html; the accent blue is the fallback. */
+.work-tile::after { content: ""; position: absolute; inset: 0; background: rgba(var(--tint, 78, 116, 192), 0.85); opacity: 0; transition: opacity 0.2s ease; }
 .work-tile__title {
   position: absolute; z-index: 1; top: 50%; left: 50%; width: min(354px, 86%); transform: translate(-50%, -50%);
   color: #fbfbfb; font-family: var(--font-mono); font-size: 19px; font-weight: 500; line-height: 1.3; text-align: center;
