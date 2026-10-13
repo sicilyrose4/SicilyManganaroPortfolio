@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bull Stock — Sicily Manganaro</title>
+  <meta name="description" content="Bull Stock: a beginner investing app for recent graduates, designed from research to final UI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    // Arriving from a dark page (e.g. Luna's BACK TO WORK): start dark and fade to light first.
+    try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
+  </script>
+</head>
+<body class="page-bonedry page-bull">
+  <!-- Bull Stock case study. Layout approved from a mockup (no Figma frame); shares the Bone Dry (.bd-*) styles plus .bs-*. -->
+  <main class="bd bs">
+    <div class="container">
+      <a class="back-link" data-reveal href="work.html"><svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg> BACK TO WORK</a>
+
+      <header class="bd-intro">
+        <div class="bd-intro__text">
+          <h1 data-reveal class="bd-title">Bull Stock - <span>Learn. Invest. Grow.</span></h1>
+          <p data-reveal class="bd-summary">A beginner investing app for recent graduates. Built from interviews with new investors, it lets people learn the stock market and practice with mock money before risking their own.</p>
+        </div>
+        <img data-reveal class="bs-logo" src="assets/images/bull-stock/logo.svg" width="137" height="102" alt="Bull Stock logo: a bull’s head drawn in pink and blue lines">
+      </header>
+
+      <dl data-reveal class="bs-meta">
+        <div><dt>ROLE</dt><dd>UX/UI design, from research and wireframes to the final screens, in collaboration with my team. I owned the branding.</dd></div>
+        <div><dt>TEAM</dt><dd>Team of three</dd></div>
+        <div><dt>TIMELINE</dt><dd>4 weeks, Fall 2025</dd></div>
+      </dl>
+
+      <img data-reveal class="bs-hero" src="assets/images/bull-stock/mockups.jpg" width="2800" height="1866" alt="Two phones showing Bull Stock’s stock detail and tutorials screens on a pink background">
+    </div>
+
+    <section class="bd-band bs-dark bs-problem">
+      <div class="container">
+        <p data-reveal class="bd-big">Recent graduates want to invest, but the stock market feels like gambling with money they barely have.</p>
+      </div>
+    </section>
+
+    <section class="bd-band bd-band--gray bs-research">
+      <div class="container">
+        <h2 data-reveal class="bd-h2">Research</h2>
+        <p class="bd-body bs-lead">Our brief was open: pick an audience in fintech, find a real struggle, and design for it. We chose recent graduates entering the stock market for the first time, and set four goals for our research.</p>
+        <ol data-reveal class="bs-goals">
+          <li><span>01</span>Understand what users need when entering the stock market</li>
+          <li><span>02</span>Understand how they currently learn about the market and start investing</li>
+          <li><span>03</span>Understand the pain points of recent grads who invest</li>
+          <li><span>04</span>Understand their perceptions and goals around the stock market</li>
+        </ol>
+        <div data-reveal class="bs-methods">
+          <div><h3 class="bs-h4">Secondary research</h3><p class="bd-body">Studies on Gen Z investors: where they learn, what holds them back, what they want from a platform.</p></div>
+          <div><h3 class="bs-h4">Competitor review</h3><p class="bd-body">Eight investing apps, from Robinhood and Acorns to Fidelity and Webull, compared for how they treat beginners.</p></div>
+          <div><h3 class="bs-h4">Interviews</h3><p class="bd-body">Conversations with recent grads about how they see the market, their goals, and what scares them.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bd-band bs-pink bs-heard">
+      <div class="container">
+        <div data-reveal class="bs-heard__top">
+          <h2 class="bs-display">Current thoughts on investing?</h2>
+          <p class="bs-heard__lead">Recent graduates feel overwhelmed and intimidated by the stock market. Investing feels a little like gambling, and on a limited budget they don’t want to risk money on something they don’t understand.</p>
+        </div>
+        <ul data-reveal class="bs-quotes">
+          <li>“I want to invest, but I’m scared of losing money I barely have.”</li>
+          <li>“I want to invest, not gamble. But I can’t tell the difference.”</li>
+          <li>“I feel anxious about investing because it is too risky.”</li>
+          <li>“Having a community (with the stock market) is crucial to me.”</li>
+          <li>“I don’t understand any of the trends.”</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="bs-section">
+      <div class="container">
+        <h2 data-reveal class="bd-h2">Who we designed for</h2>
+        <p class="bd-body bs-lead">Leo is our persona: a recent graduate with a first job, student debt, and no confidence with investing terms.</p>
+        <img loading="lazy" data-reveal class="bs-persona" src="assets/images/bull-stock/persona.png" width="2910" height="1630" alt="User persona card for Leo Jones, 22, a recent graduate from Kansas, with his bio, goals, motivations, frustrations and quotes">
+      </div>
+    </section>
+
+    <section class="bd-band bs-dark bs-journey">
+      <div class="container">
+        <h2 data-reveal class="bd-h2">User journey</h2>
+        <p class="bd-body bs-lead">We mapped the path from first hearing about investing to managing a portfolio. The sharpest pain came right after downloading an app.</p>
+        <img loading="lazy" data-reveal src="assets/images/bull-stock/journey.png" width="2740" height="1480" alt="Journey map with seven stages: awareness, consideration, commitment, learning, investment, engagement and reflection, each with pain points and actions. Commitment is highlighted in pink.">
+      </div>
+    </section>
+
+    <section class="bd-band bs-pink bs-hmw">
+      <div class="container">
+        <p data-reveal class="bs-kicker">PROBLEM STATEMENT</p>
+        <p data-reveal class="bd-big">How might we reduce fear and anxiety, and build confidence for beginners to safely experiment with stock market investing?</p>
+        <img loading="lazy" data-reveal src="assets/images/bull-stock/fear-icons.png" width="1496" height="540" alt="An anxious figure surrounded by question marks, with an arrow to a calm figure under a dollar sign">
+      </div>
+    </section>
+
+    <section class="bs-section bs-solution">
+      <div class="container">
+        <h2 data-reveal class="bd-h2">From research to design</h2>
+        <p class="bd-body bs-lead">Each core feature answers something we heard.</p>
+        <div data-reveal class="bs-pairs">
+          <article>
+            <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/mode.png" alt="Mode screen recommending Mock Mode, with Mock Mode selected"></figure>
+            <p class="bs-finding">“I’m scared of losing money I barely have.”</p>
+            <h3 class="bs-h4">Mock Mode</h3>
+            <p class="bd-body">Practice with mock coins first. Switch to Real Mode when you feel ready.</p>
+          </article>
+          <article>
+            <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/detail.png" alt="Stock detail screen for Apple with question marks beside each statistic"></figure>
+            <p class="bs-finding">“I don’t understand any of the trends.”</p>
+            <h3 class="bs-h4">Jargon explained in place</h3>
+            <p class="bd-body">Question marks beside terms like market cap and dividend yield open a plain-language explanation.</p>
+          </article>
+          <article>
+            <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/tutorials.png" alt="Community screen on the Tutorials tab, with How to Invest lessons and progress"></figure>
+            <p class="bs-finding">“Having a community is crucial to me.”</p>
+            <h3 class="bs-h4">Tutorials and community</h3>
+            <p class="bd-body">Short lessons with progress tracking, next to news and a feed from other investors.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bd-band bs-dark bs-wires">
+      <div class="container">
+        <h2 data-reveal class="bd-h2">Wireframes</h2>
+        <img loading="lazy" data-reveal src="assets/images/bull-stock/wires.png" width="3242" height="1528" alt="Early gray-box wireframes for onboarding, mode choice, home, portfolio, stock details and profile">
+        <h3 data-reveal class="bd-h3 bs-sub">Initial prototype</h3>
+        <img loading="lazy" data-reveal src="assets/images/bull-stock/lofi.png" width="3192" height="1552" alt="The first clickable prototype in light gray: login, questionnaire, mode choice, community, home, stock details, buy and order placed">
+      </div>
+    </section>
+
+    <section class="bs-section bs-testing">
+      <div class="container">
+        <h2 data-reveal class="bd-h2">What testing changed</h2>
+        <p class="bd-body bs-lead">We put the prototype in front of users and fixed what tripped them up.</p>
+        <div data-reveal class="bs-changes">
+          <article class="bs-change">
+            <div class="bs-change__fig"><img loading="lazy" src="assets/images/bull-stock/test-1a.png" alt="Before and after: Confidence scale"></div>
+            <h3 class="bs-h4">Confidence scale</h3>
+            <p class="bd-body">On the questionnaire, the 1–5 confidence scale had no labels, so the numbers were open to interpretation. We added a label under the scale.</p>
+          </article>
+          <article class="bs-change">
+            <div class="bs-change__fig"><img loading="lazy" src="assets/images/bull-stock/test-1b.png" alt="Before and after: Choosing a mode"></div>
+            <h3 class="bs-h4">Choosing a mode</h3>
+            <p class="bd-body">Tapping Mock or Real Mode used to enter the app straight away, which left room for error. We added an Enter button, then made the two choices look clearly different and explained what each one means.</p>
+          </article>
+          <article class="bs-change">
+            <div class="bs-change__fig"><img loading="lazy" src="assets/images/bull-stock/test-2a.png" alt="Before and after: Knowing which mode you’re in"></div>
+            <h3 class="bs-h4">Knowing which mode you’re in</h3>
+            <p class="bd-body">Color alone (pink for Mock, blue for Real) wasn’t enough. A “Mock Mode” or “Real Mode” label now sits at the top left of the screen.</p>
+          </article>
+          <article class="bs-change">
+            <div class="bs-change__fig"><img loading="lazy" src="assets/images/bull-stock/test-2b.png" alt="Before and after: Finding tutorials"></div>
+            <h3 class="bs-h4">Finding tutorials</h3>
+            <p class="bd-body">People weren’t sure what the boxes at the top of Home were, or that there were more. We added a “Tutorials” label and moved “See all tutorials” to the top of the row.</p>
+          </article>
+          <article class="bs-change">
+            <div class="bs-change__fig"><img loading="lazy" src="assets/images/bull-stock/test-3a.png" alt="Before and after: Search, not add"></div>
+            <h3 class="bs-h4">Search, not add</h3>
+            <p class="bd-body">The center button searches for stocks and adds them to a portfolio. Testing showed “search” is the first thing people do there, so the plus became a search icon.</p>
+          </article>
+          <article class="bs-change">
+            <div class="bs-change__fig"><img loading="lazy" src="assets/images/bull-stock/test-3b.png" alt="Before and after: Explaining the jargon"></div>
+            <h3 class="bs-h4">Explaining the jargon</h3>
+            <p class="bd-body">Terms like market capitalization and dividend yield confused new investors. Each box got a question mark that explains the term in place.</p>
+          </article>
+          <article class="bs-change">
+            <div class="bs-change__fig"><img loading="lazy" src="assets/images/bull-stock/test-4a.png" alt="Before and after: Tutorials in Community"></div>
+            <h3 class="bs-h4">Tutorials in Community</h3>
+            <p class="bd-body">Tutorials were buried in the profile. They now live in the Community tab, next to News.</p>
+          </article>
+          <article class="bs-change">
+            <div class="bs-change__fig"><img loading="lazy" src="assets/images/bull-stock/test-4b.png" alt="Before and after: Showing progress"></div>
+            <h3 class="bs-h4">Showing progress</h3>
+            <p class="bd-body">Tutorials gave no sense of how far along you were. We added a progress bar and a “percent completed” label.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bd-band bd-band--gray bs-final">
+      <div class="container">
+        <h2 data-reveal class="bd-h2">Final design</h2>
+        <h3 class="bd-sub">Getting started</h3>
+        <div data-reveal class="bs-screens">
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/onboard.png" alt="Login screen with the Bull Stock logo"><figcaption>Log in</figcaption></figure>
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/question.png" alt="Questionnaire asking how confident you are with investing and your income range"><figcaption>A short questionnaire sets your starting point</figcaption></figure>
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/mode.png" alt="Mode choice screen"><figcaption>Mock Mode is recommended for beginners</figcaption></figure>
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/home.png" alt="Home screen in Mock Mode with tutorials, portfolio overview and watchlist"><figcaption>Home, with tutorials up top</figcaption></figure>
+        </div>
+        <h3 class="bd-sub">Investing</h3>
+        <div data-reveal class="bs-screens">
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/list.png" alt="Stock list with recently viewed and popular stocks"><figcaption>Search and browse stocks</figcaption></figure>
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/detail.png" alt="Stock detail screen with chart and explained statistics"><figcaption>Stock details with terms explained</figcaption></figure>
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/buy.png" alt="Buy screen with a number pad"><figcaption>Buy with mock coins</figcaption></figure>
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/portfolio.png" alt="Portfolio screen with total and assets"><figcaption>Track your portfolio</figcaption></figure>
+        </div>
+        <h3 class="bd-sub">Learning</h3>
+        <div data-reveal class="bs-screens">
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/community.png" alt="Community screen with news articles and a feed"><figcaption>Community: news and a feed</figcaption></figure>
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/tutorials.png" alt="Tutorials tab with lessons and progress"><figcaption>Tutorials with progress</figcaption></figure>
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/tutorial.png" alt="A tutorial video screen with a Take the Quiz button"><figcaption>Lessons end with a quiz</figcaption></figure>
+        </div>
+        <h3 class="bd-sub">Real Mode</h3>
+        <div data-reveal class="bs-screens">
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/mode-real.png" alt="Mode screen with Real Mode selected in blue"><figcaption>Switching modes</figcaption></figure>
+          <figure class="bs-screen "><img loading="lazy" src="assets/images/bull-stock/home-real.png" alt="Home screen in Real Mode, in blue"><figcaption>The same app in blue, using real money</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="bs-section bs-try">
+      <div class="container">
+        <p data-reveal class="bd-play__label">TRY IT OUT <img loading="lazy" src="assets/images/bone-dry/play-arrow.svg" width="56" height="28" alt=""></p>
+        <div data-reveal class="bs-proto">
+          <iframe loading="lazy" src="https://embed.figma.com/proto/ny9fhUlVOT652zelldNh02/Alex--Sicily--Matt---Project-2--Copy-?node-id=592-2414&starting-point-node-id=592%3A2414&scaling=scale-down&content-scaling=fixed&embed-host=share" title="Bull Stock clickable prototype" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="bd-band bs-dark bs-system">
+      <div class="container">
+        <h2 data-reveal class="bd-h2">Design system</h2>
+        <div data-reveal class="bs-sys">
+          <div class="bs-sys__group" style="--span:3">
+            <p class="bs-label">Logo</p>
+            <img loading="lazy" class="bs-system__logo" src="assets/images/bull-stock/logo.svg" width="137" height="102" alt="Bull Stock logo">
+          </div>
+          <div class="bs-sys__group" style="--span:5">
+            <p class="bs-label">Color</p>
+            <ul class="bs-swatches">
+              <li style="--c:#fd5cc5"><span></span>Mock Mode<br>#FD5CC5</li>
+              <li style="--c:#5c87fd"><span></span>Real Mode<br>#5C87FD</li>
+              <li style="--c:#171717"><span></span>Background<br>#171717</li>
+              <li style="--c:#ffffff"><span></span>Text<br>#FFFFFF</li>
+            </ul>
+          </div>
+          <div class="bs-sys__group" style="--span:4">
+            <p class="bs-label">Type</p>
+            <p class="bs-type-xl">DM Sans</p>
+            <p class="bs-type-m">Semibold for headings and numbers</p>
+            <p class="bs-type-s">Regular for body text and labels</p>
+          </div>
+
+          <div class="bs-sys__group" style="--span:6">
+            <p class="bs-label">Buttons</p>
+            <div class="bs-sys__row">
+              <img loading="lazy" src="assets/images/bull-stock/ui-buytrade.png" style="--w:428px" width="428" height="84" alt="Primary pink Buy button beside a secondary gray Trade button">
+              <img loading="lazy" src="assets/images/bull-stock/ui-btn-continue.png" style="--w:295px" width="295" height="69" alt="White Continue button">
+              <img loading="lazy" src="assets/images/bull-stock/ui-btn-enter.png" style="--w:182px" width="182" height="69" alt="White Enter button">
+            </div>
+          </div>
+          <div class="bs-sys__group" style="--span:6">
+            <p class="bs-label">Mode selector</p>
+            <div class="bs-sys__row">
+              <img loading="lazy" src="assets/images/bull-stock/ui-mode.png" style="--w:326px" width="326" height="315" alt="Mode selector with Mock Mode active in pink">
+              <img loading="lazy" src="assets/images/bull-stock/ui-mode-real.png" style="--w:326px" width="326" height="315" alt="Mode selector with Real Mode active in blue">
+            </div>
+          </div>
+          <div class="bs-sys__group">
+            <p class="bs-label">Inputs</p>
+            <div class="bs-sys__stack">
+              <img loading="lazy" src="assets/images/bull-stock/ui-fields.png" style="--w:309px" width="309" height="153" alt="Username and password fields">
+              <img loading="lazy" src="assets/images/bull-stock/ui-search.png" style="--w:287px" width="287" height="56" alt="Search field">
+              <img loading="lazy" src="assets/images/bull-stock/ui-check.png" style="--w:180px" width="180" height="44" alt="Remember Mode checkbox">
+            </div>
+          </div>
+          <div class="bs-sys__group">
+            <p class="bs-label">Selection</p>
+            <div class="bs-sys__stack">
+              <img loading="lazy" src="assets/images/bull-stock/ui-confidence.png" style="--w:428px" width="428" height="99" alt="Confidence scale from 1 to 5">
+              <img loading="lazy" src="assets/images/bull-stock/ui-income.png" style="--w:295px" width="295" height="269" alt="Income range options">
+            </div>
+          </div>
+          <div class="bs-sys__group">
+            <p class="bs-label">Navigation</p>
+            <div class="bs-sys__stack">
+              <img loading="lazy" src="assets/images/bull-stock/ui-nav.png" style="--w:440px" width="440" height="100" alt="Bottom navigation with Home, Portfolio, search, Community and History">
+              <img loading="lazy" src="assets/images/bull-stock/ui-filter.png" style="--w:262px" width="262" height="54" alt="News and Tutorials tabs">
+              <img loading="lazy" src="assets/images/bull-stock/ui-range.png" style="--w:428px" width="428" height="60" alt="Time range chips: 1W, 1M, 6M, 1YR">
+            </div>
+          </div>
+          <div class="bs-sys__group" style="--span:6">
+            <p class="bs-label">Data and progress</p>
+            <div class="bs-sys__stack">
+              <img loading="lazy" src="assets/images/bull-stock/ui-stats.png" style="--w:428px" width="428" height="208" alt="Stat cards with a question mark that explains each term">
+              <img loading="lazy" src="assets/images/bull-stock/ui-progress.png" style="--w:401px" width="401" height="85" alt="Tutorial progress bar at 0% completed">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bs-section bs-reflect">
+      <div class="container">
+        <h2 data-reveal class="bd-h2">Reflection</h2>
+        <div data-reveal class="bs-reflect__grid">
+          <div>
+            <h3 class="bd-sub">What we set out to do</h3>
+            <p class="bd-body">Our goal was to ease the anxiety recent grads feel about entering the stock market. We built an app that puts learning within easy reach and makes a confusing topic feel calmer.</p>
+          </div>
+          <div>
+            <h3 class="bd-sub">What I’d do next</h3>
+            <p class="bd-body">Looking back a year later, I’d rework the visual design. The contrast is a bit high, and I might explore a different style if I were the only one working on it. I feel confident in the UX, though, because every decision traces back to research. In the end, though, there are always improvements to be made with more user research.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="site-footer" data-reveal>
+    <div class="site-footer__inner container">
+      <div class="site-footer__left">
+        <a class="site-footer__logo" href="index.html" aria-label="Sicily Manganaro — home">
+          <img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt="">
+        </a>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <!-- Placeholder links until these pages exist -->
+          <a href="work.html">Work</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+      <a class="site-footer__social" href="https://www.linkedin.com/in/sicily-manganaro-1b5a67296" target="_blank" rel="noopener" aria-label="Sicily Manganaro on LinkedIn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 3C24 1.34423 22.6558 0 21 0H3C1.34423 0 0 1.34423 0 3V21C0 22.6558 1.34423 24 3 24H21C22.6558 24 24 22.6558 24 21V3Z" fill="currentColor"/><path d="M6.88157 8.37402H2.86157V20.466H6.88157V8.37402Z" fill="var(--li-mark, #fbfbfb)"/><path d="M4.899 2.54395C3.52364 2.54395 2.625 3.44816 2.625 4.6333C2.625 5.79355 3.49631 6.72271 4.8458 6.72271H4.87177C6.27347 6.72271 7.14595 5.79355 7.14595 4.6333C7.11994 3.44816 6.27356 2.54395 4.899 2.54395Z" fill="var(--li-mark, #fbfbfb)"/><path d="M16.7475 8.08984C14.6151 8.08984 13.66 9.26252 13.1252 10.0862V8.37419H9.1062C9.1595 9.50842 9.1062 20.4661 9.1062 20.4661H13.1251V13.7131C13.1251 13.3517 13.1511 12.9903 13.2576 12.732C13.5477 12.0101 14.2094 11.2623 15.3198 11.2623C16.7735 11.2623 17.3559 12.3716 17.3559 13.9964V20.4661H21.375V13.5319C21.375 9.81766 19.3919 8.08984 16.7475 8.08984Z" fill="var(--li-mark, #fbfbfb)"/></svg>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
