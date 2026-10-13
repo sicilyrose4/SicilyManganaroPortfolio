@@ -951,7 +951,7 @@ a { color: inherit; text-decoration: none; }
 .bd-play__frame {
   position: relative;
   margin-top: 27px; /* 760 */
-  aspect-ratio: 1022 / 451;
+  aspect-ratio: 844 / 390; /* the game's own canvas, so it fills the frame edge to edge (Figma's box is 1022×451) */
   border-radius: 8px;
   overflow: hidden;
   background: #040318;
@@ -1031,13 +1031,15 @@ a { color: inherit; text-decoration: none; }
 .bd-round2__fonts-note { max-width: 501px; margin-top: 175px !important; } /* 8592 */
 .bd .bd-round2__fonts { width: 612px; margin-top: 68px; } /* 8700 */
 
-.bd-changed { margin-top: 183px; padding: 217px 0 244px; } /* band 9139 → 9874 */
+.bd-changed { margin-top: 183px; padding: 217px 0 93px; } /* band 9139 → 9874 */
 .bd-changed__inner { position: relative; }
 .bd-changed__shelves { display: flex; gap: 17px; margin-top: 70px; } /* 9466 */
 .bd-changed__shelves img { min-width: 0; flex: 0 1 auto; }
 .bd .bd-changed__shelves img:first-child { width: 247px; }
 .bd .bd-changed__shelves img:last-child { width: 190px; }
 .bd .bd-changed__buttons { position: absolute; left: 50.68%; top: 16px; width: 49.9%; } /* 727, 9372 */
+.bd-changed__note { max-width: 395px; margin-top: 51px !important; } /* 9681 */
+.bd-changed__note--buttons { position: absolute; left: 51.08%; top: 274px; } /* x 731, level with the left note */
 
 .bd-round3 { padding-top: 75px; } /* h2 9953 */
 .bd-round3__grid { grid-template-columns: 49.22% 49.22%; column-gap: 3.42%; row-gap: 49px; margin-top: 152px; } /* 503-wide at 209 / 747 */
@@ -1061,6 +1063,7 @@ a { color: inherit; text-decoration: none; }
   .bd-round2__concept { grid-template-columns: 1fr; row-gap: 32px; }
   .bd-round2__concept img { margin-top: 0; max-width: 479px; }
   .bd .bd-changed__buttons { position: static; width: min(510px, 100%); margin-top: 48px; }
+  .bd-changed__note--buttons { position: static; margin-top: 32px !important; }
   .bd-changed { padding: 96px 0; }
   .bd .bd-round3__art { height: auto; max-height: 300px; width: auto; max-width: 100%; }
 }
