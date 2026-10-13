@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bone Dry — Sicily Manganaro</title>
+  <meta name="description" content="Bone Dry: a hand-illustrated bartending simulation game designed for learning, built with Claude Code.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    // Arriving from a dark page: start dark and fade to light first.
+    try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
+  </script>
+</head>
+<body class="page-bonedry">
+  <!-- Figma 340:2951. Copy is real text; illustrations and game screens are cut from the Figma frame at 2x. -->
+  <main class="bd">
+    <div class="container">
+      <a class="back-link" data-reveal href="index.html#work">
+        <svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg>
+        BACK TO WORK
+      </a>
+
+      <header class="bd-intro">
+        <div class="bd-intro__text">
+          <h1 class="bd-title" data-reveal>Bone Dry - <span>Human designed, Claude built.</span></h1>
+          <p class="bd-summary" data-reveal>A bartending simulation game that teaches players how to create real recipes and measure their pours from behind the bar. Every character, bottle, and glass is illustrated by hand, then brought to life as a playable game with Claude Code.</p>
+        </div>
+        <img class="bd-intro__logo" data-reveal src="assets/images/bone-dry/logo.svg" width="341" height="240" alt="Bone Dry logo, hand-lettered">
+      </header>
+
+      <hr class="bd-rule" data-reveal>
+
+      <!-- The game itself (hosted at sicilyrose4.github.io/bone-dry), playable in place -->
+      <section class="bd-play" data-reveal aria-label="Play the game">
+        <p class="bd-play__label">PLAY THE GAME <img src="assets/images/bone-dry/play-arrow.svg" width="56" height="28" alt=""></p>
+        <div class="bd-play__frame">
+          <iframe src="https://sicilyrose4.github.io/bone-dry/" title="Bone Dry, playable game" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          <a class="bd-play__open" href="https://sicilyrose4.github.io/bone-dry/" target="_blank" rel="noopener" aria-label="Open Bone Dry in a new tab">
+            <img src="assets/images/bone-dry/open-in-new.svg" width="32" height="32" alt="">
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <section class="bd-band bd-band--dark bd-question">
+      <div class="container">
+        <p class="bd-big" data-reveal>How can we teach users to bartend using a game that simulates the high-pressure situation of a real shift?</p>
+        <img data-reveal class="bd-question__bottles" src="assets/images/bone-dry/bottles-row.png" width="2050" height="286" alt="The game’s hand-drawn bottles lined up: soda water, tequila, tonic, whiskey, cola, white rum, gin, cranberry juice, orange juice, grenadine, triple sec, simple syrup and ginger beer" loading="lazy">
+      </div>
+    </section>
+
+    <section class="bd-band bd-band--gray bd-learning">
+      <div class="container bd-learning__inner">
+        <h2 class="bd-h2" data-reveal>Designing for Learning</h2>
+        <hr class="bd-learning__rule" data-reveal>
+        <p class="bd-body bd-learning__lead" data-reveal>Before designing any screens, I researched how games can actually teach, and used my findings to design Bone Dry’s flow.</p>
+
+        <div class="bd-learning__text">
+          <div data-reveal>
+            <h3 class="bd-h3">Gamification improves retention</h3>
+            <p class="bd-body">A game that just shows the recipe once and moves on will teach much less than one that keeps quizzing the player on drinks they made three "shifts" ago.</p>
+          </div>
+          <div data-reveal>
+            <h3 class="bd-h3">Flow theory → Difficulty reacts to the player</h3>
+            <div class="bd-body">
+              <p>A task too easy produces boredom, one too hard produces anxiety, and flow lives in the space between.</p>
+              <p>Bone Dry uses dynamic difficulty adjustment, a behind-the-scenes loop that runs for every order of the shift:</p>
+              <ol>
+                <li>Read the room. The game tracks pour accuracy, hesitation, hint use, and streaks, without ever showing the user a stress meter.</li>
+                <li>Adjust the difficulty. Those signals change the order rate, number of orders at once, time per order, and drink complexity up or down in small steps. A bad run gives the player room to recover instead of punishing them.</li>
+                <li>Player responds. The next order reflects that adjustment, and its outcome feeds the next decision. The bar reacts to the player instead of moving on a fixed timer.</li>
+              </ol>
+            </div>
+          </div>
+          <div data-reveal>
+            <h3 class="bd-h3">Stress → Orders behave differently over time</h3>
+            <div class="bd-body">
+              <p>As for stress: users can handle more stress when performing a task they’ve performed before, but need a calmer environment when performing a new or more complex task.</p>
+              <p>Design principle: A brand new drink opens with its recipe card right after the customer orders. A drink the player has made before keeps the recipe card tucked in the corner. They can open it once per order, but it costs them part of their tip.</p>
+            </div>
+          </div>
+        </div>
+
+        <img data-reveal class="bd-learning__cards" src="assets/images/bone-dry/recipe-cards.png" width="740" height="1066" alt="Two recipe cards from the game: Whisky Coke (whiskey 1.5 oz, cola 7 oz, lime 1 slice) and Screwdriver (vodka 1.5 oz, orange juice 7 oz, orange 1 slice)" loading="lazy">
+        <img data-reveal class="bd-learning__peek" src="assets/images/bone-dry/recipe-peek.png" width="614" height="326" alt="In-game prompt: Peek at the recipe for 0.50? with Cancel and Yes buttons" loading="lazy">
+      </div>
+    </section>
+
+    <section class="bd-logic">
+      <div class="container">
+        <h2 class="bd-h2 bd-inset" data-reveal>Game logic</h2>
+        <img data-reveal class="bd-logic__chart" src="assets/images/bone-dry/game-logic.png" width="2264" height="1000" alt="Flowchart of the game logic: start shift, set up the shift, seat free?, customer arrives, customer waits, tap customer to start the order, make the drink, serve, accuracy score, tip, result, then clock at 0:00? leading to shift over or the next customer" loading="lazy">
+      </div>
+    </section>
+
+    <section class="bd-band bd-band--dark bd-process">
+      <div class="container bd-process__inner">
+        <div class="bd-big bd-process__text" data-reveal>
+          <p>Every frame used in Bone Dry was drawn by hand in Procreate, and then imported into Figma, where I made the UI design decisions for each screen.</p>
+          <p>The screens were then transferred to Claude Code to bring the game to life using the Figma MCP.</p>
+        </div>
+        <img data-reveal class="bd-process__skeletons" src="assets/images/bone-dry/skeletons.png" width="888" height="486" alt="Six of the game’s skeleton customers in purple, red, yellow, orange, teal and green" loading="lazy">
+      </div>
+    </section>
+
+    <section class="bd-round bd-round1">
+      <div class="container">
+        <h2 class="bd-h2" data-reveal>Design round 1</h2>
+        <div class="bd-grid bd-round1__grid">
+          <figure class="bd-fig" data-reveal><figcaption>Bartender POV - Order taking screen</figcaption><img src="assets/images/bone-dry/r1-order-1.png" width="976" height="452" alt="Round 1 order screen: four simple customers seated at the bar" loading="lazy"></figure>
+          <figure class="bd-fig bd-fig--nocap" data-reveal><img src="assets/images/bone-dry/r1-order-2.png" width="976" height="452" alt="Round 1 order screen with one customer highlighted, asking for a vodka soda with a lime" loading="lazy"></figure>
+          <figure class="bd-fig" data-reveal><figcaption>Bar screen - Choosing ingredients</figcaption><img src="assets/images/bone-dry/r1-bar.png" width="976" height="454" alt="Round 1 bar screen: shelves of labelled bottles and garnishes with a Serve button" loading="lazy"></figure>
+          <figure class="bd-fig" data-reveal><figcaption>Pour screen - Adding ingredients</figcaption><img src="assets/images/bone-dry/r1-pour-1.png" width="976" height="454" alt="Round 1 pour screen: a bottle and an empty glass with a Hold to pour button" loading="lazy"></figure>
+          <figure class="bd-fig bd-fig--center" data-reveal><img src="assets/images/bone-dry/r1-pour-2.png" width="978" height="454" alt="Round 1 pour screen with the vodka bottle tipped over the glass" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="bd-band bd-band--gray bd-decisions">
+      <div class="container">
+        <h2 class="bd-h2" data-reveal>Decisions after Round 1</h2>
+        <div class="bd-grid bd-decisions__grid">
+          <div data-reveal>
+            <h3 class="bd-sub">What I kept:</h3>
+            <img src="assets/images/bone-dry/kept.png" width="976" height="452" alt="The order screen with the ordering customer drawn in detail and the waiting customers as simple shapes" loading="lazy">
+            <p class="bd-body">I received positive feedback regarding having a visual difference between the customer who is currently ordering, and the customers who are waiting. I ended up keeping this for the rest of the game, but with a twist.</p>
+          </div>
+          <div data-reveal>
+            <h3 class="bd-sub">What I changed:</h3>
+            <img src="assets/images/bone-dry/changed.png" width="976" height="452" alt="The crowded, high-contrast round 1 bar screen" loading="lazy">
+            <p class="bd-body">The bar screen felt crowded and had a very high contrast. Looking back, the flow for choosing new ingredients to use was quite confusing, but this didn’t get addressed until round 3.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bd-round bd-round2">
+      <div class="container">
+        <h2 class="bd-h2" data-reveal>Round 2</h2>
+        <div class="bd-round2__concept" data-reveal>
+          <p class="bd-body">Before working on this round, I defined a concept behind the bar itself. <strong>Inspired by these 3 images pulled from my mood board</strong>, I decided that the story behind the game would be that the user has found themselves in the land of the dead as a bartender at a bar called “Bone Dry.” When talking to each of the spirits, the user is able to see the skeleton’s human form.</p>
+          <img src="assets/images/bone-dry/moodboard.png" width="958" height="266" alt="An arrow pointing to three mood board images: pink lettering, a pink skull, and neon skeletons" loading="lazy">
+        </div>
+        <div class="bd-grid bd-round2__grid">
+          <figure class="bd-fig" data-reveal><figcaption>Bartender POV - Order taking screen</figcaption><img src="assets/images/bone-dry/r2-order-1.png" width="972" height="450" alt="Round 2 order screen: green, pink and yellow skeleton customers at a neon bar" loading="lazy"></figure>
+          <figure class="bd-fig" data-reveal><figcaption>Bartender POV - Order taking screen</figcaption><img src="assets/images/bone-dry/r2-order-2.png" width="972" height="450" alt="Round 2 order screen: the ordering skeleton shown in human form, asking for a vodka soda, with a Start Order button" loading="lazy"></figure>
+          <figure class="bd-fig" data-reveal><figcaption>New: Recipe card on the bar screen</figcaption><img src="assets/images/bone-dry/r2-recipe.png" width="972" height="450" alt="Round 2 bar screen with a handwritten Vodka Soda recipe card over the shelves" loading="lazy"></figure>
+          <figure class="bd-fig" data-reveal><figcaption>Bar screen</figcaption><img src="assets/images/bone-dry/r2-bar.png" width="972" height="450" alt="Round 2 bar screen: outlined bottles and garnishes on dark shelves" loading="lazy"></figure>
+          <figure class="bd-fig" data-reveal><figcaption>Pour screen mid-pour</figcaption><img src="assets/images/bone-dry/r2-pour-1.png" width="972" height="450" alt="Round 2 pour screen: the vodka bottle pouring into a glass" loading="lazy"></figure>
+          <figure class="bd-fig" data-reveal><figcaption>Pour screen post-pour</figcaption><img src="assets/images/bone-dry/r2-pour-2.png" width="972" height="450" alt="Round 2 pour screen after the pour, with ounce marks on the glass and a Done button" loading="lazy"></figure>
+          <figure class="bd-fig bd-fig--center" data-reveal><figcaption>New: customer served + tip</figcaption><img src="assets/images/bone-dry/r2-served.png" width="972" height="450" alt="Round 2 order screen after serving: the customer holds the drink and a +2 tip appears" loading="lazy"></figure>
+        </div>
+        <p class="bd-body bd-round2__fonts-note" data-reveal>One significant thing I did during round one was define the custom font set for the game. I crated each one by hand, and for specific purposes.</p>
+        <img data-reveal class="bd-round2__fonts" src="assets/images/bone-dry/fonts.png" width="1224" height="512" alt="The game’s three hand-made fonts: “Custom heading text”, “Custom secondary font” in bold and regular, and “I wrote these letters by hand!”" loading="lazy">
+      </div>
+    </section>
+
+    <section class="bd-band bd-band--gray bd-changed">
+      <div class="container bd-changed__inner">
+        <div data-reveal>
+          <h3 class="bd-sub">What I changed:</h3>
+          <div class="bd-changed__shelves">
+            <img src="assets/images/bone-dry/r2-shelves-old.png" width="494" height="328" alt="The round 2 bar shelves on a black background" loading="lazy">
+            <img src="assets/images/bone-dry/r2-shelves-new.png" width="380" height="328" alt="The new bar shelves on a dark navy background with brighter bottles" loading="lazy">
+          </div>
+        </div>
+        <img data-reveal class="bd-changed__buttons" src="assets/images/bone-dry/buttons.png" width="1020" height="520" alt="Button changes: bright green Serve, Done and Start Order buttons become soft lavender Garnish, Pour and Start Order buttons" loading="lazy">
+      </div>
+    </section>
+
+    <section class="bd-round bd-round3">
+      <div class="container">
+        <h2 class="bd-h2" data-reveal>Round 3 - Final</h2>
+        <div class="bd-grid bd-round3__grid">
+          <div class="bd-round3__col">
+            <img data-reveal class="bd-round3__art" src="assets/images/bone-dry/r3-characters.png" width="652" height="710" alt="Three customers in human form above their skeleton forms, with an arrow down to the order screen" loading="lazy">
+            <figure class="bd-fig bd-fig--below" data-reveal><img src="assets/images/bone-dry/r3-order.png" width="1006" height="464" alt="Final order screen: three skeletons at the bar, one saying “whiskey coke please”, with a Start Order button" loading="lazy"><figcaption>Each character has their own speech bubble style, as well as personalities for reacting to their drink service. They call out</figcaption></figure>
+          </div>
+          <div class="bd-round3__col">
+            <img data-reveal class="bd-round3__art" src="assets/images/bone-dry/r3-bottles.png" width="762" height="714" alt="Eight redrawn bottles in bright colours, with an arrow down to the bar screen" loading="lazy">
+            <figure class="bd-fig bd-fig--below bd-fig--wide" data-reveal><img src="assets/images/bone-dry/r3-bar.png" width="1006" height="464" alt="Final bar screen: a scrollable counter of bottles with Bar and Garnish buttons" loading="lazy"><figcaption>The bar is now a scrollable counter. The ingredients shuffle after each customer, creating a further challenge. The ingredients hover when selected, and the center text changes accordingly.</figcaption></figure>
+          </div>
+          <figure class="bd-fig bd-fig--below" data-reveal><img src="assets/images/bone-dry/r3-pour-1.png" width="1004" height="464" alt="Final pour screen: a cola can pouring into a glass with coloured layers and ounce marks" loading="lazy"><figcaption>The pour screen now separates each ingredient’s pours by color, and has measurements defined by realistic proportions for cocktails in real life. During the pouring action, all controls go away besides “pause” and the timer.</figcaption></figure>
+          <figure class="bd-fig bd-fig--below" data-reveal><img src="assets/images/bone-dry/r3-pour-2.png" width="1002" height="464" alt="Final pour screen after pouring, with a Done button" loading="lazy"></figure>
+          <figure class="bd-fig bd-fig--below" data-reveal><img src="assets/images/bone-dry/r3-garnish.png" width="1006" height="466" alt="Garnish screen: the finished drink with orange, lime, mint and cherry garnishes" loading="lazy"><figcaption>The garnish screen shows the drink post-pour (a color mixture of all its ingredient’s colors, along with 5 options to garnish. The user can either drag the garnish to the drink, or tap the garnish and tap to place.</figcaption></figure>
+          <figure class="bd-fig bd-fig--below" data-reveal><img src="assets/images/bone-dry/r3-tip.png" width="1002" height="464" alt="A served customer says “splendid, thanks” and tips $2" loading="lazy"><figcaption>After serving a customer, they reveal their tip and give a short comment explaining why they tipped this way. The user will get further information in the “Shift Over” screen.</figcaption></figure>
+          <figure class="bd-fig bd-fig--below" data-reveal><img src="assets/images/bone-dry/r3-shift-over.png" width="1010" height="438" alt="Shift Over screen: total tips of $15.00 and a list of the drinks served with their tips" loading="lazy"><figcaption>The final screen of the shift is the “SHIFT OVER” screen. It shows the user the total tips they made for the shift, as well as an overview of all of the drinks they made and reasoning for why they received the score or “tip” they did.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="bd-round bd-start">
+      <div class="container">
+        <h2 class="bd-h2" data-reveal>Start screen + modes</h2>
+        <div class="bd-grid bd-round3__grid bd-start__grid">
+          <figure class="bd-fig bd-fig--below" data-reveal><img src="assets/images/bone-dry/start-1.png" width="1010" height="468" alt="Start screen: the Bone Dry logo with Drink Menu and Start Shift, and the Mocktails Only toggle off" loading="lazy"><figcaption>On the start screen, the user has the option to enter “MOCKTAILS ONLY” mode by clicking the toggle on the top left.</figcaption></figure>
+          <figure class="bd-fig bd-fig--below" data-reveal><img src="assets/images/bone-dry/start-2.png" width="1010" height="468" alt="Start screen with Mocktails Only switched on and the logo in pink" loading="lazy"><figcaption>“MOCKTAILS ONLY” being toggled on will result in customers asking for only mocktails, and spirits being removed from the bar ingredients until mocktail mode is turned off.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-reveal>
+    <div class="site-footer__inner container">
+      <div class="site-footer__left">
+        <a class="site-footer__logo" href="index.html" aria-label="Sicily Manganaro — home">
+          <img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt="">
+        </a>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <!-- Placeholder links until these pages exist -->
+          <a href="index.html#work">Work</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+      <a class="site-footer__social" href="https://www.linkedin.com/in/sicily-manganaro-1b5a67296" target="_blank" rel="noopener" aria-label="Sicily Manganaro on LinkedIn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 3C24 1.34423 22.6558 0 21 0H3C1.34423 0 0 1.34423 0 3V21C0 22.6558 1.34423 24 3 24H21C22.6558 24 24 22.6558 24 21V3Z" fill="currentColor"/><path d="M6.88157 8.37402H2.86157V20.466H6.88157V8.37402Z" fill="#FBFBFB"/><path d="M4.899 2.54395C3.52364 2.54395 2.625 3.44816 2.625 4.6333C2.625 5.79355 3.49631 6.72271 4.8458 6.72271H4.87177C6.27347 6.72271 7.14595 5.79355 7.14595 4.6333C7.11994 3.44816 6.27356 2.54395 4.899 2.54395Z" fill="#FBFBFB"/><path d="M16.7475 8.08984C14.6151 8.08984 13.66 9.26252 13.1252 10.0862V8.37419H9.1062C9.1595 9.50842 9.1062 20.4661 9.1062 20.4661H13.1251V13.7131C13.1251 13.3517 13.1511 12.9903 13.2576 12.732C13.5477 12.0101 14.2094 11.2623 15.3198 11.2623C16.7735 11.2623 17.3559 12.3716 17.3559 13.9964V20.4661H21.375V13.5319C21.375 9.81766 19.3919 8.08984 16.7475 8.08984Z" fill="#FBFBFB"/></svg>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>

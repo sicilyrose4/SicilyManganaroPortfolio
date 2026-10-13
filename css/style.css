@@ -209,7 +209,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 87px;             /* card tops 532 apart, cards 445 tall */
-  padding-bottom: 334px; /* Figma: SEE MORE bottom 2685 → "Let’s stay in touch!" 3019. While SEE MORE is hidden this is the gap under the last card. */
+  padding-bottom: 307px; /* last card bottom 3162 → "Let’s stay in touch!" 3469 */
 }
 .project-card {
   display: flex;
@@ -318,6 +318,23 @@ a { color: inherit; text-decoration: none; }
 .project-card--drop .project-card__screen img { width: 100%; }
 .project-card--drop .project-card__logo {
   left: calc(69.59 * var(--px)); top: calc(111 * var(--px)); width: calc(233 * var(--px));
+}
+
+.project-card--bonedry .project-card__media { background: linear-gradient(to top, #040318 1.86%, #524f81 156.88%); }
+.project-card--bonedry .project-card__screen { overflow: hidden; }
+.project-card--bonedry .project-card__screen img { width: 100%; }
+.project-card--bonedry .project-card__screen:nth-child(1) {
+  left: calc(38.5 * var(--px)); top: calc(48 * var(--px)); width: calc(393.285 * var(--px));
+  border-radius: calc(10.83 * var(--px));
+  box-shadow: 0 4.46px 4.46px rgba(0, 0, 0, 0.25);
+}
+.project-card--bonedry .project-card__screen:nth-child(2) {
+  left: calc(147.76 * var(--px)); top: calc(140.54 * var(--px)); width: calc(422.238 * var(--px));
+  border-radius: calc(12.73 * var(--px)) calc(12.73 * var(--px)) 0 0;
+  box-shadow: 0 4.24px 2.12px rgba(0, 0, 0, 0.25);
+}
+.project-card--bonedry .project-card__logo {
+  left: calc(674.5 * var(--px)); top: calc(83 * var(--px)); width: calc(256 * var(--px));
 }
 
 .work__more { align-self: center; width: 166px; margin-top: -29px; } /* 58px below the last card */
@@ -907,3 +924,166 @@ a { color: inherit; text-decoration: none; }
 .footer-car.show-frame-2 .footer-car__frame:not(.footer-car__frame--2),
 .footer-car.show-frame-2 .footer-car__flag:not(.footer-car__frame--2) { visibility: hidden; }
 .footer-car.show-frame-2 .footer-car__frame--2 { visibility: visible; }
+
+/* ---------- Bone Dry case study (Figma 340:2951) ---------- */
+/* A light page on Figma's pure white, with full-width dark and gray bands. Comments give the Figma
+   y positions the spacing comes from. Column is the usual 1022 (x 209 → 1231). */
+.page-bonedry { --bg: #fff; background: var(--bg); }
+.bd { padding-top: 98px; font-family: var(--font-sans); font-variation-settings: "opsz" 14; color: #000; }
+.bd .back-link { color: #94a9d3; font-family: var(--font-mono); font-variation-settings: normal; } /* Figma's lighter blue */
+.bd img { width: 100%; }
+.bd p, .bd h1, .bd h2, .bd h3, .bd figure, .bd ol { margin: 0; }
+
+.bd-intro { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; margin-top: 91px; } /* 225 */
+.bd-intro__text { width: 462px; max-width: 100%; color: var(--ink); }
+.bd-title { font-size: 28px; font-weight: 500; line-height: 40px; letter-spacing: -0.56px; }
+.bd-title span { display: block; color: #777f90; }
+.bd-summary { margin-top: 35px !important; font-size: 14px; line-height: 25px; }
+.bd .bd-intro__logo { flex: none; width: 341px; }
+.bd-rule { margin: 119px 0 0; border: 0; border-top: 1px solid #d9d9d9; } /* 584 */
+
+.bd-play { margin-top: 108px; } /* label 693 */
+.bd-play__label {
+  display: flex; align-items: flex-start; gap: 11px; height: 40px;
+  font-family: var(--font-mono); font-variation-settings: normal; font-size: 18px; line-height: 40px;
+}
+.bd .bd-play__label img { width: 56px; margin-top: 19px; }
+.bd-play__frame {
+  position: relative;
+  margin-top: 27px; /* 760 */
+  aspect-ratio: 1022 / 451;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #040318;
+}
+.bd-play__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* The game is 844×390 centred in the frame, so this corner is clear of its own controls */
+.bd-play__open { position: absolute; top: 3.5%; right: 1.76%; width: 32px; opacity: 0.4; transition: opacity 0.2s ease; }
+.bd-play__open:hover, .bd-play__open:focus-visible { opacity: 1; }
+
+.bd-band--dark { background: #040318; color: #ebebeb; }
+.bd-band--gray { background: #f5f5f5; }
+.bd-big { font-size: 32px; font-weight: 600; line-height: 44px; }
+.bd-big p + p { margin-top: 44px; }
+.bd-h2 { color: #040318; font-size: 42px; font-weight: 600; line-height: 40px; letter-spacing: -0.84px; }
+.bd-h3 { font-size: 28px; font-weight: 500; line-height: 37px; letter-spacing: -0.56px; }
+.bd-sub { color: #777f90; font-size: 28px; font-weight: 500; line-height: 40px; letter-spacing: -0.56px; }
+.bd-body { font-size: 14px; line-height: 20px; letter-spacing: -0.28px; }
+.bd-body p + p, .bd-body p + ol, .bd-body li + li { margin-top: 20px; }
+.bd-body ol { padding-left: 21px; }
+.bd-body strong { font-weight: 600; }
+.bd-inset { padding-left: 15px; } /* Figma x 224 */
+
+.bd-question { margin-top: 164px; padding: 87px 0 43px; } /* band 1375 → 1870 */
+.bd-question .bd-big { max-width: 596px; }
+.bd .bd-question__bottles { width: 100.3%; max-width: none; margin-top: 90px; } /* 1684 */
+
+.bd-learning { padding: 104px 0 205px; } /* band 1870 → 3178 */
+.bd-learning__inner { position: relative; padding-left: 15px; }
+.bd-learning__rule { width: 501px; max-width: 100%; margin: 28px 0 0; border: 0; border-top: 1px solid #5f5e7b; } /* 2042 */
+.bd-learning__lead { max-width: 501px; margin-top: 36px !important; } /* 2078 */
+.bd-learning__text { display: grid; gap: 69px; max-width: 606px; margin-top: 75px; } /* 2193 */
+.bd-learning__text .bd-h3 + .bd-body { margin-top: 30px; }
+.bd-learning__text > div:nth-child(2) { padding-bottom: 14px; } /* Figma's text box ends on a blank line */
+.bd-learning__text > div + div .bd-h3 { line-height: 20px; } /* Figma sets the 2nd and 3rd headings on 20px leading */
+.bd .bd-learning__cards { position: absolute; left: 65.46%; top: 64px; width: 36.2%; }  /* 878, 2038 */
+.bd .bd-learning__peek { position: absolute; left: 71.62%; top: 835px; width: 30.04%; }  /* 941, 2809 */
+
+.bd-logic { padding: 102px 0 127px; } /* 3284 … 3878, next band 4005 */
+.bd .bd-logic__chart { width: 110.76%; max-width: none; margin: 57px 0 0 -4.89%; } /* x 159 → 1291 */
+
+.bd-process { min-height: 566px; } /* band 4005 → 4571 */
+.bd-process__inner { position: relative; min-height: 566px; padding: 96px 0 96px 14px; }
+.bd-process__text { max-width: 596px; }
+.bd .bd-process__skeletons { position: absolute; left: 68.69%; bottom: 0; width: 43.44%; max-width: none; } /* 911 → 1355 */
+
+.bd-round { padding-top: 198px; } /* h2 4773 */
+.bd-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bd-fig figcaption { color: var(--ink); font-size: 14px; line-height: 25px; }
+.bd-fig img { margin-top: 24px; }
+.bd-fig--below img { margin-top: 0; }
+.bd-fig--below figcaption { max-width: 395px; margin-top: 18px; color: #000; line-height: 20px; letter-spacing: -0.28px; }
+.bd-fig--below.bd-fig--wide figcaption { max-width: 422px; }
+
+/* Round 1: 488-wide screens at x 209 / 741 */
+.bd-round1__grid { column-gap: 4.3%; row-gap: 56px; margin-top: 94px; align-items: end; } /* captions 4904 */
+.bd-round1__grid .bd-fig { width: 100%; }
+.bd-round1__grid .bd-fig:nth-child(-n+2) img { margin-top: 32px; } /* 4961 */
+.bd-round1__grid .bd-fig:nth-child(n+3) img { margin-top: 15px; }  /* 5283 */
+.bd-round1__grid .bd-fig--center { grid-column: 1 / -1; width: 47.85%; margin: 12px auto 0; } /* 475, 5592 */
+.bd-round1__grid .bd-fig--center img { margin-top: 0; }
+
+.bd-decisions { margin-top: 190px; padding: 73px 0 91px; } /* band 6009 → 6744 */
+.bd-decisions__grid { grid-template-columns: 47.75% 47.75%; column-gap: 3.23%; margin-top: 96px; } /* 488-wide at 209 / 730 */ /* subheads 6219 */
+.bd-decisions__grid img { margin-top: 47px; }
+.bd-decisions__grid .bd-body { max-width: 397px; margin-top: 41px; }
+
+.bd-round2 { padding-top: 152px; } /* h2 6900 */
+.bd-round2__concept { display: grid; grid-template-columns: 49.02% 46.87%; column-gap: 0.39%; align-items: start; margin-top: 50px; } /* 6986 */
+.bd-round2__concept img { margin-top: -31px; } /* 6955 */
+/* 486-wide at 209 / 796: as in Figma, the right column runs 51px past the page column */
+.bd-round2__grid { grid-template-columns: 47.55% 47.55%; column-gap: 9.88%; row-gap: 31px; margin-top: 110px; align-items: end; }
+.bd-round2__grid .bd-fig:nth-child(-n+2) img, .bd-round2__grid .bd-fig--center img { margin-top: 21px; } /* 7242, 8192 */
+.bd-round2__grid .bd-fig:nth-child(5), .bd-round2__grid .bd-fig:nth-child(6) { margin-top: 6px; } /* 7809 */
+.bd-round2__grid .bd-fig:nth-child(5) img, .bd-round2__grid .bd-fig:nth-child(6) img { margin-top: 26px; }
+.bd-round2__grid .bd-fig--center { grid-column: 1 / -1; width: 45.29%; margin: 30px 0 0 26.56%; } /* 494, 8146 */
+.bd-round2__fonts-note { max-width: 501px; margin-top: 175px !important; } /* 8592 */
+.bd .bd-round2__fonts { width: 612px; margin-top: 68px; } /* 8700 */
+
+.bd-changed { margin-top: 183px; padding: 217px 0 244px; } /* band 9139 → 9874 */
+.bd-changed__inner { position: relative; }
+.bd-changed__shelves { display: flex; gap: 17px; margin-top: 70px; } /* 9466 */
+.bd-changed__shelves img { min-width: 0; flex: 0 1 auto; }
+.bd .bd-changed__shelves img:first-child { width: 247px; }
+.bd .bd-changed__shelves img:last-child { width: 190px; }
+.bd .bd-changed__buttons { position: absolute; left: 50.68%; top: 16px; width: 49.9%; } /* 727, 9372 */
+
+.bd-round3 { padding-top: 75px; } /* h2 9953 */
+.bd-round3__grid { grid-template-columns: 49.22% 49.22%; column-gap: 3.42%; row-gap: 49px; margin-top: 152px; } /* 503-wide at 209 / 747 */
+.bd-round3__col { display: grid; justify-items: center; gap: 22px; align-content: start; }
+.bd .bd-round3__art { width: auto; height: 355px; }
+.bd-round3__grid > .bd-fig:nth-child(5), .bd-round3__grid > .bd-fig:nth-child(6) { margin-top: 21px; } /* 11278 */
+.bd-round3__grid > .bd-fig:nth-child(7) { margin-top: 24px; } /* 11682 */
+.bd-start { padding: 172px 0 239px; } /* h2 12173 */
+.bd-start__grid { margin-top: 52px; }
+
+.page-bonedry .site-footer__social { color: var(--ink); }
+
+@media (max-width: 900px) {
+  .bd-big { font-size: 26px; line-height: 36px; }
+  .bd-h2 { font-size: 34px; }
+  .bd .bd-learning__cards, .bd .bd-learning__peek { position: static; width: min(360px, 100%); margin-top: 48px; }
+  .bd .bd-learning__peek { width: min(300px, 100%); }
+  .bd .bd-process__skeletons { position: static; display: block; width: min(444px, 100%); margin: 48px 0 0 auto; }
+  .bd-process, .bd-process__inner { min-height: 0; }
+  .bd-process__inner { padding-bottom: 0; }
+  .bd-round2__concept { grid-template-columns: 1fr; row-gap: 32px; }
+  .bd-round2__concept img { margin-top: 0; max-width: 479px; }
+  .bd .bd-changed__buttons { position: static; width: min(510px, 100%); margin-top: 48px; }
+  .bd-changed { padding: 96px 0; }
+  .bd .bd-round3__art { height: auto; max-height: 300px; width: auto; max-width: 100%; }
+}
+@media (max-width: 700px) {
+  .bd-intro { flex-direction: column-reverse; margin-top: 48px; }
+  .bd .bd-intro__logo { width: min(260px, 70%); }
+  .bd-rule { margin-top: 56px; }
+  .bd-play { margin-top: 56px; }
+  .bd-question { margin-top: 80px; padding: 56px 0 32px; }
+  .bd .bd-question__bottles { margin-top: 48px; }
+  .bd-learning { padding: 64px 0 80px; }
+  .bd-learning__inner, .bd-inset { padding-left: 0; }
+  .bd-logic { padding: 64px 0; }
+  .bd .bd-logic__chart { width: 100%; margin-left: 0; }
+  .bd-process__inner { padding: 56px 0 0; }
+  .bd-round, .bd-round2 { padding-top: 88px; }
+  .bd-grid { grid-template-columns: 1fr; row-gap: 40px; }
+  .bd-round1__grid, .bd-round2__grid, .bd-round3__grid, .bd-decisions__grid { margin-top: 48px; }
+  .bd-round1__grid .bd-fig--center, .bd-round2__grid .bd-fig--center { width: 100%; margin: 0; }
+  .bd-round2__grid .bd-fig, .bd-round3__grid > .bd-fig { margin-top: 0 !important; }
+  .bd-decisions { margin-top: 88px; padding: 56px 0; }
+  .bd-round2__fonts-note { margin-top: 72px !important; }
+  .bd .bd-round2__fonts { width: 100%; margin-top: 40px; }
+  .bd-changed { margin-top: 88px; padding: 56px 0; }
+  .bd-round3 { padding-top: 64px; }
+  .bd-start { padding: 88px 0 96px; }
+}
