@@ -957,9 +957,10 @@ a { color: inherit; text-decoration: none; }
   background: #040318;
 }
 .bd-play__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-/* The game is 844×390 centred in the frame, so this corner is clear of its own controls */
-.bd-play__open { position: absolute; top: 3.5%; right: 1.76%; width: 32px; opacity: 0.4; transition: opacity 0.2s ease; }
-.bd-play__open:hover, .bd-play__open:focus-visible { opacity: 1; }
+/* Open-in-new-tab sits above the frame's top-right corner (Figma 483:6950: 32px box at x 1199, y 713) */
+.bd-play__head { position: relative; }
+.bd-play__open { position: absolute; top: 20px; right: 0; width: 32px; transition: opacity 0.2s ease; }
+.bd-play__open:hover, .bd-play__open:focus-visible { opacity: 0.55; }
 
 .bd-band--dark { background: #040318; color: #ebebeb; }
 .bd-band--gray { background: #f5f5f5; }
