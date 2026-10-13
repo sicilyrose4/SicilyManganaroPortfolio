@@ -320,7 +320,7 @@ a { color: inherit; text-decoration: none; }
   left: calc(69.59 * var(--px)); top: calc(111 * var(--px)); width: calc(233 * var(--px));
 }
 
-.project-card--bonedry .project-card__media { background: linear-gradient(#b8b7d4, #54517a); } /* sampled from Figma 483:7499 */
+.project-card--bonedry .project-card__media { background: linear-gradient(#302f56, #040318); } /* sampled from Figma 483:7499 */
 .project-card--bonedry .project-card__screen { overflow: hidden; }
 .project-card--bonedry .project-card__screen img { width: 100%; }
 .project-card--bonedry .project-card__screen:nth-child(1) {
