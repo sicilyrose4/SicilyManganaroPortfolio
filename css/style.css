@@ -1335,13 +1335,14 @@ a { color: inherit; text-decoration: none; }
 .ws .ws-problem-img { width: 96.8%; margin: 57px 0 0 1.66%; } /* x 226, y 1609 */
 
 /* Solution: the calendar screen bleeds off the right edge of the window (Figma x 834 → frame edge) */
-.ws-solution { position: relative; }
-.ws-solution .ws-rule { margin: 176px 0 0; } /* 2158 */
-.ws-solution__inner { position: relative; min-height: 673px; padding-top: 213px; } /* heading 2378 */
+.ws-solution { position: relative; padding-top: 176px; } /* padding, not the rule's margin, so the 176px stays inside the section */
+.ws-solution .ws-rule { margin: 0; } /* 2158 */
+.ws-solution__inner { position: relative; z-index: 2; min-height: 628px; padding-top: 213px; } /* heading 2378; above the screen so the arrow can cross it */
 .ws-solution__text, .ws-solution__result { position: relative; z-index: 1; max-width: 501px; }
+.ws .ws-solution__result { max-width: 550px; } /* two lines, as in Figma (DM Sans runs wider than Figma's Proxima Nova) */
 .ws-solution__text .ws-lead { font-size: 18px; font-weight: 700; }
-.ws .ws-solution__arrow { position: absolute; left: 404px; top: 315px; width: 516px; } /* 613, 2473 */
-.ws .ws-solution__img { position: absolute; left: calc(50% + 92px); top: calc(176px + 54px); width: 650px; max-width: none; }
+.ws .ws-solution__arrow { position: absolute; left: 404px; top: 315px; width: 516px; max-width: none; } /* 613, 2473: from the text across the screen to a planned email */
+.ws .ws-solution__img { position: absolute; z-index: 1; left: calc(50% + 71px); top: calc(176px + 54px); width: 650px; max-width: none; } /* screen 2248, 90 below the rule (export adds ~36px of shadow) */
 
 .ws-findings { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 80px; margin-top: 56px; }
 .ws-findings h3 { font-size: 18px; font-weight: 600; line-height: 28px; }
