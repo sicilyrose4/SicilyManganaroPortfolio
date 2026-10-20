@@ -25,8 +25,8 @@ if (document.querySelector('.hero, .work-grid')) {
     if (e.target.closest('a[href]')) { try { sessionStorage.setItem(ENTERED_KEY, here); } catch (err) {} }
   });
 }
-const backLink = document.querySelector('.back-link');
-if (backLink) {
+const backLinks = document.querySelectorAll('.back-link');
+if (backLinks.length) {
   let from = null;
   try {
     const ref = new URL(document.referrer);
@@ -40,9 +40,11 @@ if (backLink) {
     else from = sessionStorage.getItem(ENTERED_KEY);
   } catch (err) {}
   if (from === 'home') {
-    backLink.href = 'index.html#work';
-    const label = [...backLink.childNodes].reverse().find((n) => n.nodeType === 3 && n.textContent.trim());
-    if (label) label.textContent = label.textContent.replace('BACK TO WORK', 'BACK TO HOME');
+    backLinks.forEach((backLink) => {
+      backLink.href = 'index.html#work';
+      const label = [...backLink.childNodes].reverse().find((n) => n.nodeType === 3 && n.textContent.trim());
+      if (label) label.textContent = label.textContent.replace('BACK TO WORK', 'BACK TO HOME');
+    });
   }
 }
 

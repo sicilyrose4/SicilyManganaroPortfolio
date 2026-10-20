@@ -1293,3 +1293,111 @@ a { color: inherit; text-decoration: none; }
   .wip__art { margin-top: 96px; }
   .wip__title { height: auto; margin-top: 48px; font-size: 26px; line-height: 32px; }
 }
+
+/* ---------- Workshop case study (Figma 537:5547, "workshop — expanded draft") ---------- */
+/* Light page on Figma's #faf8f7 (the exported screens have that colour baked in around their shadows).
+   Text is real; screens are 2x exports in assets/images/workshop/. Comments give Figma y positions. */
+.page-workshop { --bg: #faf8f7; background: var(--bg); }
+.ws { padding: 98px 0 0; font-family: var(--font-sans); font-variation-settings: "opsz" 14; color: var(--ink); }
+.ws .back-link { color: #5b78b2; font-family: var(--font-mono); font-variation-settings: normal; }
+.ws img { width: 100%; }
+:where(.ws) :where(p, h1, h2, h3, figure, ol, dl, dd) { margin: 0; } /* zero-specificity reset so the .ws-* margins below apply */
+
+.ws-intro { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; margin-top: 91px; } /* 225 */
+.ws-intro__text { width: 462px; max-width: 100%; }
+.ws-meta { flex: none; width: 293px; margin-top: 11px; } /* x 938, y 236 */
+.ws-meta div + div { margin-top: 12px; }
+.ws-meta dt { color: #777f90; font-size: 13px; font-weight: 500; line-height: 20px; letter-spacing: 0.07em; }
+.ws-meta dd { margin-top: 2px; font-size: 16px; line-height: 26px; }
+/* Hero 1024×520 at y 599; the export carries its drop shadow (~35px a side) */
+.ws .ws-hero { width: 107.1%; max-width: none; margin: 149px 0 0 -3.45%; }
+
+.ws-h2 { font-size: 36px; font-weight: 600; line-height: 40px; }
+.ws-h3 { font-size: 22px; font-weight: 600; line-height: 36px; }
+.ws-sub { margin-top: 88px; font-size: 18px; font-weight: 600; line-height: 28px; }
+.ws-h2 + .ws-body, .ws-h2 + .ws-callout { margin-top: 33px; }
+.ws-h3 + .ws-body { margin-top: 24px; }
+.ws-sub + .ws-body { margin-top: 14px; }
+.ws-body { max-width: 605px; font-size: 16px; line-height: 26px; }
+.ws-body--wide { max-width: 625px; }
+.ws-body p + p { margin-top: 26px; }
+.ws-callout { max-width: 605px; margin-top: 16px; font-size: 18px; font-weight: 700; line-height: 26px; }
+.ws-callout--wide { max-width: 814px; }
+.ws-callout + .ws-body { margin-top: 16px; }
+.ws-caption, .ws-fig figcaption { color: #777f90; font-size: 14px; line-height: 22px; }
+.ws-fig { margin-top: 64px !important; }
+.ws-fig figcaption { margin-top: 15px; }
+.ws-fig--tight { margin-top: 30px !important; }
+.ws-caption { margin-top: 24px; }
+.ws-rule { margin: 110px 0; border: 0; border-top: 1px solid #d9d9d9; }
+
+.ws-sec--first { padding-top: 119px; } /* Problem 1273 */
+.ws .ws-problem-img { width: 96.8%; margin: 57px 0 0 1.66%; } /* x 226, y 1609 */
+
+/* Solution: the calendar screen bleeds off the right edge of the window (Figma x 834 → frame edge) */
+.ws-solution { position: relative; }
+.ws-solution .ws-rule { margin: 176px 0 0; } /* 2158 */
+.ws-solution__inner { position: relative; min-height: 673px; padding-top: 213px; } /* heading 2378 */
+.ws-solution__text, .ws-solution__result { position: relative; z-index: 1; max-width: 501px; }
+.ws-solution__text .ws-lead { font-size: 18px; font-weight: 700; }
+.ws .ws-solution__arrow { position: absolute; left: 404px; top: 315px; width: 516px; } /* 613, 2473 */
+.ws .ws-solution__img { position: absolute; left: calc(50% + 92px); top: calc(176px + 54px); width: 650px; max-width: none; }
+
+.ws-findings { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 80px; margin-top: 56px; }
+.ws-findings h3 { font-size: 18px; font-weight: 600; line-height: 28px; }
+.ws-findings p { margin-top: 10px; font-size: 16px; line-height: 26px; }
+.ws-after-findings { margin-top: 64px; }
+
+.ws-phases__inner { display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+.ws-kicker { color: #777f90; font-size: 16px; font-weight: 500; line-height: 40px; letter-spacing: 0.07em; }
+.ws-phases__list { margin-top: 29px !important; padding: 0; list-style: none; font-size: 22px; font-weight: 600; line-height: 36px; }
+.ws-phases__list li { display: flex; }
+.ws-phases__list li + li { margin-top: 32px; }
+.ws-phases__list span { flex: none; width: 61px; }
+.ws .ws-phases__cici { flex: none; width: 210px; margin-right: 0; }
+
+/* Screens placed at their Figma positions inside the 1022px column (percentages written by the build) */
+.ws-comp { position: relative; container-type: inline-size; margin-top: 28px; }
+.ws-comp > img { position: absolute; height: auto; }
+.ws-comp__arrow { position: absolute; color: #777f90; font-size: calc(22 / 1022 * 100cqw); line-height: 1.27; }
+.ws-steps + .ws-comp { margin-top: 56px; }
+.ws-before-after + .ws-comp { margin-top: 64px; }
+
+.ws-steps { display: grid; margin-top: 18px !important; padding: 0; list-style: none; }
+.ws-steps li { display: flex; align-items: flex-start; gap: 12px; padding-right: 40px; font-size: 16px; font-weight: 500; line-height: 24px; }
+.ws-steps__n { display: grid; flex: none; place-items: center; width: 28px; height: 28px; margin-top: -2px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 14px; font-weight: 600; line-height: 18px; }
+
+.ws-before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 56px; }
+.ws-before-after figcaption { margin-top: 22px; font-size: 15px; font-weight: 500; line-height: 22px; }
+
+.ws-landed { margin-top: 56px; }
+.ws-callout--end { margin-top: 56px; }
+
+.ws-cards { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 56px; margin-top: 48px; }
+.ws-cards img { aspect-ratio: 491 / 290; object-fit: cover; border-radius: 12px; }
+.ws-cards h3 { margin-top: 20px; font-size: 18px; font-weight: 600; line-height: 28px; }
+.ws-cards p { margin-top: 6px; font-size: 16px; line-height: 26px; }
+
+.ws-more { padding-top: 160px; } /* 14627 */
+.ws-more__title { font-size: 28px; font-weight: 500; line-height: 40px; letter-spacing: -0.02em; }
+.ws-more__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 21px; width: 925px; max-width: 100%; margin: 59px auto 0; }
+.ws-more__back { display: flex; justify-content: center; margin-top: 53px; padding-bottom: 137px; }
+
+@media (max-width: 900px) {
+  .ws-intro { flex-direction: column; }
+  .ws-meta { margin-top: 0; }
+  .ws-solution__inner { min-height: 0; padding-top: 110px; }
+  .ws .ws-solution__arrow { display: none; }
+  .ws .ws-solution__img { position: static; width: 100%; max-width: 650px; margin: 32px 0 0 auto; }
+}
+@media (max-width: 700px) {
+  .ws-h2 { font-size: 28px; line-height: 34px; }
+  .ws-rule { margin: 72px 0; }
+  .ws-findings, .ws-before-after, .ws-cards, .ws-more__grid { grid-template-columns: 1fr; }
+  .ws-phases__inner { flex-direction: column; align-items: flex-start; }
+  .ws-phases__list { font-size: 18px; line-height: 28px; }
+  .ws-phases__list span { width: 40px; }
+  .ws .ws-phases__cici { width: 120px; }
+  .ws-steps li { gap: 6px; padding-right: 10px; font-size: 12px; line-height: 16px; }
+  .ws-steps__n { width: 20px; height: 20px; margin-top: 0; font-size: 11px; }
+}

@@ -34,6 +34,11 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - `bull-stock.html` has no Figma frame: its layout was approved from a mockup. It shares the Bone Dry `.bd-*` styles plus `.bs-*`. Images come from the group project's Figma file (`ny9fhUlVOT652zelldNh02`), read-only. It is linked from the Work page only, not from a home card.
 
 ## In-progress page
-- `in-progress.html` (Figma 483:7596) is where any project without a case study leads: the Rebound, Depop and Fizz tiles, and the Workshop gate after a correct password (`data-next` in `workshop-locked.html`).
+- `in-progress.html` (Figma 483:7596) is where any project without a case study leads: the Rebound, Depop and Fizz tiles.
 - When a real case study is built, point its tile (and for Workshop, `data-next`) at the new page instead.
 - It reuses the home hero doodles (`.doodle`, bobbed by `js/main.js`); the title's three dots type in on a CSS loop (`.wip__dots`).
+
+## Workshop case study
+- `workshop.html` is built from Figma 537:5547 ("workshop — expanded draft"); the gate script is first in its `<head>`, and `workshop-locked.html` sends a correct password there (`data-next`). Home card and Work tile still point at the gate.
+- Light page on Figma's #faf8f7 (exports have it baked in around their shadows). Styles are the `.ws-*` block at the end of `style.css`.
+- Screens are 2x exports in `assets/images/workshop/`. Step rows (`.ws-comp`) place each screen at its Figma position as percentages of the 1022px column; the numbered labels below are real text (`.ws-steps`).

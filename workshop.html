@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Password gate: without an unlock from workshop-locked.html this session, go back to the gate -->
+  <script>try { if (!sessionStorage.getItem('unlocked:workshop')) location.replace('workshop-locked.html'); } catch (e) { location.replace('workshop-locked.html'); }</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workshop Comms Planner — Sicily Manganaro</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Planned content for Workshop’s communications calendar, by hand and with the Cici AI agent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    // Arriving from a dark page (e.g. Luna's BACK TO WORK): start dark and fade to light first.
+    try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
+  </script>
+</head>
+<body class="page-workshop">
+  <!-- Figma 537:5547 ("workshop — expanded draft"). Copy is real text; screens are exported from the frame at 2x
+       into assets/images/workshop/. The .ws-comp blocks place screens at their Figma positions (see .ws-* in style.css). -->
+  <main class="ws">
+    <div class="container">
+      <a class="back-link" data-reveal href="work.html"><svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg> BACK TO WORK</a>
+
+      <header class="ws-intro">
+        <div class="ws-intro__text">
+          <h1 data-reveal class="bd-title">Workshop Comms Planner - <span>Internship Project</span></h1>
+          <p data-reveal class="bd-summary">A calendar feature that allows users to organize and plan internal communications in advance. I collaborated with engineers to shape the experience from early concepts to final implementation.</p>
+        </div>
+        <dl data-reveal class="ws-meta">
+          <div><dt>ROLE</dt><dd>UI/UX design intern</dd></div>
+          <div><dt>TEAM</dt><dd>Me, a project manager, and engineers</dd></div>
+          <div><dt>TIMELINE</dt><dd>11 weeks, summer 2026</dd></div>
+        </dl>
+      </header>
+
+      <img data-reveal class="ws-hero" src="assets/images/workshop/hero.png" width="2189" height="1180" alt="Workshop’s calendar with the Cici chat open on the left, showing a drafted plan, and planned emails on the calendar">
+
+      <section class="ws-sec ws-sec--first">
+        <h2 data-reveal class="ws-h2">Problem</h2>
+        <p data-reveal class="ws-body">Internal communications teams usually plan their communications well in advance, anywhere from a month to a full year out, working through the when, what, and who. Teams often have a large amount of sends already planned for the future, all needing a place to stay organized. Currently, messages are sent using Workshop, but the planning happens outside of it, using spreadsheets, docs, or other calendar tools.</p>
+        <p data-reveal class="ws-callout">This creates a gap between planning and execution for Workshop users.</p>
+        <img loading="lazy" data-reveal class="ws-problem-img" src="assets/images/workshop/problem.png" width="1978" height="747" alt="Comms plans in spreadsheets and docs on one side, Workshop on the other">
+      </section>
+    </div>
+
+    <section class="ws-solution">
+      <div class="container">
+        <hr class="ws-rule">
+        <div class="ws-solution__inner">
+          <h2 data-reveal class="ws-h2">Solution</h2>
+          <div data-reveal class="ws-body ws-solution__text">
+            <p class="ws-lead">The solution to this problem is: planned content!</p>
+            <p>Planned content is a new type of content on the calendar that acts as a placeholder on the calendar that can be configured and converted over time. It can be thought of as jotting something down in pencil that takes shape as it moves towards a send.</p>
+          </div>
+          <p data-reveal class="ws-callout ws-solution__result">As a result, Workshop users can now use Cici, the AI agent, to add months of plans to their calendar with one click.</p>
+          <img loading="lazy" class="ws-solution__arrow" src="assets/images/workshop/solution-arrow.png" width="1032" height="388" alt="">
+        </div>
+      </div>
+      <img loading="lazy" data-reveal class="ws-solution__img" src="assets/images/workshop/solution.png" width="1299" height="1239" alt="Workshop’s calendar with planned emails on it">
+    </section>
+
+    <div class="container">
+      <section class="ws-sec">
+        <hr class="ws-rule">
+        <h2 data-reveal class="ws-h2">Process</h2>
+        <div data-reveal class="ws-body">
+          <p>The design process started considering a user’s full experience while planning internal company communications. I sat in on customer calls, which helped me understand their experience firsthand.</p>
+          <p>Before designing any UI, I built out some user flows so I could visualize how a user would perform actions for both manually adding planned content to the calendar, and planning with Cici.</p>
+        </div>
+        <figure data-reveal class="ws-fig">
+          <img loading="lazy" src="assets/images/workshop/flow.png" width="2044" height="1036" alt="User flow chart mapping how a user adds planned content by hand and with Cici">
+          <figcaption>An early user flow mapping how users would add planned content, by hand and with Cici.</figcaption>
+        </figure>
+      </section>
+
+      <section class="ws-sec">
+        <hr class="ws-rule">
+        <h2 data-reveal class="ws-h2">Testing Cici</h2>
+        <p data-reveal class="ws-body">Before designing anything, I tested what Cici’s AI model could already do with planning, so the engineers knew where to improve it. I used real comms plans that current customers shared with us, like a nonprofit’s annual plan and a strategic plan with open gaps, and evaluated each response. Four patterns stood out:</p>
+        <div data-reveal class="ws-findings">
+          <div><h3>01.&nbsp; Ask before advising</h3><p>The biggest gap. On open-ended prompts like “where do I start?”, Cici gave advice without asking a single clarifying question.</p></div>
+          <div><h3>02.&nbsp; Ground it in the file</h3><p>Cici read uploaded plans but often fell back on generic advice instead of the plan in front of it.</p></div>
+          <div><h3>03.&nbsp; Plans, not tutorials</h3><p>Responses explained how to use Workshop’s tools instead of proposing specific dates, segments, and sends.</p></div>
+          <div><h3>04.&nbsp; Consistency</h3><p>Quality tracked how specific the prompt was. A clear request plus a detailed file produced the strongest plan.</p></div>
+        </div>
+        <p data-reveal class="ws-body ws-after-findings">The engineers and I shared these findings with the team as priorities for improving Cici. The version we designed asks clarifying questions before it drafts a plan.</p>
+      </section>
+
+      <section class="ws-sec ws-phases">
+        <hr class="ws-rule">
+        <div class="ws-phases__inner">
+          <div>
+            <p data-reveal class="ws-kicker">2 MAIN PROJECT PHASES:</p>
+            <ol data-reveal class="ws-phases__list">
+              <li><span>01.</span>Giving users the ability to manually create planned content</li>
+              <li><span>02.</span>Giving Cici (AI agent) the ability to add planned content</li>
+            </ol>
+          </div>
+          <img loading="lazy" data-reveal class="ws-phases__cici" src="assets/images/workshop/cici-avatar.png" width="420" height="422" alt="Cici, Workshop’s AI agent: a smiling purple sun">
+        </div>
+      </section>
+
+      <section class="ws-sec">
+        <hr class="ws-rule">
+        <h2 data-reveal class="ws-h3">01. Manually creating planned content</h2>
+        <p data-reveal class="ws-body">The first phase gave users a way to add planned content by hand. From the calendar, a user hovers over a day, chooses “Add planned content,” and fills in a side panel with a send date, an optional time, a title, a campaign, and a description. Nothing gets sent: it’s a placeholder they can shape over time.</p>
+        <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 260.2">
+  <img loading="lazy" src="assets/images/workshop/p1-a.png" style="left:0.000%;top:23.535%;width:30.724%" alt="A calendar day with a menu open: Plan content, Add note, Blackout date">
+  <img loading="lazy" src="assets/images/workshop/p1-b.png" style="left:34.247%;top:0.096%;width:31.115%" alt="The Add planned content side panel with send date, time, title, description and campaign fields">
+  <img loading="lazy" src="assets/images/workshop/p1-c1.png" style="left:69.765%;top:0.000%;width:30.626%" alt="A planned email on the calendar, shown with a dashed outline and a Planned label">
+  <img loading="lazy" src="assets/images/workshop/p1-c2.png" style="left:69.765%;top:71.566%;width:30.626%" alt="A green toast that says Planned content added">
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:31.800%;top:44.669%">→</span>
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:66.438%;top:44.669%">→</span>
+</div>
+        <ol class="ws-steps" data-reveal style="grid-template-columns: 354fr 354fr 314fr" start="1">
+  <li><span class="ws-steps__n" aria-hidden="true">1</span>Choose “Plan content” on any day</li>
+  <li><span class="ws-steps__n" aria-hidden="true">2</span>Fill in the date, title, and details</li>
+  <li><span class="ws-steps__n" aria-hidden="true">3</span>It shows on the calendar as Planned</li>
+</ol>
+
+        <h3 data-reveal class="ws-sub">A closer look at my thought process - splitting date and time</h3>
+        <p data-reveal class="ws-body">Workshop’s picker asked for a time with every date, but plans made months out often don’t have one yet. I split them so the time is optional, and the new time picker became part of Workshop’s design system.</p>
+        <div data-reveal class="ws-before-after">
+          <figure><img loading="lazy" src="assets/images/workshop/dt-before.png" width="982" height="127" alt="Before: Start date and End date fields, each with only a date"><figcaption>Before</figcaption></figure>
+          <figure><img loading="lazy" src="assets/images/workshop/dt-after.png" width="982" height="127" alt="After: a Send date field next to a separate Time field"><figcaption>After: send date + optional time</figcaption></figure>
+        </div>
+        <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 411.0">
+  <img loading="lazy" src="assets/images/workshop/dt-1.png" style="left:0.000%;top:0.487%;width:48.043%" alt="Send date field with a calendar open to June 2026, next to an empty Time field">
+  <img loading="lazy" src="assets/images/workshop/dt-2.png" style="left:52.935%;top:0.000%;width:48.337%" alt="Time field open with hour, minute and AM or PM, next to the chosen send date">
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:49.119%;top:32.847%">→</span>
+</div>
+        <ol class="ws-steps" data-reveal style="grid-template-columns: 531fr 491fr" start="1">
+  <li><span class="ws-steps__n" aria-hidden="true">1</span>Pick a send date</li>
+  <li><span class="ws-steps__n" aria-hidden="true">2</span>Add a time, optional</li>
+</ol>
+
+        <h3 data-reveal class="ws-sub">Editing, deleting, and turning plans into drafts</h3>
+        <p data-reveal class="ws-body">Once something is on the calendar, clicking it opens a quick view with the owner and send date. From there, users can edit the details, delete it, or choose “Create draft” to turn the plan into a real email that opens in the editor with their description already filled in.</p>
+        <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 407.5">
+  <img loading="lazy" src="assets/images/workshop/ed-1.png" style="left:0.000%;top:50.859%;width:30.724%" alt="Quick view of a planned email with owner, scheduled date, Create draft and Edit buttons">
+  <img loading="lazy" src="assets/images/workshop/ed-2.png" style="left:34.638%;top:0.000%;width:30.724%" alt="The Edit planned content panel">
+  <img loading="lazy" src="assets/images/workshop/ed-3.png" style="left:68.102%;top:50.552%;width:33.170%" alt="Delete planned content confirmation with Cancel and Confirm buttons">
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:31.800%;top:70.000%">→</span>
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:66.438%;top:70.000%">→</span>
+</div>
+        <ol class="ws-steps" data-reveal style="grid-template-columns: 354fr 354fr 314fr" start="1">
+  <li><span class="ws-steps__n" aria-hidden="true">1</span>Click it to open a quick view</li>
+  <li><span class="ws-steps__n" aria-hidden="true">2</span>Edit the details</li>
+  <li><span class="ws-steps__n" aria-hidden="true">3</span>Or delete it, after a confirmation</li>
+</ol>
+        <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 287.5">
+  <img loading="lazy" src="assets/images/workshop/cv-1.png" style="left:0.000%;top:0.000%;width:48.043%" alt="Quick view with the Create draft button">
+  <img loading="lazy" src="assets/images/workshop/cv-2.png" style="left:51.957%;top:6.522%;width:49.315%" alt="Choose editor version dialog with the modern editor recommended">
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:49.119%;top:45.130%">→</span>
+</div>
+        <ol class="ws-steps" data-reveal style="grid-template-columns: 531fr 491fr" start="1">
+  <li><span class="ws-steps__n" aria-hidden="true">1</span>Choose “Create draft”</li>
+  <li><span class="ws-steps__n" aria-hidden="true">2</span>Pick the email editor</li>
+</ol>
+        <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 289.0">
+  <img loading="lazy" src="assets/images/workshop/cv-3.png" style="left:-0.489%;top:0.000%;width:49.022%" alt="The email editor with the plan’s description already in the Create prompt">
+  <img loading="lazy" src="assets/images/workshop/cv-4.png" style="left:51.957%;top:10.986%;width:48.043%" alt="The calendar day now showing the email as a Draft">
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:49.119%;top:44.983%">→</span>
+</div>
+        <ol class="ws-steps" data-reveal style="grid-template-columns: 531fr 491fr" start="3">
+  <li><span class="ws-steps__n" aria-hidden="true">3</span>The plan’s description carries over to pre-fill Create prompt</li>
+  <li><span class="ws-steps__n" aria-hidden="true">4</span>It shows on the calendar as a Draft</li>
+</ol>
+      </section>
+
+      <section class="ws-sec">
+        <hr class="ws-rule">
+        <h2 data-reveal class="ws-h3">02. Using AI to create content</h2>
+        <p data-reveal class="ws-body">The second phase let Cici, Workshop’s AI agent, build the plan. A user opens Cici from the calendar and either imports an existing comms plan (a doc or spreadsheet) or describes what they need. Cici asks clarifying questions, drafts the plan, and adds it to the calendar as planned content the user can review and edit, by chatting with Cici or by hand.</p>
+        <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 321.8">
+  <img loading="lazy" src="assets/images/workshop/ci-1.png" style="left:1.443%;top:0.544%;width:22.065%" alt="Cici chat opened from the Plan icon, with suggested prompts">
+  <img loading="lazy" src="assets/images/workshop/ci-2.png" style="left:38.748%;top:0.544%;width:22.211%" alt="A user uploads a CSV comms plan and Cici starts reading it">
+  <img loading="lazy" src="assets/images/workshop/ci-3.png" style="left:77.202%;top:0.000%;width:22.016%" alt="Cici’s drafted plan as a table of dates and titles">
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:27.006%;top:45.921%">→</span>
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:67.515%;top:45.921%">→</span>
+</div>
+        <ol class="ws-steps" data-reveal style="grid-template-columns: 335fr 446fr 241fr" start="1">
+  <li><span class="ws-steps__n" aria-hidden="true">1</span>Open Cici from the Plan icon</li>
+  <li><span class="ws-steps__n" aria-hidden="true">2</span>Upload a plan or describe what you need</li>
+  <li><span class="ws-steps__n" aria-hidden="true">3</span>Review the plan Cici drafts</li>
+</ol>
+        <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 248.0">
+  <img loading="lazy" src="assets/images/workshop/ci-4.png" style="left:0.000%;top:0.000%;width:47.750%" alt="Planned content loading onto the calendar beside the Cici chat">
+  <img loading="lazy" src="assets/images/workshop/ci-5.png" style="left:52.250%;top:0.000%;width:47.750%" alt="The planned emails shown on the calendar beside the Cici chat">
+  <span class="ws-comp__arrow" aria-hidden="true" style="left:49.119%;top:41.129%">→</span>
+</div>
+        <ol class="ws-steps" data-reveal style="grid-template-columns: 534fr 488fr" start="4">
+  <li><span class="ws-steps__n" aria-hidden="true">4</span>Planned content loads onto the calendar</li>
+  <li><span class="ws-steps__n" aria-hidden="true">5</span>Planned content can be viewed on the calendar</li>
+</ol>
+
+        <h3 data-reveal class="ws-sub">Big design question - where should Cici live?</h3>
+        <p data-reveal class="ws-body ws-body--wide">Deciding how Cici would show up on the calendar was one of the biggest design decisions of the project. I went through a lot of iterations, from a “Plan with Cici” button that opens a chat panel to different header placements, and tested whether the calendar should shrink to five days or keep all seven when the chat is open.</p>
+        <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 420.0">
+  <img loading="lazy" src="assets/images/workshop/ex-1.png" style="left:-0.391%;top:0.000%;width:17.123%" alt="Exploration 1 of 10 for where Cici lives on the calendar">
+  <img loading="lazy" src="assets/images/workshop/ex-2.png" style="left:16.341%;top:0.000%;width:17.123%" alt="Exploration 2 of 10 for where Cici lives on the calendar">
+  <img loading="lazy" src="assets/images/workshop/ex-3.png" style="left:33.659%;top:0.000%;width:17.123%" alt="Exploration 3 of 10 for where Cici lives on the calendar">
+  <img loading="lazy" src="assets/images/workshop/ex-4.png" style="left:50.391%;top:0.000%;width:17.123%" alt="Exploration 4 of 10 for where Cici lives on the calendar">
+  <img loading="lazy" src="assets/images/workshop/ex-5.png" style="left:67.784%;top:0.000%;width:33.611%" alt="Exploration 5 of 10 for where Cici lives on the calendar">
+  <img loading="lazy" src="assets/images/workshop/ex-6.png" style="left:-0.391%;top:36.429%;width:33.855%" alt="Exploration 6 of 10 for where Cici lives on the calendar">
+  <img loading="lazy" src="assets/images/workshop/ex-7.png" style="left:50.783%;top:36.429%;width:50.685%" alt="Exploration 7 of 10 for where Cici lives on the calendar">
+  <img loading="lazy" src="assets/images/workshop/ex-8.png" style="left:-0.391%;top:73.095%;width:33.659%" alt="Exploration 8 of 10 for where Cici lives on the calendar">
+  <img loading="lazy" src="assets/images/workshop/ex-9.png" style="left:16.243%;top:73.095%;width:33.659%" alt="Exploration 9 of 10 for where Cici lives on the calendar">
+  <img loading="lazy" src="assets/images/workshop/ex-10.png" style="left:59.589%;top:73.095%;width:41.781%" alt="Exploration 10 of 10 for where Cici lives on the calendar">
+  <img class="ws-comp__line" src="assets/images/workshop/ex-arrow-a.svg" style="left:15.460%;top:5.238%;width:11.957%" alt="">
+  <img class="ws-comp__line" src="assets/images/workshop/ex-arrow-b.svg" style="left:49.413%;top:5.476%;width:11.957%" alt="">
+</div>
+        <p data-reveal class="ws-caption">Wireframes and hi-fi explorations for a dedicated Cici chat in the calendar.</p>
+        <p data-reveal class="ws-body ws-landed">We landed on a new side navigation on the left of the calendar. Users open Cici with the “Plan” sparkle icon, and the calendar resizes as the chat opens, so content Cici creates appears in real time.</p>
+        <figure data-reveal class="ws-fig ws-fig--tight">
+          <img loading="lazy" src="assets/images/workshop/final-sidenav.png" width="2044" height="1038" alt="The calendar with the new left side nav and the Cici chat open, showing a drafted plan">
+          <figcaption>The final direction: Cici lives in the calendar’s new left side nav.</figcaption>
+        </figure>
+
+        <h3 data-reveal class="ws-sub">Suggested prompts</h3>
+        <p data-reveal class="ws-body">I also gave design input on how Cici’s suggested prompts should change on the calendar, so a new chat starts with planning tasks like mapping out next month’s comms, checking for send conflicts, or turning notes into a plan.</p>
+        <figure data-reveal class="ws-fig ws-fig--tight">
+          <img loading="lazy" src="assets/images/workshop/prompts.png" width="2116" height="836" alt="Three Cici chat panels, each with a different set of calendar planning prompts">
+          <figcaption>Calendar-specific suggested prompts that rotate in a new Cici chat.</figcaption>
+        </figure>
+        <p data-reveal class="ws-callout ws-callout--end">Designing for an AI agent meant designing the moments around it: when Cici should ask instead of answer, how a user reviews a draft before anything lands on the calendar, and how they correct it.</p>
+      </section>
+
+      <section class="ws-sec">
+        <hr class="ws-rule">
+        <h2 data-reveal class="ws-h2">Outcome</h2>
+        <p data-reveal class="ws-callout ws-callout--wide">Manually adding planned content shipped to Workshop customers during my internship, and planning with Cici is set to ship next.</p>
+        <p data-reveal class="ws-body">Communications teams can now keep their plans in the same place they send from, and turn a placeholder into a real send when it’s ready. My internship ended before the Cici features launched, so I didn’t get to see them go live.</p>
+      </section>
+
+      <section class="ws-sec">
+        <hr class="ws-rule">
+        <h2 data-reveal class="ws-h2">Beyond the 11 weeks</h2>
+        <p data-reveal class="ws-body">Some features I designed during the 11-week project didn’t make it into the build. These are the ones I’d pick back up first.</p>
+        <div class="ws-cards">
+          <article data-reveal><img loading="lazy" src="assets/images/workshop/card-list.png" width="1429" height="844" alt="The calendar as a list of planned content with statuses"><h3>List view</h3><p>A list view of the calendar, with filters and bulk actions, so teams can manage months of plans at once.</p></article>
+          <article data-reveal><img loading="lazy" src="assets/images/workshop/card-campaign.png" width="965" height="570" alt="The edit panel with a campaign chosen from a search dropdown"><h3>Planned content in campaigns</h3><p>Linking planned content to a campaign, so it shows on the campaign page with a Planned badge.</p></article>
+          <article data-reveal><img loading="lazy" src="assets/images/workshop/card-library.png" width="847" height="500" alt="A prompt library with prompts sorted into category tabs"><h3>Prompt library</h3><p>A library of ready-made prompts, sorted by category, that drops a prompt straight into the Cici chat.</p></article>
+          <article data-reveal><img loading="lazy" src="assets/images/workshop/card-conflicts.png" width="626" height="370" alt="A calendar day outlined in red with a Conflict tooltip about overlapping sends"><h3>Conflicts on the calendar</h3><p>Flagging conflicts, like overlapping sends to the same audience, right on the calendar day.</p></article>
+          <article data-reveal><img loading="lazy" src="assets/images/workshop/card-assign.png" width="1483" height="876" alt="The Add planned content panel with an Assign to user search, next to a quick view showing who it’s assigned to"><h3>Assigning to a teammate</h3><p>Assigning planned content to someone on the team, so it’s clear who owns each send.</p></article>
+        </div>
+      </section>
+
+      <section class="ws-more">
+        <h2 data-reveal class="ws-more__title">See more projects</h2>
+        <div class="ws-more__grid">
+          <a class="work-tile" style="--tint: 40, 40, 40" data-reveal href="bull-stock.html"><img loading="lazy" src="assets/images/work-page/bull-stock.png" width="1002" height="552" alt="Bull Stock Investing App"><span class="work-tile__title" aria-hidden="true">Bull Stock Investing App</span></a>
+          <a class="work-tile" style="--tint: 20, 35, 61" data-reveal href="luna.html"><img loading="lazy" src="assets/images/work-page/luna.png" width="1002" height="552" alt="Headphones Launch Ecosystem"><span class="work-tile__title" aria-hidden="true">Headphones Launch Ecosystem</span></a>
+        </div>
+        <div class="ws-more__back"><a class="back-link" data-reveal href="work.html"><svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg> BACK TO WORK</a></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" data-reveal>
+    <div class="site-footer__inner container">
+      <div class="site-footer__left">
+        <a class="site-footer__logo" href="index.html" aria-label="Sicily Manganaro — home">
+          <img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt="">
+        </a>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <!-- Placeholder links until these pages exist -->
+          <a href="work.html">Work</a>
+          <a href="#">About</a>
+          <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
+        </nav>
+      </div>
+      <a class="site-footer__social" href="https://www.linkedin.com/in/sicily-manganaro-1b5a67296" target="_blank" rel="noopener" aria-label="Sicily Manganaro on LinkedIn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 3C24 1.34423 22.6558 0 21 0H3C1.34423 0 0 1.34423 0 3V21C0 22.6558 1.34423 24 3 24H21C22.6558 24 24 22.6558 24 21V3Z" fill="currentColor"/><path d="M6.88157 8.37402H2.86157V20.466H6.88157V8.37402Z" fill="var(--li-mark, #fbfbfb)"/><path d="M4.899 2.54395C3.52364 2.54395 2.625 3.44816 2.625 4.6333C2.625 5.79355 3.49631 6.72271 4.8458 6.72271H4.87177C6.27347 6.72271 7.14595 5.79355 7.14595 4.6333C7.11994 3.44816 6.27356 2.54395 4.899 2.54395Z" fill="var(--li-mark, #fbfbfb)"/><path d="M16.7475 8.08984C14.6151 8.08984 13.66 9.26252 13.1252 10.0862V8.37419H9.1062C9.1595 9.50842 9.1062 20.4661 9.1062 20.4661H13.1251V13.7131C13.1251 13.3517 13.1511 12.9903 13.2576 12.732C13.5477 12.0101 14.2094 11.2623 15.3198 11.2623C16.7735 11.2623 17.3559 12.3716 17.3559 13.9964V20.4661H21.375V13.5319C21.375 9.81766 19.3919 8.08984 16.7475 8.08984Z" fill="var(--li-mark, #fbfbfb)"/></svg>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
