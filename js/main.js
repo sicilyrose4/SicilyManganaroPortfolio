@@ -106,14 +106,17 @@ const scheduleAmbient = (delay) => {
   if (reduceMotion || !doodles.length) return; // pages without the hero have no doodles
   ambientTimer = setTimeout(() => {
     if (hoveredDoodle || doodles.some((d) => d.classList.contains('is-bobbing'))) return;
-    const choices = doodles.filter((d) => d !== lastAmbient);
+    // Only doodles on screen: every page also carries the phone screen's drawing, hidden on desktop
+    const choices = doodles.filter((d) => d !== lastAmbient && d.offsetParent !== null);
+    if (!choices.length) { scheduleAmbient(1000); return; }
     lastAmbient = choices[Math.floor(Math.random() * choices.length)];
     lastAmbient.classList.add('is-ambient');
   }, delay);
 };
 
-doodles.forEach((doodle, i) => {
-  doodle.style.setProperty('--i', i); // entrance stagger order
+doodles.forEach((doodle) => {
+  // entrance stagger order, counted within each drawing
+  doodle.style.setProperty('--i', [...doodle.parentElement.querySelectorAll(':scope > .doodle')].indexOf(doodle));
   doodle.addEventListener('mouseenter', () => {
     hoveredDoodle = doodle;
     clearTimeout(ambientTimer);
@@ -161,12 +164,13 @@ if (cta && firstMedia) {
 }
 
 // Hero illustration: blink every ~1.5–4s (occasionally a double blink).
-const art = document.querySelector('.hero__art');
-if (art) {
+// (Every page has the phone screen's copy of the drawing too, so blink them all.)
+const arts = document.querySelectorAll('.hero__art');
+if (arts.length) {
   const BLINK_MS = 250;
   const blink = (then) => {
-    art.classList.add('is-blinking');
-    setTimeout(() => { art.classList.remove('is-blinking'); then(); }, BLINK_MS);
+    arts.forEach((a) => a.classList.add('is-blinking'));
+    setTimeout(() => { arts.forEach((a) => a.classList.remove('is-blinking')); then(); }, BLINK_MS);
   };
   const scheduleBlink = () => {
     setTimeout(() => {
@@ -378,4 +382,46 @@ if (road) {
     reset();
     if (wasRunning && !reduce) { running = true; timer = setTimeout(cycle, 350); }
   });
+}
+
+// Phone screen menu (Figma 579:20053). Opening: the three lines turn into the X while the drawing
+// fades out, then Work / About / Contact fade up one by one. Closing plays it backwards. Escape or
+// the X closes it. Steps are timed here; the motion itself is in style.css (.mgate).
+const mgate = document.querySelector('[data-mobile-gate]');
+if (mgate) {
+  const toggle = mgate.querySelector('.mgate__toggle');
+  const menu = mgate.querySelector('.mgate__menu');
+  const body = mgate.querySelector('.mgate__body');
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FADE_MS = still ? 0 : 250;     // drawing fade (matches .mgate__body transition)
+  const LINKS_OUT_MS = still ? 0 : 320; // last link finishes fading out
+  let step = null;
+  const setOpen = (open) => {
+    clearTimeout(step);
+    mgate.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) {
+      menu.classList.remove('is-out');
+      body.classList.add('is-faded');
+      step = setTimeout(() => {
+        body.classList.add('is-away');
+        body.setAttribute('aria-hidden', 'true');
+        menu.hidden = false;
+        menu.classList.add('is-in');
+      }, FADE_MS);
+    } else {
+      menu.classList.remove('is-in');
+      menu.classList.add('is-out');
+      step = setTimeout(() => {
+        menu.hidden = true;
+        menu.classList.remove('is-out');
+        body.classList.remove('is-away');
+        body.removeAttribute('aria-hidden');
+        requestAnimationFrame(() => requestAnimationFrame(() => body.classList.remove('is-faded')));
+      }, LINKS_OUT_MS);
+    }
+  };
+  toggle.addEventListener('click', () => setOpen(!mgate.classList.contains('is-open')));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mgate.classList.contains('is-open')) { setOpen(false); toggle.focus(); } });
 }

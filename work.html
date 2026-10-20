@@ -17,6 +17,43 @@
   </script>
 </head>
 <body>
+  <!-- Phones (Figma 579:20032 / 579:20053): the site is desktop-only for now, so below 768px this
+       screen replaces the page (see .mgate in style.css; the menu toggle is in js/main.js). -->
+  <div class="mgate" data-mobile-gate>
+    <div class="mgate__bar">
+      <a class="mgate__logo" href="index.html" aria-label="Sicily Manganaro — home"><img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt=""></a>
+      <button class="mgate__toggle" type="button" aria-expanded="false" aria-controls="mgate-menu" aria-label="Open menu">
+        <!-- Three lines (Figma 579:20052) that turn into the X (579:20081/82) when the menu opens -->
+        <svg class="mgate__icon" width="30" height="24" viewBox="0 0 30 24" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="mgate__line mgate__line--top" d="M1.25 6H28.75"/><path class="mgate__line mgate__line--mid" d="M1.25 12H28.75"/><path class="mgate__line mgate__line--bot" d="M1.25 18H28.75"/></g></svg>
+      </button>
+    </div>
+    <div class="mgate__body" id="mgate-body">
+      <div class="hero__art mgate__art">
+        <img class="hero__desk" src="assets/images/hero/desk.png" width="1062" height="979" alt="Illustration of Sicily sitting at her desk with a laptop, surrounded by stars and design tools">
+        <img class="hero__desk hero__desk--blink" src="assets/images/hero/desk-blink.png" width="1062" height="979" alt="" aria-hidden="true">
+        <span class="doodle doodle--stars-1" style="--x:279.29; --y:26.38; --w:95.49"><img src="assets/images/hero/stars-1.png" width="191" height="145" alt=""></span>
+        <span class="doodle doodle--stars-2" style="--x:102.63; --y:12.45; --w:125.16"><img src="assets/images/hero/stars-2.png" width="250" height="176" alt=""></span>
+        <span class="doodle doodle--bubble-1" style="--x:294.16; --y:109.93; --w:107.08"><img src="assets/images/hero/bubble-1.png" width="214" height="44" alt=""></span>
+        <span class="doodle" style="--x:130.95; --y:137.40; --w:26.65"><img src="assets/images/hero/bubble-2.png" width="53" height="45" alt=""></span>
+        <span class="doodle" style="--x:346.97; --y:221.54; --w:32.22"><img src="assets/images/hero/cursor.png" width="64" height="80" alt=""></span>
+        <span class="doodle" style="--x:379.19; --y:168.23; --w:18.77"><img src="assets/images/hero/star-3.png" width="38" height="40" alt=""></span>
+        <span class="doodle" style="--x:294.36; --y:133.69; --w:44.50"><img src="assets/images/hero/stars-4.png" width="89" height="138" alt=""></span>
+        <span class="doodle" style="--x:47.28; --y:137.40; --w:46.36"><img src="assets/images/hero/line-height.png" width="93" height="95" alt=""></span>
+        <span class="doodle" style="--x:231.78; --y:92.21; --w:39.63"><img src="assets/images/hero/pen-tool.png" width="79" height="76" alt=""></span>
+        <span class="doodle" style="--x:113.80; --y:199.52; --w:17.15"><img src="assets/images/hero/stars-7.png" width="34" height="44" alt=""></span>
+        <span class="doodle" style="--x:332.65; --y:112.34; --w:30.13"><img src="assets/images/hero/stars-5.png" width="60" height="60" alt=""></span>
+        <span class="doodle" style="--x:143.32; --y:72.54; --w:36.16"><img src="assets/images/hero/color-picker.png" width="72" height="96" alt=""></span>
+        <span class="doodle" style="--x:64.67; --y:237.99; --w:57.71"><img src="assets/images/hero/stars-6.png" width="115" height="94" alt=""></span>
+      </div>
+      <h1 class="mgate__title">Grab your laptop!</h1>
+      <p class="mgate__text">This portfolio is desktop-only for now.</p>
+    </div>
+    <nav class="mgate__menu" id="mgate-menu" aria-label="Menu" hidden>
+      <a href="work.html">Work</a>
+      <a href="#">About</a>
+      <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
+    </nav>
+  </div>
   <!-- Site header (same as home) -->
   <header class="site-header container">
     <div class="site-header__left">

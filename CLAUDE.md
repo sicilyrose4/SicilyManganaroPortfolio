@@ -42,3 +42,8 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - `workshop.html` is built from Figma 537:5547 ("workshop — expanded draft"); the gate script is first in its `<head>`, and `workshop-locked.html` sends a correct password there (`data-next`). Home card and Work tile still point at the gate.
 - Light page on Figma's #faf8f7 (exports have it baked in around their shadows). Styles are the `.ws-*` block at the end of `style.css`.
 - Screens are 2x exports in `assets/images/workshop/`. Step rows (`.ws-comp`) place each screen at its Figma position as percentages of the 1022px column; the numbered labels below are real text (`.ws-steps`).
+
+## Phone screen (desktop-only for now)
+- Every page starts with the `.mgate` block (Figma 579:20032, menu 579:20053). Below 768px it replaces the page ("Grab your laptop!"); above that it's hidden. If you add a page, copy the block in right after `<body>`.
+- Its drawing is a copy of the home hero art (`.hero__art.mgate__art`), so it bobs and blinks with the same code; that code skips hidden doodles and blinks every `.hero__art`.
+- Menu motion (approved): the three lines turn into the X while the drawing fades out, then the links fade up one by one; closing reverses it. Steps in `js/main.js`, motion in the `.mgate` CSS.
