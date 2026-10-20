@@ -425,3 +425,58 @@ if (mgate) {
   toggle.addEventListener('click', () => setOpen(!mgate.classList.contains('is-open')));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mgate.classList.contains('is-open')) { setOpen(false); toggle.focus(); } });
 }
+
+// See more projects (every project page): the arrows slide the row one tile at a time and stop at
+// the ends; each arrow fades out when there's nothing more on its side.
+document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+  const track = carousel.querySelector('.more__track');
+  const viewport = carousel.querySelector('.more__viewport');
+  const prev = carousel.querySelector('.more__arrow--prev');
+  const next = carousel.querySelector('.more__arrow--next');
+  const tiles = [...track.children];
+  const last = Math.max(0, tiles.length - 2); // two tiles show at once
+  let index = 0;
+  const show = () => {
+    track.style.transform = `translateX(${-tiles[index].offsetLeft}px)`;
+    prev.classList.toggle('is-hidden', index === 0);
+    next.classList.toggle('is-hidden', index === last);
+  };
+  prev.addEventListener('click', () => { if (index > 0) { index -= 1; show(); } });
+  next.addEventListener('click', () => { if (index < last) { index += 1; show(); } });
+  addEventListener('resize', show);
+  // Tabbing onto a tile that's out of view slides it in (and undoes the browser's own scroll)
+  track.addEventListener('focusin', (e) => {
+    const i = tiles.indexOf(e.target.closest('.work-tile'));
+    viewport.scrollLeft = 0;
+    if (i < index || i > index + 1) { index = Math.min(i, last); show(); }
+  });
+  show();
+});
+
+// Magnifier (Workshop user flow): hovering shows a round lens that follows the cursor and shows that
+// spot at 3x from a high-res copy, loaded on first hover. Mouse/trackpad only.
+const ZOOM = 3;
+if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll('[data-magnify]').forEach((box) => {
+    const img = box.querySelector('img');
+    const lens = box.querySelector('.magnify__lens');
+    let loaded = false;
+    const move = (e) => {
+      const r = img.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      lens.style.left = `${x}px`;
+      lens.style.top = `${y}px`;
+      lens.style.backgroundSize = `${r.width * ZOOM}px ${r.height * ZOOM}px`;
+      lens.style.backgroundPosition = `${lens.offsetWidth / 2 - x * ZOOM}px ${lens.offsetHeight / 2 - y * ZOOM}px`;
+    };
+    box.addEventListener('mouseenter', (e) => {
+      if (!loaded) { lens.style.backgroundImage = `url("${box.dataset.magnify}")`; loaded = true; }
+      move(e);
+      box.classList.add('is-zooming');
+    });
+    box.addEventListener('mousemove', move);
+    box.addEventListener('mouseleave', () => box.classList.remove('is-zooming'));
+  });
+}
+

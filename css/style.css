@@ -1339,9 +1339,10 @@ a { color: inherit; text-decoration: none; }
 .ws-solution .ws-rule { margin: 0; } /* 2158 */
 .ws-solution__inner { position: relative; z-index: 2; min-height: 628px; padding-top: 213px; } /* heading 2378; above the screen so the arrow can cross it */
 .ws-solution__text, .ws-solution__result { position: relative; z-index: 1; max-width: 501px; }
-.ws .ws-solution__result { max-width: 550px; } /* two lines, as in Figma (DM Sans runs wider than Figma's Proxima Nova) */
-.ws-solution__text .ws-lead { font-size: 18px; font-weight: 700; }
-.ws .ws-solution__arrow { position: absolute; left: 404px; top: 315px; width: 516px; max-width: none; } /* 613, 2473: from the text across the screen to a planned email */
+.ws .ws-solution__text { margin-top: 48px; } /* first line 2460, 302 below the rule */
+.ws .ws-solution__result { max-width: 550px; margin-top: 36px; } /* two lines, as in Figma (DM Sans runs wider than Figma's Proxima Nova) */
+.ws-solution__text .ws-lead { position: relative; display: inline-block; font-size: 18px; font-weight: 700; } /* shrink-wraps the sentence so the arrow can start at its end */
+.ws .ws-solution__arrow { position: absolute; left: calc(100% + 9px); top: calc(50% - 1px); width: calc(911px - 100%); height: 194px; max-width: none; } /* starts just after "content!" at mid-line and always ends at Figma's tip (x 1129 = 920px into the column), on the planned email; the SVG stretches to fit */
 .ws .ws-solution__img { position: absolute; z-index: 1; left: calc(50% + 71px); top: calc(176px + 54px); width: 650px; max-width: none; } /* screen 2248, 90 below the rule (export adds ~36px of shadow) */
 
 .ws-findings { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; row-gap: 80px; margin-top: 56px; }
@@ -1379,10 +1380,6 @@ a { color: inherit; text-decoration: none; }
 .ws-cards h3 { margin-top: 20px; font-size: 18px; font-weight: 600; line-height: 28px; }
 .ws-cards p { margin-top: 6px; font-size: 16px; line-height: 26px; }
 
-.ws-more { padding-top: 160px; } /* 14627 */
-.ws-more__title { font-size: 28px; font-weight: 500; line-height: 40px; letter-spacing: -0.02em; }
-.ws-more__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 21px; width: 925px; max-width: 100%; margin: 59px auto 0; }
-.ws-more__back { display: flex; justify-content: center; margin-top: 53px; padding-bottom: 137px; }
 
 @media (max-width: 900px) {
   .ws-intro { flex-direction: column; }
@@ -1394,7 +1391,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 700px) {
   .ws-h2 { font-size: 28px; line-height: 34px; }
   .ws-rule { margin: 72px 0; }
-  .ws-findings, .ws-before-after, .ws-cards, .ws-more__grid { grid-template-columns: 1fr; }
+  .ws-findings, .ws-before-after, .ws-cards { grid-template-columns: 1fr; }
   .ws-phases__inner { flex-direction: column; align-items: flex-start; }
   .ws-phases__list { font-size: 18px; line-height: 28px; }
   .ws-phases__list span { width: 40px; }
@@ -1447,3 +1444,51 @@ a { color: inherit; text-decoration: none; }
   .mgate__line, .mgate__body { transition: none; }
   .mgate__menu.is-in a, .mgate__menu.is-out a { animation: none; }
 }
+
+/* ---------- See more projects (Figma 552:13726, on every project page) ---------- */
+/* Two Work-page tiles at a time in a 925px window; the arrows (the back-link circle, turned
+   sideways) slide the row one tile and loop at the ends (js/main.js). */
+.more { padding: 160px 0 137px; font-family: var(--font-sans); font-variation-settings: "opsz" 14; }
+.more__title { margin: 0; color: var(--ink); font-size: 28px; font-weight: 500; line-height: 40px; letter-spacing: -0.02em; }
+.more__carousel { position: relative; width: 925px; max-width: calc(100% - 82px); margin: 59px auto 0; }
+.more__viewport { overflow: hidden; }
+.more__track { display: flex; gap: 18px; transition: transform 500ms cubic-bezier(0.2, 0.7, 0.3, 1); }
+.more__track .work-tile { flex: 0 0 calc((100% - 18px) / 2); }
+.more__arrow { position: absolute; top: 50%; display: grid; transition: opacity 0.25s ease, visibility 0.25s; place-items: center; width: 44px; height: 44px; margin-top: -22px; padding: 0; border: 0; background: none; color: #5b78b2; cursor: pointer; }
+.more__arrow--prev { left: -48px; }
+.more__arrow--next { right: -48px; }
+.more__arrow--prev svg { transform: rotate(90deg); }
+.more__arrow--next svg { transform: rotate(-90deg); }
+.more__arrow svg rect, .more__arrow svg path { transition: fill 0.2s ease; }
+.more__arrow:hover svg rect, .more__arrow:focus-visible svg rect { fill: currentColor; }
+.more__arrow:hover svg path, .more__arrow:focus-visible svg path { fill: var(--bg); }
+.more__arrow.is-hidden { opacity: 0; visibility: hidden; } /* nothing more on that side */
+.more__back { display: flex; justify-content: center; margin-top: 53px; } /* BACK TO WORK under the tiles */
+.more--dark .back-link, .bs .more .back-link { color: #94a9d3; }
+@media (prefers-reduced-motion: reduce) { .more__track, .more__arrow { transition: none; } }
+/* Dark pages (Luna, Drop) and Bone Dry's dark footer band */
+.page-dark .more__title, .more--dark .more__title { color: #ebebeb; }
+.page-dark .more__arrow, .more--dark .more__arrow { color: #94a9d3; }
+.more--dark .more__arrow:hover svg path, .more--dark .more__arrow:focus-visible svg path { fill: #12111d; }
+/* Pages whose main ends with the carousel keep a normal gap to the footer */
+.case:has(> .more) { padding-bottom: 0; } /* the carousel's own bottom padding takes over */
+
+/* ---------- Magnifier (Workshop user flow) ---------- */
+/* On hover a 320px lens follows the cursor showing that spot at 3x from a 4x export, so the
+   small text in the flow is readable. Mouse/trackpad only; js/main.js moves the lens. */
+.magnify { position: relative; }
+.magnify__lens { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .magnify { cursor: none; }
+  .magnify__lens {
+    position: absolute; top: 0; left: 0; z-index: 2; display: block;
+    width: 320px; height: 320px; margin: -160px 0 0 -160px; border-radius: 50%;
+    background-color: #faf8f7; background-repeat: no-repeat;
+    box-shadow: 0 10px 40px rgba(37, 46, 64, 0.18), 0 0 0 1px rgba(37, 46, 64, 0.06);
+    opacity: 0; transform: scale(0.9); pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .magnify.is-zooming .magnify__lens { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .magnify__lens { transition: none; } }
+

@@ -42,8 +42,14 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - `workshop.html` is built from Figma 537:5547 ("workshop — expanded draft"); the gate script is first in its `<head>`, and `workshop-locked.html` sends a correct password there (`data-next`). Home card and Work tile still point at the gate.
 - Light page on Figma's #faf8f7 (exports have it baked in around their shadows). Styles are the `.ws-*` block at the end of `style.css`.
 - Screens are 2x exports in `assets/images/workshop/`. Step rows (`.ws-comp`) place each screen at its Figma position as percentages of the 1022px column; the numbered labels below are real text (`.ws-steps`).
+- The user-flow image has a hover magnifier (`.magnify`, `js/main.js`): a round lens at 3x from `flow-large.jpg`, mouse/trackpad only.
 
 ## Phone screen (desktop-only for now)
 - Every page starts with the `.mgate` block (Figma 579:20032, menu 579:20053). Below 768px it replaces the page ("Grab your laptop!"); above that it's hidden. If you add a page, copy the block in right after `<body>`.
 - Its drawing is a copy of the home hero art (`.hero__art.mgate__art`), so it bobs and blinks with the same code; that code skips hidden doodles and blinks every `.hero__art`.
 - Menu motion (approved): the three lines turn into the X while the drawing fades out, then the links fade up one by one; closing reverses it. Steps in `js/main.js`, motion in the `.mgate` CSS.
+
+## See more projects (every project page)
+- The `.more` carousel (Figma 552:13726) sits at the end of Luna, Drop, Workshop, Bone Dry (inside its dark footer band) and Bull Stock. It holds the Work-page tiles for Luna, Drop, Workshop and Bone Dry, minus the page you're on.
+- Two tiles show at a time; the arrows (back-link circle turned sideways) slide one tile and hide when there's nothing more on that side (`js/main.js`). To add a project, add its tile to each page's `.more__track`.
+- The back link sits under the carousel (`.more__back`). Every `.back-link` reads BACK TO WORK, or BACK TO HOME (→ `index.html#work`) if the visitor came from the home page.
