@@ -7,7 +7,7 @@
   <meta name="description" content="A dashboard for the operations manager of a fleet of delivery drones: quick insights plus in-depth information.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Inter:wght@600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
   <script>document.documentElement.classList.add('js')</script>
@@ -50,43 +50,166 @@
       <a href="assets/docs/sicily-manganaro-resume.pdf" target="_blank" rel="noopener">Resume</a>
     </nav>
   </div>
-  <!-- Figma 283:7344 -->
-  <main class="case container">
+  <!-- Figma 651:8736 ("drop — draft"). Styles: the .dp-* block in style.css (comments give Figma y). Visuals are 2x exports in assets/images/drop/v2/ -->
+  <main class="dp">
+    <div class="container">
     <a class="back-link" data-reveal href="index.html#work">
       <!-- Inline copy of assets/images/arrow-back-circle.svg (Figma rotates it 90°) so it can fill on hover -->
       <svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg>
       BACK TO HOME
     </a>
 
-    <header class="case__intro drop-intro">
-      <h1 class="case__title" data-reveal>Drop Drone Delivery Dashboard</h1>
-      <p class="case__summary case__summary--sans" data-reveal>A dashboard designed to be used by the operation manager of a fleet of delivery drones. Created to provide quick insights along with in-depth information.</p>
-      <p class="case__meta" data-reveal>SOLO  ·  4 WEEKS  ·  CLASS PROJECT</p>
-    </header>
+      <header class="dp-intro">
+        <div class="dp-intro__text">
+          <h1 class="dp-title" data-reveal>Drop Drone Delivery Dashboard</h1>
+          <p class="dp-summary" data-reveal>A dashboard designed to be used by the operation manager of a fleet of delivery drones. Created to provide quick insights along with in-depth information.</p>
+          <p class="dp-meta" data-reveal>SOLO  ·  4 WEEKS  ·  CLASS PROJECT</p>
+        </div>
+        <img class="dp-intro__logo" data-reveal src="assets/images/drop/v2/logo.png" width="346" height="188" alt="The Drop logo: a drop-shaped mark beside the word drop, with the tagline Direct Flight, Direct Delivery">
+      </header>
 
-    <!-- Frame "Drop Drone" (clip content). Boards are Figma exports at 2x, stacked edge to edge. -->
-    <div class="case__body">
-      <img data-reveal class="case__media" src="assets/images/drop/01-title.jpg" width="2044" height="1150" alt="The Drop logo, a drop-shaped mark beside the word drop, with the tagline Direct Flight, Direct Delivery. Sicily Manganaro, IXD 404, Dashboard Design.">
-      <img data-reveal class="case__media" src="assets/images/drop/02-cover.jpg" width="2044" height="1150" alt="The Drop dashboard shown on a stack of laptop screens.">
-      <img data-reveal class="case__media" src="assets/images/drop/03-concept.jpg" width="2044" height="948" alt="Concept. This dashboard accompanies a self-automated drone delivery app. The user focused app would be a drone-powered delivery platform that allows customers to place orders and track their packages as drones transport them. The dashboard is the admin side of the app, designed for an operations manager to monitor the entire fleet of drones: tracking drone locations, monitoring deliveries, and watching battery and maintenance. Shown beside a drone carrying a Drop package.">
-      <img data-reveal class="case__media" src="assets/images/drop/04-user.jpg" width="2044" height="1150" alt="The User. Persona: a drone fleet operations manager who keeps deliveries on schedule, tracks drone health, and responds quickly to delays or malfunctions. Their questions: How efficient is the fleet overall? Which deliveries are on time or delayed? Where is every drone right now and what is it carrying? Is drone performance changing over time? Are any drones low on battery or having technical issues? Quotes: I can't see the big picture of the current drone activity fast enough. It takes too long to find info on a specific drone. I wish I could quickly compare performance over time.">
-      <img data-reveal class="case__media" src="assets/images/drop/05-goal.jpg" width="2044" height="769" alt="Project Goal: create a clean, real-time dashboard that shows the most critical information quickly, with drill-down options for deeper insights.">
-      <img data-reveal class="case__media" src="assets/images/drop/06-lowfi.jpg" width="2044" height="1150" alt="Low fidelity designs: two wireframe dashboards annotated with main KPIs, interactive maps, all fleet numbers, delivery stats, a drone information table, and drone-specific battery information.">
-      <img data-reveal class="case__media" src="assets/images/drop/07-wireframes.jpg" width="2044" height="1150" alt="Wireframe to screens: rather than one page with a lot of information, the dashboard was divided into two, each built around a main visualization. It first showed only overall drone stats, then added the option to look at individual drone information.">
-      <img data-reveal class="case__media" src="assets/images/drop/08-home-screen.jpg" width="2044" height="1150" alt="Home Screen: provides critical metrics at a glance, gives easy access to drone location and other details, and shows drone status distribution clearly. Callouts point to the interactive map, main KPIs, drone info table, status bar chart and secondary KPIs.">
-      <img data-reveal class="case__media" src="assets/images/drop/09-drone-screen.jpg" width="2044" height="1150" alt="Drone Screen: shows specific flight and delivery information, highlights time-sensitive details, and shows performance and drone health in a scannable format. Callouts point to the quick view map, currently carrying table, key delivery information, performance-over-time line charts, and battery and maintenance details.">
-      <img data-reveal class="case__media" src="assets/images/drop/10-delivery-screen.jpg" width="2044" height="1150" alt="Delivery Screen: shows delivery and efficiency metrics, compares deliveries completed by each drone, and visualizes demand for deliveries over time. Callouts point to delivery KPIs, deliveries over time, profit, and a comparison of deliveries by drone.">
+      <div class="dp-hero" data-reveal>
+        <img class="dp-hero__home" src="assets/images/drop/v2/hero-home.png" width="697" height="434" alt="The Drop home screen: a map of San Francisco with drones, fleet KPIs and the drone table">
+        <img class="dp-hero__drone" src="assets/images/drop/v2/hero-drone.png" width="697" height="434" alt="A drone screen: Drone 16’s delivery, flight map, what it’s carrying, its health and performance">
+      </div>
 
-      <!-- "Try it out": the placeholder rectangle is replaced by the live Figma prototype embed (clickable) -->
-      <section data-reveal class="drop-try" aria-labelledby="drop-try-title">
-        <h2 class="drop-try__title" id="drop-try-title">Try it out</h2>
-        <div class="drop-try__embed">
+      <hr class="dp-rule" data-reveal>
+
+      <section class="dp-concept">
+        <div class="dp-concept__text">
+          <h2 class="dp-h2" data-reveal>Concept</h2>
+          <div class="dp-body" data-reveal>
+            <p>This dashboard accompanies a self-automated drone delivery app.</p>
+            <p>The user focused app would be a drone-powered delivery platform that allows customers to place orders and track their packages as drones transport them.</p>
+            <p>The dashboard is the admin side of the app, designed for an operations manager to monitor the entire fleet of drones. It would allow the admin to track location of the drones, monitor deliveries, watch drone battery/maintenance, etc.</p>
+          </div>
+        </div>
+        <img class="dp-concept__drone" data-reveal loading="lazy" src="assets/images/drop/v2/drone.png" width="439" height="307" alt="A drone carrying a box with the Drop logo">
+      </section>
+    </div>
+
+    <section class="dp-band" aria-label="Project goal">
+      <div class="container">
+        <p class="dp-label" data-reveal>PROJECT GOAL</p>
+        <p class="dp-big" data-reveal>Create a clean, real-time dashboard that shows the most critical information quickly, with drill-down options for deeper insights.</p>
+        <img class="dp-band__icons" data-reveal loading="lazy" src="assets/images/drop/v2/goal-icons.png" width="538" height="36" alt="">
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="dp-user">
+        <div class="dp-user__text">
+          <h2 class="dp-h2" data-reveal>The User</h2>
+          <p class="dp-label dp-user__label" data-reveal>USER PERSONA</p>
+          <p class="dp-persona" data-reveal>Drone fleet operations manager</p>
+          <h3 class="dp-qlabel" data-reveal>Their questions and goals</h3>
+          <ul class="dp-questions" data-reveal>
+            <li>How efficient is the drone fleet overall?</li>
+            <li>How many/which deliveries are on time, or delayed?</li>
+            <li>Where are all delivery drones right now, and what are they carrying?</li>
+            <li>Are there changes in drone performance over time?</li>
+            <li>Are any drones experiencing low battery or technical issues?</li>
+          </ul>
+        </div>
+        <img class="dp-user__card" data-reveal loading="lazy" src="assets/images/drop/v2/persona-card.png" width="310" height="562" alt="Persona card: Drone Fleet Operations Manager. They manage a fleet of delivery drones, ensuring deliveries stay on schedule, tracking drone health (battery and maintenance), and quickly responding to issues like delays or malfunctions. Quotes: “I can’t see the big picture of the current drone activity fast enough.” “It takes too long to find info on a specific drone.” “I wish I could quickly compare performance over time.”">
+      </section>
+
+      <hr class="dp-rule" data-reveal>
+
+      <section class="dp-sec">
+        <h2 class="dp-h2" data-reveal>Process</h2>
+        <h3 class="dp-h3 dp-h3--first" data-reveal>Low fidelity designs</h3>
+        <img class="dp-board dp-board--lowfi" data-reveal loading="lazy" src="assets/images/drop/v2/lowfi.png" width="1022" height="575" alt="Two low fidelity dashboards annotated with main KPIs, interactive maps, all fleet numbers, delivery stats, a drone information table, and drone specific and battery information">
+        <!-- Phones: the same board split into its two wireframes, stacked -->
+        <div class="dp-lowfi-m">
+          <img data-reveal loading="lazy" src="assets/images/drop/v2/lowfi-a.png" width="580" height="350" alt="Low fidelity overview dashboard annotated with main KPIs, interactive maps, all fleet numbers and delivery stats">
+          <img data-reveal loading="lazy" src="assets/images/drop/v2/lowfi-b.png" width="500" height="345" alt="Low fidelity fleet management screen annotated with the drone information table and drone specific and battery information">
+        </div>
+
+        <h3 class="dp-h3" data-reveal>Narrowing it down</h3>
+        <p class="dp-label dp-notes__label" data-reveal>NOTES FROM MY WIREFRAMES</p>
+        <ul class="dp-notes" data-reveal>
+          <li>“pages of different hubs rather than all?”</li>
+          <li>“or maybe just one drone at a time?”</li>
+          <li>“Screens focusing on one big thing: map / individual drone pages when you click on a dot / deliveries over time?”</li>
+        </ul>
+        <div class="dp-pair" data-reveal>
+          <figure><img loading="lazy" src="assets/images/drop/v2/early-home.png" width="501" height="488" alt="An early wireframe with every chart and number on one page"><figcaption>First pass: everything on one page</figcaption></figure>
+          <figure><img loading="lazy" src="assets/images/drop/v2/early-map.png" width="501" height="317" alt="A later wireframe built around a large map, with active drones, deliveries and the drone table"><figcaption>Then: one big thing per screen, starting with the map</figcaption></figure>
+        </div>
+
+        <h3 class="dp-h3" data-reveal>Wireframe → screens</h3>
+        <img class="dp-board dp-board--wf" data-reveal loading="lazy" src="assets/images/drop/v2/wireframes.png" width="1022" height="575" alt="Wireframes turned into screens: the deliveries chart and map each became the focus of a page, and individual drone information was added">
+        <!-- Phones: the same board split into its two halves, stacked -->
+        <div class="dp-lowfi-m dp-wf-m">
+          <img data-reveal loading="lazy" src="assets/images/drop/v2/wf-a.png" width="478" height="416" alt="Rather than having one page with a lot of information, I divided it into 2, using these visualizations as the main focus for each: the deliveries chart and the map, each wireframe beside its finished version">
+          <img data-reveal loading="lazy" src="assets/images/drop/v2/wf-b.png" width="368" height="436" alt="I initially included only overall drone stats, but decided to include the option to look at individual drone information as well: the fleet overview leading to drone health and performance">
+        </div>
+      </section>
+
+      <hr class="dp-rule" data-reveal>
+
+      <section class="dp-sec">
+        <h2 class="dp-h2" data-reveal>Final screens</h2>
+        <h3 class="dp-h3 dp-h3--first" data-reveal>Home Screen</h3>
+        <p class="dp-body dp-screen__text" data-reveal>Provides critical metrics at a glance, gives easy access to drone location and other details, and shows drone status distribution clearly.</p>
+        <img class="dp-screen" data-reveal loading="lazy" src="assets/images/drop/v2/screen-home.jpg" width="1022" height="575" alt="The home screen on a monitor, annotated: interactive map, main KPIs, drone info table, status bar chart and secondary KPIs">
+        <h3 class="dp-h3" data-reveal>Drone Screen</h3>
+        <p class="dp-body dp-screen__text" data-reveal>Shows specific flight and delivery information, highlights time sensitive details, and shows performance and drone health in a scannable format.</p>
+        <img class="dp-screen" data-reveal loading="lazy" src="assets/images/drop/v2/screen-drone.jpg" width="1022" height="575" alt="The drone screen on a monitor, annotated: quick view map, currently carrying table, key delivery information, battery and maintenance details and performance-over-time line charts">
+        <h3 class="dp-h3" data-reveal>Delivery Screen</h3>
+        <p class="dp-body dp-screen__text" data-reveal>Shows delivery and efficiency metrics, compares deliveries completed by each drone, and visualizes demand for deliveries over time.</p>
+        <img class="dp-screen" data-reveal loading="lazy" src="assets/images/drop/v2/screen-delivery.jpg" width="1022" height="575" alt="The delivery screen on a monitor, annotated: delivery KPIs, amount of deliveries over time, comparison of deliveries completed by each drone and profit">
+      </section>
+
+      <hr class="dp-rule" data-reveal>
+
+      <section class="dp-sec">
+        <h2 class="dp-h2" data-reveal>Design decisions</h2>
+        <h3 class="dp-h4 dp-h4--first" data-reveal>Home screen</h3>
+        <p class="dp-body dp-decision" data-reveal>The live map is the center of the home screen. Each drone is a dot: position shows where it is and color shows its battery (green is good, red is low), so problems stand out at a glance. The KPIs (active drones, deliveries in progress, idle drones) sit on bold black tiles with yellow and white text against the light screen, so the critical numbers read first. A stacked bar shows the share of drones delivering, idle or returning to base, and the drone table lists each drone’s number, status, battery and time since maintenance.</p>
+        <h3 class="dp-h4" data-reveal>Drone screen</h3>
+        <p class="dp-body dp-decision" data-reveal>Each drone’s page keeps a mini map with just that drone’s flight path. Delivery details (items, flight time, ETA, priority, weight) are set apart with contrast and position for fast reading, battery and maintenance show as progress bars, and four line charts track flights, speed, payload and distance over time.</p>
+        <h3 class="dp-h4" data-reveal>Delivery screen</h3>
+        <p class="dp-body dp-decision" data-reveal>The charts match the data: a line chart shows how often deliveries happen across the day, week or month, bar charts compare drones, and line charts show change over time. Hover states reveal exact values, so the screen stays clean and quick to scan.</p>
+      </section>
+
+      <hr class="dp-rule" data-reveal>
+
+      <section class="dp-sec">
+        <h2 class="dp-h2" data-reveal>Interactions</h2>
+        <div class="dp-hovers" data-reveal>
+          <figure class="dp-hovers__marker"><img loading="lazy" src="assets/images/drop/v2/hover-marker.png" width="200" height="338" alt="A map dot with its hover label, Drone 1"><figcaption>Hover a dot on the map to see which drone it is, then click it to open that drone’s page.</figcaption></figure>
+          <figure class="dp-hovers__kpi"><img loading="lazy" src="assets/images/drop/v2/hover-kpi.png" width="420" height="290" alt="The 2 deliveries at risk of delay KPI with its hover list: Drone 10 and Drone 9 with their delivery numbers"><figcaption>Hover a KPI to see the drones or deliveries behind the number.</figcaption></figure>
+        </div>
+        <figure class="dp-details" data-reveal><img loading="lazy" src="assets/images/drop/v2/see-details.png" width="1022" height="656" alt="Today’s Performance details: line charts for flights, average speed, average payload weight and distance traveled"><figcaption>On a drone’s page, “See Details” opens the exact values, and Today / Week switches the performance charts.</figcaption></figure>
+      </section>
+
+      <hr class="dp-rule" data-reveal>
+
+      <!-- "Try it out": the live Figma prototype (clickable) -->
+      <section class="dp-sec dp-try" aria-labelledby="dp-try-title">
+        <h2 class="dp-h2" id="dp-try-title" data-reveal>Try it out</h2>
+        <p class="dp-body dp-try__text" data-reveal>The interactive prototype: click through the home, drone and delivery screens.</p>
+        <div class="dp-try__embed" data-reveal>
           <iframe title="Interactive Drop dashboard prototype (Figma)" loading="lazy" src="https://embed.figma.com/proto/MMF58JIeVYs8L0I16zReIs/Drop---Drone-Delivery--Copy-?node-id=486-9251&amp;starting-point-node-id=486%3A9251&amp;scaling=scale-down&amp;content-scaling=fixed&amp;embed-host=share" allowfullscreen></iframe>
         </div>
       </section>
+
+      <hr class="dp-rule" data-reveal>
+
+      <section class="dp-sec">
+        <h2 class="dp-h2" data-reveal>What I would change</h2>
+        <p class="dp-body dp-reflect" data-reveal>I had four weeks for research, design and prototyping, so this dashboard is intentionally simple. It’s more focused on the experience and getting information across than refined visual design. If I came back to it, I would:</p>
+        <ul class="dp-body dp-reflect__list" data-reveal>
+          <li>Keep working on contrast and color. I think I brought too much color into the interface.</li>
+          <li>Rework the navigation bar. It isn’t fully clickable yet, and I don’t think it is set up in the ideal way.</li>
+        </ul>
+      </section>
     </div>
+
     <!-- See more projects (Figma 552:13726): two tiles at a time; the arrows slide one tile and loop (js/main.js) -->
-    <section class="more" aria-label="More projects">
+    <section class="more container" aria-label="More projects">
       <h2 data-reveal class="more__title">See more projects</h2>
       <div data-reveal class="more__carousel" data-carousel>
         <button class="more__arrow more__arrow--prev" type="button" aria-label="Previous project"><svg width="29" height="28" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg></button>

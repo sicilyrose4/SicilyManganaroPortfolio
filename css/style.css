@@ -882,40 +882,119 @@ a { color: inherit; text-decoration: none; }
   .lock__submit { width: 100%; }
 }
 
-/* ---------- Drop case study (Figma 283:7344) ---------- */
+/* ---------- Drop case study (Figma 651:8736, "drop — draft") ---------- */
+/* Same format as Bone Dry and Workshop, in Drop's dark palette with its lime accent. Comments give the
+   Figma y of each piece (frame 1440 wide, content column 209–1231). Visuals are 2x exports. */
 .page-drop { --bg: #1c1c1c; }
-.drop-intro .case__summary { color: #dee3ef; } /* Drop's summary uses the title colour */
-.drop-try {
-  position: relative;
-  /* "Try it out" sits 80px below the last board; embed box ends 60.7px above the frame bottom */
-  padding: calc(80.11 * var(--px)) 0 calc(60.67 * var(--px));
+.dp { padding-top: 98px; color: #bbc0cc; font-family: var(--font-sans); font-variation-settings: "opsz" 14; }
+.dp :where(h1, h2, h3, p, ul, figure) { margin: 0; } /* spacing below is set per element */
+.dp img { display: block; max-width: 100%; height: auto; }
+.dp-intro { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; margin-top: 91px; } /* title 225 */
+.dp-intro__text { width: 462px; max-width: 100%; }
+.dp-title { color: #dee3ef; font-size: 28px; font-weight: 500; line-height: 40px; letter-spacing: -0.56px; }
+.dp-summary { margin-top: 35px !important; color: #dee3ef; font-size: 14px; line-height: 25px; } /* 300 */
+.dp-meta { margin-top: 15px !important; color: #94a9d3; font-size: 12px; font-weight: 500; line-height: 18px; letter-spacing: 0.08em; white-space: pre; } /* 390 */
+.dp .dp-intro__logo { flex: none; width: 340px; margin-top: -20px; } /* 205, right edge on the column */
+/* Hero: two screens overlapping (home behind at 209,780; drone in front at 531,675), 1019 × 539 */
+.dp-hero { position: relative; aspect-ratio: 1019 / 539; margin-top: 267px; } /* 675 */
+.dp .dp-hero img { position: absolute; width: 68.4%; }
+.dp .dp-hero__home { left: 0; top: 19.48%; }
+.dp .dp-hero__drone { right: 0; top: 0; }
+.dp-rule { margin: 120px 0 0; border: 0; border-top: 1px solid #333; }
+.dp-hero + .dp-rule { margin-top: 136px; } /* 1350 */
+.dp-h2 { color: #ebebeb; font-size: 42px; font-weight: 600; line-height: 40px; letter-spacing: -0.84px; }
+.dp-h3 { margin-top: 100px; color: #dee3ef; font-size: 28px; font-weight: 500; line-height: 37px; letter-spacing: -0.56px; }
+.dp-h3--first { margin-top: 60px; }
+.dp-h4 { margin-top: 56px; color: #dee3ef; font-size: 22px; font-weight: 500; line-height: 30px; }
+.dp-h4--first { margin-top: 60px; }
+.dp-body { font-size: 15px; line-height: 24px; }
+.dp-body p + p { margin-top: 24px; }
+.dp-h2 + .dp-body, .dp-h2 + p { margin-top: 32px; }
+.dp-label { color: #ebffae; font-size: 12px; font-weight: 500; line-height: 18px; letter-spacing: 0.08em; }
+.dp-sec { margin-top: 120px; }
+.dp figcaption { margin-top: 16px; font-size: 14px; line-height: 22px; }
+
+/* Concept (h2 1471): text left, drone right */
+.dp-concept { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; margin-top: 120px; }
+.dp-concept__text { width: 460px; max-width: 100%; }
+.dp .dp-concept__drone { flex: none; width: 439px; }
+/* Project goal band (1967–2425), full width */
+.dp-band { margin-top: 160px; padding: 104px 0; background: #141414; }
+.dp-big { max-width: 700px; margin-top: 16px !important; color: #ebebeb; font-size: 32px; font-weight: 600; line-height: 44px; } /* 2105 */
+.dp .dp-band__icons { width: 538px; margin-top: 48px; } /* 2285 */
+/* The User (2585): text left, persona card right */
+.dp-user { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; margin-top: 160px; }
+.dp-user__text { width: 460px; max-width: 100%; }
+.dp-user__label { margin-top: 32px !important; }
+.dp-persona { margin-top: 8px !important; color: #dee3ef; font-size: 22px; font-weight: 500; line-height: 30px; }
+.dp-qlabel { margin-top: 24px; color: #dee3ef; font-size: 15px; font-weight: 600; line-height: 24px; }
+.dp-questions { margin-top: 8px; padding: 0; list-style: none; font-size: 15px; line-height: 30px; }
+.dp .dp-user__card { flex: none; width: 309px; }
+.dp-user + .dp-rule { margin-top: 80px; } /* 3266 */
+/* Process: the annotated boards start a little above their headings, as in Figma */
+.dp .dp-board { width: 100%; }
+.dp-lowfi-m { display: none; } /* phone-only split of the low-fi board */
+.dp .dp-board--lowfi { margin-top: -41px; } /* 3483, heading 3487 */
+.dp .dp-board--wf { margin-top: -81px; } /* 4970, heading 5014 */
+.dp-notes__label { margin-top: 20px !important; } /* 4214 */
+.dp-notes { margin-top: 12px; padding: 0; list-style: none; max-width: 700px; font-size: 15px; line-height: 26px; } /* 4244; regular text (Figma has them in mono) */
+.dp-notes li + li { margin-top: 14px; }
+.dp-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin-top: 40px; } /* 4388 */
+.dp-pair img { border-radius: 8px; }
+/* Final screens */
+.dp-screen__text { max-width: 605px; margin-top: 15px !important; }
+.dp .dp-screen { width: 100%; margin-top: 40px; border-radius: 12px; }
+.dp-screen + .dp-h3 { margin-top: 120px; } /* 6721, 7555 */
+/* Design decisions */
+.dp-decision { max-width: 700px; margin-top: 10px !important; }
+/* Interactions (9396): two hover states side by side, then the See Details overlay */
+.dp-hovers { display: flex; align-items: flex-start; gap: 40px; margin-top: 60px; }
+.dp-hovers figure { margin: 0; }
+.dp-hovers__marker { width: 200px; }
+.dp-hovers__kpi { width: 420px; }
+.dp-hovers img, .dp-details img { border-radius: 8px; }
+.dp-details { max-width: none; margin: 78px 0 0; } /* 9994 */
+.dp-details figcaption { max-width: 723px; }
+/* Try it out (10929): the live Figma prototype */
+.dp-try__text { margin-top: 32px !important; }
+.dp-try__embed { aspect-ratio: 1022 / 607; margin-top: 32px; overflow: hidden; border-radius: 12px; background: #383838; }
+.dp-try__embed iframe { display: block; width: 100%; height: 100%; border: 0; }
+/* What I would change (11905) */
+.dp-reflect { max-width: 700px; margin-top: 32px !important; }
+.dp-reflect__list { max-width: 700px; margin-top: 24px; padding-left: 20px; line-height: 30px; }
+.dp .more { padding-top: 160px; }
+
+/* Phones */
+@media (max-width: 767px) {
+  .m-ok main.dp { overflow-x: clip; }
+  /* hero: just the drone screen, enlarged like Workshop's, its right edge on the right margin and the
+     rest (including the black nav bar, the left 7.6% of the export) running off the left */
+  .m-ok .dp-hero { width: 160%; margin: 48px 0 0 -60%; aspect-ratio: auto; }
+  .m-ok .dp .dp-hero__home { display: none; }
+  .m-ok .dp .dp-hero__drone { position: static; width: 100%; }
+  .m-ok .dp .dp-intro__logo { display: none; } /* phones go straight from the intro to the hero screen */
+  .m-ok .dp-concept { gap: 72px; }
+  .m-ok .dp .dp-board--lowfi, .m-ok .dp .dp-board--wf { display: none; }
+  .m-ok .dp-lowfi-m { display: grid; gap: 32px; margin-top: 24px; } /* the two low-fi wireframes stacked, each full width */
+  .m-ok .dp-lowfi-m img { width: 100%; }
+  .m-ok .dp-pair { grid-template-columns: 1fr; gap: 32px; }
+  /* captions sit above their images on phones */
+  .m-ok .dp figure { display: flex; flex-direction: column; }
+  .m-ok .dp figcaption { order: -1; margin: 0 0 10px; }
+  /* Interactions: the two hover states stacked, each caption full width above its image */
+  .m-ok .dp-hovers { flex-direction: column; flex-wrap: nowrap; gap: 40px; margin-top: 32px; }
+  .m-ok .dp-hovers figure { width: 100%; }
+  .m-ok .dp-details { margin-top: 40px; } /* same gap as between the two hover states */
+  .m-ok .dp .dp-user__card { width: 240px; } /* persona card a little smaller than the column */
+  .m-ok .dp-hovers__marker img { width: 47.6%; aspect-ratio: 272 / 315; object-fit: cover; object-position: center bottom; } /* same scale as the KPI image (200 : 420, as on desktop); the empty top of the export is cropped off */
+  .m-ok .dp-hero + .dp-rule { margin-top: 64px; }
 }
-.drop-try__title {
-  margin: 0 0 0 calc(55.89 * var(--px));
-  color: #fff;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: max(24px, calc(31.937 * var(--px)));
-  line-height: normal;
-  letter-spacing: -0.02em;
-}
-.drop-try__embed {
-  width: calc(816 * var(--px));
-  aspect-ratio: 816 / 485.45;
-  /* embed top 5684.08 − title top 5537.16, less the title's own ~39px line */
-  margin: calc(107.93 * var(--px)) 0 0 calc(103 * var(--px));
-  background: #383838; /* Figma's placeholder colour shows while the embed loads */
-}
-.drop-try__embed iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-@media (max-width: 700px) {
-  .drop-try { padding: 48px 0 0; }
-  .drop-try__title { margin-left: 0; }
-  .drop-try__embed { width: 100%; margin: 24px 0 0; aspect-ratio: 4 / 3; }
+
+@media (max-width: 900px) {
+  .dp-intro, .dp-concept, .dp-user { flex-direction: column; }
+  .dp .dp-intro__logo { width: min(280px, 70%); margin-top: 0; }
+  .dp .dp-concept__drone, .dp .dp-user__card { width: min(400px, 100%); }
+  .dp-hovers { flex-wrap: wrap; }
 }
 
 /* ---------- Home footer with the road (Figma 395:13582, 395:13608/13610, 395:13615) ---------- */
