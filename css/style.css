@@ -625,6 +625,8 @@ a { color: inherit; text-decoration: none; }
 .lv > .lv__t { width: calc(var(--w) * var(--px) * 1.03); }
 .lv h2.lv__t, .lv h3.lv__t { white-space: nowrap; }
 .lv__t--center { text-align: center; }
+.m-col { display: none; } /* Luna's phone-only collage tiles */
+.lv > .m-wt { display: none; } /* Luna's phone-only walk-through clips */
 
 @media (max-width: 900px) {
   .case { padding-top: 48px; padding-bottom: 96px; }
@@ -637,10 +639,75 @@ a { color: inherit; text-decoration: none; }
   .luna-problem { height: auto; padding: 40px 0; gap: 32px; }
   .luna-problem__row { flex-direction: column; gap: 12px; }
   .luna-problem__row h2 { width: auto; }
-  .luna-problem__row h2 img,
-  .luna-problem__row + .luna-problem__row h2 img { height: 26px; }
+  .luna-problem__row h2 img { height: 26px; }
+  .luna-problem__row + .luna-problem__row h2 img { height: 22.43px; } /* same ratio as desktop (32.315 : 27.882): "problem" has a descender, so equal box heights made "solution" look bigger */
   .luna-problem__row p,
   .luna-problem__row p.luna-problem__solution { width: auto; font-size: 14px; line-height: 22px; }
+}
+
+/* Phones (m-ok): the .lv composition stops being one scaled piece and becomes a stack in a 6-column
+   grid. Text is real size, each section reads heading → text → sketch → screen, and small sets pair up:
+   charts 2 × 2, sketch + AI render side by side over the final render, the three site stages and the
+   three loose buds in a row. Bands, connector arrows and the two long site strips drop out. The
+   walk-through videos start at the left margin and run off the right edge. "dense" lets each site
+   stage's label and image share a column (labels row, images row under it). */
+@media (max-width: 767px) {
+  .m-ok main.case { overflow-x: clip; }
+  /* header collage: its tiles restacked (big pieces full width, the two small cards side by side) */
+  .m-ok .case__collage { display: none; }
+  .m-ok .m-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .m-ok .m-col > video { display: block; width: 100%; height: auto; }
+  .m-ok .m-col__wide { grid-column: 1 / -1; }
+  .m-ok .m-col__half { align-self: center; }
+  .m-ok .case__body { overflow: visible; }
+  .m-ok .lv { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-flow: row dense; column-gap: 12px; height: auto; }
+  .m-ok .lv > * { position: relative; left: auto; top: auto; grid-column: 1 / -1; width: 100%; margin-top: 24px; }
+  .m-ok .lv > .lv__band, .m-ok .lv > .lv__arrow, .m-ok .lv > [src*="-strip"] { display: none; }
+
+  .m-ok .lv > .lv__t { width: auto; font-size: calc(var(--fs) * 1px); line-height: calc(var(--lh) * 1px); white-space: normal; }
+  .m-ok .lv > h2.lv__t { margin-top: 96px; }
+  .m-ok .lv > h3.lv__t { margin-top: 64px; }
+  .m-ok .lv > .lv__rule + h3.lv__t, .m-ok .lv > h2 + h3.lv__t { margin-top: 0; } /* the divider's own margin, or straight under a heading */
+  .m-ok .lv > h2 + h3.lv__t { margin-top: 24px; }
+  .m-ok .lv > h2 + .lv__t, .m-ok .lv > h3 + .lv__t { margin-top: 8px; }
+  .m-ok .lv > .lv__rule { height: 2px; margin: 64px 0; }
+
+  .m-ok .lv > .lv__img { height: auto; aspect-ratio: var(--w) / var(--h); border-radius: calc(var(--r, 0) * 0.7px); }
+  .m-ok .lv > .lv__img:first-of-type { margin-top: 0; } /* the floating app screens open the block */
+  .m-ok .lv > .lv__img + .lv__img, .m-ok .lv > .lv__clip + .lv__clip { margin-top: 16px; }
+
+  /* app sections: every sketch is the same height and every screen the same width, small enough that a
+     sketch and its screen (almost) fit on one phone screen together */
+  .m-ok .lv > :is([src*="sketch-plan"], [src*="sketch-stats"], [src*="sketch-buds"], [src*="sketch-library"]) { width: auto; max-width: 100%; height: 180px; justify-self: center; }
+  .m-ok .lv > :is([src*="tonights-plan"], [src*="sleep-stats"], [src*="bud-control"], [src*="/library"]) { width: 170px; justify-self: center; }
+  .m-ok .lv > [src*="goal-mobile"] { width: 75%; justify-self: center; }
+  /* sleep mode and good morning side by side */
+  .m-ok .lv > :is([src*="sleep-mode"], [src*="good-morning"]) { grid-column: span 3; margin-top: 24px; }
+  /* sleep-stage charts, 2 × 2 under their caption */
+  .m-ok .lv > [src*="/chart-"] { grid-column: span 3; margin-top: 12px; }
+  /* rendering process: sketch and first AI render side by side, the final render under them */
+  .m-ok .lv > [src*="render-"][src$="-sketch.jpg"], .m-ok .lv > [src*="render-"][src$="-ai.jpg"] { grid-column: span 3; align-self: end; }
+  .m-ok .lv > [src*="render-"][src$="-final.jpg"] { margin-top: 12px; margin-bottom: 24px; }
+  /* loose buds in a row under the open case */
+  .m-ok .lv > [src*="bud-side"], .m-ok .lv > [src*="bud-front"], .m-ok .lv > [src*="bud-back"] { grid-column: span 2; align-self: center; }
+  /* launch site process: Sketch / Figma make / Final, each label over its image */
+  .m-ok .lv > p:has(+ [src*="site-sketch"]), .m-ok .lv > [src*="site-sketch"] { grid-column: 1 / 3; }
+  .m-ok .lv > p:has(+ [src*="site-figma-make"]), .m-ok .lv > [src*="site-figma-make"] { grid-column: 3 / 5; }
+  .m-ok .lv > p:has(+ [src*="site-final"]), .m-ok .lv > [src*="site-final"] { grid-column: 5 / 7; }
+  .m-ok .lv > p:has(+ [src*="site-"]) { margin-top: 24px; text-align: center; font-size: 13px; line-height: 20px; }
+  .m-ok .lv > [src*="site-"] { margin-top: 8px; align-self: start; }
+
+  /* walk-through: the two wide videos give way to their five phone screens, two per row, each with
+     its label (from the video) as real text above it; the last one centered */
+  .m-ok .lv > .lv__video { display: none; }
+  .m-ok .lv > .m-wt { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 12px; margin: 24px 0 0; }
+  .m-ok .m-wt figure { margin: 0; }
+  .m-ok .m-wt figure:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 6px); }
+  .m-ok .m-wt figcaption { min-height: 40px; margin-bottom: 8px; color: #dee3ef; font-size: 13px; line-height: 20px; text-align: center; }
+  .m-ok .m-wt video { display: block; width: 100%; height: auto; }
+
+  /* website recordings: each clip is full width; its video keeps the desktop crop, rescaled */
+  .m-ok .lv > .lv__clip { --px: calc(100cqw / var(--w)); height: auto; aspect-ratio: var(--w) / var(--h); }
 }
 
 /* ---------- Footer (Figma 283:6531) ---------- */
@@ -1043,6 +1110,9 @@ a { color: inherit; text-decoration: none; }
 .page-bonedry .site-footer__inner { height: 95px; }
 .page-bonedry .site-footer__nav a { color: #bbc0cc; }
 .page-bonedry .site-footer__social { color: #bbc0cc; --li-mark: #12111d; }
+@media (max-width: 767px) {
+  .m-ok .bd .bd-learning__cards { display: none; } /* phones: the recipe cards drop out, the peek pop-up stays */
+}
 .page-bonedry .site-footer__social:hover,
 .page-bonedry .site-footer__social:focus-visible { color: var(--accent); }
 

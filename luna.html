@@ -12,7 +12,7 @@
   <script src="js/main.js" defer></script>
   <script>document.documentElement.classList.add('js')</script>
 </head>
-<body class="page-dark">
+<body class="m-ok page-dark">
   <!-- Phones (Figma 579:20032 / 579:20053): the site is desktop-only for now, so below 768px this
        screen replaces the page (see .mgate in style.css; the menu toggle is in js/main.js). -->
   <div class="mgate" data-mobile-gate>
@@ -78,6 +78,15 @@
         <source src="assets/videos/luna/collage.mp4" type="video/mp4">
       </video>
 
+      <!-- Phones only: the collage cut into its tiles (same footage) and restacked; js/main.js loads and plays them only on phones -->
+      <div data-reveal class="m-col" data-phone-videos>
+        <video class="m-col__wide" muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/laptop-site.jpg" aria-label="The Luna website on a laptop, scrolling through its sections"><source src="assets/videos/luna/collage-tiles/laptop-site.mp4" type="video/mp4"></video>
+        <video class="m-col__half" muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/sleep-soundly.jpg" aria-label="“Sleep soundly every time” over a night sky"><source src="assets/videos/luna/collage-tiles/sleep-soundly.mp4" type="video/mp4"></video>
+        <video class="m-col__half" muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/logo.jpg" aria-label="The un app icon over dark water"><source src="assets/videos/luna/collage-tiles/logo.mp4" type="video/mp4"></video>
+        <video class="m-col__wide" muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/line-art.jpg" aria-label="Line drawings of the earbud and a head with a glowing brain: Audio that adapts to you"><source src="assets/videos/luna/collage-tiles/line-art.mp4" type="video/mp4"></video>
+        <video class="m-col__wide" muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/phones.jpg" aria-label="Three Luna app screens: sleep stats, the earbuds and tonight’s plan"><source src="assets/videos/luna/collage-tiles/phones.mp4" type="video/mp4"></video>
+      </div>
+
       <!-- Frame 629 -->
       <section data-reveal class="luna-problem" aria-label="The problem and the solution">
         <div class="luna-problem__row">
@@ -133,6 +142,14 @@
         <h2 data-reveal class="lv__t" style="--x:104.0;--y:5569.0;--w:184.0;--fs:28;--lh:36.0;color:#dee3ef;font-weight:600">Walk-through</h2>
         <video data-reveal class="lv__video" style="--x:-16.0;--y:5670.0;--w:1049.0;--h:400.0;object-position:50% 44%" autoplay muted loop playsinline preload="metadata" poster="assets/images/luna/poster-app-walkthrough-1.jpg" aria-label="Walkthrough of the earbud, tonight’s plan and library screens"><source src="assets/videos/luna/app-walkthrough-1.mp4" type="video/mp4"></video>
         <video data-reveal class="lv__video" style="--x:-27.0;--y:6168.0;--w:1077.0;--h:414.0;object-position:50% 51%" autoplay muted loop playsinline preload="metadata" poster="assets/images/luna/poster-app-walkthrough-2.jpg" aria-label="Walkthrough of the night mode, morning and sleep stats screens"><source src="assets/videos/luna/app-walkthrough-2.mp4" type="video/mp4"></video>
+        <!-- Phones only: the walk-through cut into its five phone screens, two per row, labels as real text (js/main.js plays them on phones) -->
+        <div data-reveal class="m-wt" data-phone-videos>
+          <figure><figcaption>Earbud Screen</figcaption><video muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/wt-earbud.jpg" aria-label="Walkthrough of the earbud screen"><source src="assets/videos/luna/collage-tiles/wt-earbud.mp4" type="video/mp4"></video></figure>
+          <figure><figcaption>Tonight’s Plan</figcaption><video muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/wt-tonights-plan.jpg" aria-label="Walkthrough of tonight’s plan"><source src="assets/videos/luna/collage-tiles/wt-tonights-plan.mp4" type="video/mp4"></video></figure>
+          <figure><figcaption>Library</figcaption><video muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/wt-library.jpg" aria-label="Walkthrough of the library"><source src="assets/videos/luna/collage-tiles/wt-library.mp4" type="video/mp4"></video></figure>
+          <figure><figcaption>Night Mode → Morning Screen</figcaption><video muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/wt-night-morning.jpg" aria-label="Walkthrough from night mode to the morning screen"><source src="assets/videos/luna/collage-tiles/wt-night-morning.mp4" type="video/mp4"></video></figure>
+          <figure><figcaption>Morning Screen → Sleep Stats</figcaption><video muted loop playsinline preload="none" data-poster="assets/images/luna/collage-tiles/wt-morning-stats.jpg" aria-label="Walkthrough from the morning screen to sleep stats"><source src="assets/videos/luna/collage-tiles/wt-morning-stats.mp4" type="video/mp4"></video></figure>
+        </div>
         <h2 data-reveal class="lv__t" style="--x:105.0;--y:6815.0;--w:292.0;--fs:28;--lh:36.0;color:#dee3ef;font-weight:600">Launch site process</h2>
         <p data-reveal class="lv__t" style="--x:202.2;--y:6940.0;--w:47.0;--fs:15;--lh:29.5;color:#dee3ef;font-weight:400">Sketch</p>
         <img data-reveal class="lv__img" style="--x:104.0;--y:6997.4;--w:243.4;--h:630.5" loading="lazy" src="assets/images/luna/v2/site-sketch.jpg" alt="Pencil sketch of the full launch site layout">
@@ -159,10 +176,10 @@
         <p data-reveal class="lv__t" style="--x:104.0;--y:9665.8;--w:605.0;--fs:15;--lh:24.0;color:#bbc0cc;font-weight:400">The site is fully responsive, with the same story told in a single column on phones.</p>
         <img data-reveal class="lv__img" style="--x:104.0;--y:9739.8;--w:398.6;--h:268.2;--r:9.5" loading="lazy" src="assets/images/luna/v2/goal-desktop.jpg" alt="The site on desktop">
         <img data-reveal class="lv__img" style="--x:603.6;--y:9739.8;--w:209.3;--h:451.0;--r:9.0" loading="lazy" src="assets/images/luna/v2/goal-mobile.jpg" alt="The site on a phone">
-        <div data-reveal class="lv__clip" style="--x:373.0;--y:10973.0;--w:436.0;--h:584.0" role="img" aria-label="Scrolling through the Luna website on a phone"><video class="lv__vid" style="--x:-352;--y:31;--w:1023;--h:591" autoplay muted loop playsinline preload="metadata"><source src="assets/videos/luna/website-mobile.mp4" type="video/mp4"></video></div>
-        <img data-reveal class="lv__img" style="--x:156.4;--y:10992.8;--w:128.8;--h:531.4" loading="lazy" src="assets/images/luna/v2/devices-desktop-strip.jpg" alt="The full mobile site, one long screen">
         <div data-reveal class="lv__clip" style="--x:100.9;--y:10481.0;--w:750.0;--h:433.0" role="img" aria-label="Scrolling through the Luna website on a laptop"><video class="lv__vid" style="--x:-36.8;--y:-34;--w:1016;--h:563" autoplay muted loop playsinline preload="metadata"><source src="assets/videos/luna/website-desktop.mp4" type="video/mp4"></video></div>
         <img data-reveal class="lv__img" style="--x:888.4;--y:10481.0;--w:72.3;--h:1065.7" loading="lazy" src="assets/images/luna/v2/devices-mobile-strip.jpg" alt="The full desktop site, one long screen">
+        <div data-reveal class="lv__clip" style="--x:373.0;--y:10973.0;--w:436.0;--h:584.0" role="img" aria-label="Scrolling through the Luna website on a phone"><video class="lv__vid" style="--x:-352;--y:31;--w:1023;--h:591" autoplay muted loop playsinline preload="metadata"><source src="assets/videos/luna/website-mobile.mp4" type="video/mp4"></video></div>
+        <img data-reveal class="lv__img" style="--x:156.4;--y:10992.8;--w:128.8;--h:531.4" loading="lazy" src="assets/images/luna/v2/devices-desktop-strip.jpg" alt="The full mobile site, one long screen">
         <h2 data-reveal class="lv__t" style="--x:104.0;--y:11842.0;--w:800.0;--fs:28;--lh:36.0;color:#dee3ef;font-weight:600">From sketch to brand</h2>
         <p data-reveal class="lv__t" style="--x:104.0;--y:11910.0;--w:605.0;--fs:15;--lh:24.0;color:#bbc0cc;font-weight:400">The luna wordmark and the “un” app icon came straight out of my logo sketches. Navy and periwinkle come from the night sky: calm, but still premium.</p>
         <img data-reveal class="lv__img" style="--x:104.0;--y:12097.0;--w:773.4;--h:371.0" loading="lazy" src="assets/images/luna/v2/brand-sketch-to-logo.jpg" alt="Logo sketches leading to early wordmarks, then the final luna wordmark, un icon and star">

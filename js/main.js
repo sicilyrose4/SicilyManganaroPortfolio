@@ -486,3 +486,21 @@ if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
   });
 }
 
+
+// Phone-only videos (Luna's restacked collage tiles): nothing downloads on desktop; on phones they
+// load and loop like the desktop collage (muted, inline). Reduced motion keeps the posters.
+document.querySelectorAll('[data-phone-videos]').forEach((group) => {
+  const phone = window.matchMedia('(max-width: 767px)');
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const start = () => {
+    if (!phone.matches) return;
+    group.querySelectorAll('video').forEach((v) => {
+      if (v.dataset.poster && !v.poster) v.poster = v.dataset.poster;
+      if (still) return;
+      v.preload = 'auto';
+      v.play().catch(() => {});
+    });
+  };
+  start();
+  phone.addEventListener('change', start);
+});
