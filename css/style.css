@@ -490,6 +490,7 @@ a { color: inherit; text-decoration: none; }
   font-variation-settings: "opsz" 14;
 }
 .case__summary { margin: 35px 0 0; color: #bbc0cc; font-size: 13px; line-height: 25px; }
+.case__summary--sans { font-family: var(--font-sans); font-variation-settings: "opsz" 14; font-size: 14px; } /* Luna (607:22537): DM Sans 14/25 */
 
 /* Content column: 1 Figma px = --px, so compositions scale with the column */
 .case__body {
@@ -539,99 +540,39 @@ a { color: inherit; text-decoration: none; }
 }
 .luna-problem__row p.luna-problem__solution { width: calc(526.1 * var(--px)); }
 
-/* Frame 64 */
-.luna-pillars {
-  margin-top: calc(23.86 * var(--px));
-  height: calc(310.84 * var(--px));
-  padding: calc(25.33 * var(--px)) 0 0 calc(86.26 * var(--px));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: calc((86.26 + 851.25) * var(--px));
-  gap: calc(43.8 * var(--px));
+/* Figma 607:22537 below Frame 633 (app, walk-through, launch site, brand, earbuds, award).
+   luna.html places every element at its Figma x/y inside the 1022 column, in --px, so it scales as one piece. */
+.lv { position: relative; height: calc(var(--h) * var(--px)); font-family: var(--font-sans); font-variation-settings: "opsz" 14; }
+.lv > * {
+  position: absolute;
+  left: calc(var(--x) * var(--px));
+  top: calc(var(--y) * var(--px));
+  width: calc(var(--w) * var(--px));
+  max-width: none;
 }
-.luna-pillars__star { width: calc(30.609 * var(--px)); }
-.luna-pillars__row { display: flex; align-items: center; gap: calc(102.91 * var(--px)); width: 100%; }
-.luna-pillars__col { display: flex; flex-direction: column; gap: calc(28.5 * var(--px)); width: calc(207.4 * var(--px)); }
-.luna-pillars__col--center { align-items: center; width: calc(230.62 * var(--px)); }
-.luna-pillars__col--tall { gap: calc(14.25 * var(--px)); }
-.luna-pillars__col--tall h2 { height: calc(40.11 * var(--px)); }
-.luna-pillars h2 {
-  margin: 0;
-  width: 100%;
-  color: #6098ff;
-  font-weight: 600;
-  font-size: calc(21.11 * var(--px));
-  line-height: normal;
+.lv__band, .lv__rule, .lv__img, .lv__video, .lv__clip { height: calc(var(--h) * var(--px)); }
+.lv__band { opacity: 0.3; } /* Figma fill opacity 30% */
+.lv__rule { background: #000; } /* dividers between the app sections */
+.lv__arrow { height: auto; }
+.lv__img { object-fit: cover; border-radius: calc(var(--r, 0) * var(--px)); }
+/* Floating product renders: their export carries the page's #111, which "lighten" drops over the navy band */
+.lv__img--float { object-fit: contain; mix-blend-mode: lighten; }
+.lv__video { object-fit: cover; }
+.lv__clip { overflow: hidden; }
+.lv__vid {
+  position: absolute;
+  left: calc(var(--x) * var(--px));
+  top: calc(var(--y) * var(--px));
+  width: calc(var(--w) * var(--px));
+  height: calc(var(--h) * var(--px));
+  max-width: none;
+  object-fit: cover;
 }
-.luna-pillars p {
-  width: calc(207.4 * var(--px));
-  height: calc(74.94 * var(--px));
-  margin: 0;
-  font-size: calc(10.555 * var(--px));
-  line-height: calc(16.888 * var(--px));
-}
-
-/* Frame 632 — product renders on a gradient band (positions from Figma, rotation centred) */
-.luna-products { position: relative; height: calc(494.77 * var(--px)); }
-.luna-products > * { position: absolute; }
-.luna-products__band {
-  top: calc(54.72 * var(--px));
-  left: calc(-131.13 * var(--px));
-  width: calc(1284.26 * var(--px));
-  height: calc(437.89 * var(--px));
-  z-index: -1;
-  background: linear-gradient(#182946, #111);
-}
-.luna-products__case {
-  left: calc(59.88 * var(--px)); top: calc(124.06 * var(--px)); width: calc(357.34 * var(--px));
-  transform: rotate(-14.65deg);
-}
-.luna-products__side {
-  left: calc(429.87 * var(--px)); top: calc(11.51 * var(--px)); width: calc(80.79 * var(--px));
-  transform: rotate(-37.02deg);
-}
-.luna-products__front {
-  left: calc(571.96 * var(--px)); top: calc(161.78 * var(--px));
-  width: calc(169.66 * var(--px)); height: calc(172.13 * var(--px));
-  overflow: hidden;
-  transform: rotate(4.81deg);
-}
-.luna-products__front img { position: absolute; top: 4.01%; left: 0; width: 100%; height: 174.08%; max-width: none; }
-.luna-products__back {
-  left: calc(806.32 * var(--px)); top: calc(106.91 * var(--px)); width: calc(124.06 * var(--px));
-  transform: rotate(25.43deg);
-}
-
-/* Behance 6–11 stack edge to edge at the full column width (Figma had them 2–5px short) */
-
-/* Group 22 */
-.luna-site {
-  width: calc(899.74 * var(--px));
-  margin: calc(154.97 * var(--px)) 0 0 calc(61.13 * var(--px));
-}
-
-/* Frame 92 */
-.luna-sketches {
-  position: relative;
-  width: calc(900.41 * var(--px));
-  height: calc(301.18 * var(--px));
-  /* 172.45 below Figma's 1076.4-tall Group 22; the two videos stack to 1017.5 */
-  margin: calc(231.35 * var(--px)) 0 0 calc(60.8 * var(--px));
-}
-.luna-sketches__item { position: absolute; top: 0; margin: 0; }
-.luna-sketches__item figcaption {
-  font-size: calc(10.012 * var(--px));
-  line-height: normal;
-  text-align: center;
-}
-.luna-sketches__item img { position: absolute; left: 0; }
-.luna-sketches__item--branding { left: 0; width: calc(200.88 * var(--px)); }
-.luna-sketches__item--branding img { top: calc(27.46 * var(--px)); width: calc(200.88 * var(--px)); }
-.luna-sketches__item--product { left: calc(244.05 * var(--px)); width: calc(311.42 * var(--px)); }
-.luna-sketches__item--product img { top: calc(27.46 * var(--px)); width: calc(311.42 * var(--px)); }
-.luna-sketches__item--software { left: calc(598.65 * var(--px)); width: calc(301.76 * var(--px)); }
-.luna-sketches__item--software img { top: calc(26.92 * var(--px)); width: calc(296.21 * var(--px)); }
+.lv__t { margin: 0; font-size: calc(var(--fs) * var(--px)); line-height: calc(var(--lh) * var(--px)); }
+/* The browser sets DM Sans ~1–2% wider than Figma: a little slack keeps Figma's line breaks */
+.lv > .lv__t { width: calc(var(--w) * var(--px) * 1.03); }
+.lv h2.lv__t, .lv h3.lv__t { white-space: nowrap; }
+.lv__t--center { text-align: center; }
 
 @media (max-width: 900px) {
   .case { padding-top: 48px; padding-bottom: 96px; }
@@ -648,21 +589,6 @@ a { color: inherit; text-decoration: none; }
   .luna-problem__row + .luna-problem__row h2 img { height: 26px; }
   .luna-problem__row p,
   .luna-problem__row p.luna-problem__solution { width: auto; font-size: 14px; line-height: 22px; }
-
-  .luna-pillars { width: auto; height: auto; padding: 40px 0; gap: 32px; }
-  .luna-pillars__star { width: 24px; }
-  .luna-pillars__row { flex-direction: column; gap: 32px; }
-  .luna-pillars__col,
-  .luna-pillars__col--center,
-  .luna-pillars__col--tall { width: 100%; max-width: 320px; align-items: center; text-align: center; gap: 12px; }
-  .luna-pillars__col--tall h2 { height: auto; }
-  .luna-pillars h2 { font-size: 20px; }
-  .luna-pillars p { width: auto; height: auto; font-size: 14px; line-height: 22px; }
-
-  .luna-sketches { width: auto; height: auto; margin: 64px 0 0; display: grid; gap: 32px; }
-  .luna-sketches__item,
-  .luna-sketches__item img { position: static; width: 100% !important; }
-  .luna-sketches__item figcaption { margin-bottom: 12px; font-size: 13px; }
 }
 
 /* ---------- Footer (Figma 283:6531) ---------- */
