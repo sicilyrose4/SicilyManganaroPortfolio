@@ -16,7 +16,7 @@
     try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
   </script>
 </head>
-<body>
+<body class="m-ok">
   <!-- Phones (Figma 579:20032 / 579:20053): the site is desktop-only for now, so below 768px this
        screen replaces the page (see .mgate in style.css; the menu toggle is in js/main.js). -->
   <div class="mgate" data-mobile-gate>
@@ -51,6 +51,7 @@
     <nav class="mgate__menu" id="mgate-menu" aria-label="Menu" hidden>
       <a href="about.html">About</a>
       <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
+      <a href="assets/docs/sicily-manganaro-resume.pdf" target="_blank" rel="noopener">Resume</a>
     </nav>
   </div>
     <!-- Figma 200:1842 -->
@@ -91,7 +92,6 @@
     <section class="about__cta" aria-label="Let’s work together">
       <p class="about__label" data-reveal>LET’S WORK TOGETHER</p>
       <h2 class="about__cta-title" data-reveal>I’m looking for full-time product design roles starting in 2027.</h2>
-      <p class="about__bio" data-reveal>If you’re building something cool, I’d love to hear about it.</p>
       <a class="about__email" data-reveal href="mailto:sicilymanganaro@gmail.com">sicilymanganaro@gmail.com</a>
       <a class="pill-button about__resume" data-reveal href="assets/docs/sicily-manganaro-resume.pdf" target="_blank" rel="noopener">
         Resume
@@ -100,7 +100,27 @@
     </section>
   </main>
 
-  <footer class="site-footer" data-reveal>
+  <!-- Figma 395:13582 + 395:13608/13610: contact line, then the road with the car, then the nav row -->
+  <footer class="site-footer site-footer--road site-footer--road-only" data-reveal>
+    <!-- About already ends with the email, so the footer's line is kept only for spacing (the road and car are measured from it) -->
+    <div class="site-footer__contact site-footer__contact--spacer" aria-hidden="true">
+      <p>Let’s stay in touch!</p>
+      <span class="site-footer__email">sicilymanganaro@gmail.com</span>
+    </div>
+    <!-- Figma 395:13615 (Vector 77): the road spans the whole window. Only its top edge is drawn. -->
+    <div class="footer-road" aria-hidden="true">
+      <svg class="footer-road__line" viewBox="0 3019 1440 284" preserveAspectRatio="none">
+        <path d="M-70.48 3126.01 L0.92 3142.01 C142.73 3130.84 442.81 3116.52 615.57 3200.5 C804.81 3292.5 1080.43 3294 1441.93 3200.5" fill="none" stroke="#d9d9d9" stroke-width="2" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <!-- Figma 395:13575: climbs the hill toward the email, then rolls back down and starts over (js/main.js) -->
+      <div class="footer-car">
+        <img class="footer-car__frame" src="assets/images/footer/car-1.png" width="512" height="228" alt="">
+        <img class="footer-car__frame footer-car__frame--2" src="assets/images/footer/car-2.png" width="512" height="228" alt="">
+        <!-- Figma 395:13572: "THE END" flag riding on the back; waves in step with the car's frames -->
+        <img class="footer-car__flag" src="assets/images/footer/flag-1.png" width="208" height="109" alt="">
+        <img class="footer-car__flag footer-car__frame--2" src="assets/images/footer/flag-2.png" width="208" height="109" alt="">
+      </div>
+    </div>
     <div class="site-footer__inner container">
       <div class="site-footer__left">
         <a class="site-footer__logo" href="index.html" aria-label="Sicily Manganaro — home">
@@ -110,11 +130,11 @@
           <a href="about.html" aria-current="page">About</a>
           <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
         </nav>
+        <a class="site-footer__social" href="https://www.linkedin.com/in/sicilymanganaro431" target="_blank" rel="noopener" aria-label="Sicily Manganaro on LinkedIn">
+          <!-- Inline copy of assets/images/linkedin.svg (square uses currentColor) so it can turn blue on hover -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 3C24 1.34423 22.6558 0 21 0H3C1.34423 0 0 1.34423 0 3V21C0 22.6558 1.34423 24 3 24H21C22.6558 24 24 22.6558 24 21V3Z" fill="currentColor"/><path d="M6.88157 8.37402H2.86157V20.466H6.88157V8.37402Z" fill="var(--li-mark, #fbfbfb)"/><path d="M4.899 2.54395C3.52364 2.54395 2.625 3.44816 2.625 4.6333C2.625 5.79355 3.49631 6.72271 4.8458 6.72271H4.87177C6.27347 6.72271 7.14595 5.79355 7.14595 4.6333C7.11994 3.44816 6.27356 2.54395 4.899 2.54395Z" fill="var(--li-mark, #fbfbfb)"/><path d="M16.7475 8.08984C14.6151 8.08984 13.66 9.26252 13.1252 10.0862V8.37419H9.1062C9.1595 9.50842 9.1062 20.4661 9.1062 20.4661H13.1251V13.7131C13.1251 13.3517 13.1511 12.9903 13.2576 12.732C13.5477 12.0101 14.2094 11.2623 15.3198 11.2623C16.7735 11.2623 17.3559 12.3716 17.3559 13.9964V20.4661H21.375V13.5319C21.375 9.81766 19.3919 8.08984 16.7475 8.08984Z" fill="var(--li-mark, #fbfbfb)"/></svg>
+        </a>
       </div>
-      <a class="site-footer__social" href="https://www.linkedin.com/in/sicilymanganaro431" target="_blank" rel="noopener" aria-label="Sicily Manganaro on LinkedIn">
-        <!-- Inline LinkedIn icon (square uses currentColor) so it can turn blue on hover, like the home page -->
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 3C24 1.34423 22.6558 0 21 0H3C1.34423 0 0 1.34423 0 3V21C0 22.6558 1.34423 24 3 24H21C22.6558 24 24 22.6558 24 21V3Z" fill="currentColor"/><path d="M6.88157 8.37402H2.86157V20.466H6.88157V8.37402Z" fill="var(--li-mark, #fbfbfb)"/><path d="M4.899 2.54395C3.52364 2.54395 2.625 3.44816 2.625 4.6333C2.625 5.79355 3.49631 6.72271 4.8458 6.72271H4.87177C6.27347 6.72271 7.14595 5.79355 7.14595 4.6333C7.11994 3.44816 6.27356 2.54395 4.899 2.54395Z" fill="var(--li-mark, #fbfbfb)"/><path d="M16.7475 8.08984C14.6151 8.08984 13.66 9.26252 13.1252 10.0862V8.37419H9.1062C9.1595 9.50842 9.1062 20.4661 9.1062 20.4661H13.1251V13.7131C13.1251 13.3517 13.1511 12.9903 13.2576 12.732C13.5477 12.0101 14.2094 11.2623 15.3198 11.2623C16.7735 11.2623 17.3559 12.3716 17.3559 13.9964V20.4661H21.375V13.5319C21.375 9.81766 19.3919 8.08984 16.7475 8.08984Z" fill="var(--li-mark, #fbfbfb)"/></svg>
-      </a>
     </div>
   </footer>
 </body>

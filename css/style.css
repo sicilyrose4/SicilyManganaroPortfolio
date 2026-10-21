@@ -153,6 +153,7 @@ a { color: inherit; text-decoration: none; }
   max-width: 100%;
   aspect-ratio: 531 / 642.91;
 }
+.hero__break { display: none; } /* phones only */
 .hero__desk {
   position: absolute;
   left: 0;
@@ -413,6 +414,56 @@ a { color: inherit; text-decoration: none; }
   .hero__title { font-size: 52px; line-height: 1; }
   .hero__intro { margin-top: 32px; }
   .hero__cta { margin-top: 40px; }
+}
+/* Phones (layout from Figma 300:8611, 390 wide): wide side margins, the drawing small and
+   left-aligned above the intro, and tall card images with the logo on top and the screen below */
+@media (max-width: 767px) {
+  .m-ok main.container, .m-ok main .container {
+    width: auto;
+    margin-inline: 0;
+    padding-inline: max(20px, 13.141vw); /* Figma 300:8611 grid: 8 columns, 20 gutter, no margin → content runs from column 2 to column 7 (51.25 each side at 390) */
+  }
+  /* Hero (Figma 300:8611): drawing, title, intro and TAKE A LOOK all start 51 from the left */
+  .hero { align-items: flex-start; gap: 43px; padding-top: 110px; padding-bottom: 89px; } /* drawing top 169, title 496; card 892 */
+  .hero__art { order: -1; align-self: flex-start; width: 234px; }
+  .hero__text { align-self: stretch; width: auto; }
+  .hero__title { font-size: 42px; line-height: 40px; }
+  .hero__intro { margin-top: 26px; font-size: 16px; line-height: 24px; } /* 574 (the title box runs 12px taller than its 40px line) */
+  .hero__break { display: block; height: 24px; } /* the frame's blank line before "Recently designing…" */
+  .hero__cta { margin-top: 38px; } /* 780 */
+  .work { gap: 64px; padding-bottom: 96px; }
+  .project-card__title { line-height: 32px; }
+  .project-card__desc { margin-top: 6px; font-size: 15px; line-height: 23px; }
+
+  /* Card images: 287 wide (Figma 300:8611), shortened to 360 tall so they don't fill the screen;
+     1 --px = 1px of that 287-wide frame */
+  .project-card { --px: calc(100cqw / 287); }
+  .project-card__media { aspect-ratio: 287 / 360; }
+  .m-ok .project-card .project-card__logo { left: 50%; translate: -50% 0; }
+  .m-ok .project-card--workshop .project-card__logo { top: calc(40 * var(--px)); width: calc(100 * var(--px)); }
+  .m-ok .project-card--workshop .project-card__screen { left: calc(36 * var(--px)); top: calc(153 * var(--px)); width: calc(420 * var(--px)); border-radius: calc(6 * var(--px)) calc(6 * var(--px)) 0 0; }
+  .m-ok .project-card--luna .project-card__logo { top: calc(48 * var(--px)); width: calc(120 * var(--px)); }
+  .m-ok .project-card--luna .project-card__screen { left: calc(36 * var(--px)); top: calc(140 * var(--px)); width: calc(405 * var(--px)); height: calc(220 * var(--px)); }
+  .m-ok .project-card--luna .project-card__screen img { border-radius: calc(11 * var(--px)) calc(11 * var(--px)) 0 0; }
+  .m-ok .project-card--luna .project-card__screen img:nth-child(1) { left: 0; width: calc(119 * var(--px)); }
+  .m-ok .project-card--luna .project-card__screen img:nth-child(2) { left: calc(142.6 * var(--px)); width: calc(119.4 * var(--px)); }
+  .m-ok .project-card--luna .project-card__screen img:nth-child(3) { left: calc(285.6 * var(--px)); width: calc(119.1 * var(--px)); }
+  .m-ok .project-card--bonedry .project-card__logo { top: calc(30 * var(--px)); width: calc(120 * var(--px)); }
+  .m-ok .project-card--bonedry .project-card__screen:nth-child(1) { left: calc(36 * var(--px)); top: calc(135 * var(--px)); width: calc(270 * var(--px)); border-radius: calc(8 * var(--px)); }
+  .m-ok .project-card--bonedry .project-card__screen:nth-child(2) { left: calc(70 * var(--px)); top: calc(227 * var(--px)); width: calc(300 * var(--px)); border-radius: calc(9 * var(--px)) calc(9 * var(--px)) 0 0; }
+  .m-ok .project-card--drop .project-card__logo { top: calc(50 * var(--px)); width: calc(130 * var(--px)); }
+  .m-ok .project-card--drop .project-card__screen { left: calc(36 * var(--px)); top: calc(161 * var(--px)); width: calc(420 * var(--px)); border-radius: calc(9 * var(--px)) calc(9 * var(--px)) 0 0; }
+
+  /* Footer lines up with the content margins */
+  .m-ok .site-footer { width: auto; margin-inline: max(20px, 13.141vw); }
+  .m-ok .site-footer__contact { margin-inline: 0; padding-inline: 0; width: auto; }
+  .m-ok .site-footer__left { flex: 1; } /* home keeps LinkedIn inside this row: push it to the far right */
+  .m-ok .site-footer__left .site-footer__social { margin-left: auto; }
+  /* Header bar: logo 20 from the left, a thinner menu icon */
+  .m-ok .mgate__bar { padding: 15px 20px 0; }
+  .m-ok .mgate__toggle { margin: 0 -11px 0 0; color: var(--ink); }
+  .m-ok .mgate__icon { width: 22px; height: auto; }
+}
 }
 
 /* ---------- Fade-in for every page ([data-reveal], driven by js/main.js) ----------
@@ -801,6 +852,7 @@ a { color: inherit; text-decoration: none; }
 .site-footer__contact,
 .site-footer--road .site-footer__inner { position: relative; z-index: 1; }
 .site-footer__contact { display: flex; flex-direction: column; gap: 3px; color: var(--ink); font-family: var(--font-sans); }
+.site-footer__contact--spacer { visibility: hidden; margin-top: -40px; } /* About: same footer shape, no repeated email; tucked up under the Resume button */
 .site-footer__contact p { margin: 0; font-variation-settings: "opsz" 14; font-size: 16px; line-height: 26px; letter-spacing: -0.32px; }
 .site-footer__email {
   align-self: flex-start;
@@ -1328,12 +1380,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- Phone screen (Figma 579:20032, menu 579:20053) ---------- */
-/* The site is desktop-only for now: below 768px every page shows only this screen.
+/* Below 768px, pages without body.m-ok show only this screen. Pages with a phone layout (body.m-ok)
+   show normally, with the gate's bar as their header and its menu as a full-screen overlay.
    Positions are Figma px in the 390-wide frame. */
 .mgate { display: none; }
 @media (max-width: 767px) {
-  html, body { background: #fff !important; }
-  body > :not(.mgate) { display: none !important; }
+  html:has(> body:not(.m-ok)), body:not(.m-ok) { background: #fff !important; }
+  body:not(.m-ok) > :not(.mgate) { display: none !important; }
   .mgate { display: block; min-height: 100vh; min-height: 100svh; background: #fff; color: var(--ink); }
   .mgate__bar { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 40px 47px 0; } /* logo 47, 40 */
   .mgate__logo img { width: 35px; }
@@ -1363,6 +1416,15 @@ a { color: inherit; text-decoration: none; }
   .mgate__menu { display: flex; flex-direction: column; align-items: center; gap: 55px; padding-top: 160px; font-family: var(--font-mono); font-size: 27.5px; line-height: 1.45; letter-spacing: -0.005em; } /* first link 235 */
   .mgate__menu[hidden] { display: none; }
   .mgate__menu a { color: var(--ink); }
+}
+/* Phone-ready pages (body.m-ok) */
+@media (max-width: 767px) {
+  :root { --gutter: 24px; }
+  .m-ok .site-header { display: none; }
+  .m-ok .mgate { min-height: 0; background: var(--bg); }
+  .m-ok .mgate__body { display: none; }
+  .m-ok .mgate.is-open { position: fixed; inset: 0; z-index: 50; overflow-y: auto; }
+  html.mgate-open { overflow: hidden; }
 }
 @keyframes mgate-link-out {
   to { opacity: 0; transform: translateY(12px); }
@@ -1422,7 +1484,7 @@ a { color: inherit; text-decoration: none; }
 
 
 /* ---------- About (Figma 631:8730). Comments give the Figma y. ---------- */
-.about { padding: 149px 0 143px; font-family: var(--font-sans); font-variation-settings: "opsz" 14; } /* portrait top 245; button end 1310 → frame end 1453 */
+.about { padding: 149px 0 0; font-family: var(--font-sans); font-variation-settings: "opsz" 14; } /* portrait top 245; button end 1310 → frame end 1453 */
 .about__intro { display: flex; align-items: flex-start; gap: 72px; }
 .about__portrait {
   flex: none;
@@ -1442,7 +1504,18 @@ a { color: inherit; text-decoration: none; }
 .about__rule { margin: 97px 0 0 8px; border: 0; border-top: 1px solid var(--accent); } /* 876, x 217 */
 .about__cta { margin-top: 107px; } /* label 984 */
 .about__cta-title { max-width: 760px; margin: 4px 0 0; font-size: 40px; font-weight: 600; line-height: 48px; } /* 1028; Figma 700 wide, the browser sets DM Sans a bit wider */
-.about__cta-title + .about__bio { margin-top: 20px; } /* 1144 */
-.about__email { display: block; width: fit-content; margin-top: 40px; font-size: 24px; font-weight: 500; line-height: 32px; letter-spacing: -0.02em; } /* 1210 */
+.about__email { display: block; width: fit-content; margin-top: 32px; font-size: 24px; font-weight: 500; line-height: 32px; letter-spacing: -0.02em; } /* 1210 */
 .about__email:hover, .about__email:focus-visible { color: var(--accent); }
 .about__resume { margin-top: 32px; } /* 1274 */
+@media (max-width: 767px) {
+  .about { padding: 40px 0 0; }
+  .about__intro { flex-direction: column; gap: 40px; }
+  .about__portrait { width: min(206px, 72%); margin: 0; } /* left-aligned, like the home drawing */
+  .about__title { font-size: 40px; line-height: 46px; }
+  .about__title + .about__bio { margin-top: 24px; }
+  .about__rule { margin: 64px 0 0; }
+  .about__cta { margin-top: 64px; }
+  .about__cta-title { font-size: 28px; line-height: 34px; }
+  .about__email { margin-top: 28px; font-size: 20px; line-height: 28px; }
+  .about__resume { margin-top: 24px; }
+}

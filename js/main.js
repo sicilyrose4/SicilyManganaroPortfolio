@@ -145,13 +145,15 @@ scheduleAmbient(2600 + enterOffset); // after the page-load entrance finishes
 const cta = document.querySelector('.hero__cta');
 const firstMedia = document.querySelector('.project-card__media');
 if (cta && firstMedia) {
+  const phone = window.matchMedia('(max-width: 767px)');
   const updateCtaFade = () => {
     // Fade runs over the scroll distance between "media starts entering" and "media fully in view",
     // measured from the top of the page, so on tall screens it always starts fully visible.
     const r = firstMedia.getBoundingClientRect();
     const topInDoc = r.top + scrollY;
     const start = Math.max(0, topInDoc - innerHeight);
-    const end = topInDoc + r.height - innerHeight;
+    // Phones fade over half the image's height, so it clears a little quicker
+    const end = topInDoc + r.height * (phone.matches ? 0.5 : 1) - innerHeight;
     const progress = end <= 0 ? 0 : Math.min(1, Math.max(0, (scrollY - start) / (end - start)));
     const fade = 1 - progress;
     cta.style.setProperty('--scroll-fade', fade.toFixed(3));
@@ -384,7 +386,7 @@ if (road) {
 }
 
 // Phone screen menu (Figma 579:20053). Opening: the three lines turn into the X while the drawing
-// fades out, then Work / About / Contact fade up one by one. Closing plays it backwards. Escape or
+// fades out, then About / Contact / Resume fade up one by one. Closing plays it backwards. Escape or
 // the X closes it. Steps are timed here; the motion itself is in style.css (.mgate).
 const mgate = document.querySelector('[data-mobile-gate]');
 if (mgate) {
@@ -398,6 +400,7 @@ if (mgate) {
   const setOpen = (open) => {
     clearTimeout(step);
     mgate.classList.toggle('is-open', open);
+    document.documentElement.classList.toggle('mgate-open', open); // phone-ready pages: no scrolling behind the menu
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     if (open) {

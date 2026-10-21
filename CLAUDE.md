@@ -45,15 +45,17 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - Spacing is one scale, not Figma's exact y positions (Sicily asked for equal gaps): 120px above and below every divider (measured to the visible screen, not its baked-in shadow), 160px before each sub-heading, 56px from text to its visuals, 64px between step rows.
 - The user-flow image has a hover magnifier (`.magnify`, `js/main.js`): a round lens at 3x from `flow-large.jpg`, mouse/trackpad only.
 
-## Phone screen (desktop-only for now)
-- Every page starts with the `.mgate` block (Figma 579:20032, menu 579:20053). Below 768px it replaces the page ("Grab your laptop!"); above that it's hidden. If you add a page, copy the block in right after `<body>`.
-- Its drawing is a copy of the home hero art (`.hero__art.mgate__art`), so it bobs and blinks with the same code; that code skips hidden doodles and blinks every `.hero__art`.
-- Menu motion (approved): the three lines turn into the X while the drawing fades out, then the links fade up one by one; closing reverses it. Steps in `js/main.js`, motion in the `.mgate` CSS.
+## Phones
+- Below 768px a page shows the "Grab your laptop!" gate (`.mgate`, Figma 579:20032) unless its `<body>` has `class="m-ok"`. Phone-ready so far: `index.html`, `about.html`. Turn a page on only once its phone layout is approved.
+- On `m-ok` pages the gate's bar is the header (logo + menu; the approved line→X animation, links About / Contact / Resume) and the desktop header hides.
+- Phone layout follows Figma 300:8611: an 8-column grid (20 gutter, no margin), so content runs from column 2 to 7, `max(20px, 13.141vw)` each side (51.25 at 390). Home hero: drawing 234 wide, title 42/40, intro split before "Recently designing…", TAKE A LOOK (fades faster on phones). Cards: 287-wide images shortened to 287×360, logo centered on top, screen below running off the right.
+- Every page starts with the `.mgate` block; if you add a page, copy it in right after `<body>`. Its drawing is a copy of the home hero art, so it bobs and blinks with the same code.
+- About uses the road footer with its email line kept invisible (`.site-footer__contact--spacer`): the road and car are measured from that line, so don't delete it.
 
 ## About page
 - `about.html` follows Figma 631:8730. Styles are the `.about*` block at the end of `style.css` (comments give Figma y). The portrait is `assets/images/about/portrait.png` (2x, transparent) inside a bordered card.
 - Every About link (header, phone menu, footer) points to `about.html`; on that page the nav marks it with `aria-current="page"` (bold).
-- It keeps the site's current header and the plain footer (no road), since the page ends with its own email + resume.
+- It keeps the site's current header and uses the home page's road footer (email + car).
 
 ## Luna case study
 - `luna.html` follows Figma 607:22537 ("Luna phase project page 2"). The top (intro, header + collage videos, problem/solution) is the original build; everything below is the `.lv` block: each element sits at its Figma x/y inside the 1022 column in `--px`, so the whole thing scales as one piece.
