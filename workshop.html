@@ -15,7 +15,7 @@
   <script src="js/main.js" defer></script>
   <script>document.documentElement.classList.add('js')</script>
   <script>
-    // Arriving from a dark page (e.g. Luna's BACK TO WORK): start dark and fade to light first.
+    // Arriving from a dark page (e.g. Luna's BACK TO HOME): start dark and fade to light first.
     try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
   </script>
 </head>
@@ -52,7 +52,6 @@
       <p class="mgate__text">This portfolio is desktop-only for now.</p>
     </div>
     <nav class="mgate__menu" id="mgate-menu" aria-label="Menu" hidden>
-      <a href="work.html">Work</a>
       <a href="#">About</a>
       <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
     </nav>
@@ -61,7 +60,7 @@
        into assets/images/workshop/. The .ws-comp blocks place screens at their Figma positions (see .ws-* in style.css). -->
   <main class="ws">
     <div class="container">
-      <a class="back-link" data-reveal href="work.html"><svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg> BACK TO WORK</a>
+      <a class="back-link" data-reveal href="index.html#work"><svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg> BACK TO HOME</a>
 
       <header class="ws-intro">
         <div class="ws-intro__text">
@@ -305,7 +304,7 @@
           </div>
           <button class="more__arrow more__arrow--next" type="button" aria-label="Next project"><svg width="29" height="28" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg></button>
         </div>
-        <div class="more__back"><a class="back-link" data-reveal href="work.html"><svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg> BACK TO WORK</a></div>
+        <div class="more__back"><a class="back-link" data-reveal href="index.html#work"><svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg> BACK TO HOME</a></div>
       </section>
     </div>
   </main>
@@ -318,7 +317,6 @@
         </a>
         <nav class="site-footer__nav" aria-label="Footer">
           <!-- Placeholder links until these pages exist -->
-          <a href="work.html">Work</a>
           <a href="#">About</a>
           <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
         </nav>

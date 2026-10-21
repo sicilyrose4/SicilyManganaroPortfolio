@@ -337,7 +337,6 @@ a { color: inherit; text-decoration: none; }
   left: calc(674.5 * var(--px)); top: calc(83 * var(--px)); width: calc(256 * var(--px));
 }
 
-.work__more { align-self: center; width: 166px; margin-top: -29px; } /* 58px below the last card */
 
 @media (prefers-reduced-motion: reduce) {
   .project-card__screen { transition: none; }

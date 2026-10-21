@@ -12,7 +12,7 @@
   <script src="js/main.js" defer></script>
   <script>document.documentElement.classList.add('js')</script>
   <script>
-    // Arriving from a dark page (e.g. Luna's BACK TO WORK): start dark and fade to light first.
+    // Arriving from a dark page (e.g. Luna's BACK TO HOME): start dark and fade to light first.
     try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
   </script>
 </head>
@@ -49,7 +49,6 @@
       <p class="mgate__text">This portfolio is desktop-only for now.</p>
     </div>
     <nav class="mgate__menu" id="mgate-menu" aria-label="Menu" hidden>
-      <a href="work.html">Work</a>
       <a href="#">About</a>
       <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
     </nav>
@@ -62,7 +61,6 @@
       </a>
       <nav class="site-nav" aria-label="Main">
         <!-- Placeholder links until these pages exist -->
-        <a href="work.html">Work</a>
         <a href="#">About</a>
         <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
       </nav>
@@ -140,6 +138,24 @@
         </div>
       </a>
 
+      <!-- Figma 483:7124 -->
+      <a data-reveal class="project-card project-card--bonedry" href="bone-dry.html">
+        <div class="project-card__head">
+          <p class="project-card__label">GAME DESIGN</p>
+          <h2 class="project-card__title">Bone Dry</h2>
+          <p class="project-card__desc">A hand-illustrated game designed for learning.</p>
+        </div>
+        <div class="project-card__media">
+          <div class="project-card__screen">
+            <img src="assets/images/work/bone-dry-screen-1.png" width="1180" height="545" alt="Bone Dry order screen with skeleton customers at the bar">
+          </div>
+          <div class="project-card__screen">
+            <img src="assets/images/work/bone-dry-screen-2.png" width="1268" height="562" alt="Bone Dry bar screen with a row of hand-drawn bottles">
+          </div>
+          <img class="project-card__logo" src="assets/images/work/bone-dry-logo.svg" width="256" height="180" alt="Bone Dry">
+        </div>
+      </a>
+
       <a data-reveal class="project-card project-card--drop" href="drop.html">
         <div class="project-card__head">
           <p class="project-card__label">DASHBOARD DESIGN</p>
@@ -154,7 +170,6 @@
         </div>
       </a>
 
-      <a data-reveal class="outline-button work__more" href="work.html">SEE MORE</a>
     </section>
   </main>
   <!-- Figma 395:13582 + 395:13608/13610: contact line, then the road with the car, then the nav row -->
@@ -184,7 +199,6 @@
         </a>
         <nav class="site-footer__nav" aria-label="Footer">
           <!-- Placeholder links until these pages exist -->
-          <a href="work.html">Work</a>
           <a href="#">About</a>
           <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
         </nav>

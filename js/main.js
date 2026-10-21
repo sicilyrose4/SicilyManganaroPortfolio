@@ -15,9 +15,8 @@ if (document.body.classList.contains('page-dark')) {
   });
 }
 
-// Back link on project pages: "BACK TO HOME" if the visitor came in from the home page, otherwise
-// "BACK TO WORK" (the Work page, which is also the default for direct visits). The referrer says
-// where they came from; the home and Work pages also note it on click, as a fallback.
+// Back link on project pages. The Work page is out of the navigation for now, so every back link
+// already reads "BACK TO HOME" (index.html#work); this only matters again if work.html comes back.
 const ENTERED_KEY = 'entered-from';
 if (document.querySelector('.hero, .work-grid')) {
   const here = document.querySelector('.work-grid') ? 'work' : 'home';

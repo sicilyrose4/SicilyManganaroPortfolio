@@ -29,8 +29,8 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - The playable game is embedded in an iframe from `https://sicilyrose4.github.io/bone-dry/` (repo `sicilyrose4/bone-dry`, source in `~/Documents/IXD 432/bone dry`). Updating the game there updates the embed.
 
 ## Work page and Bull Stock
+- **On hold (2026-10-21):** the Work page is out of the navigation. The home page shows Workshop, Luna, Bone Dry, Drop (in that order, no SEE MORE), and every back link reads BACK TO HOME → `index.html#work`. `work.html` still exists but nothing links to it; Bull Stock is only reachable by URL until it gets a home card or the Work page returns.
 - `work.html` (Figma 200:1898): a grid of 501×276 tiles in `assets/images/work-page/`, cut whole from the Figma frame at 2x. Rebound, Depop and Fizz have no case study pages yet, so their tiles link to `in-progress.html`.
-- Header and footer "Work" links go to `work.html`; the home page's SEE MORE button does too.
 - `bull-stock.html` has no Figma frame: its layout was approved from a mockup. It shares the Bone Dry `.bd-*` styles plus `.bs-*`. Images come from the group project's Figma file (`ny9fhUlVOT652zelldNh02`), read-only. It is linked from the Work page only, not from a home card.
 
 ## In-progress page
