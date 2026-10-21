@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Sicily Manganaro</title>
+  <meta name="description" content="About Sicily Manganaro, an Interaction Design student at the University of Kansas and product designer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    // Arriving from a dark page (e.g. Luna's BACK TO HOME): start dark and fade to light first.
+    try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- Phones (Figma 579:20032 / 579:20053): the site is desktop-only for now, so below 768px this
+       screen replaces the page (see .mgate in style.css; the menu toggle is in js/main.js). -->
+  <div class="mgate" data-mobile-gate>
+    <div class="mgate__bar">
+      <a class="mgate__logo" href="index.html" aria-label="Sicily Manganaro — home"><img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt=""></a>
+      <button class="mgate__toggle" type="button" aria-expanded="false" aria-controls="mgate-menu" aria-label="Open menu">
+        <!-- Three lines (Figma 579:20052) that turn into the X (579:20081/82) when the menu opens -->
+        <svg class="mgate__icon" width="30" height="24" viewBox="0 0 30 24" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="mgate__line mgate__line--top" d="M1.25 6H28.75"/><path class="mgate__line mgate__line--mid" d="M1.25 12H28.75"/><path class="mgate__line mgate__line--bot" d="M1.25 18H28.75"/></g></svg>
+      </button>
+    </div>
+    <div class="mgate__body" id="mgate-body">
+      <div class="hero__art mgate__art">
+        <img class="hero__desk" src="assets/images/hero/desk.png" width="1062" height="979" alt="Illustration of Sicily sitting at her desk with a laptop, surrounded by stars and design tools">
+        <img class="hero__desk hero__desk--blink" src="assets/images/hero/desk-blink.png" width="1062" height="979" alt="" aria-hidden="true">
+        <span class="doodle doodle--stars-1" style="--x:279.29; --y:26.38; --w:95.49"><img src="assets/images/hero/stars-1.png" width="191" height="145" alt=""></span>
+        <span class="doodle doodle--stars-2" style="--x:102.63; --y:12.45; --w:125.16"><img src="assets/images/hero/stars-2.png" width="250" height="176" alt=""></span>
+        <span class="doodle doodle--bubble-1" style="--x:294.16; --y:109.93; --w:107.08"><img src="assets/images/hero/bubble-1.png" width="214" height="44" alt=""></span>
+        <span class="doodle" style="--x:130.95; --y:137.40; --w:26.65"><img src="assets/images/hero/bubble-2.png" width="53" height="45" alt=""></span>
+        <span class="doodle" style="--x:346.97; --y:221.54; --w:32.22"><img src="assets/images/hero/cursor.png" width="64" height="80" alt=""></span>
+        <span class="doodle" style="--x:379.19; --y:168.23; --w:18.77"><img src="assets/images/hero/star-3.png" width="38" height="40" alt=""></span>
+        <span class="doodle" style="--x:294.36; --y:133.69; --w:44.50"><img src="assets/images/hero/stars-4.png" width="89" height="138" alt=""></span>
+        <span class="doodle" style="--x:47.28; --y:137.40; --w:46.36"><img src="assets/images/hero/line-height.png" width="93" height="95" alt=""></span>
+        <span class="doodle" style="--x:231.78; --y:92.21; --w:39.63"><img src="assets/images/hero/pen-tool.png" width="79" height="76" alt=""></span>
+        <span class="doodle" style="--x:113.80; --y:199.52; --w:17.15"><img src="assets/images/hero/stars-7.png" width="34" height="44" alt=""></span>
+        <span class="doodle" style="--x:332.65; --y:112.34; --w:30.13"><img src="assets/images/hero/stars-5.png" width="60" height="60" alt=""></span>
+        <span class="doodle" style="--x:143.32; --y:72.54; --w:36.16"><img src="assets/images/hero/color-picker.png" width="72" height="96" alt=""></span>
+        <span class="doodle" style="--x:64.67; --y:237.99; --w:57.71"><img src="assets/images/hero/stars-6.png" width="115" height="94" alt=""></span>
+      </div>
+      <h1 class="mgate__title">Grab your laptop!</h1>
+      <p class="mgate__text">This portfolio is desktop-only for now.</p>
+    </div>
+    <nav class="mgate__menu" id="mgate-menu" aria-label="Menu" hidden>
+      <a href="about.html">About</a>
+      <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
+    </nav>
+  </div>
+    <!-- Figma 200:1842 -->
+  <header class="site-header container">
+    <div class="site-header__left">
+      <a class="site-header__logo" href="index.html" aria-label="Sicily Manganaro — home">
+        <img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt="">
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="about.html" aria-current="page">About</a>
+        <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
+      </nav>
+    </div>
+    <a class="pill-button" href="assets/docs/sicily-manganaro-resume.pdf" target="_blank" rel="noopener">
+      Resume
+      <!-- Inline copy of assets/images/arrow-up-right.svg so it can follow the text color on hover -->
+      <svg class="pill-button__arrow" width="11.5" height="11.5" viewBox="0 0 11.5 11.5" fill="none" aria-hidden="true"><path d="M0.21967 10.2197C-0.0732233 10.5126 -0.0732233 10.9874 0.21967 11.2803C0.512563 11.5732 0.987437 11.5732 1.28033 11.2803L0.75 10.75L0.21967 10.2197ZM11.5 0.75C11.5 0.335787 11.1642 3.57628e-07 10.75 3.57628e-07L4 0C3.58579 0 3.25 0.335786 3.25 0.75C3.25 1.16421 3.58579 1.5 4 1.5L10 1.5L10 7.5C10 7.91421 10.3358 8.25 10.75 8.25C11.1642 8.25 11.5 7.91421 11.5 7.5L11.5 0.75ZM0.75 10.75L1.28033 11.2803L11.2803 1.28033L10.75 0.75L10.2197 0.21967L0.21967 10.2197L0.75 10.75Z" fill="currentColor"/></svg>
+    </a>
+  </header>
+
+  <!-- Figma 631:8730 -->
+  <main class="about container">
+    <div class="about__intro">
+      <div class="about__portrait" data-reveal>
+        <img src="assets/images/about/portrait.png" width="712" height="1068" alt="Illustration of Sicily with long dark hair and crossed arms">
+      </div>
+      <div class="about__text">
+        <p class="about__label" data-reveal>MEET THE DESIGNER</p>
+        <h1 class="about__title" data-reveal>About Sicily</h1>
+        <p class="about__bio" data-reveal>I’m an Interaction Design student at the University of Kansas, graduating in May 2027, and a product designer headed for the software industry.</p>
+        <p class="about__bio about__bio--wide" data-reveal>I started in Visual Communication Design, but found my passion for product design early in college. UX added the user-centered thinking that I was missing, and now my work feels even more impactful and purposeful.</p>
+        <p class="about__bio" data-reveal>I’m always excited to learn new tools, work with new people, and make cool things. I’m especially interested in AI tools, startups, and teams that prioritize design alongside engineering.</p>
+      </div>
+    </div>
+
+    <hr class="about__rule">
+
+    <section class="about__cta" aria-label="Let’s work together">
+      <p class="about__label" data-reveal>LET’S WORK TOGETHER</p>
+      <h2 class="about__cta-title" data-reveal>I’m looking for full-time product design roles starting in 2027.</h2>
+      <p class="about__bio" data-reveal>If you’re building something cool, I’d love to hear about it.</p>
+      <a class="about__email" data-reveal href="mailto:sicilymanganaro@gmail.com">sicilymanganaro@gmail.com</a>
+      <a class="pill-button about__resume" data-reveal href="assets/docs/sicily-manganaro-resume.pdf" target="_blank" rel="noopener">
+        Resume
+        <svg class="pill-button__arrow" width="11.5" height="11.5" viewBox="0 0 11.5 11.5" fill="none" aria-hidden="true"><path d="M0.21967 10.2197C-0.0732233 10.5126 -0.0732233 10.9874 0.21967 11.2803C0.512563 11.5732 0.987437 11.5732 1.28033 11.2803L0.75 10.75L0.21967 10.2197ZM11.5 0.75C11.5 0.335787 11.1642 3.57628e-07 10.75 3.57628e-07L4 0C3.58579 0 3.25 0.335786 3.25 0.75C3.25 1.16421 3.58579 1.5 4 1.5L10 1.5L10 7.5C10 7.91421 10.3358 8.25 10.75 8.25C11.1642 8.25 11.5 7.91421 11.5 7.5L11.5 0.75ZM0.75 10.75L1.28033 11.2803L11.2803 1.28033L10.75 0.75L10.2197 0.21967L0.21967 10.2197L0.75 10.75Z" fill="currentColor"/></svg>
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-reveal>
+    <div class="site-footer__inner container">
+      <div class="site-footer__left">
+        <a class="site-footer__logo" href="index.html" aria-label="Sicily Manganaro — home">
+          <img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt="">
+        </a>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <a href="about.html" aria-current="page">About</a>
+          <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
+        </nav>
+      </div>
+      <a class="site-footer__social" href="https://www.linkedin.com/in/sicily-manganaro-1b5a67296" target="_blank" rel="noopener" aria-label="Sicily Manganaro on LinkedIn">
+        <!-- Inline LinkedIn icon (square uses currentColor) so it can turn blue on hover, like the home page -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 3C24 1.34423 22.6558 0 21 0H3C1.34423 0 0 1.34423 0 3V21C0 22.6558 1.34423 24 3 24H21C22.6558 24 24 22.6558 24 21V3Z" fill="currentColor"/><path d="M6.88157 8.37402H2.86157V20.466H6.88157V8.37402Z" fill="var(--li-mark, #fbfbfb)"/><path d="M4.899 2.54395C3.52364 2.54395 2.625 3.44816 2.625 4.6333C2.625 5.79355 3.49631 6.72271 4.8458 6.72271H4.87177C6.27347 6.72271 7.14595 5.79355 7.14595 4.6333C7.11994 3.44816 6.27356 2.54395 4.899 2.54395Z" fill="var(--li-mark, #fbfbfb)"/><path d="M16.7475 8.08984C14.6151 8.08984 13.66 9.26252 13.1252 10.0862V8.37419H9.1062C9.1595 9.50842 9.1062 20.4661 9.1062 20.4661H13.1251V13.7131C13.1251 13.3517 13.1511 12.9903 13.2576 12.732C13.5477 12.0101 14.2094 11.2623 15.3198 11.2623C16.7735 11.2623 17.3559 12.3716 17.3559 13.9964V20.4661H21.375V13.5319C21.375 9.81766 19.3919 8.08984 16.7475 8.08984Z" fill="var(--li-mark, #fbfbfb)"/></svg>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
