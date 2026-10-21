@@ -58,5 +58,6 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 
 ## See more projects (every project page)
 - The `.more` carousel (Figma 552:13726) sits at the end of Luna, Drop, Workshop, Bone Dry (inside its dark footer band) and Bull Stock. It holds the Work-page tiles for Luna, Drop, Workshop and Bone Dry, minus the page you're on.
+- The tiles span the full content column (lined up with the title and the rest of the page); the arrows sit just outside it. Below 1140px wide the tiles inset 48px so the arrows stay on screen.
 - Two tiles show at a time; the arrows (back-link circle turned sideways) slide one tile and hide when there's nothing more on that side (`js/main.js`). To add a project, add its tile to each page's `.more__track`.
 - The back link sits under the carousel (`.more__back`). Every `.back-link` reads BACK TO WORK, or BACK TO HOME (→ `index.html#work`) if the visitor came from the home page.

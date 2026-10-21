@@ -1376,10 +1376,11 @@ a { color: inherit; text-decoration: none; }
    sideways) slide the row one tile and loop at the ends (js/main.js). */
 .more { padding: 160px 0 137px; font-family: var(--font-sans); font-variation-settings: "opsz" 14; }
 .more__title { margin: 0; color: var(--ink); font-size: 28px; font-weight: 500; line-height: 40px; letter-spacing: -0.02em; }
-.more__carousel { position: relative; width: 925px; max-width: calc(100% - 82px); margin: 59px auto 0; }
+.more__carousel { position: relative; margin: 45px 0 0; } /* Figma 552:13726: tiles span the column; the arrows sit just outside it */
+@media (max-width: 1140px) { .more__carousel { margin-inline: 48px; } } /* narrow windows: no room outside the column, so inset the tiles to keep the arrows on screen */
 .more__viewport { overflow: hidden; }
-.more__track { display: flex; gap: 18px; transition: transform 500ms cubic-bezier(0.2, 0.7, 0.3, 1); }
-.more__track .work-tile { flex: 0 0 calc((100% - 18px) / 2); }
+.more__track { display: flex; gap: 20px; transition: transform 500ms cubic-bezier(0.2, 0.7, 0.3, 1); }
+.more__track .work-tile { flex: 0 0 calc((100% - 20px) / 2); }
 .more__arrow { position: absolute; top: 50%; display: grid; transition: opacity 0.25s ease, visibility 0.25s; place-items: center; width: 44px; height: 44px; margin-top: -22px; padding: 0; border: 0; background: none; color: #5b78b2; cursor: pointer; }
 .more__arrow--prev { left: -48px; }
 .more__arrow--next { right: -48px; }
@@ -1389,7 +1390,7 @@ a { color: inherit; text-decoration: none; }
 .more__arrow:hover svg rect, .more__arrow:focus-visible svg rect { fill: currentColor; }
 .more__arrow:hover svg path, .more__arrow:focus-visible svg path { fill: var(--bg); }
 .more__arrow.is-hidden { opacity: 0; visibility: hidden; } /* nothing more on that side */
-.more__back { display: flex; justify-content: center; margin-top: 53px; } /* BACK TO WORK under the tiles */
+.more__back { display: flex; justify-content: center; margin-top: 41px; } /* BACK TO WORK under the tiles */
 .more--dark .back-link, .bs .more .back-link { color: #94a9d3; }
 @media (prefers-reduced-motion: reduce) { .more__track, .more__arrow { transition: none; } }
 /* Dark pages (Luna, Drop) and Bone Dry's dark footer band */
