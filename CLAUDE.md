@@ -42,6 +42,7 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - `workshop.html` is built from Figma 537:5547 ("workshop — expanded draft"); the gate script is first in its `<head>`, and `workshop-locked.html` sends a correct password there (`data-next`). Home card and Work tile still point at the gate.
 - Light page on Figma's #faf8f7 (exports have it baked in around their shadows). Styles are the `.ws-*` block at the end of `style.css`.
 - Screens are 2x exports in `assets/images/workshop/`. Step rows (`.ws-comp`) place each screen at its Figma position as percentages of the 1022px column; the numbered labels below are real text (`.ws-steps`).
+- Spacing is one scale, not Figma's exact y positions (Sicily asked for equal gaps): 120px above and below every divider (measured to the visible screen, not its baked-in shadow), 160px before each sub-heading, 56px from text to its visuals, 64px between step rows.
 - The user-flow image has a hover magnifier (`.magnify`, `js/main.js`): a round lens at 3x from `flow-large.jpg`, mouse/trackpad only.
 
 ## Phone screen (desktop-only for now)
