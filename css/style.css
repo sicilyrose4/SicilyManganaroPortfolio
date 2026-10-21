@@ -490,7 +490,8 @@ a { color: inherit; text-decoration: none; }
   font-variation-settings: "opsz" 14;
 }
 .case__summary { margin: 35px 0 0; color: #bbc0cc; font-size: 13px; line-height: 25px; }
-.case__summary--sans { font-family: var(--font-sans); font-variation-settings: "opsz" 14; font-size: 14px; } /* Luna (607:22537): DM Sans 14/25 */
+.case__summary--sans { font-family: var(--font-sans); font-variation-settings: "opsz" 14; font-size: 14px; } /* Luna + Drop: DM Sans 14/25 */
+.case__meta { margin: 18px 0 0; color: #94a9d3; font-family: var(--font-sans); font-variation-settings: "opsz" 14; font-size: 12px; font-weight: 500; line-height: 18px; letter-spacing: 0.08em; white-space: pre; } /* role · length · context */
 
 /* Content column: 1 Figma px = --px, so compositions scale with the column */
 .case__body {
