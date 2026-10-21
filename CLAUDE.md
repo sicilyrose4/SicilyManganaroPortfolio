@@ -26,6 +26,7 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 ## Bone Dry case study
 - `bone-dry.html` (Figma 340:2951) is a light page on pure white with full-width dark/gray bands. All its styles are the `.bd-*` block at the end of `style.css`; comments there give the Figma y positions.
 - Copy is real text. Illustrations and game screens are PNGs cut from the Figma frame at 2x (`assets/images/bone-dry/`); if the Figma changes, re-export the frame at 2x and re-crop.
+- Game logic has the same hover magnifier as Workshop's flow (`game-logic-large.jpg`, a 3.6x Figma export of 483:5426 padded to line up with `game-logic.png`; re-make both if the chart changes). On phones it scrolls sideways from the left margin to the screen edge; the recipe cards are hidden, and the Round 2 mood board is cropped to drop its arrow.
 - The playable game is embedded in an iframe from `https://sicilyrose4.github.io/bone-dry/` (repo `sicilyrose4/bone-dry`, source in `~/Documents/IXD 432/bone dry`). Updating the game there updates the embed.
 
 ## Work page and Bull Stock

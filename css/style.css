@@ -1042,7 +1042,9 @@ a { color: inherit; text-decoration: none; }
 .bd .bd-learning__peek { position: absolute; left: 71.62%; top: 835px; width: 30.04%; }  /* 941, 2809 */
 
 .bd-logic { padding: 102px 0 127px; } /* 3284 … 3878, next band 4005 */
-.bd .bd-logic__chart { width: 110.76%; max-width: none; margin: 57px 0 0 -4.89%; } /* x 159 → 1291 */
+.bd .bd-logic__chart { width: 110.76%; max-width: none; margin: 57px 0 0 -4.89%; --lens-bg: #fff; } /* x 159 → 1291; hover magnifier like Workshop's flow */
+.bd .bd-logic__chart > img { display: block; width: 100%; height: auto; }
+.bd-swipe { display: none; }
 
 .bd-process { min-height: 566px; } /* band 4005 → 4571 */
 .bd-process__inner { position: relative; min-height: 566px; padding: 96px 0 96px 14px; }
@@ -1112,6 +1114,16 @@ a { color: inherit; text-decoration: none; }
 .page-bonedry .site-footer__social { color: #bbc0cc; --li-mark: #12111d; }
 @media (max-width: 767px) {
   .m-ok .bd .bd-learning__cards { display: none; } /* phones: the recipe cards drop out, the peek pop-up stays */
+  /* game logic: like Workshop's user flow, a sideways scroller from the left margin to the screen edge */
+  .m-ok .bd .bd-logic__chart {
+    width: calc(100% + max(20px, 13.141vw)) !important; margin-left: 0 !important;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+  }
+  .m-ok .bd .bd-logic__chart > img { width: 1400px; max-width: none; }
+  /* Round 2 mood board: the export's arrow (left 164px of 958) pointed at the images beside the text;
+     stacked under it, the arrow is cropped off and the images start at the margin */
+  .m-ok .bd-round2__concept img { width: 100%; max-width: 100%; aspect-ratio: 794 / 266; object-fit: cover; object-position: right center; }
+  .m-ok .bd-swipe { display: block; margin: 12px 0 0; color: var(--accent); font-family: var(--font-sans); font-weight: 400; font-size: 14px; line-height: 20px; }
 }
 .page-bonedry .site-footer__social:hover,
 .page-bonedry .site-footer__social:focus-visible { color: var(--accent); }
@@ -1121,6 +1133,7 @@ a { color: inherit; text-decoration: none; }
   .bd-h2 { font-size: 34px; }
   .bd .bd-learning__cards, .bd .bd-learning__peek { position: static; width: min(360px, 100%); margin-top: 48px; }
   .bd .bd-learning__peek { width: min(300px, 100%); }
+  .bd-learning__text > div + div .bd-h3 { line-height: 1.25; } /* Figma's 20px leading only works on one line; these wrap here */
   .bd .bd-process__skeletons { position: static; display: block; width: min(444px, 100%); margin: 48px 0 0 auto; }
   .bd-process, .bd-process__inner { min-height: 0; }
   .bd-process__inner { padding-bottom: 0; }
@@ -1608,7 +1621,7 @@ a { color: inherit; text-decoration: none; }
 /* Pages whose main ends with the carousel keep a normal gap to the footer */
 .case:has(> .more) { padding-bottom: 0; } /* the carousel's own bottom padding takes over */
 
-/* ---------- Magnifier (Workshop user flow) ---------- */
+/* ---------- Magnifier (Workshop user flow, Bone Dry game logic) ---------- */
 /* On hover a 320px lens follows the cursor showing that spot at 3x from a 4x export, so the
    small text in the flow is readable. Mouse/trackpad only; js/main.js moves the lens. */
 .magnify { position: relative; }
@@ -1618,7 +1631,7 @@ a { color: inherit; text-decoration: none; }
   .magnify__lens {
     position: absolute; top: 0; left: 0; z-index: 2; display: block;
     width: 320px; height: 320px; margin: -160px 0 0 -160px; border-radius: 50%;
-    background-color: #faf8f7; background-repeat: no-repeat;
+    background-color: var(--lens-bg, #faf8f7); background-repeat: no-repeat;
     box-shadow: 0 10px 40px rgba(37, 46, 64, 0.18), 0 0 0 1px rgba(37, 46, 64, 0.06);
     opacity: 0; transform: scale(0.9); pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;

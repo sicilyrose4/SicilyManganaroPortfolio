@@ -459,7 +459,7 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   show();
 });
 
-// Magnifier (Workshop user flow): hovering shows a round lens that follows the cursor and shows that
+// Magnifier (Workshop user flow, Bone Dry game logic): hovering shows a round lens that follows the cursor and shows that
 // spot at 3x from a high-res copy, loaded on first hover. Mouse/trackpad only.
 const ZOOM = 3;
 if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
