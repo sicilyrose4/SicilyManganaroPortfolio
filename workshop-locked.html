@@ -16,7 +16,7 @@
     try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
   </script>
 </head>
-<body>
+<body class="m-ok">
   <!-- Phones (Figma 579:20032 / 579:20053): the site is desktop-only for now, so below 768px this
        screen replaces the page (see .mgate in style.css; the menu toggle is in js/main.js). -->
   <div class="mgate" data-mobile-gate>
@@ -69,8 +69,9 @@
       <form class="lock__form" data-reveal novalidate>
         <div class="lock__field">
           <label class="visually-hidden" for="project-password">Password</label>
-          <input class="lock__input" id="project-password" name="password" type="password" placeholder="Enter password" autocomplete="off" autofocus>
+          <input class="lock__input" id="project-password" name="password" type="password" placeholder="Enter password" autocomplete="off" aria-describedby="password-hint" autofocus>
           <p class="lock__error" role="alert" aria-live="assertive"></p>
+          <p class="lock__hint" id="password-hint">The password is at the top of my resume<br>(top right of the home page).</p>
         </div>
         <button class="outline-button lock__submit" type="submit">ENTER</button>
       </form>

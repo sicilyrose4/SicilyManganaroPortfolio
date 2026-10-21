@@ -436,9 +436,13 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   const prev = carousel.querySelector('.more__arrow--prev');
   const next = carousel.querySelector('.more__arrow--next');
   const tiles = [...track.children];
-  const last = Math.max(0, tiles.length - 2); // two tiles show at once
+  // Two tiles show at once on desktop, one on phones (see .more in style.css)
+  const perView = () => (window.matchMedia('(max-width: 767px)').matches ? 1 : 2);
+  let last = Math.max(0, tiles.length - perView());
   let index = 0;
   const show = () => {
+    last = Math.max(0, tiles.length - perView());
+    index = Math.min(index, last);
     track.style.transform = `translateX(${-tiles[index].offsetLeft}px)`;
     prev.classList.toggle('is-hidden', index === 0);
     next.classList.toggle('is-hidden', index === last);
@@ -450,7 +454,7 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   track.addEventListener('focusin', (e) => {
     const i = tiles.indexOf(e.target.closest('.work-tile'));
     viewport.scrollLeft = 0;
-    if (i < index || i > index + 1) { index = Math.min(i, last); show(); }
+    if (i < index || i > index + perView() - 1) { index = Math.min(i, last); show(); }
   });
   show();
 });

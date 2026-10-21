@@ -784,13 +784,15 @@ a { color: inherit; text-decoration: none; }
 }
 .lock__error {
   position: absolute;
-  left: 31px;
-  top: calc(100% + 10px);
+  left: 0;
+  top: 60px; /* right where the hint sits (under the 50px pill), which hides while this shows */
   margin: 0;
   color: var(--error);
   font-size: 13px;
   line-height: 18px;
 }
+.lock__hint { margin: 10px 0 0; color: #72757a; font-family: var(--font-mono); font-size: 13px; line-height: 18px; } /* under the field, lined up with its left edge */
+.lock__field:has(.lock__error:not(:empty)) .lock__hint { visibility: hidden; } /* a wrong password's message takes its place */
 .lock__field.is-wrong { animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97); }
 @keyframes shake {
   20%, 60% { transform: translateX(-7px); }
@@ -1343,6 +1345,8 @@ a { color: inherit; text-decoration: none; }
 .ws-comp__arrow { position: absolute; color: #777f90; font-size: calc(22 / 1022 * 100cqw); line-height: 1.27; }
 .ws-steps + .ws-comp { margin-top: 64px; }
 .ws-before-after + .ws-comp { margin-top: 64px; }
+/* Step rows sit in .ws-flow wrappers (so phones can interleave screens and labels); keep the desktop gaps */
+.ws-flow + .ws-flow > .ws-comp, .ws-before-after + .ws-flow > .ws-comp { margin-top: 64px; }
 
 .ws-steps { display: grid; margin-top: 18px !important; padding: 0; list-style: none; }
 .ws-steps li { display: flex; align-items: flex-start; gap: 12px; padding-right: 40px; font-size: 16px; font-weight: 500; line-height: 24px; }
@@ -1377,6 +1381,24 @@ a { color: inherit; text-decoration: none; }
   .ws .ws-phases__cici { width: 120px; }
   .ws-steps li { gap: 6px; padding-right: 10px; font-size: 12px; line-height: 16px; }
   .ws-steps__n { width: 20px; height: 20px; margin-top: 0; font-size: 11px; }
+}
+/* Phones: each step row becomes a vertical sequence (screen full width, its numbered label under it),
+   using the --o order each screen and label carries (2·step for screens, 2·step+1 for the label) */
+@media (max-width: 767px) {
+  .m-ok .ws { padding-top: 40px; }
+  .m-ok .ws-rule { margin: 64px 0; }
+  .m-ok .ws-sub { margin-top: 88px; }
+  .m-ok .ws-solution { padding-top: 64px; }
+  .m-ok .ws-solution__inner { padding-top: 64px; }
+  .m-ok .ws-flow { display: flex; flex-direction: column; margin-top: 32px; }
+  .m-ok .ws-flow > .ws-comp, .m-ok .ws-flow > .ws-steps { display: contents; }
+  .m-ok .ws-flow .ws-comp > img { position: static; order: var(--o); width: 100% !important; height: auto; margin-top: 28px; }
+  .m-ok .ws-flow .ws-comp > img:first-child { margin-top: 0; }
+  /* Tall screens (Cici chats, the edit panel) at three-quarters width so one step doesn't fill the screen */
+  .m-ok .ws-flow .ws-comp > img:is([src*="/ci-1."], [src*="/ci-2."], [src*="/ci-3."], [src*="/ed-2."]) { width: 75% !important; }
+  .m-ok .ws-flow .ws-comp__arrow { display: none; }
+  .m-ok .ws-flow .ws-steps li { order: var(--o); gap: 10px; margin-top: 14px; padding-right: 0; font-size: 15px; line-height: 22px; }
+  .m-ok .ws-flow .ws-steps__n { width: 24px; height: 24px; margin-top: -1px; font-size: 13px; }
 }
 
 /* ---------- Phone screen (Figma 579:20032, menu 579:20053) ---------- */
@@ -1440,7 +1462,16 @@ a { color: inherit; text-decoration: none; }
 .more { padding: 160px 0 137px; font-family: var(--font-sans); font-variation-settings: "opsz" 14; }
 .more__title { margin: 0; color: var(--ink); font-size: 28px; font-weight: 500; line-height: 40px; letter-spacing: -0.02em; }
 .more__carousel { position: relative; margin: 45px 0 0; } /* Figma 552:13726: tiles span the column; the arrows sit just outside it */
-@media (max-width: 1140px) { .more__carousel { margin-inline: 48px; } } /* narrow windows: no room outside the column, so inset the tiles to keep the arrows on screen */
+@media (max-width: 1140px) { .more__carousel { margin-inline: 48px; } }
+@media (max-width: 767px) { /* phones: one tile at a time across the content column, arrows just outside it */
+  .m-ok .more { padding: 96px 0 96px; }
+  .m-ok .more__title { font-size: 24px; line-height: 32px; }
+  .m-ok .more__carousel { margin: 28px 0 0; }
+  .m-ok .more__track .work-tile { flex-basis: 100%; }
+  .m-ok .more__arrow--prev { left: -46px; }
+  .m-ok .more__arrow--next { right: -46px; }
+  .m-ok .more__back { margin-top: 32px; }
+} /* narrow windows: no room outside the column, so inset the tiles to keep the arrows on screen */
 .more__viewport { overflow: hidden; }
 .more__track { display: flex; gap: 20px; transition: transform 500ms cubic-bezier(0.2, 0.7, 0.3, 1); }
 .more__track .work-tile { flex: 0 0 calc((100% - 20px) / 2); }

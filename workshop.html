@@ -149,19 +149,21 @@
         <hr class="ws-rule">
         <h2 data-reveal class="ws-h3">01. Manually creating planned content</h2>
         <p data-reveal class="ws-body">The first phase gave users a way to add planned content by hand. From the calendar, a user hovers over a day, chooses “Add planned content,” and fills in a side panel with a send date, an optional time, a title, a campaign, and a description. Nothing gets sent: it’s a placeholder they can shape over time.</p>
+        <div class="ws-flow">
         <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 260.2">
-  <img loading="lazy" src="assets/images/workshop/p1-a.png" style="left:0.000%;top:23.535%;width:30.724%" alt="A calendar day with a menu open: Plan content, Add note, Blackout date">
-  <img loading="lazy" src="assets/images/workshop/p1-b.png" style="left:34.247%;top:0.096%;width:31.115%" alt="The Add planned content side panel with send date, time, title, description and campaign fields">
-  <img loading="lazy" src="assets/images/workshop/p1-c1.png" style="left:69.765%;top:0.000%;width:30.626%" alt="A planned email on the calendar, shown with a dashed outline and a Planned label">
-  <img loading="lazy" src="assets/images/workshop/p1-c2.png" style="left:69.765%;top:71.566%;width:30.626%" alt="A green toast that says Planned content added">
+  <img loading="lazy" src="assets/images/workshop/p1-a.png" style="--o:0;left:0.000%;top:23.535%;width:30.724%" alt="A calendar day with a menu open: Plan content, Add note, Blackout date">
+  <img loading="lazy" src="assets/images/workshop/p1-b.png" style="--o:2;left:34.247%;top:0.096%;width:31.115%" alt="The Add planned content side panel with send date, time, title, description and campaign fields">
+  <img loading="lazy" src="assets/images/workshop/p1-c1.png" style="--o:4;left:69.765%;top:0.000%;width:30.626%" alt="A planned email on the calendar, shown with a dashed outline and a Planned label">
+  <img loading="lazy" src="assets/images/workshop/p1-c2.png" style="--o:4;left:69.765%;top:71.566%;width:30.626%" alt="A green toast that says Planned content added">
   <span class="ws-comp__arrow" aria-hidden="true" style="left:31.800%;top:44.669%">→</span>
   <span class="ws-comp__arrow" aria-hidden="true" style="left:66.438%;top:44.669%">→</span>
 </div>
         <ol class="ws-steps" data-reveal style="grid-template-columns: 354fr 354fr 314fr" start="1">
-  <li><span class="ws-steps__n" aria-hidden="true">1</span>Choose “Plan content” on any day</li>
-  <li><span class="ws-steps__n" aria-hidden="true">2</span>Fill in the date, title, and details</li>
-  <li><span class="ws-steps__n" aria-hidden="true">3</span>It shows on the calendar as Planned</li>
+  <li style="--o:1"><span class="ws-steps__n" aria-hidden="true">1</span>Choose “Plan content” on any day</li>
+  <li style="--o:3"><span class="ws-steps__n" aria-hidden="true">2</span>Fill in the date, title, and details</li>
+  <li style="--o:5"><span class="ws-steps__n" aria-hidden="true">3</span>It shows on the calendar as Planned</li>
 </ol>
+        </div>
 
         <h3 data-reveal class="ws-sub">A closer look at my thought process - splitting date and time</h3>
         <p data-reveal class="ws-body">Workshop’s picker asked for a time with every date, but plans made months out often don’t have one yet. I split them so the time is optional, and the new time picker became part of Workshop’s design system.</p>
@@ -169,75 +171,87 @@
           <figure><img loading="lazy" src="assets/images/workshop/dt-before.png" width="982" height="127" alt="Before: Start date and End date fields, each with only a date"><figcaption>Before</figcaption></figure>
           <figure><img loading="lazy" src="assets/images/workshop/dt-after.png" width="982" height="127" alt="After: a Send date field next to a separate Time field"><figcaption>After: send date + optional time</figcaption></figure>
         </div>
+        <div class="ws-flow">
         <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 411.0">
-  <img loading="lazy" src="assets/images/workshop/dt-1.png" style="left:0.000%;top:0.487%;width:48.043%" alt="Send date field with a calendar open to June 2026, next to an empty Time field">
-  <img loading="lazy" src="assets/images/workshop/dt-2.png" style="left:52.935%;top:0.000%;width:48.337%" alt="Time field open with hour, minute and AM or PM, next to the chosen send date">
+  <img loading="lazy" src="assets/images/workshop/dt-1.png" style="--o:0;left:0.000%;top:0.487%;width:48.043%" alt="Send date field with a calendar open to June 2026, next to an empty Time field">
+  <img loading="lazy" src="assets/images/workshop/dt-2.png" style="--o:2;left:52.935%;top:0.000%;width:48.337%" alt="Time field open with hour, minute and AM or PM, next to the chosen send date">
   <span class="ws-comp__arrow" aria-hidden="true" style="left:49.119%;top:32.847%">→</span>
 </div>
         <ol class="ws-steps" data-reveal style="grid-template-columns: 531fr 491fr" start="1">
-  <li><span class="ws-steps__n" aria-hidden="true">1</span>Pick a send date</li>
-  <li><span class="ws-steps__n" aria-hidden="true">2</span>Add a time, optional</li>
+  <li style="--o:1"><span class="ws-steps__n" aria-hidden="true">1</span>Pick a send date</li>
+  <li style="--o:3"><span class="ws-steps__n" aria-hidden="true">2</span>Add a time, optional</li>
 </ol>
+        </div>
 
         <h3 data-reveal class="ws-sub">Editing, deleting, and turning plans into drafts</h3>
         <p data-reveal class="ws-body">Once something is on the calendar, clicking it opens a quick view with the owner and send date. From there, users can edit the details, delete it, or choose “Create draft” to turn the plan into a real email that opens in the editor with their description already filled in.</p>
+        <div class="ws-flow">
         <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 407.5">
-  <img loading="lazy" src="assets/images/workshop/ed-1.png" style="left:0.000%;top:50.859%;width:30.724%" alt="Quick view of a planned email with owner, scheduled date, Create draft and Edit buttons">
-  <img loading="lazy" src="assets/images/workshop/ed-2.png" style="left:34.638%;top:0.000%;width:30.724%" alt="The Edit planned content panel">
-  <img loading="lazy" src="assets/images/workshop/ed-3.png" style="left:68.102%;top:50.552%;width:33.170%" alt="Delete planned content confirmation with Cancel and Confirm buttons">
+  <img loading="lazy" src="assets/images/workshop/ed-1.png" style="--o:0;left:0.000%;top:50.859%;width:30.724%" alt="Quick view of a planned email with owner, scheduled date, Create draft and Edit buttons">
+  <img loading="lazy" src="assets/images/workshop/ed-2.png" style="--o:2;left:34.638%;top:0.000%;width:30.724%" alt="The Edit planned content panel">
+  <img loading="lazy" src="assets/images/workshop/ed-3.png" style="--o:4;left:68.102%;top:50.552%;width:33.170%" alt="Delete planned content confirmation with Cancel and Confirm buttons">
   <span class="ws-comp__arrow" aria-hidden="true" style="left:31.800%;top:70.000%">→</span>
   <span class="ws-comp__arrow" aria-hidden="true" style="left:66.438%;top:70.000%">→</span>
 </div>
         <ol class="ws-steps" data-reveal style="grid-template-columns: 354fr 354fr 314fr" start="1">
-  <li><span class="ws-steps__n" aria-hidden="true">1</span>Click it to open a quick view</li>
-  <li><span class="ws-steps__n" aria-hidden="true">2</span>Edit the details</li>
-  <li><span class="ws-steps__n" aria-hidden="true">3</span>Or delete it, after a confirmation</li>
+  <li style="--o:1"><span class="ws-steps__n" aria-hidden="true">1</span>Click it to open a quick view</li>
+  <li style="--o:3"><span class="ws-steps__n" aria-hidden="true">2</span>Edit the details</li>
+  <li style="--o:5"><span class="ws-steps__n" aria-hidden="true">3</span>Or delete it, after a confirmation</li>
 </ol>
+        </div>
+        <div class="ws-flow">
         <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 287.5">
-  <img loading="lazy" src="assets/images/workshop/cv-1.png" style="left:0.000%;top:0.000%;width:48.043%" alt="Quick view with the Create draft button">
-  <img loading="lazy" src="assets/images/workshop/cv-2.png" style="left:51.957%;top:6.522%;width:49.315%" alt="Choose editor version dialog with the modern editor recommended">
+  <img loading="lazy" src="assets/images/workshop/cv-1.png" style="--o:0;left:0.000%;top:0.000%;width:48.043%" alt="Quick view with the Create draft button">
+  <img loading="lazy" src="assets/images/workshop/cv-2.png" style="--o:2;left:51.957%;top:6.522%;width:49.315%" alt="Choose editor version dialog with the modern editor recommended">
   <span class="ws-comp__arrow" aria-hidden="true" style="left:49.119%;top:45.130%">→</span>
 </div>
         <ol class="ws-steps" data-reveal style="grid-template-columns: 531fr 491fr" start="1">
-  <li><span class="ws-steps__n" aria-hidden="true">1</span>Choose “Create draft”</li>
-  <li><span class="ws-steps__n" aria-hidden="true">2</span>Pick the email editor</li>
+  <li style="--o:1"><span class="ws-steps__n" aria-hidden="true">1</span>Choose “Create draft”</li>
+  <li style="--o:3"><span class="ws-steps__n" aria-hidden="true">2</span>Pick the email editor</li>
 </ol>
+        </div>
+        <div class="ws-flow">
         <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 289.0">
-  <img loading="lazy" src="assets/images/workshop/cv-3.png" style="left:-0.489%;top:0.000%;width:49.022%" alt="The email editor with the plan’s description already in the Create prompt">
-  <img loading="lazy" src="assets/images/workshop/cv-4.png" style="left:51.957%;top:10.986%;width:48.043%" alt="The calendar day now showing the email as a Draft">
+  <img loading="lazy" src="assets/images/workshop/cv-3.png" style="--o:0;left:-0.489%;top:0.000%;width:49.022%" alt="The email editor with the plan’s description already in the Create prompt">
+  <img loading="lazy" src="assets/images/workshop/cv-4.png" style="--o:2;left:51.957%;top:10.986%;width:48.043%" alt="The calendar day now showing the email as a Draft">
   <span class="ws-comp__arrow" aria-hidden="true" style="left:49.119%;top:44.983%">→</span>
 </div>
         <ol class="ws-steps" data-reveal style="grid-template-columns: 531fr 491fr" start="3">
-  <li><span class="ws-steps__n" aria-hidden="true">3</span>The plan’s description carries over to pre-fill Create prompt</li>
-  <li><span class="ws-steps__n" aria-hidden="true">4</span>It shows on the calendar as a Draft</li>
+  <li style="--o:1"><span class="ws-steps__n" aria-hidden="true">3</span>The plan’s description carries over to pre-fill Create prompt</li>
+  <li style="--o:3"><span class="ws-steps__n" aria-hidden="true">4</span>It shows on the calendar as a Draft</li>
 </ol>
+        </div>
       </section>
 
       <section class="ws-sec">
         <hr class="ws-rule">
         <h2 data-reveal class="ws-h3">02. Using AI to create content</h2>
         <p data-reveal class="ws-body">The second phase let Cici, Workshop’s AI agent, build the plan. A user opens Cici from the calendar and either imports an existing comms plan (a doc or spreadsheet) or describes what they need. Cici asks clarifying questions, drafts the plan, and adds it to the calendar as planned content the user can review and edit, by chatting with Cici or by hand.</p>
+        <div class="ws-flow">
         <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 321.8">
-  <img loading="lazy" src="assets/images/workshop/ci-1.png" style="left:1.443%;top:0.544%;width:22.065%" alt="Cici chat opened from the Plan icon, with suggested prompts">
-  <img loading="lazy" src="assets/images/workshop/ci-2.png" style="left:38.748%;top:0.544%;width:22.211%" alt="A user uploads a CSV comms plan and Cici starts reading it">
-  <img loading="lazy" src="assets/images/workshop/ci-3.png" style="left:77.202%;top:0.000%;width:22.016%" alt="Cici’s drafted plan as a table of dates and titles">
+  <img loading="lazy" src="assets/images/workshop/ci-1.png" style="--o:0;left:1.443%;top:0.544%;width:22.065%" alt="Cici chat opened from the Plan icon, with suggested prompts">
+  <img loading="lazy" src="assets/images/workshop/ci-2.png" style="--o:2;left:38.748%;top:0.544%;width:22.211%" alt="A user uploads a CSV comms plan and Cici starts reading it">
+  <img loading="lazy" src="assets/images/workshop/ci-3.png" style="--o:4;left:77.202%;top:0.000%;width:22.016%" alt="Cici’s drafted plan as a table of dates and titles">
   <span class="ws-comp__arrow" aria-hidden="true" style="left:27.006%;top:45.921%">→</span>
   <span class="ws-comp__arrow" aria-hidden="true" style="left:67.515%;top:45.921%">→</span>
 </div>
         <ol class="ws-steps" data-reveal style="grid-template-columns: 335fr 446fr 241fr" start="1">
-  <li><span class="ws-steps__n" aria-hidden="true">1</span>Open Cici from the Plan icon</li>
-  <li><span class="ws-steps__n" aria-hidden="true">2</span>Upload a plan or describe what you need</li>
-  <li><span class="ws-steps__n" aria-hidden="true">3</span>Review the plan Cici drafts</li>
+  <li style="--o:1"><span class="ws-steps__n" aria-hidden="true">1</span>Open Cici from the Plan icon</li>
+  <li style="--o:3"><span class="ws-steps__n" aria-hidden="true">2</span>Upload a plan or describe what you need</li>
+  <li style="--o:5"><span class="ws-steps__n" aria-hidden="true">3</span>Review the plan Cici drafts</li>
 </ol>
+        </div>
+        <div class="ws-flow">
         <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 248.0">
-  <img loading="lazy" src="assets/images/workshop/ci-4.png" style="left:0.000%;top:0.000%;width:47.750%" alt="Planned content loading onto the calendar beside the Cici chat">
-  <img loading="lazy" src="assets/images/workshop/ci-5.png" style="left:52.250%;top:0.000%;width:47.750%" alt="The planned emails shown on the calendar beside the Cici chat">
+  <img loading="lazy" src="assets/images/workshop/ci-4.png" style="--o:0;left:0.000%;top:0.000%;width:47.750%" alt="Planned content loading onto the calendar beside the Cici chat">
+  <img loading="lazy" src="assets/images/workshop/ci-5.png" style="--o:2;left:52.250%;top:0.000%;width:47.750%" alt="The planned emails shown on the calendar beside the Cici chat">
   <span class="ws-comp__arrow" aria-hidden="true" style="left:49.119%;top:41.129%">→</span>
 </div>
         <ol class="ws-steps" data-reveal style="grid-template-columns: 534fr 488fr" start="4">
-  <li><span class="ws-steps__n" aria-hidden="true">4</span>Planned content loads onto the calendar</li>
-  <li><span class="ws-steps__n" aria-hidden="true">5</span>Planned content can be viewed on the calendar</li>
+  <li style="--o:1"><span class="ws-steps__n" aria-hidden="true">4</span>Planned content loads onto the calendar</li>
+  <li style="--o:3"><span class="ws-steps__n" aria-hidden="true">5</span>Planned content can be viewed on the calendar</li>
 </ol>
+        </div>
 
         <h3 data-reveal class="ws-sub">Big design question - where should Cici live?</h3>
         <p data-reveal class="ws-body ws-body--wide">Deciding how Cici would show up on the calendar was one of the biggest design decisions of the project. I went through a lot of iterations, from a “Plan with Cici” button that opens a chat panel to different header placements, and tested whether the calendar should shrink to five days or keep all seven when the chat is open.</p>
