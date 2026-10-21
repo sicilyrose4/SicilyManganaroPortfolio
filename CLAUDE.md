@@ -43,10 +43,11 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - Light page on Figma's #faf8f7 (exports have it baked in around their shadows). Styles are the `.ws-*` block at the end of `style.css`.
 - Screens are 2x exports in `assets/images/workshop/`. Step rows (`.ws-comp`) place each screen at its Figma position as percentages of the 1022px column; the numbered labels below are real text (`.ws-steps`).
 - Spacing is one scale, not Figma's exact y positions (Sicily asked for equal gaps): 120px above and below every divider (measured to the visible screen, not its baked-in shadow), 160px before each sub-heading, 56px from text to its visuals, 64px between step rows.
+- Phones (approved 2026-10-21): images stay inside the margins except the hero and the solution calendar, which run off the right edge, and the user flow, which scrolls sideways from the left margin to the screen edge. Step labels sit above their screens (`--o` order), 80px between flows, Before/After labels on top, Cici above the phases, explorations (`.ws-comp--ex`) restacked two-up then one per row.
 - The user-flow image has a hover magnifier (`.magnify`, `js/main.js`): a round lens at 3x from `flow-large.jpg`, mouse/trackpad only.
 
 ## Phones
-- Below 768px a page shows the "Grab your laptop!" gate (`.mgate`, Figma 579:20032) unless its `<body>` has `class="m-ok"`. Phone-ready so far: `index.html`, `about.html`. Turn a page on only once its phone layout is approved.
+- Below 768px a page shows the "Grab your laptop!" gate (`.mgate`, Figma 579:20032) unless its `<body>` has `class="m-ok"`. Phone-ready so far: `index.html`, `about.html`, `workshop-locked.html`, `workshop.html`. Turn a page on only once its phone layout is approved.
 - On `m-ok` pages the gate's bar is the header (logo + menu; the approved line→X animation, links About / Contact / Resume) and the desktop header hides.
 - Phone layout follows Figma 300:8611: an 8-column grid (20 gutter, no margin), so content runs from column 2 to 7, `max(20px, 13.141vw)` each side (51.25 at 390). Home hero: drawing 234 wide, title 42/40, intro split before "Recently designing…", TAKE A LOOK (fades faster on phones). Cards: 287-wide images shortened to 287×360, logo centered on top, screen below running off the right.
 - Every page starts with the `.mgate` block; if you add a page, copy it in right after `<body>`. Its drawing is a copy of the home hero art, so it bobs and blinks with the same code.

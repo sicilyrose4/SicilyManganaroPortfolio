@@ -19,7 +19,7 @@
     try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
   </script>
 </head>
-<body class="page-workshop">
+<body class="m-ok page-workshop">
   <!-- Phones (Figma 579:20032 / 579:20053): the site is desktop-only for now, so below 768px this
        screen replaces the page (see .mgate in style.css; the menu toggle is in js/main.js). -->
   <div class="mgate" data-mobile-gate>
@@ -114,6 +114,7 @@
             <img loading="lazy" src="assets/images/workshop/flow.png" width="2044" height="1036" alt="User flow chart mapping how a user adds planned content by hand and with Cici">
             <span class="magnify__lens" aria-hidden="true"></span>
           </div>
+          <p class="ws-swipe" aria-hidden="true">Swipe to see the whole flow →</p>
           <figcaption>An early user flow mapping how users would add planned content, by hand and with Cici.</figcaption>
         </figure>
       </section>
@@ -255,7 +256,7 @@
 
         <h3 data-reveal class="ws-sub">Big design question - where should Cici live?</h3>
         <p data-reveal class="ws-body ws-body--wide">Deciding how Cici would show up on the calendar was one of the biggest design decisions of the project. I went through a lot of iterations, from a “Plan with Cici” button that opens a chat panel to different header placements, and tested whether the calendar should shrink to five days or keep all seven when the chat is open.</p>
-        <div class="ws-comp" data-reveal style="aspect-ratio: 1022 / 420.0">
+        <div class="ws-comp ws-comp--ex" data-reveal style="aspect-ratio: 1022 / 420.0">
   <img loading="lazy" src="assets/images/workshop/ex-1.png" style="left:-0.391%;top:0.000%;width:17.123%" alt="Exploration 1 of 10 for where Cici lives on the calendar">
   <img loading="lazy" src="assets/images/workshop/ex-2.png" style="left:16.341%;top:0.000%;width:17.123%" alt="Exploration 2 of 10 for where Cici lives on the calendar">
   <img loading="lazy" src="assets/images/workshop/ex-3.png" style="left:33.659%;top:0.000%;width:17.123%" alt="Exploration 3 of 10 for where Cici lives on the calendar">

@@ -1382,23 +1382,68 @@ a { color: inherit; text-decoration: none; }
   .ws-steps li { gap: 6px; padding-right: 10px; font-size: 12px; line-height: 16px; }
   .ws-steps__n { width: 20px; height: 20px; margin-top: 0; font-size: 11px; }
 }
-/* Phones: each step row becomes a vertical sequence (screen full width, its numbered label under it),
-   using the --o order each screen and label carries (2·step for screens, 2·step+1 for the label) */
+.ws-swipe { display: none; } /* phones only */
+/* Phones: every image fills the text column (margins stay put); each step row becomes a vertical
+   sequence with its numbered label above its screen (--o: 2·step+1 for labels, 2·step for screens,
+   shifted so the label leads); the user flow scrolls sideways at a readable size */
 @media (max-width: 767px) {
   .m-ok .ws { padding-top: 40px; }
   .m-ok .ws-rule { margin: 64px 0; }
   .m-ok .ws-sub { margin-top: 88px; }
   .m-ok .ws-solution { padding-top: 64px; }
   .m-ok .ws-solution__inner { padding-top: 64px; }
+
+  .m-ok .ws .ws-problem-img,
+  .m-ok .ws .ws-fig > img,
+  .m-ok .ws .ws-cards img,
+  .m-ok .ws > .container > .ws-comp,
+  .m-ok .ws .ws-sec > .ws-comp {
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: 0 !important;
+  }
+
+  /* the hero is cut off like the solution screen: big enough to read, starting at the left margin
+     (minus its baked-in shadow, ~4% of the export) and running off the right edge */
+  .m-ok .ws { overflow-x: clip; }
+  .m-ok .ws .ws-hero {
+    --w: calc(2 * (100vw - max(20px, 13.141vw)));
+    width: var(--w); max-width: none; margin: 48px 0 0 calc(-0.04 * var(--w)); /* close under the meta so it peeks in on the first screen */
+  }
+
+  /* the solution screen is meant to be cut off (as on desktop): it starts at the left margin and runs
+     off the right edge of the screen */
+  .m-ok .ws-solution { overflow-x: clip; }
+  .m-ok .ws .ws-solution__img { width: calc(1.35 * (100% - max(20px, 13.141vw))); max-width: none; margin: 32px 0 0 calc(max(20px, 13.141vw) - 0.092 * (100% - max(20px, 13.141vw))); } /* pulled left by the export's baked-in shadow so the screen edge meets the margin */
+
   .m-ok .ws-flow { display: flex; flex-direction: column; margin-top: 32px; }
   .m-ok .ws-flow > .ws-comp, .m-ok .ws-flow > .ws-steps { display: contents; }
-  .m-ok .ws-flow .ws-comp > img { position: static; order: var(--o); width: 100% !important; height: auto; margin-top: 28px; }
-  .m-ok .ws-flow .ws-comp > img:first-child { margin-top: 0; }
-  /* Tall screens (Cici chats, the edit panel) at three-quarters width so one step doesn't fill the screen */
-  .m-ok .ws-flow .ws-comp > img:is([src*="/ci-1."], [src*="/ci-2."], [src*="/ci-3."], [src*="/ed-2."]) { width: 75% !important; }
+  .m-ok .ws-flow .ws-comp > img {
+    position: static; order: calc(var(--o) + 1); height: auto; margin-top: 12px;
+    width: 100% !important; max-width: 100%; margin-left: 0;
+  }
+  .m-ok .ws .ws-phases__cici { order: -1; margin: -13px 0 -13px -13px; } /* Cici above the phases; offsets cancel the export's glow */
+  /* explorations: no overlapping collage on phones. The four single screens sit two per row; each
+     two- or three-screen export gets its own full-width row; the connector lines drop out */
+  .m-ok .ws .ws-comp--ex { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; aspect-ratio: auto !important; }
+  .m-ok .ws-comp--ex > img { position: static; width: 100% !important; }
+  .m-ok .ws-comp--ex > img:nth-child(n+5) { grid-column: 1 / -1; }
+  .m-ok .ws-comp--ex > .ws-comp__line { display: none; }
+
+  .m-ok .ws-flow + .ws-flow, .m-ok .ws-before-after + .ws-flow { margin-top: 80px; } /* a new flow (back to step 1) gets clear space from the last one */
   .m-ok .ws-flow .ws-comp__arrow { display: none; }
-  .m-ok .ws-flow .ws-steps li { order: var(--o); gap: 10px; margin-top: 14px; padding-right: 0; font-size: 15px; line-height: 22px; }
+  .m-ok .ws-before-after figure { display: flex; flex-direction: column; }
+  .m-ok .ws-before-after figcaption { order: -1; margin: 0 0 12px; } /* label above its image, like the steps */
+  .m-ok .ws-flow .ws-steps li { order: calc(var(--o) - 1); gap: 10px; margin-top: 36px; padding-right: 0; font-size: 15px; line-height: 22px; }
+  .m-ok .ws-flow .ws-steps li:first-child { margin-top: 0; }
   .m-ok .ws-flow .ws-steps__n { width: 24px; height: 24px; margin-top: -1px; font-size: 13px; }
+
+  /* the flow starts at the left margin and runs to the right edge of the screen */
+  .m-ok .ws-fig .magnify { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; width: calc(100% + max(20px, 13.141vw)); }
+  .m-ok .ws-fig .magnify img { width: 1000px; max-width: none; }
+  .m-ok .ws-swipe { display: block; margin: 12px 0 0; color: var(--accent); font-family: var(--font-sans); font-weight: 400; font-size: 14px; line-height: 20px; }
+  .m-ok .ws-swipe + figcaption { margin-top: 6px; }
+}
 }
 
 /* ---------- Phone screen (Figma 579:20032, menu 579:20053) ---------- */
