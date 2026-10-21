@@ -1123,6 +1123,10 @@ a { color: inherit; text-decoration: none; }
   /* Round 2 mood board: the export's arrow (left 164px of 958) pointed at the images beside the text;
      stacked under it, the arrow is cropped off and the images start at the margin */
   .m-ok .bd-round2__concept img { width: 100%; max-width: 100%; aspect-ratio: 794 / 266; object-fit: cover; object-position: right center; }
+  /* PLAY THE GAME row, scaled down for phones */
+  .m-ok .bd-play__label { gap: 8px; height: 28px; font-size: 14px; line-height: 28px; }
+  .m-ok .bd .bd-play__label img { width: 40px; margin-top: 13px; }
+  .m-ok .bd-play__open { top: 3px; width: 22px; }
   .m-ok .bd-swipe { display: block; margin: 12px 0 0; color: var(--accent); font-family: var(--font-sans); font-weight: 400; font-size: 14px; line-height: 20px; }
 }
 .page-bonedry .site-footer__social:hover,
