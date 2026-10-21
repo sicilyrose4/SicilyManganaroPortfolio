@@ -30,7 +30,7 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - The playable game is embedded in an iframe from `https://sicilyrose4.github.io/bone-dry/` (repo `sicilyrose4/bone-dry`, source in `~/Documents/IXD 432/bone dry`). Updating the game there updates the embed.
 
 ## Work page and Bull Stock
-- **On hold (2026-10-21):** the Work page is out of the navigation. The home page shows Workshop, Luna, Bone Dry, Drop (in that order, no SEE MORE), and every back link reads BACK TO HOME → `index.html#work`. `work.html` still exists but nothing links to it; Bull Stock is only reachable by URL until it gets a home card or the Work page returns.
+- **On hold (2026-10-21):** the Work page is out of the navigation. The home page shows Workshop, Social Block, Luna, Bone Dry, Drop (in that order, no SEE MORE), and every back link reads BACK TO HOME → `index.html#work`. `work.html` still exists but nothing links to it; Bull Stock is only reachable by URL until it gets a home card or the Work page returns.
 - `work.html` (Figma 200:1898): a grid of 501×276 tiles in `assets/images/work-page/`, cut whole from the Figma frame at 2x. Rebound, Depop and Fizz have no case study pages yet, so their tiles link to `in-progress.html`.
 - `bull-stock.html` has no Figma frame: its layout was approved from a mockup. It shares the Bone Dry `.bd-*` styles plus `.bs-*`. Images come from the group project's Figma file (`ny9fhUlVOT652zelldNh02`), read-only. It is linked from the Work page only, not from a home card.
 
@@ -54,6 +54,9 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - Every page starts with the `.mgate` block; if you add a page, copy it in right after `<body>`. Its drawing is a copy of the home hero art, so it bobs and blinks with the same code.
 - About uses the road footer with its email line kept invisible (`.site-footer__contact--spacer`): the road and car are measured from that line, so don't delete it.
 
+## Home header
+- On the home page (`body.page-home`) the header, or the phone bar on phones, is sticky: scrolling down tucks it above the window and scrolling up brings it back (`js/main.js`, `.page-home` rules in `style.css`).
+
 ## About page
 - `about.html` follows Figma 631:8730. Styles are the `.about*` block at the end of `style.css` (comments give Figma y). The portrait is `assets/images/about/portrait.png` (2x, transparent) inside a bordered card.
 - Every About link (header, phone menu, footer) points to `about.html`; on that page the nav marks it with `aria-current="page"` (bold).
@@ -65,6 +68,11 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - Video fills in Figma map to `assets/videos/luna/`: Behance 9/10 → app-walkthrough-1/2, the laptop/phone recordings → website-desktop/mobile (cropped inside `.lv__clip`).
 - Phones: the `.lv` block becomes a 6-column stack (CSS only, picked by image `src`); bands and loose arrows are hidden. Two parts keep their desktop arrangement, scaled as one piece, inside `.lv__group` wrappers (`display: contents` on desktop, Figma bounds in `--gx/--gy/--gw/--gh`): the website recordings with the two long site strips, and the earbud rendering rows. The header collage and the two walk-through videos are swapped for clips cut from the same footage (`assets/videos/luna/collage-tiles/`, posters in `assets/images/luna/collage-tiles/`, cut with ffmpeg). They live in `.m-col` / `.m-wt` with `data-phone-videos`, so `js/main.js` loads and plays them on phones only. The generated block's HTML order was hand-edited for phones (desktop unaffected, everything is absolutely placed): the two `.lv__group` wrappers; laptop recording before the phone recording; Sleep stats screen right after its sketch, then the charts, then the "Tap Heart Rate…" caption; plus the added "The app explained:" heading and `.m-wt`. Keep these if the block is regenerated.
 - Exports carry the page's #111; the floating product renders use `mix-blend-mode: lighten` so they sit on the navy band. Bands are 30% opacity, as in Figma.
+
+## Social Block case study
+- `social-block.html` follows Figma 556:6053 ("social block — draft"). Light Workshop look: it reuses the `.ws-*` styles plus the `.sb-*` block in `style.css` (comments give Figma y). Visuals are 2x exports in `assets/images/social-block/`; the initial flow places its six screens, labels and the four drag arrows (`arrow-*.svg`) at their Figma positions (`.sb-flow`), and stacks label-then-screen on phones.
+- It's a Workshop internship project, so it shares Workshop's password and unlock: `social-block-locked.html` (same gate, `data-next="social-block.html"`) and the same `unlocked:workshop` check first in its `<head>`.
+- Home card (Figma 595:22182) sits second, after Workshop, and links to `social-block-locked.html`. It isn't in the See more carousels yet (no 501×276 tile exists).
 
 ## Drop case study
 - `drop.html` follows Figma 651:8736 ("drop — draft"), in the Bone Dry / Workshop format on Drop's dark #1c1c1c with the lime #ebffae accent. Styles are the `.dp-*` block in `style.css` (comments give Figma y).

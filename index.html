@@ -16,7 +16,7 @@
     try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
   </script>
 </head>
-<body class="m-ok">
+<body class="m-ok page-home">
   <!-- Phones (Figma 579:20032 / 579:20053): the site is desktop-only for now, so below 768px this
        screen replaces the page (see .mgate in style.css; the menu toggle is in js/main.js). -->
   <div class="mgate" data-mobile-gate>
@@ -119,6 +119,22 @@
           <div class="project-card__screen">
             <img src="assets/images/work/workshop-screen.png" width="1138" height="562" alt="Workshop's calendar with the Cici AI planning assistant open">
           </div>
+        </div>
+      </a>
+
+      <!-- Password-protected like Workshop (same password): goes to its gate -->
+      <a data-reveal class="project-card project-card--social" href="social-block-locked.html">
+        <div class="project-card__head">
+          <p class="project-card__label">INTERNSHIP PROJECT II</p>
+          <h2 class="project-card__title">Social Block</h2>
+          <p class="project-card__desc">A drag-and-drop block for adding social media links to emails in Workshop’s email editor.</p>
+        </div>
+        <div class="project-card__media">
+          <div class="project-card__screen">
+            <img src="assets/images/work/social-screen.png" width="530" height="640" alt="Workshop’s Social links drawer with Facebook selected">
+          </div>
+          <img class="project-card__logo" src="assets/images/work/workshop-logo.svg" width="160" height="116" alt="Workshop">
+          <img class="project-card__chip" src="assets/images/work/social-chip.png" width="82" height="82" alt="">
         </div>
       </a>
 

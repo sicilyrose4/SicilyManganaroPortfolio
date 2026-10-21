@@ -516,3 +516,23 @@ document.querySelectorAll('[data-phone-videos]').forEach((group) => {
   start();
   phone.addEventListener('change', start);
 });
+
+// Home page: the header (the phone bar on phones) stays out of the way while you scroll down and slides
+// back in at the top of the window as soon as you scroll up; at the very top it's just the normal header.
+if (document.body.classList.contains('page-home')) {
+  const bars = [document.querySelector('.site-header'), document.querySelector('.mgate')].filter(Boolean);
+  let lastY = scrollY;
+  const update = () => {
+    const y = scrollY;
+    const menuOpen = document.documentElement.classList.contains('mgate-open');
+    bars.forEach((bar) => {
+      bar.classList.toggle('is-stuck', y > 0);
+      if (y <= bar.offsetHeight || menuOpen) bar.classList.remove('is-tucked');
+      else if (y > lastY + 4) bar.classList.add('is-tucked');
+      else if (y < lastY - 4) bar.classList.remove('is-tucked');
+    });
+    if (Math.abs(y - lastY) > 4) lastY = y;
+  };
+  addEventListener('scroll', update, { passive: true });
+  update();
+}

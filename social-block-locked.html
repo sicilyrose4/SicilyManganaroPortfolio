@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workshop Social Block — Password required — Sicily Manganaro</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    // Arriving from a dark page (e.g. Luna's BACK TO HOME): start dark and fade to light first.
+    try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
+  </script>
+</head>
+<body class="m-ok">
+  <!-- Phones (Figma 579:20032 / 579:20053): the site is desktop-only for now, so below 768px this
+       screen replaces the page (see .mgate in style.css; the menu toggle is in js/main.js). -->
+  <div class="mgate" data-mobile-gate>
+    <div class="mgate__bar">
+      <a class="mgate__logo" href="index.html" aria-label="Sicily Manganaro — home"><img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt=""></a>
+      <button class="mgate__toggle" type="button" aria-expanded="false" aria-controls="mgate-menu" aria-label="Open menu">
+        <!-- Three lines (Figma 579:20052) that turn into the X (579:20081/82) when the menu opens -->
+        <svg class="mgate__icon" width="30" height="24" viewBox="0 0 30 24" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="mgate__line mgate__line--top" d="M1.25 6H28.75"/><path class="mgate__line mgate__line--mid" d="M1.25 12H28.75"/><path class="mgate__line mgate__line--bot" d="M1.25 18H28.75"/></g></svg>
+      </button>
+    </div>
+    <div class="mgate__body" id="mgate-body">
+      <div class="hero__art mgate__art">
+        <img class="hero__desk" src="assets/images/hero/desk.png" width="1062" height="979" alt="Illustration of Sicily sitting at her desk with a laptop, surrounded by stars and design tools">
+        <img class="hero__desk hero__desk--blink" src="assets/images/hero/desk-blink.png" width="1062" height="979" alt="" aria-hidden="true">
+        <span class="doodle doodle--stars-1" style="--x:279.29; --y:26.38; --w:95.49"><img src="assets/images/hero/stars-1.png" width="191" height="145" alt=""></span>
+        <span class="doodle doodle--stars-2" style="--x:102.63; --y:12.45; --w:125.16"><img src="assets/images/hero/stars-2.png" width="250" height="176" alt=""></span>
+        <span class="doodle doodle--bubble-1" style="--x:294.16; --y:109.93; --w:107.08"><img src="assets/images/hero/bubble-1.png" width="214" height="44" alt=""></span>
+        <span class="doodle" style="--x:130.95; --y:137.40; --w:26.65"><img src="assets/images/hero/bubble-2.png" width="53" height="45" alt=""></span>
+        <span class="doodle" style="--x:346.97; --y:221.54; --w:32.22"><img src="assets/images/hero/cursor.png" width="64" height="80" alt=""></span>
+        <span class="doodle" style="--x:379.19; --y:168.23; --w:18.77"><img src="assets/images/hero/star-3.png" width="38" height="40" alt=""></span>
+        <span class="doodle" style="--x:294.36; --y:133.69; --w:44.50"><img src="assets/images/hero/stars-4.png" width="89" height="138" alt=""></span>
+        <span class="doodle" style="--x:47.28; --y:137.40; --w:46.36"><img src="assets/images/hero/line-height.png" width="93" height="95" alt=""></span>
+        <span class="doodle" style="--x:231.78; --y:92.21; --w:39.63"><img src="assets/images/hero/pen-tool.png" width="79" height="76" alt=""></span>
+        <span class="doodle" style="--x:113.80; --y:199.52; --w:17.15"><img src="assets/images/hero/stars-7.png" width="34" height="44" alt=""></span>
+        <span class="doodle" style="--x:332.65; --y:112.34; --w:30.13"><img src="assets/images/hero/stars-5.png" width="60" height="60" alt=""></span>
+        <span class="doodle" style="--x:143.32; --y:72.54; --w:36.16"><img src="assets/images/hero/color-picker.png" width="72" height="96" alt=""></span>
+        <span class="doodle" style="--x:64.67; --y:237.99; --w:57.71"><img src="assets/images/hero/stars-6.png" width="115" height="94" alt=""></span>
+      </div>
+      <h1 class="mgate__title">Grab your laptop!</h1>
+      <p class="mgate__text">This portfolio is desktop-only for now.</p>
+    </div>
+    <nav class="mgate__menu" id="mgate-menu" aria-label="Menu" hidden>
+      <a href="about.html">About</a>
+      <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
+      <a href="assets/docs/sicily-manganaro-resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
+  <!-- Figma 300:8893 -->
+  <main class="lock-page container">
+    <a class="back-link" data-reveal href="index.html#work">
+      <!-- Inline copy of assets/images/arrow-back-circle.svg (Figma rotates it 90°) so it can fill on hover -->
+      <svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg>
+      BACK TO HOME
+    </a>
+
+    <!-- data-password-gate: the project this unlocks (Social Block shares the Workshop password and unlock); data-next: where to go once unlocked -->
+    <section class="lock" data-password-gate="workshop" data-next="social-block.html">
+      <img class="lock__art" data-reveal src="assets/images/lock/password-protected.png" width="300" height="426" alt="Hand-drawn padlock">
+      <h1 class="lock__title" data-reveal>This project is password protected.</h1>
+      <form class="lock__form" data-reveal novalidate>
+        <div class="lock__field">
+          <label class="visually-hidden" for="project-password">Password</label>
+          <input class="lock__input" id="project-password" name="password" type="password" placeholder="Enter password" autocomplete="off" aria-describedby="password-hint" autofocus>
+          <p class="lock__error" role="alert" aria-live="assertive"></p>
+          <p class="lock__hint" id="password-hint">The password is at the top of my resume<br>(top right of the home page).</p>
+        </div>
+        <button class="outline-button lock__submit" type="submit">ENTER</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

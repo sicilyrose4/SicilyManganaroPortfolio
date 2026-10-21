@@ -292,6 +292,21 @@ a { color: inherit; text-decoration: none; }
 }
 .project-card--workshop .project-card__screen img { width: 100%; }
 
+/* Social Block (Figma 595:22182): the drawer runs off the bottom; the W with the Social block button on it */
+.project-card--social .project-card__media { background: linear-gradient(#f7fcff, #caddff); }
+.project-card--social .project-card__head { max-width: 680px; } /* one line, as in Figma (DM Sans sets a little wider) */
+.project-card--social .project-card__screen {
+  left: calc(144.5 * var(--px)); top: calc(35 * var(--px)); width: calc(291.5 * var(--px));
+  border-radius: calc(8 * var(--px)) calc(8 * var(--px)) 0 0; overflow: hidden;
+  box-shadow: 0 3px 18px rgba(37, 46, 64, 0.18);
+}
+.project-card--social .project-card__screen img { width: 100%; }
+.project-card--social .project-card__logo { left: calc(648 * var(--px)); top: calc(106 * var(--px)); width: calc(160 * var(--px)); }
+.project-card--social .project-card__chip {
+  left: calc(767 * var(--px)); top: calc(174 * var(--px)); width: calc(86 * var(--px)); height: auto;
+  border-radius: calc(4 * var(--px)); box-shadow: 0 2px 8px rgba(37, 46, 64, 0.15);
+}
+
 .project-card--luna .project-card__media { background: linear-gradient(#17294a 14.423%, #111); }
 .project-card--luna .project-card__screen {
   left: calc(76.5 * var(--px)); top: calc(48 * var(--px)); width: calc(514.87 * var(--px));
@@ -451,6 +466,9 @@ a { color: inherit; text-decoration: none; }
   .m-ok .project-card--bonedry .project-card__logo { top: calc(30 * var(--px)); width: calc(120 * var(--px)); }
   .m-ok .project-card--bonedry .project-card__screen:nth-child(1) { left: calc(36 * var(--px)); top: calc(135 * var(--px)); width: calc(270 * var(--px)); border-radius: calc(8 * var(--px)); }
   .m-ok .project-card--bonedry .project-card__screen:nth-child(2) { left: calc(70 * var(--px)); top: calc(227 * var(--px)); width: calc(300 * var(--px)); border-radius: calc(9 * var(--px)) calc(9 * var(--px)) 0 0; }
+  .m-ok .project-card--social .project-card__logo { top: calc(40 * var(--px)); width: calc(100 * var(--px)); translate: -60% 0; }
+  .m-ok .project-card--social .project-card__chip { left: calc(158 * var(--px)); top: calc(83 * var(--px)); width: calc(54 * var(--px)); }
+  .m-ok .project-card--social .project-card__screen { left: calc(18.5 * var(--px)); top: calc(160 * var(--px)); width: calc(250 * var(--px)); } /* centered in the 287-wide card */
   .m-ok .project-card--drop .project-card__logo { top: calc(50 * var(--px)); width: calc(130 * var(--px)); }
   .m-ok .project-card--drop .project-card__screen { left: calc(36 * var(--px)); top: calc(161 * var(--px)); width: calc(420 * var(--px)); border-radius: calc(9 * var(--px)) calc(9 * var(--px)) 0 0; }
 
@@ -1615,6 +1633,168 @@ a { color: inherit; text-decoration: none; }
   .m-ok .ws-fig .magnify img { width: 1000px; max-width: none; }
   .m-ok .ws-swipe { display: block; margin: 12px 0 0; color: var(--accent); font-family: var(--font-sans); font-weight: 400; font-size: 14px; line-height: 20px; }
   .m-ok .ws-swipe + figcaption { margin-top: 6px; }
+}
+
+/* ---------- Home: header that comes back on scroll up (js/main.js) ---------- */
+/* Sticky, so it never changes the layout: scrolling down tucks it above the window, scrolling up slides
+   it back. Once the page has moved it gets the page background across the full window width. */
+.page-home .site-header, .page-home.m-ok .mgate { position: sticky; top: 0; z-index: 50; transition: translate 0.3s ease; }
+.page-home .site-header.is-stuck::before, .page-home.m-ok .mgate.is-stuck::before {
+  content: ""; position: absolute; z-index: -1; inset: 0 calc(50% - 50vw); background: var(--bg);
+  box-shadow: 0 1px 0 rgba(37, 46, 64, 0.06);
+}
+.page-home .site-header.is-tucked, .page-home.m-ok .mgate.is-tucked { translate: 0 -100%; }
+@media (prefers-reduced-motion: reduce) { .page-home .site-header, .page-home.m-ok .mgate { transition: none; } }
+
+/* ---------- Social Block case study (Figma 556:6053, "social block — draft") ---------- */
+/* Built on the Workshop styles (.ws, .ws-intro, .ws-meta, .ws-body, .ws-callout, .ws-sub, .ws-rule,
+   .ws-steps__n). Comments give the Figma y (frame 1440 wide, column 209–1231). */
+.sb :where(h2, h3, h4, p, figure) { margin: 0; }
+.sb img { display: block; height: auto; }
+.sb .sb-hero { width: calc(100% + 25.5px); max-width: none; margin: 123px 0 0 -12.75px; } /* 540; the export carries 12.75px of shadow */
+.sb-h2 { color: var(--ink); font-size: 36px; font-weight: 600; line-height: 26px; }
+.sb-split { position: relative; }
+.sb-split__text { max-width: 700px; }
+.sb-problem { margin-top: 191px; } /* 1234 */
+.sb .sb-problem__body { max-width: 546px; margin-top: 56px; } /* 1316 */
+.sb .sb-problem__callout { max-width: 700px; margin-top: 24px; } /* 1392 */
+.sb .sb-problem__icons { position: absolute; right: -4px; top: 18px; width: 224px; } /* x 1011, y 1252 */
+.sb .sb-rule { margin: 120px 0; }
+.sb .sb-solution__body { max-width: 501px; margin-top: 56px; } /* 1740 */
+.sb .sb-solution__img { position: absolute; right: -1px; top: -73px; width: 216px; } /* x 1016, y 1585 */
+/* Wireframes (2032) */
+.sb-wf { position: relative; margin-top: 125px; padding-top: 39px; } /* labels 2183, image 2222 */
+.sb-wf__label { position: absolute; top: 0; left: 0; font-size: 16px; font-weight: 500; line-height: 24px; }
+.sb-wf__label--drawer { left: 730px; top: -4px; } /* x 939, y 2183 */
+.sb .sb-wf img { width: 100%; }
+.sb .sb-sub { margin-top: 72px; } /* Initial flow 2727 */
+.sb-sub--evolved, .sb-sub--drag { margin-top: 107px !important; } /* 4246, 5445 */
+.sb-sub--first { margin-top: 56px !important; } /* 6935 */
+.sb-sub--row { margin-top: 70px !important; } /* 7827, 8395, 8987 */
+.sb-sub + .ws-body { margin-top: 14px; }
+/* Initial flow (2779–3896): six screens in two columns, labels under each row, arrows tracing the
+   drag across them. Every piece sits at its Figma x/y in the 1022 column (container units) */
+.sb-flow { position: relative; container-type: inline-size; aspect-ratio: 1022 / 1117; margin-top: 24px; }
+.sb-flow > * { position: absolute; left: calc(var(--x) / 1022 * 100cqw); top: calc(var(--y) / 1022 * 100cqw); }
+.sb .sb-flow > img { width: calc(var(--w) / 1022 * 100cqw); }
+.sb-flow__step { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; font-weight: 500; line-height: 24px; white-space: nowrap; }
+.sb .sb-flow__arrow { pointer-events: none; }
+/* Side note (3947) */
+.sb-note { display: flex; align-items: flex-start; gap: 24px; margin-top: 51px; }
+.sb .sb-note img { width: 314px; }
+.sb-note p { max-width: 267px; margin-top: 70px; color: #777f90; font-size: 14px; line-height: 22px; } /* x 547, y 4017 */
+/* How the design evolved (4372): 2 × 2, each screen with its notes beside it */
+.sb-vers { display: grid; grid-template-columns: 1fr 1fr; gap: 56px 40px; margin-top: 32px; }
+/* screenshots exported with their drop shadow: the box is the screen, the image spills 12.75px around it */
+.sb-shot { display: flow-root; flex: none; } /* flow-root keeps the image's negative margins inside the box */
+.sb .sb-shot img { width: calc(100% + 25.5px) !important; max-width: none; margin: -8.75px -12.75px -16.75px; }
+.sb-ver { display: flex; align-items: flex-start; gap: 34px; }
+.sb-ver__text { max-width: 277px; padding-top: 8px; }
+.sb-ver__title { font-size: 22px; font-weight: 600; line-height: 28px; }
+.sb-ver__sub { margin-top: 40px !important; font-size: 15px; font-weight: 500; line-height: 22px; }
+.sb-ver__label { margin-top: 20px !important; color: #777f90; font-size: 11px; font-weight: 500; line-height: 16px; letter-spacing: 0.07em; }
+.sb-ver__label + .sb-ver__body { margin-top: 4px !important; }
+.sb-ver__body { max-width: 235px; font-size: 14px; line-height: 21px; }
+/* Drag handle versions (5597) */
+.sb-handles { display: grid; grid-template-columns: repeat(3, 314px); justify-content: space-between; margin-top: 58px; }
+.sb .sb-handles img { width: 100%; }
+.sb-handles figcaption { margin-top: 25px; font-size: 14px; line-height: 21px; } /* 6026 */
+.sb-handles strong { display: block; margin-bottom: 4px; font-size: 15px; font-weight: 500; line-height: 22px; white-space: pre; }
+.sb .sb-handles__after { max-width: 639px; margin-top: 123px; } /* 6196 */
+.sb-states { display: grid; grid-template-columns: 305px 305px; justify-content: start; gap: 34px 205px; margin-top: 51px; padding: 34px 103px 30px; border-radius: 12px; background: #fff; } /* panel 6285, 1022 × 290 */
+.sb-states figcaption { margin-bottom: 18px; font-size: 16px; font-weight: 500; line-height: 24px; }
+.sb .sb-states img { width: 305px; }
+.sb .sb-states__caption { margin: 16px 0 -40px; } /* the divider is 80 below (6733) */
+/* Final design rows: screens with → between and a label under each */
+.sb-row { display: flex; align-items: flex-start; justify-content: space-between; margin-top: 24px; }
+.sb-row + .sb-row { margin-top: 38px; }
+.sb-row figure { flex: none; }
+.sb-row figcaption { display: flex; align-items: flex-start; gap: 12px; margin-top: 18px; font-size: 16px; font-weight: 500; line-height: 24px; }
+.sb-row--e { margin-top: 37px; } /* 7000 */
+.sb-row--e + .sb-row--e { margin-top: 51px; } /* 7404 */
+.sb-row--e figure { width: 491px; }
+/* each editing step: the drawer and the email snippet at their Figma offsets in a 491 × 307 box */
+.sb-estep__art { position: relative; container-type: inline-size; aspect-ratio: 491 / 307; }
+.sb-estep__art > * { position: absolute; left: calc(var(--x) / 491 * 100cqw); top: calc(var(--y) / 491 * 100cqw); }
+.sb .sb-estep__art > .sb-shot { width: calc(116 / 491 * 100cqw) !important; }
+.sb .sb-estep__art > .sb-estep__email { width: calc(211 / 491 * 100cqw); }
+.sb-row--a { margin-top: 36px; } /* 7891 */
+.sb-row--a figure { width: 235px; }
+.sb-row--a .sb-shot { width: 155px !important; }
+.sb-row--a figcaption { margin-top: 33px !important; } /* 8299 */
+.sb-row--a .sb-row__arrow { translate: -40px 0; } /* between the screens, as in Figma (x 409, 672, 934) */
+.sb-row--q figure { width: 235px; }
+.sb-row--z { margin-top: 40px; } /* 9055 */
+.sb-row--z figure { width: 285px; }
+.sb .sb-row--z .sb-z__icons { margin-top: 40px; } /* 9175 */
+.sb-row--z figcaption { margin-top: 40px !important; } /* 9258 */
+.sb-row--z .sb-row__arrow { align-self: flex-start; margin-top: 26px; } /* level with the dropdowns */
+.sb-row--z { padding-bottom: 61px; } /* the divider sits 181 below the labels (9463); padding, so it adds to the rule's margin */
+.sb-row--q figcaption { margin-top: 20px; }
+.sb .sb-row img { width: 100%; }
+.sb-row__arrow { align-self: center; margin-top: -20px; color: #777f90; font-size: 22px; line-height: 28px; }
+.sb-row--e .sb-row__arrow { margin-top: -62px; } /* centered on the screens, not the labels */
+/* What's next (9583) */
+.sb .sb-next__body { margin-top: 56px; }
+.sb-next { display: flex; justify-content: space-between; margin-top: 28px; }
+.sb-next figure { width: 491px; }
+.sb .sb-next img { width: 100%; }
+.sb-next figcaption { margin-top: 16px; color: #777f90; font-size: 14px; line-height: 22px; }
+.sb .sb-outcome { max-width: 700px; margin-top: 56px; } /* 10399 */
+.sb .more { padding-top: 160px; }
+
+/* Social Block on phones: everything stacks in reading order, labels above their screens */
+@media (max-width: 767px) {
+  /* hero like Workshop's: enlarged, its left edge on the margin (minus the export's shadow, 1.2%), running off the right */
+  .m-ok .sb .sb-hero { --w: calc(2 * (100vw - max(20px, 13.141vw))); width: var(--w); max-width: none; margin: 48px 0 0 calc(-0.012 * var(--w)); }
+  .m-ok .sb-h2 { font-size: 30px; line-height: 34px; }
+  .m-ok .sb-problem { margin-top: 64px; }
+  .m-ok .sb .sb-rule { margin: 64px 0; }
+  .m-ok .sb .sb-problem__body, .m-ok .sb .sb-solution__body { margin-top: 24px; }
+  .m-ok .sb .sb-problem__icons, .m-ok .sb .sb-solution__img { position: static; margin-top: 32px; }
+  .m-ok .sb .sb-problem__icons { width: 180px; }
+  .m-ok .sb .sb-solution__img { width: 200px; }
+  .m-ok .sb-wf { margin-top: 32px; padding-top: 0; }
+  .m-ok .sb-wf__label { display: none; }
+  .m-ok .sb .sb-sub, .m-ok .sb-sub--evolved, .m-ok .sb-sub--drag, .m-ok .sb-sub--row { margin-top: 64px !important; }
+  .m-ok .sb-sub--first { margin-top: 32px !important; }
+  /* initial flow: label, then its screen, one after another; the drag arrows drop out */
+  .m-ok .sb-flow { display: flex; flex-direction: column; gap: 12px; aspect-ratio: auto; }
+  .m-ok .sb-flow > * { position: static; order: var(--o); }
+  .m-ok .sb .sb-flow > img { width: 100%; margin-bottom: 24px; }
+  .m-ok .sb .sb-flow > .sb-flow__arrow { display: none; }
+  .m-ok .sb-flow__step { white-space: normal; font-size: 15px; line-height: 22px; }
+  .m-ok .sb-note { flex-direction: column; margin-top: 32px; }
+  .m-ok .sb .sb-note img { width: 100%; }
+  .m-ok .sb-note p { max-width: none; margin-top: 0; }
+  .m-ok .sb-vers { grid-template-columns: 1fr; gap: 48px; }
+  .m-ok .sb-ver__sub { margin-top: 8px !important; }
+  .m-ok .sb-handles { grid-template-columns: 1fr; gap: 40px; }
+  .m-ok .sb-handles figure { display: flex; flex-direction: column; }
+  .m-ok .sb-handles figcaption { order: -1; margin: 0 0 12px; }
+  .m-ok .sb .sb-handles img { width: 75%; }
+  .m-ok .sb .sb-handles__after { margin-top: 40px; }
+  .m-ok .sb-states { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+  .m-ok .sb .sb-states img { width: 100%; }
+  .m-ok .sb-states figcaption { margin-bottom: 10px; font-size: 15px; }
+  /* final design rows: arrows drop out, each label sits above its screen */
+  .m-ok .sb-row { display: grid; grid-template-columns: 1fr; gap: 32px; }
+  .m-ok .sb-row--q, .m-ok .sb-row--a { grid-template-columns: 1fr 1fr; gap: 28px 12px; }
+  .m-ok .sb-row--a figure { align-items: center; }
+  .m-ok .sb-row--a figcaption { align-self: stretch; margin: 0 0 14px !important; }
+  .m-ok .sb-row--a .sb-shot { width: 80% !important; }
+  .m-ok .sb-row--z figcaption { margin: 0 0 10px !important; }
+  .m-ok .sb-row--e + .sb-row--e { margin-top: 32px; }
+  .m-ok .sb .sb-ver .sb-shot { width: 120px !important; }
+  .m-ok .sb-row__arrow { display: none; }
+  .m-ok .sb-row figure { display: flex; flex-direction: column; width: auto; }
+  .m-ok .sb-row figcaption { order: -1; margin: 0 0 10px; font-size: 15px; line-height: 22px; }
+  .m-ok .sb-row--q figcaption, .m-ok .sb-row--a figcaption { min-height: 44px; align-items: flex-end; }
+  .m-ok .sb-next { flex-direction: column; gap: 32px; }
+  .m-ok .sb-next figure { display: flex; flex-direction: column; width: auto; }
+  .m-ok .sb-next figcaption { order: -1; margin: 0 0 10px; }
+  .m-ok .sb .sb-outcome { margin-top: 24px; }
+  .m-ok .sb .more { padding-top: 96px; }
 }
 
 /* ---------- Phone screen (Figma 579:20032, menu 579:20053) ---------- */

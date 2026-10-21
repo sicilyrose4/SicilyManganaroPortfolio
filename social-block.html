@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Password gate: without a Workshop unlock (either password page) this session, go back to the gate -->
+  <script>try { if (!sessionStorage.getItem('unlocked:workshop')) location.replace('social-block-locked.html'); } catch (e) { location.replace('social-block-locked.html'); }</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workshop Social Block — Sicily Manganaro</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="A drag-and-drop block for adding social media links to emails in Workshop’s modern email editor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    // Arriving from a dark page (e.g. Luna's BACK TO HOME): start dark and fade to light first.
+    try { if (sessionStorage.getItem('arrive-from-dark')) { sessionStorage.removeItem('arrive-from-dark'); document.documentElement.classList.add('from-dark'); } } catch (e) {}
+  </script>
+</head>
+<body class="m-ok page-workshop page-sb">
+  <!-- Phones (Figma 579:20032 / 579:20053): the site is desktop-only for now, so below 768px this
+       screen replaces the page (see .mgate in style.css; the menu toggle is in js/main.js). -->
+  <div class="mgate" data-mobile-gate>
+    <div class="mgate__bar">
+      <a class="mgate__logo" href="index.html" aria-label="Sicily Manganaro — home"><img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt=""></a>
+      <button class="mgate__toggle" type="button" aria-expanded="false" aria-controls="mgate-menu" aria-label="Open menu">
+        <!-- Three lines (Figma 579:20052) that turn into the X (579:20081/82) when the menu opens -->
+        <svg class="mgate__icon" width="30" height="24" viewBox="0 0 30 24" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="mgate__line mgate__line--top" d="M1.25 6H28.75"/><path class="mgate__line mgate__line--mid" d="M1.25 12H28.75"/><path class="mgate__line mgate__line--bot" d="M1.25 18H28.75"/></g></svg>
+      </button>
+    </div>
+    <div class="mgate__body" id="mgate-body">
+      <div class="hero__art mgate__art">
+        <img class="hero__desk" src="assets/images/hero/desk.png" width="1062" height="979" alt="Illustration of Sicily sitting at her desk with a laptop, surrounded by stars and design tools">
+        <img class="hero__desk hero__desk--blink" src="assets/images/hero/desk-blink.png" width="1062" height="979" alt="" aria-hidden="true">
+        <span class="doodle doodle--stars-1" style="--x:279.29; --y:26.38; --w:95.49"><img src="assets/images/hero/stars-1.png" width="191" height="145" alt=""></span>
+        <span class="doodle doodle--stars-2" style="--x:102.63; --y:12.45; --w:125.16"><img src="assets/images/hero/stars-2.png" width="250" height="176" alt=""></span>
+        <span class="doodle doodle--bubble-1" style="--x:294.16; --y:109.93; --w:107.08"><img src="assets/images/hero/bubble-1.png" width="214" height="44" alt=""></span>
+        <span class="doodle" style="--x:130.95; --y:137.40; --w:26.65"><img src="assets/images/hero/bubble-2.png" width="53" height="45" alt=""></span>
+        <span class="doodle" style="--x:346.97; --y:221.54; --w:32.22"><img src="assets/images/hero/cursor.png" width="64" height="80" alt=""></span>
+        <span class="doodle" style="--x:379.19; --y:168.23; --w:18.77"><img src="assets/images/hero/star-3.png" width="38" height="40" alt=""></span>
+        <span class="doodle" style="--x:294.36; --y:133.69; --w:44.50"><img src="assets/images/hero/stars-4.png" width="89" height="138" alt=""></span>
+        <span class="doodle" style="--x:47.28; --y:137.40; --w:46.36"><img src="assets/images/hero/line-height.png" width="93" height="95" alt=""></span>
+        <span class="doodle" style="--x:231.78; --y:92.21; --w:39.63"><img src="assets/images/hero/pen-tool.png" width="79" height="76" alt=""></span>
+        <span class="doodle" style="--x:113.80; --y:199.52; --w:17.15"><img src="assets/images/hero/stars-7.png" width="34" height="44" alt=""></span>
+        <span class="doodle" style="--x:332.65; --y:112.34; --w:30.13"><img src="assets/images/hero/stars-5.png" width="60" height="60" alt=""></span>
+        <span class="doodle" style="--x:143.32; --y:72.54; --w:36.16"><img src="assets/images/hero/color-picker.png" width="72" height="96" alt=""></span>
+        <span class="doodle" style="--x:64.67; --y:237.99; --w:57.71"><img src="assets/images/hero/stars-6.png" width="115" height="94" alt=""></span>
+      </div>
+      <h1 class="mgate__title">Grab your laptop!</h1>
+      <p class="mgate__text">This portfolio is desktop-only for now.</p>
+    </div>
+    <nav class="mgate__menu" id="mgate-menu" aria-label="Menu" hidden>
+      <a href="about.html">About</a>
+      <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
+      <a href="assets/docs/sicily-manganaro-resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
+  <!-- Figma 556:6053 ("social block — draft"). Shares the Workshop page styles (.ws-*) plus the .sb-* block in style.css (comments give Figma y). Visuals are 2x exports in assets/images/social-block/ -->
+  <main class="ws sb">
+    <div class="container">
+      <a class="back-link" data-reveal href="index.html#work"><svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg> BACK TO HOME</a>
+
+      <header class="ws-intro">
+        <div class="ws-intro__text">
+          <h1 data-reveal class="bd-title">Workshop Social Block - <span>Internship Project II</span></h1>
+          <p data-reveal class="bd-summary">A drag-and-drop block for adding social media links to emails in Workshop’s modern email editor.</p>
+        </div>
+        <dl data-reveal class="ws-meta">
+          <div><dt>ROLE</dt><dd>Product Design Intern, Designer</dd></div>
+          <div><dt>TEAM</dt><dd>Me, another designer, and engineers</dd></div>
+          <div><dt>TIMELINE</dt><dd>About 3 weeks, summer 2026</dd></div>
+        </dl>
+      </header>
+
+      <img data-reveal class="sb-hero" src="assets/images/social-block/hero.png" width="1047" height="515" alt="Workshop’s email editor with the Social links drawer open and social icons in the email">
+
+      <section class="sb-split sb-problem">
+        <div class="sb-split__text">
+          <h2 data-reveal class="sb-h2">Problem</h2>
+          <p data-reveal class="ws-body sb-problem__body">The new email editor had no way to add social links, and customers were asking for one.</p>
+          <p data-reveal class="ws-callout sb-problem__callout">Users needed a social block as simple as the rest of the editor.</p>
+        </div>
+        <img class="sb-problem__icons" src="assets/images/social-block/problem-icons.png" width="224" height="170" alt="Facebook, Instagram, X, TikTok, LinkedIn and YouTube icons" data-reveal>
+      </section>
+
+      <hr class="ws-rule sb-rule">
+
+      <section class="sb-split sb-solution">
+        <div class="sb-split__text">
+          <h2 data-reveal class="sb-h2">Solution</h2>
+          <p data-reveal class="ws-body sb-solution__body">Drag in the social block, then manage every network from one drawer: pick it, paste the link, reorder, resize.</p>
+        </div>
+        <img class="sb-solution__img" loading="lazy" src="assets/images/social-block/solution.png" width="216" height="326" alt="The finished Social links drawer" data-reveal>
+      </section>
+
+      <hr class="ws-rule sb-rule">
+
+      <section>
+        <h2 data-reveal class="sb-h2">Wireframes</h2>
+        <div class="sb-wf" data-reveal>
+          <p class="sb-wf__label">Full editor screen</p>
+          <p class="sb-wf__label sb-wf__label--drawer">Drawer</p>
+          <img loading="lazy" src="assets/images/social-block/wireframes.png" width="1022" height="433" alt="Wireframes of the full editor screen and the social link drawer">
+        </div>
+
+        <h3 data-reveal class="ws-sub sb-sub sb-sub--flow">Initial flow</h3>
+        <div class="sb-flow" data-reveal>
+          <img loading="lazy" src="assets/images/social-block/flow-1.png" width="487" height="300" alt="The email editor’s Content tab with the Social block dragged onto the email canvas" style="--x:0;--y:0;--w:487;--o:1">
+          <p class="sb-flow__step" style="--x:0;--y:319;--o:0"><span class="ws-steps__n" aria-hidden="true">1</span>Drag in the social block</p>
+          <img loading="lazy" src="assets/images/social-block/flow-2.png" width="488" height="299" alt="Social link set drawer with three empty icon slots, and the empty slots in the email" style="--x:531;--y:0;--w:488;--o:3">
+          <p class="sb-flow__step" style="--x:531;--y:319;--o:2"><span class="ws-steps__n" aria-hidden="true">2</span>Click an empty icon slot</p>
+          <img loading="lazy" src="assets/images/social-block/flow-3.png" width="488" height="299" alt="Social link drawer with a grid of platform icons to choose from" style="--x:0;--y:385;--w:488;--o:5">
+          <p class="sb-flow__step" style="--x:0;--y:704;--o:4"><span class="ws-steps__n" aria-hidden="true">3</span>Choose an icon</p>
+          <img loading="lazy" src="assets/images/social-block/flow-4.png" width="491" height="299" alt="Facebook chosen in the drawer, with the URL field filled in" style="--x:531;--y:385;--w:491;--o:7">
+          <p class="sb-flow__step" style="--x:531;--y:704;--o:6"><span class="ws-steps__n" aria-hidden="true">4</span>Add the URL</p>
+          <img loading="lazy" src="assets/images/social-block/flow-5.png" width="491" height="301" alt="Social link set with Facebook added, and the Facebook icon in the email" style="--x:0;--y:770;--w:491;--o:9">
+          <p class="sb-flow__step" style="--x:0;--y:1089;--o:8"><span class="ws-steps__n" aria-hidden="true">5</span>The icon is added to the set</p>
+          <img loading="lazy" src="assets/images/social-block/flow-6.png" width="491" height="301" alt="Social link set with the extra slot removed" style="--x:531;--y:770;--w:491;--o:11">
+          <p class="sb-flow__step" style="--x:531;--y:1089;--o:10"><span class="ws-steps__n" aria-hidden="true">6</span>Remove extra slots</p>
+          <img class="sb-flow__arrow" src="assets/images/social-block/arrow-1.svg" width="679" height="67" alt="" style="--x:70;--y:148;--w:679.044">
+          <img class="sb-flow__arrow" src="assets/images/social-block/arrow-2.svg" width="512" height="367" alt="" style="--x:295;--y:217;--w:512.198">
+          <img class="sb-flow__arrow" src="assets/images/social-block/arrow-3.svg" width="428" height="7" alt="" style="--x:140;--y:629.3;--w:428.5">
+          <img class="sb-flow__arrow" src="assets/images/social-block/arrow-4.svg" width="420" height="7" alt="" style="--x:142;--y:904.3;--w:419.5">
+        </div>
+
+        <div class="sb-note" data-reveal>
+          <img loading="lazy" src="assets/images/social-block/greyed.png" width="314" height="192" alt="The icon picker with Facebook greyed out because it is already in the set">
+          <p>Side note: once an icon is in the set, it’s greyed out so it can’t be added twice.</p>
+        </div>
+
+        <h3 data-reveal class="ws-sub sb-sub sb-sub--evolved">How the design evolved</h3>
+        <p data-reveal class="ws-body">In Workshop’s editor, every block is set up in a side drawer. Here’s how the social block’s drawer changed across four versions.</p>
+        <div class="sb-vers">
+          <article class="sb-ver" data-reveal>
+            <span class="sb-shot" style="width:180px"><img loading="lazy" src="assets/images/social-block/v1.png" width="205" height="480" alt="V1 drawer: a grid of social icons on its own screen"></span>
+            <div class="sb-ver__text">
+              <h4 class="sb-ver__title">V1</h4>
+              <p class="sb-ver__sub">Icon grid on its own screen</p>
+              <p class="sb-ver__label">HOW IT WORKED</p>
+              <p class="sb-ver__body">Pick an icon from a grid, then a new screen opens to add its link.</p>
+              <p class="sb-ver__label">THE PROBLEM</p>
+              <p class="sb-ver__body">Adding three links meant three trips back and forth.</p>
+            </div>
+          </article>
+          <article class="sb-ver" data-reveal>
+            <span class="sb-shot" style="width:180px"><img loading="lazy" src="assets/images/social-block/v2.png" width="205" height="480" alt="V2 drawer: icon grid, URL and title in one card per link"></span>
+            <div class="sb-ver__text">
+              <h4 class="sb-ver__title">V2</h4>
+              <p class="sb-ver__sub">Icons and fields in one card</p>
+              <p class="sb-ver__label">WHAT CHANGED</p>
+              <p class="sb-ver__body">The icon grid, URL, and title all live together, one card per link.</p>
+              <p class="sb-ver__label">WHY</p>
+              <p class="sb-ver__body">Fewer clicks, and you can see the whole set at once.</p>
+            </div>
+          </article>
+          <article class="sb-ver" data-reveal>
+            <span class="sb-shot" style="width:180px"><img loading="lazy" src="assets/images/social-block/v3.png" width="205" height="480" alt="V3 drawer: each link uses a dropdown to pick its platform"></span>
+            <div class="sb-ver__text">
+              <h4 class="sb-ver__title">V3</h4>
+              <p class="sb-ver__sub">A dropdown instead of a grid</p>
+              <p class="sb-ver__label">WHAT CHANGED</p>
+              <p class="sb-ver__body">The icon grid became a dropdown.</p>
+              <p class="sb-ver__label">WHY</p>
+              <p class="sb-ver__body">The grid took up too much space in the drawer.</p>
+            </div>
+          </article>
+          <article class="sb-ver" data-reveal>
+            <span class="sb-shot" style="width:180px"><img loading="lazy" src="assets/images/social-block/v4.png" width="205" height="480" alt="Final drawer: one collapsible row per network under Styles and Visibility tabs"></span>
+            <div class="sb-ver__text">
+              <h4 class="sb-ver__title">Final</h4>
+              <p class="sb-ver__sub">One row per network</p>
+              <p class="sb-ver__label">WHAT CHANGED</p>
+              <p class="sb-ver__body">Each link is a row that collapses, under Styles and Visibility tabs.</p>
+              <p class="sb-ver__label">WHY</p>
+              <p class="sb-ver__body">A cleaner list, drag-to-reorder, and tabs that match the editor’s other blocks.</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 data-reveal class="ws-sub sb-sub sb-sub--drag">A closer look at my thought process - making links draggable</h3>
+        <p data-reveal class="ws-body">Reordering links was the detail I spent the most time on. The drawer is narrow, so the drag handle had to be easy to find without crowding each link’s controls.</p>
+        <div class="sb-handles" data-reveal>
+          <figure><img loading="lazy" src="assets/images/social-block/drag-left.png" width="314" height="404" alt="A link card with the drag handle built in on the left"><figcaption><strong>V1 &nbsp; Handle on the left</strong>Always visible, built into each card.</figcaption></figure>
+          <figure><img loading="lazy" src="assets/images/social-block/drag-right.png" width="314" height="404" alt="A link card with the drag handle on the right next to delete"><figcaption><strong>V2 &nbsp; Handle on the right</strong>Moved next to delete, still always visible.</figcaption></figure>
+          <figure><img loading="lazy" src="assets/images/social-block/drag-hover.png" width="314" height="404" alt="A link card with the drag handle outside it, showing on hover"><figcaption><strong>V3 &nbsp; Handle outside, on hover</strong>Only shows up on the link you point at.</figcaption></figure>
+        </div>
+        <p data-reveal class="ws-body sb-handles__after">Handles that were always visible made three links look heavy in a small space, and the team agreed it felt busy. Moving the handle outside the card and showing it on hover keeps each card clean: expand, icon, name, and delete, with nothing competing.</p>
+        <div class="sb-states" data-reveal>
+          <figure><figcaption>Default</figcaption><img loading="lazy" src="assets/images/social-block/state-default.png" width="305" height="54" alt="A link row with no handle showing"></figure>
+          <figure><figcaption>Hover on the link</figcaption><img loading="lazy" src="assets/images/social-block/state-hover-card.png" width="305" height="54" alt="The link row on hover, with the handle showing beside it"></figure>
+          <figure><figcaption>Hover on the handle</figcaption><img loading="lazy" src="assets/images/social-block/state-hover-handle.png" width="305" height="54" alt="The handle darkened under the cursor"></figure>
+          <figure><figcaption>Dragging</figcaption><img loading="lazy" src="assets/images/social-block/state-dragging.png" width="305" height="54" alt="The handle turned blue while dragging"></figure>
+        </div>
+        <p data-reveal class="ws-caption sb-states__caption">The final handle appears when you hover a link, darkens under the cursor, and turns blue while you drag.</p>
+      </section>
+
+      <hr class="ws-rule sb-rule">
+
+      <section>
+        <h2 data-reveal class="sb-h2">Final design</h2>
+        <h3 data-reveal class="ws-sub sb-sub sb-sub--first">Editing a social link</h3>
+        <div class="sb-row sb-row--e" data-reveal>
+          <figure class="sb-estep"><div class="sb-estep__art"><span class="sb-shot" style="--x:60;--y:6;width:auto"><img loading="lazy" src="assets/images/social-block/e1-phone.png" width="141.5" height="307.5" alt="The social links drawer with Facebook’s row open, showing its settings"></span><img class="sb-estep__email" loading="lazy" src="assets/images/social-block/e1-email.png" width="211" height="32" alt="Facebook, Instagram and X icons in the email" style="--x:206;--y:133"></div><figcaption><span class="ws-steps__n" aria-hidden="true">1</span>Open a social to see its settings</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure class="sb-estep"><div class="sb-estep__art"><span class="sb-shot" style="--x:74;--y:6;width:auto"><img loading="lazy" src="assets/images/social-block/e2-phone.png" width="141.5" height="307.5" alt="The Select social dropdown open with TikTok highlighted"></span><img class="sb-estep__email" loading="lazy" src="assets/images/social-block/e2-email.png" width="211" height="32" alt="TikTok, Instagram and X icons in the email" style="--x:220;--y:124"></div><figcaption><span class="ws-steps__n" aria-hidden="true">2</span>Choose a different platform</figcaption></figure>
+        </div>
+        <div class="sb-row sb-row--e" data-reveal>
+          <figure class="sb-estep"><div class="sb-estep__art"><span class="sb-shot" style="--x:60;--y:13;width:auto"><img loading="lazy" src="assets/images/social-block/e3-phone.png" width="141.5" height="307.5" alt="TikTok chosen, with its URL field pre-filled"></span><img class="sb-estep__email" loading="lazy" src="assets/images/social-block/e3-email.png" width="211" height="32" alt="TikTok, Instagram and X icons in the email" style="--x:206;--y:138"></div><figcaption><span class="ws-steps__n" aria-hidden="true">3</span>URL pre-fills with platform</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure class="sb-estep"><div class="sb-estep__art"><span class="sb-shot" style="--x:74;--y:6;width:auto"><img loading="lazy" src="assets/images/social-block/e4-phone.png" width="141.5" height="307.5" alt="The TikTok row with its linked URL"></span><img class="sb-estep__email" loading="lazy" src="assets/images/social-block/e4-email.png" width="211" height="32" alt="The email with the new TikTok icon" style="--x:220;--y:138"></div><figcaption><span class="ws-steps__n" aria-hidden="true">4</span>The email updates with the new icon &amp; linked URL</figcaption></figure>
+        </div>
+        <h3 data-reveal class="ws-sub sb-sub sb-sub--row">Adding a new social</h3>
+        <div class="sb-row sb-row--a" data-reveal>
+          <figure><span class="sb-shot" style="width:155px"><img loading="lazy" src="assets/images/social-block/a1.png" width="180" height="400" alt="The social links drawer with Facebook, Instagram and X"></span><figcaption>Start from the set</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure><span class="sb-shot" style="width:155px"><img loading="lazy" src="assets/images/social-block/a2.png" width="180" height="400" alt="Add social clicked, with the list of platforms open"></span><figcaption>Click “Add social”</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure><span class="sb-shot" style="width:155px"><img loading="lazy" src="assets/images/social-block/a3.png" width="180" height="400" alt="TikTok highlighted in the list of platforms"></span><figcaption>Pick a platform</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure><span class="sb-shot" style="width:155px"><img loading="lazy" src="assets/images/social-block/a4.png" width="180" height="400" alt="The new TikTok row, already open"></span><figcaption>New social appears opened</figcaption></figure>
+        </div>
+        <h3 data-reveal class="ws-sub sb-sub sb-sub--row">Reordering</h3>
+        <div class="sb-row sb-row--q" data-reveal>
+          <figure><img loading="lazy" src="assets/images/social-block/r1.png" width="235" height="400" alt="Three socials, each in its own card"><figcaption>Each social is a card</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure><img loading="lazy" src="assets/images/social-block/r2.png" width="235" height="400" alt="The drag handle showing beside the hovered card"><figcaption>Hover to show the<br>drag handle</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure><img loading="lazy" src="assets/images/social-block/r3.png" width="235" height="400" alt="A card being dragged to a new spot in the list"><figcaption>Drag it to a new spot</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure><img loading="lazy" src="assets/images/social-block/r4.png" width="235" height="400" alt="The list in its new order"><figcaption>The new order is saved</figcaption></figure>
+        </div>
+        <h3 data-reveal class="ws-sub sb-sub sb-sub--row">Changing the size</h3>
+        <div class="sb-row sb-row--z" data-reveal>
+          <figure><img loading="lazy" src="assets/images/social-block/z1-select.png" width="285" height="80" alt="The Size dropdown set to Large"><img class="sb-z__icons" loading="lazy" src="assets/images/social-block/z1-icons.png" width="285" height="43" alt="Facebook, Instagram and X icons at the large size"><figcaption>Large (48 px)</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure><img loading="lazy" src="assets/images/social-block/z2-select.png" width="285" height="80" alt="The Size dropdown set to Medium"><img class="sb-z__icons" loading="lazy" src="assets/images/social-block/z2-icons.png" width="285" height="43" alt="Facebook, Instagram and X icons at the medium size"><figcaption>Medium (32 px)</figcaption></figure>
+          <span class="sb-row__arrow" aria-hidden="true">→</span>
+          <figure><img loading="lazy" src="assets/images/social-block/z3-select.png" width="285" height="80" alt="The Size dropdown set to Small"><img class="sb-z__icons" loading="lazy" src="assets/images/social-block/z3-icons.png" width="285" height="43" alt="Facebook, Instagram and X icons at the small size"><figcaption>Small (24 px)</figcaption></figure>
+        </div>
+      </section>
+
+      <hr class="ws-rule sb-rule">
+
+      <section>
+        <h2 data-reveal class="sb-h2">What’s next</h2>
+        <p data-reveal class="ws-body sb-next__body">Next up: style and shape options for the whole icon set.</p>
+        <div class="sb-next" data-reveal>
+          <figure><img loading="lazy" src="assets/images/social-block/n1.png" width="491" height="320" alt="The social block drawer with Shape and Style dropdowns"><figcaption>Shape + style dropdowns</figcaption></figure>
+          <figure><img loading="lazy" src="assets/images/social-block/n2.png" width="491" height="320" alt="The style options for the icon set"><figcaption>Style options</figcaption></figure>
+        </div>
+      </section>
+
+      <hr class="ws-rule sb-rule">
+
+      <section>
+        <h2 data-reveal class="sb-h2">Outcome</h2>
+        <p data-reveal class="ws-callout sb-outcome">Handed off and in development when my internship ended.</p>
+      </section>
+
+      <!-- See more projects (Figma 552:13726): two tiles at a time; the arrows slide one tile and loop (js/main.js) -->
+      <section class="more" aria-label="More projects">
+        <h2 data-reveal class="more__title">See more projects</h2>
+        <div data-reveal class="more__carousel" data-carousel>
+          <button class="more__arrow more__arrow--prev" type="button" aria-label="Previous project"><svg width="29" height="28" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg></button>
+          <div class="more__viewport">
+            <div class="more__track">
+            <a class="work-tile" style="--tint: 10, 47, 125" href="workshop-locked.html"><img loading="lazy" src="assets/images/work-page/workshop.png" width="1002" height="552" alt="Internal Communications Planner"><span class="work-tile__title" aria-hidden="true">Internal Communications Planner</span></a>
+              <a class="work-tile" style="--tint: 20, 35, 61" href="luna.html"><img loading="lazy" src="assets/images/work-page/luna.png" width="1002" height="552" alt="Headphones Launch Ecosystem"><span class="work-tile__title" aria-hidden="true">Headphones Launch Ecosystem</span></a>
+              <a class="work-tile" style="--tint: 31, 31, 31" href="drop.html"><img loading="lazy" src="assets/images/work-page/drop.png" width="1002" height="552" alt="Drone Delivery Dashboard"><span class="work-tile__title" aria-hidden="true">Drone Delivery Dashboard</span></a>
+              <a class="work-tile" style="--tint: 30, 31, 58" href="bone-dry.html"><img loading="lazy" src="assets/images/work-page/bone-dry.png" width="1002" height="552" alt="Bone Dry Game Design"><span class="work-tile__title" aria-hidden="true">Bone Dry Game Design</span></a>
+            </div>
+          </div>
+          <button class="more__arrow more__arrow--next" type="button" aria-label="Next project"><svg width="29" height="28" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg></button>
+        </div>
+        <div class="more__back"><a class="back-link" data-reveal href="index.html#work"><svg class="back-link__icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="0.75" y="0.75" width="34.5" height="34.5" rx="17.25" stroke="currentColor" stroke-width="1.5"/><path transform="translate(-0.5 0)" d="M19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25C18.0858 10.25 17.75 10.5858 17.75 11L18.5 11L19.25 11ZM17.9697 27.5303C18.2626 27.8232 18.7374 27.8232 19.0303 27.5303L23.8033 22.7574C24.0962 22.4645 24.0962 21.9896 23.8033 21.6967C23.5104 21.4038 23.0355 21.4038 22.7426 21.6967L18.5 25.9393L14.2574 21.6967C13.9645 21.4038 13.4896 21.4038 13.1967 21.6967C12.9038 21.9896 12.9038 22.4645 13.1967 22.7574L17.9697 27.5303ZM18.5 11L17.75 11L17.75 27L18.5 27L19.25 27L19.25 11L18.5 11Z" fill="currentColor"/></svg> BACK TO HOME</a></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" data-reveal>
+    <div class="site-footer__inner container">
+      <div class="site-footer__left">
+        <a class="site-footer__logo" href="index.html" aria-label="Sicily Manganaro — home">
+          <img src="assets/images/logo-sm.svg" width="35" height="26.8086" alt="">
+        </a>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <a href="about.html">About</a>
+          <a href="mailto:sicilymanganaro@gmail.com">Contact</a>
+        </nav>
+      </div>
+      <a class="site-footer__social" href="https://www.linkedin.com/in/sicilymanganaro431" target="_blank" rel="noopener" aria-label="Sicily Manganaro on LinkedIn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 3C24 1.34423 22.6558 0 21 0H3C1.34423 0 0 1.34423 0 3V21C0 22.6558 1.34423 24 3 24H21C22.6558 24 24 22.6558 24 21V3Z" fill="currentColor"/><path d="M6.88157 8.37402H2.86157V20.466H6.88157V8.37402Z" fill="var(--li-mark, #fbfbfb)"/><path d="M4.899 2.54395C3.52364 2.54395 2.625 3.44816 2.625 4.6333C2.625 5.79355 3.49631 6.72271 4.8458 6.72271H4.87177C6.27347 6.72271 7.14595 5.79355 7.14595 4.6333C7.11994 3.44816 6.27356 2.54395 4.899 2.54395Z" fill="var(--li-mark, #fbfbfb)"/><path d="M16.7475 8.08984C14.6151 8.08984 13.66 9.26252 13.1252 10.0862V8.37419H9.1062C9.1595 9.50842 9.1062 20.4661 9.1062 20.4661H13.1251V13.7131C13.1251 13.3517 13.1511 12.9903 13.2576 12.732C13.5477 12.0101 14.2094 11.2623 15.3198 11.2623C16.7735 11.2623 17.3559 12.3716 17.3559 13.9964V20.4661H21.375V13.5319C21.375 9.81766 19.3919 8.08984 16.7475 8.08984Z" fill="var(--li-mark, #fbfbfb)"/></svg>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
