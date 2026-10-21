@@ -418,7 +418,7 @@ a { color: inherit; text-decoration: none; }
 /* Phones (layout from Figma 300:8611, 390 wide): wide side margins, the drawing small and
    left-aligned above the intro, and tall card images with the logo on top and the screen below */
 @media (max-width: 767px) {
-  .m-ok main.container, .m-ok main .container {
+  .m-ok main.container, .m-ok main .container, .m-ok .more.container {
     width: auto;
     margin-inline: 0;
     padding-inline: max(20px, 13.141vw); /* Figma 300:8611 grid: 8 columns, 20 gutter, no margin → content runs from column 2 to column 7 (51.25 each side at 390) */
@@ -1123,6 +1123,7 @@ a { color: inherit; text-decoration: none; }
   /* Round 2 mood board: the export's arrow (left 164px of 958) pointed at the images beside the text;
      stacked under it, the arrow is cropped off and the images start at the margin */
   .m-ok .bd-round2__concept img { width: 100%; max-width: 100%; aspect-ratio: 794 / 266; object-fit: cover; object-position: right center; }
+  .m-ok .bd-process__text p + p { font-weight: 400; } /* the Claude Code line in regular, not bold */
   /* PLAY THE GAME row, scaled down for phones */
   .m-ok .bd-play__label { gap: 8px; height: 28px; font-size: 14px; line-height: 28px; }
   .m-ok .bd .bd-play__label img { width: 40px; margin-top: 13px; }
@@ -1181,7 +1182,7 @@ a { color: inherit; text-decoration: none; }
 .work-page__title { margin: 0; font-family: var(--font-sans); font-size: 36px; font-weight: 600; line-height: 40px; letter-spacing: -0.72px; font-variation-settings: "opsz" 14; }
 .work-page__rule { margin: 20px 0 0; border: 0; border-top: 1px solid #d9d9d9; }
 .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 50px 20px; margin-top: 173px; }
-.work-tile { display: block; aspect-ratio: 501 / 276; border-radius: 12px; overflow: hidden; }
+.work-tile { display: block; aspect-ratio: 501 / 276; border-radius: 2.6% / 4.75%; overflow: hidden; } /* the exports have 12px corners (at 501 wide) baked in on white: scale the rounding with the tile so no white shows when tiles grow */
 .work-tile { position: relative; }
 .work-tile img { width: 100%; height: 100%; object-fit: cover; }
 /* Hover (Figma 503:5783/5784): an 85% wash with the project title centered. Each tile sets its own
@@ -1603,7 +1604,7 @@ a { color: inherit; text-decoration: none; }
   .m-ok .more__arrow--next { right: -46px; }
   .m-ok .more__back { margin-top: 32px; }
 } /* narrow windows: no room outside the column, so inset the tiles to keep the arrows on screen */
-.more__viewport { overflow: hidden; }
+.more__viewport { overflow: hidden; touch-action: pan-y; } /* sideways swipes go to the carousel (js/main.js), not the page */
 .more__track { display: flex; gap: 20px; transition: transform 500ms cubic-bezier(0.2, 0.7, 0.3, 1); }
 .more__track .work-tile { flex: 0 0 calc((100% - 20px) / 2); }
 .more__arrow { position: absolute; top: 50%; display: grid; transition: opacity 0.25s ease, visibility 0.25s; place-items: center; width: 44px; height: 44px; margin-top: -22px; padding: 0; border: 0; background: none; color: #5b78b2; cursor: pointer; }

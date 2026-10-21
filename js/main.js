@@ -428,8 +428,8 @@ if (mgate) {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mgate.classList.contains('is-open')) { setOpen(false); toggle.focus(); } });
 }
 
-// See more projects (every project page): the arrows slide the row one tile at a time and stop at
-// the ends; each arrow fades out when there's nothing more on its side.
+// See more projects (every project page): the arrows (or a swipe) slide the row one tile at a time and
+// stop at the ends; each arrow fades out when there's nothing more on its side.
 document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   const track = carousel.querySelector('.more__track');
   const viewport = carousel.querySelector('.more__viewport');
@@ -450,6 +450,18 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   prev.addEventListener('click', () => { if (index > 0) { index -= 1; show(); } });
   next.addEventListener('click', () => { if (index < last) { index += 1; show(); } });
   addEventListener('resize', show);
+  // Swiping the row on a touch screen does the same as the arrows (a mostly sideways swipe of 40px+)
+  let touchX = null, touchY = 0;
+  viewport.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; touchY = e.touches[0].clientY; }, { passive: true });
+  viewport.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX, dy = e.changedTouches[0].clientY - touchY;
+    touchX = null;
+    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0 && index < last) index += 1;
+    else if (dx > 0 && index > 0) index -= 1;
+    show();
+  });
   // Tabbing onto a tile that's out of view slides it in (and undoes the browser's own scroll)
   track.addEventListener('focusin', (e) => {
     const i = tiles.indexOf(e.target.closest('.work-tile'));
