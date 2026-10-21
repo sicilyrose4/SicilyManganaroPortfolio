@@ -1444,7 +1444,6 @@ a { color: inherit; text-decoration: none; }
   .m-ok .ws-swipe { display: block; margin: 12px 0 0; color: var(--accent); font-family: var(--font-sans); font-weight: 400; font-size: 14px; line-height: 20px; }
   .m-ok .ws-swipe + figcaption { margin-top: 6px; }
 }
-}
 
 /* ---------- Phone screen (Figma 579:20032, menu 579:20053) ---------- */
 /* Below 768px, pages without body.m-ok show only this screen. Pages with a phone layout (body.m-ok)
