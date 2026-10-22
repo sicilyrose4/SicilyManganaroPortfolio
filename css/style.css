@@ -882,6 +882,8 @@ a { color: inherit; text-decoration: none; }
 }
 .lock__hint { margin: 10px 0 0; color: #72757a; font-family: var(--font-mono); font-size: 13px; line-height: 18px; } /* under the field, lined up with its left edge */
 .lock__field:has(.lock__error:not(:empty)) .lock__hint { visibility: hidden; } /* a wrong password's message takes its place */
+.lock__hint-phone { display: none; } /* below 768 the Resume link lives in the phone menu */
+@media (max-width: 767px) { .lock__hint-desk { display: none; } .lock__hint-phone { display: inline; } }
 .lock__field.is-wrong { animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97); }
 @keyframes shake {
   20%, 60% { transform: translateX(-7px); }
