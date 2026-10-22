@@ -8,6 +8,9 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - Assets in `assets/images`, `assets/videos`, `assets/fonts`.
 - Preview: `python3 serve.py` → http://localhost:8080 (GitHub-Pages-like: missing pages get `404.html`, no caching). Opening files directly (`file://`) can't show the custom 404.
 
+## Favicon
+- The tab icon is the SM logo (`assets/images/logo-sm.svg`): `favicon.svg`, `favicon.ico` and `apple-touch-icon.png` (on #fcfcfc) at the root, linked right after `<title>` on every page (in `404.html`, after its `<base>` script). New pages need the same three `<link>` tags.
+
 ## Rules
 - Match the Figma frames closely (spacing, type, color). Pull tokens into `:root` in `style.css`.
 - Never create original art, icons, or fonts — Sicily provides all assets. Use a clear placeholder and ask if something is missing.
