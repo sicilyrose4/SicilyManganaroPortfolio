@@ -897,6 +897,7 @@ a { color: inherit; text-decoration: none; }
   .lock__form { flex-direction: column; align-items: stretch; margin-top: 48px; gap: 40px; }
   .lock__field { flex: none; } /* the 397px basis would otherwise become a height when stacked */
   .lock__submit { width: 100%; }
+  .lock__hint { font-size: 12px; line-height: 17px; } /* 13px wrapped the first line at 390 */
 }
 
 /* ---------- Drop case study (Figma 651:8736, "drop — draft") ---------- */
