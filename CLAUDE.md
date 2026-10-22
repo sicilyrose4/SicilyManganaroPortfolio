@@ -51,10 +51,10 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - The user-flow image has a hover magnifier (`.magnify`, `js/main.js`): a round lens at 3x from `flow-large.jpg`, mouse/trackpad only.
 
 ## Phones
-- Below 768px a page shows the "Grab your laptop!" gate (`.mgate`, Figma 579:20032) unless its `<body>` has `class="m-ok"`. Since 2026-10-21 every page has `m-ok` (Sicily asked to drop the laptop screen everywhere for now). Phone layouts designed so far: `index.html`, `about.html`, `workshop-locked.html`, `workshop.html`, `luna.html`, `bone-dry.html`, `drop.html`, `social-block.html`; the rest (Bull Stock, Work, In progress) show their basic responsive layout until they get one.
-- On `m-ok` pages the gate's bar is the header (logo + menu; the approved line→X animation, links About / Contact / Resume) and the desktop header hides.
+- The "Grab your laptop!" screen is gone (removed 2026-10-22 at Sicily's request): every page shows on phones. What's left of it is the `.mgate` bar, which is the phone header below 768px (logo + menu; the approved line→X animation, links About / Contact / Resume) while the desktop header hides. On the dark pages (`.page-dark`: Luna, Drop) the menu button and links are #bbc0cc. Every `<body>` still carries `m-ok`; some phone rules key off it, so keep it on new pages.
+- Phone layouts designed so far: `index.html`, `about.html`, `workshop-locked.html`, `workshop.html`, `luna.html`, `bone-dry.html`, `drop.html`, `social-block.html`; the rest (Bull Stock, Work, In progress) show their basic responsive layout until they get one.
 - Phone layout follows Figma 300:8611: an 8-column grid (20 gutter, no margin), so content runs from column 2 to 7, `max(20px, 13.141vw)` each side (51.25 at 390). Home hero: drawing 234 wide, title 42/40, intro split before "Recently designing…", TAKE A LOOK (fades faster on phones). Cards: 287-wide images shortened to 287×360, logo centered on top, screen below running off the right.
-- Every page starts with the `.mgate` block; if you add a page, copy it in right after `<body>`. Its drawing is a copy of the home hero art, so it bobs and blinks with the same code.
+- Every page starts with the `.mgate` block (bar + menu); if you add a page, copy it in right after `<body>`.
 - About uses the road footer with its email line kept invisible (`.site-footer__contact--spacer`): the road and car are measured from that line, so don't delete it.
 
 ## Home header

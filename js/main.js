@@ -385,42 +385,35 @@ if (road) {
   });
 }
 
-// Phone screen menu (Figma 579:20053). Opening: the three lines turn into the X while the drawing
-// fades out, then About / Contact / Resume fade up one by one. Closing plays it backwards. Escape or
-// the X closes it. Steps are timed here; the motion itself is in style.css (.mgate).
+// Phone menu (Figma 579:20053). Opening: the three lines turn into the X, then About / Contact / Resume
+// fade up one by one. Closing plays it backwards. Escape or the X closes it. Steps are timed here; the
+// motion itself is in style.css (.mgate).
 const mgate = document.querySelector('[data-mobile-gate]');
 if (mgate) {
   const toggle = mgate.querySelector('.mgate__toggle');
   const menu = mgate.querySelector('.mgate__menu');
-  const body = mgate.querySelector('.mgate__body');
   const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const FADE_MS = still ? 0 : 250;     // drawing fade (matches .mgate__body transition)
+  const LINKS_IN_MS = still ? 0 : 250;  // links start once the X is mostly drawn
   const LINKS_OUT_MS = still ? 0 : 320; // last link finishes fading out
   let step = null;
   const setOpen = (open) => {
     clearTimeout(step);
     mgate.classList.toggle('is-open', open);
-    document.documentElement.classList.toggle('mgate-open', open); // phone-ready pages: no scrolling behind the menu
+    document.documentElement.classList.toggle('mgate-open', open); // no scrolling behind the menu
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     if (open) {
       menu.classList.remove('is-out');
-      body.classList.add('is-faded');
       step = setTimeout(() => {
-        body.classList.add('is-away');
-        body.setAttribute('aria-hidden', 'true');
         menu.hidden = false;
         menu.classList.add('is-in');
-      }, FADE_MS);
+      }, LINKS_IN_MS);
     } else {
       menu.classList.remove('is-in');
       menu.classList.add('is-out');
       step = setTimeout(() => {
         menu.hidden = true;
         menu.classList.remove('is-out');
-        body.classList.remove('is-away');
-        body.removeAttribute('aria-hidden');
-        requestAnimationFrame(() => requestAnimationFrame(() => body.classList.remove('is-faded')));
       }, LINKS_OUT_MS);
     }
   };
