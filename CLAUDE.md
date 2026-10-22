@@ -51,7 +51,7 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - The user-flow image has a hover magnifier (`.magnify`, `js/main.js`): a round lens at 3x from `flow-large.jpg`, mouse/trackpad only.
 
 ## Phones
-- Below 768px a page shows the "Grab your laptop!" gate (`.mgate`, Figma 579:20032) unless its `<body>` has `class="m-ok"`. Since 2026-10-21 every page has `m-ok` (Sicily asked to drop the laptop screen everywhere for now). Phone layouts designed so far: `index.html`, `about.html`, `workshop-locked.html`, `workshop.html`, `luna.html`; the rest show their basic responsive layout until they get one.
+- Below 768px a page shows the "Grab your laptop!" gate (`.mgate`, Figma 579:20032) unless its `<body>` has `class="m-ok"`. Since 2026-10-21 every page has `m-ok` (Sicily asked to drop the laptop screen everywhere for now). Phone layouts designed so far: `index.html`, `about.html`, `workshop-locked.html`, `workshop.html`, `luna.html`, `bone-dry.html`, `drop.html`, `social-block.html`; the rest (Bull Stock, Work, In progress) show their basic responsive layout until they get one.
 - On `m-ok` pages the gate's bar is the header (logo + menu; the approved line→X animation, links About / Contact / Resume) and the desktop header hides.
 - Phone layout follows Figma 300:8611: an 8-column grid (20 gutter, no margin), so content runs from column 2 to 7, `max(20px, 13.141vw)` each side (51.25 at 390). Home hero: drawing 234 wide, title 42/40, intro split before "Recently designing…", TAKE A LOOK (fades faster on phones). Cards: 287-wide images shortened to 287×360, logo centered on top, screen below running off the right.
 - Every page starts with the `.mgate` block; if you add a page, copy it in right after `<body>`. Its drawing is a copy of the home hero art, so it bobs and blinks with the same code.
@@ -75,7 +75,7 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 ## Social Block case study
 - `social-block.html` follows Figma 556:6053 ("social block — draft"). Light Workshop look: it reuses the `.ws-*` styles plus the `.sb-*` block in `style.css` (comments give Figma y). Visuals are 2x exports in `assets/images/social-block/`; the initial flow places its six screens, labels and the four drag arrows (`arrow-*.svg`) at their Figma positions (`.sb-flow`), and stacks label-then-screen on phones.
 - It's a Workshop internship project, so it shares Workshop's password and unlock: `social-block-locked.html` (same gate, `data-next="social-block.html"`) and the same `unlocked:workshop` check first in its `<head>`.
-- Home card (Figma 595:22182) sits second, after Workshop, and links to `social-block-locked.html`. It isn't in the See more carousels yet (no 501×276 tile exists).
+- Home card (Figma 595:22182) sits second, after Workshop, and links to `social-block-locked.html`. Its See more tile is `assets/images/work-page/social-block.png` (Figma 692:8041, exported at 1002×552).
 
 ## Drop case study
 - `drop.html` follows Figma 651:8736 ("drop — draft"), in the Bone Dry / Workshop format on Drop's dark #1c1c1c with the lime #ebffae accent. Styles are the `.dp-*` block in `style.css` (comments give Figma y).
@@ -83,7 +83,7 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - "Try it out" embeds the live Figma prototype. The old board images in `assets/images/drop/` are no longer used.
 
 ## See more projects (every project page)
-- The `.more` carousel (Figma 552:13726) sits at the end of Luna, Drop, Workshop, Bone Dry (inside its dark footer band) and Bull Stock. It holds the Work-page tiles for Luna, Drop, Workshop and Bone Dry, minus the page you're on.
+- The `.more` carousel (Figma 552:13726) sits at the end of Luna, Drop, Workshop, Social Block, Bone Dry (inside its dark footer band) and Bull Stock. It holds the Work-page tiles for Luna, Drop, Workshop, Social Block and Bone Dry, minus the page you're on (Social Block sits right after Workshop).
 - The tiles span the full content column (lined up with the title and the rest of the page); the arrows sit just outside it. Below 1140px wide the tiles inset 48px so the arrows stay on screen.
 - Two tiles show at a time; the arrows (back-link circle turned sideways) slide one tile and hide when there's nothing more on that side (`js/main.js`). To add a project, add its tile to each page's `.more__track`.
 - The back link sits under the carousel (`.more__back`). Every `.back-link` reads BACK TO WORK, or BACK TO HOME (→ `index.html#work`) if the visitor came from the home page.
