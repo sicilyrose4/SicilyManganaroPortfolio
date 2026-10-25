@@ -354,6 +354,22 @@ a { color: inherit; text-decoration: none; }
   left: calc(674.5 * var(--px)); top: calc(83 * var(--px)); width: calc(256 * var(--px));
 }
 
+/* Bull Stock (Figma 717:8596): two phones running off the bottom, the home screen in front */
+.project-card--bull .project-card__media { background: linear-gradient(#3f557e, #16020f); }
+.project-card--bull .project-card__screen {
+  left: calc(589 * var(--px)); top: calc(27 * var(--px)); width: calc(369 * var(--px)); height: calc(301 * var(--px));
+}
+.project-card--bull .project-card__screen img {
+  position: absolute;
+  border-radius: calc(16 * var(--px)) calc(16 * var(--px)) 0 0;
+  box-shadow: 0 4px 12.6px rgba(0, 0, 0, 0.25);
+}
+.project-card--bull .project-card__screen img:nth-child(1) { left: calc(125 * var(--px)); top: calc(39.5 * var(--px)); width: calc(244 * var(--px)); }
+.project-card--bull .project-card__screen img:nth-child(2) { left: 0; top: 0; width: calc(246 * var(--px)); }
+.project-card--bull .project-card__logo {
+  left: calc(71.5 * var(--px)); top: calc(115 * var(--px)); width: calc(420.5 * var(--px));
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   .project-card__screen { transition: none; }
@@ -471,6 +487,11 @@ a { color: inherit; text-decoration: none; }
   .m-ok .project-card--social .project-card__screen { left: calc(18.5 * var(--px)); top: calc(160 * var(--px)); width: calc(250 * var(--px)); } /* centered in the 287-wide card */
   .m-ok .project-card--drop .project-card__logo { top: calc(50 * var(--px)); width: calc(130 * var(--px)); }
   .m-ok .project-card--drop .project-card__screen { left: calc(36 * var(--px)); top: calc(161 * var(--px)); width: calc(420 * var(--px)); border-radius: calc(9 * var(--px)) calc(9 * var(--px)) 0 0; }
+  .m-ok .project-card--bull .project-card__logo { top: calc(55 * var(--px)); width: calc(200 * var(--px)); }
+  .m-ok .project-card--bull .project-card__screen { left: calc(38.5 * var(--px)); top: calc(130 * var(--px)); width: calc(210 * var(--px)); height: calc(230 * var(--px)); }
+  .m-ok .project-card--bull .project-card__screen img { border-radius: calc(9 * var(--px)) calc(9 * var(--px)) 0 0; }
+  .m-ok .project-card--bull .project-card__screen img:nth-child(1) { left: calc(71 * var(--px)); top: calc(22 * var(--px)); width: calc(139 * var(--px)); }
+  .m-ok .project-card--bull .project-card__screen img:nth-child(2) { width: calc(140 * var(--px)); }
 
   /* Footer lines up with the content margins */
   .m-ok .site-footer { width: auto; margin-inline: max(20px, 13.141vw); }
@@ -1381,6 +1402,7 @@ a { color: inherit; text-decoration: none; }
 .bs-proto { position: relative; margin-top: 27px; height: 760px; border-radius: 12px; overflow: hidden; background: var(--night); }
 .bs-proto iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .bs-try .bs-refined { margin-top: 100px; }
+.bs-try .bs-proto-note { margin-top: 32px; color: var(--ink); } /* under the coded prototype, like a figure caption */
 
 .bs-system { padding: 100px 0 110px; }
 .bs-sys { display: grid; grid-template-columns: repeat(12, 1fr); gap: 80px 40px; margin-top: 90px; align-items: start; }

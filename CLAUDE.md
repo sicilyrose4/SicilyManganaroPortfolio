@@ -33,9 +33,9 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - The playable game is embedded in an iframe from `https://sicilyrose4.github.io/bone-dry/` (repo `sicilyrose4/bone-dry`, source in `~/Documents/IXD 432/bone dry`). Updating the game there updates the embed.
 
 ## Work page and Bull Stock
-- **On hold (2026-10-21):** the Work page is out of the navigation. The home page shows Workshop, Social Block, Luna, Bone Dry, Drop (in that order, no SEE MORE), and every back link reads BACK TO HOME → `index.html#work`. `work.html` still exists but nothing links to it; Bull Stock is only reachable by URL until it gets a home card or the Work page returns.
+- **On hold (2026-10-21):** the Work page is out of the navigation. The home page shows Workshop, Social Block, Luna, Bone Dry, Drop, Bull Stock (in that order, no SEE MORE), and every back link reads BACK TO HOME → `index.html#work`. `work.html` still exists but nothing links to it.
 - `work.html` (Figma 200:1898): a grid of 501×276 tiles in `assets/images/work-page/`, cut whole from the Figma frame at 2x. Rebound, Depop and Fizz have no case study pages yet, so their tiles link to `in-progress.html`.
-- `bull-stock.html` has no Figma frame: its layout was approved from a mockup. It shares the Bone Dry `.bd-*` styles plus `.bs-*`. Images come from the group project's Figma file (`ny9fhUlVOT652zelldNh02`), read-only. It is linked from the Work page only, not from a home card.
+- `bull-stock.html` has no Figma frame: its layout was approved from a mockup. It shares the Bone Dry `.bd-*` styles plus `.bs-*`. Images come from the group project's Figma file (`ny9fhUlVOT652zelldNh02`), read-only. Home card (Figma 717:8596, last on the page): background gradient, the logo (`assets/images/work/bull-stock-logo.svg`, Figma group 717:8962 with the export's backgrounds stripped) and two phone screens (`bull-stock-home.png` in front, `bull-stock-details.png` behind; 2x crops with their corners rounded, shadows in CSS). Its Try It section has the group's Figma prototype, then the coded prototype (`sicilyrose4.github.io/bull-stock`) with a note under it that Sicily rebuilt it on her own with Claude Code after the group project.
 
 ## In-progress page
 - `in-progress.html` (Figma 483:7596) is where any project without a case study leads: the Rebound, Depop and Fizz tiles.
@@ -83,7 +83,7 @@ Rebuild of sicilymanganaro.com. Designs live in Figma; code implements them.
 - "Try it out" embeds the live Figma prototype. The old board images in `assets/images/drop/` are no longer used.
 
 ## See more projects (every project page)
-- The `.more` carousel (Figma 552:13726) sits at the end of Luna, Drop, Workshop, Social Block, Bone Dry (inside its dark footer band) and Bull Stock. It holds the Work-page tiles for Luna, Drop, Workshop, Social Block and Bone Dry, minus the page you're on (Social Block sits right after Workshop).
+- The `.more` carousel (Figma 552:13726) sits at the end of Luna, Drop, Workshop, Social Block, Bone Dry (inside its dark footer band) and Bull Stock. It holds the Work-page tiles for Luna, Drop, Workshop, Social Block, Bone Dry and Bull Stock, minus the page you're on (Social Block sits right after Workshop; Bull Stock is last).
 - The tiles span the full content column (lined up with the title and the rest of the page); the arrows sit just outside it. Below 1140px wide the tiles inset 48px so the arrows stay on screen.
 - Two tiles show at a time; the arrows (back-link circle turned sideways) slide one tile and hide when there's nothing more on that side (`js/main.js`). To add a project, add its tile to each page's `.more__track`.
 - The back link sits under the carousel (`.more__back`). Every `.back-link` reads BACK TO WORK, or BACK TO HOME (→ `index.html#work`) if the visitor came from the home page.
