@@ -328,11 +328,11 @@ a { color: inherit; text-decoration: none; }
 .project-card__media > * { position: absolute; }
 .project-card__logo { height: auto; }
 
-/* Hover pulse: the screens grow a little and hold while the card is hovered */
+/* Hover pulse: the screens grow a little and hold while the image (not the text) is hovered */
 .project-card__screen {
   transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
-.project-card:hover .project-card__screen,
+.project-card__media:hover .project-card__screen,
 .project-card:focus-visible .project-card__screen { transform: scale(1.04); }
 
 /* Positions are Figma px within each 1023×328 card. Screen PNGs are cropped at the
