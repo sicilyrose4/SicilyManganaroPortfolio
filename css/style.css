@@ -517,7 +517,7 @@ a { color: inherit; text-decoration: none; }
   .hero__text { align-self: stretch; width: auto; }
   .hero__title { font-size: 42px; line-height: 40px; }
   .hero__intro { margin-top: 26px; font-size: 16px; line-height: 24px; } /* 574 (the title box runs 12px taller than its 40px line) */
-  .hero__break { display: block; height: 24px; } /* the frame's blank line before "Recently designing…" */
+  .hero__break { display: block; height: 24px; } /* the frame's blank line before "Looking for…" */
   .hero__cta { margin-top: 38px; } /* 780 */
   .work { gap: 64px; padding-bottom: 96px; }
   .project-card__title { line-height: 32px; }
