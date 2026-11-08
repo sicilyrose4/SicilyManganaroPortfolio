@@ -280,6 +280,45 @@ a { color: inherit; text-decoration: none; }
   font-variation-settings: "opsz" 14;
 }
 .project-card__lock svg { flex: none; }
+/* Hover tooltip to the right of the pill, with a tip pointing back at it (mouse/trackpad only).
+   Shadow matches the Workshop card screen's. */
+.project-card__lock { position: relative; }
+.project-card__lock::before,
+.project-card__lock::after {
+  position: absolute;
+  top: 50%;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, translate 0.2s;
+}
+.project-card__lock::after {
+  content: attr(data-tip);
+  left: calc(100% + 14px);
+  translate: -4px -50%;
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: 0 3px 18px rgba(37, 46, 64, 0.18);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+/* the tip: a square turned 45°, drawn over the bubble's edge so only its point shows */
+.project-card__lock::before {
+  content: "";
+  z-index: 1;
+  left: calc(100% + 9px);
+  width: 12px;
+  height: 12px;
+  translate: -4px -50%;
+  rotate: 45deg;
+  box-shadow: -3px 3px 6px -2px rgba(37, 46, 64, 0.12);
+}
+@media (hover: hover) {
+  .project-card__lock:hover::before,
+  .project-card__lock:hover::after { opacity: 1; translate: 0 -50%; }
+}
 .project-card__media {
   position: relative;
   aspect-ratio: 1023 / 328;
